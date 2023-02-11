@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { Header } from '../Navigation/Header';
+import { Header } from './Header';
 import './Page.css';
 
 export const Page = () => {

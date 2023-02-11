@@ -1,7 +1,7 @@
 import React from 'react';
 import { within, userEvent } from '@storybook/testing-library';
 
-import { Page } from '../components/Layouts/Page';
+import { Page } from '../components/Pages/Page';
 
 export default {
   title: 'Example/Page',
