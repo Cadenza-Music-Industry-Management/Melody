@@ -1,0 +1,40 @@
+.melody-indicator {
+    @apply melody-rounded-full melody-border-2 melody-flex;
+}
+
+.melody-indicator.info {
+    @apply melody-bg-blue-100 dark:melody-bg-blue-900 melody-border-blue-400;
+}
+
+.melody-indicator.alert {
+    @apply melody-bg-red-100 dark:melody-bg-red-900 melody-border-red-400;
+}
+
+.melody-indicator.okay {
+    @apply melody-bg-green-100 dark:melody-bg-green-900 melody-border-green-400;
+}
+
+.melody-indicator.caution {
+    @apply melody-bg-yellow-100 dark:melody-bg-yellow-900 melody-border-yellow-400;
+}
+
+.melody-indicator.dark {
+    @apply melody-bg-black dark:melody-bg-gray-900 melody-border-gray-400;
+}
+
+.melody-indicator.light {
+    @apply melody-bg-white melody-border-gray-700;
+}
+
+.melody-indicator.small {
+    @apply melody-w-3 melody-h-3;
+}
+
+.melody-indicator.medium {
+    @apply melody-w-4 melody-h-4;
+}
+
+.melody-indicator.large {
+    @apply melody-w-5 melody-h-5;
+}
+

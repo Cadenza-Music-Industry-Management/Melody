@@ -12,6 +12,8 @@ export const Badge = (props: {
         text
     } = props
 
+    //TODO status icon like trello labels
+
     return (
         <span className={`melody-badge ${variant} ${size}`}>
             {text}
