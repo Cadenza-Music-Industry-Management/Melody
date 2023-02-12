@@ -13,6 +13,9 @@ export const ModalTemplate = (props: {
 
     const cancelButtonRef = useRef(null)
 
+    //TODO If you want to animate your dialogs using another animation library like Framer Motion or React Spring and
+    // need more control, you can use the static prop on <Dialog /> to tell Headless UI not to manage rendering itself, and control it manually with another tool:
+
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="melody-relative melody-z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
