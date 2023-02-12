@@ -2,8 +2,7 @@ import './PaginationButtons.css'
 
 export const PaginationButtons = (props: {
     variant: string,
-    size: string,
-    label: string
+    size: string
 }) => {
     const {
         variant,

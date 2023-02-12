@@ -1,0 +1,12 @@
+.melody-file-upload::-webkit-file-upload-button,
+.melody-file-upload::file-selector-button {
+    /*@apply melody-text-white melody-bg-gray-700 hover:melody-bg-gray-600 melody-font-medium melody-text-sm melody-cursor-pointer melody-border-0 melody-py-2.5 melody-pl-8 melody-pr-4;*/
+    /*TODO tailwind not working here?*/
+    margin-inline-start: -1rem;
+    margin-inline-end: 1rem;
+    background-color: #0C192C;
+    color: white;
+    border: 0;
+    padding: 5px 2rem 5px 3rem;
+    font-weight: 600;
+}

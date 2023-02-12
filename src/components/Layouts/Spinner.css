@@ -1,0 +1,15 @@
+.melody-spinner {
+    @apply melody-w-8 melody-h-8 melody-mr-2 melody-text-gray-200 melody-animate-spin dark:melody-text-gray-600 melody-fill-gray-600 dark:melody-fill-gray-300;
+}
+
+.melody-spinner.small {
+    @apply melody-w-4 melody-h-4;
+}
+
+.melody-spinner.medium {
+    @apply melody-w-8 melody-h-8;
+}
+
+.melody-spinner.large {
+    @apply melody-w-12 melody-h-12;
+}

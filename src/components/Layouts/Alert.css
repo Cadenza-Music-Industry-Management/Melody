@@ -1,0 +1,40 @@
+.melody-alert {
+    @apply melody-rounded melody-border melody-flex;
+}
+
+.melody-alert.info {
+    @apply melody-bg-blue-100 melody-text-blue-800 dark:melody-bg-blue-900 dark:melody-text-blue-300 melody-border-blue-400;
+}
+
+.melody-alert.alert {
+    @apply melody-bg-red-100 melody-text-red-800 dark:melody-bg-red-900 dark:melody-text-red-300 melody-border-red-400;
+}
+
+.melody-alert.okay {
+    @apply melody-bg-green-100 melody-text-green-800 dark:melody-bg-green-900 dark:melody-text-green-300 melody-border-green-400;
+}
+
+.melody-alert.caution {
+    @apply melody-bg-yellow-100 melody-text-yellow-800 dark:melody-bg-yellow-900 dark:melody-text-yellow-300 melody-border-yellow-400;
+}
+
+.melody-alert.dark {
+    @apply melody-bg-black melody-text-gray-200 dark:melody-bg-gray-900 dark:melody-text-gray-300 melody-border-gray-400;
+}
+
+.melody-alert.light {
+    @apply melody-bg-white melody-text-black melody-border-gray-700;
+}
+
+.melody-alert.small {
+    @apply melody-px-4 melody-py-1 melody-text-xs;
+}
+
+.melody-alert.medium {
+    @apply melody-px-5 melody-py-1.5 melody-text-sm;
+}
+
+.melody-alert.large {
+    @apply melody-px-6 melody-py-2 melody-text-lg melody-text-base melody-font-bold;
+}
+

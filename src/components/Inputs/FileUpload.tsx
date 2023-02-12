@@ -21,23 +21,19 @@ export const FileUpload = (props: {
 
     return (
         <div className="flex justify-center">
+            <label className="melody-text-sm melody-font-bold melody-text-gray-500 melody-tracking-wide">
+                {label}
+            </label>
+
             {variant === 'bar' ?
                 <div className="mb-3 w-96">
-                    <label htmlFor="formFile" className="melody-inline-block melody-mb-2 melody-text-gray-700">
-                        {label}
-                    </label>
-
-                    <input className="melody-block melody-w-full melody-px-3 melody-py-1.5 melody-text-base melody-font-normal melody-text-gray-700 melody-bg-white melody-bg-clip-padding melody-border melody-border-solid melody-border-gray-300 melody-rounded melody-transition melody-ease-in-out melody-m-0 focus:melody-text-gray-700 focus:melody-bg-white focus:melody-border-blue-600 focus:melody-outline-none"
+                    <input className="melody-file-upload melody-block melody-w-full melody-text-sm melody-text-gray-900 melody-border melody-border-gray-300 melody-rounded-lg melody-cursor-pointer melody-bg-gray-50 dark:melody-text-gray-400 focus:melody-outline-none dark:melody-bg-gray-700 dark:melody-border-gray-600 dark:melody-placeholder-gray-400"
                            type="file"
-                           id="formFile"
+                           id="fileUpload"
                            multiple={multiple} />
                 </div>
             :
                 <>
-                    <label className="melody-text-sm melody-font-bold melody-text-gray-500 melody-tracking-wide">
-                        {label}
-                    </label>
-
                     <div className="melody-flex melody-items-center melody-justify-center melody-w-full">
                         <label className="melody-cursor-pointer melody-flex melody-flex-col melody-rounded-lg melody-border-4 melody-border-dashed melody-w-full melody-h-60 melody-p-10 melody-group melody-text-center">
                             <div className="melody-h-full melody-w-full melody-text-center melody-flex melody-flex-col melody-items-center melody-justify-center melody-items-center">
@@ -54,7 +50,8 @@ export const FileUpload = (props: {
                                 </p>
                             </div>
                             <input type="file"
-                                   className="melody-hidden"
+                                   id="fileUpload"
+                                   className="melody-file-upload melody-hidden"
                                    multiple={multiple} />
                         </label>
                     </div>

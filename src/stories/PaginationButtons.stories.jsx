@@ -4,7 +4,6 @@ import {PaginationButtons} from '../components/Inputs/PaginationButtons';
 export default {
   title: 'Inputs/Melody Pagination Buttons',
   component: PaginationButtons,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
     variant: {
