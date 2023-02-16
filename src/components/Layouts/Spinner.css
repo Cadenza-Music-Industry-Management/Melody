@@ -1,5 +1,29 @@
 .melody-spinner {
-    @apply melody-w-8 melody-h-8 melody-mr-2 melody-text-gray-200 melody-animate-spin dark:melody-text-gray-600 melody-fill-gray-600 dark:melody-fill-gray-300;
+    @apply melody-text-gray-200 dark:melody-text-gray-600 melody-w-8 melody-h-8 melody-mr-2 melody-animate-spin;
+}
+
+.melody-spinner.info {
+    @apply melody-fill-blue-100 dark:melody-fill-blue-900;
+}
+
+.melody-spinner.alert {
+    @apply melody-fill-red-100 dark:melody-fill-red-900;
+}
+
+.melody-spinner.okay {
+    @apply melody-fill-green-100 dark:melody-fill-green-900;
+}
+
+.melody-spinner.caution {
+    @apply melody-fill-yellow-100 dark:melody-fill-yellow-900;
+}
+
+.melody-spinner.dark {
+    @apply melody-fill-gray-600 dark:melody-fill-gray-300;
+}
+
+.melody-spinner.light {
+    @apply melody-fill-gray-50;
 }
 
 .melody-spinner.small {

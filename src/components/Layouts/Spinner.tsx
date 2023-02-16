@@ -3,10 +3,11 @@ import "./Spinner.css"
 
 export const Spinner = (props: {
     size: string,
-    //variant: string
+    variant: string
 }) => {
     const {
-        size
+        size,
+        variant
     } = props
 
     //TODO use text-[left,center,right] for alignment
@@ -18,7 +19,7 @@ export const Spinner = (props: {
     return (
         <div role="status">
             <svg aria-hidden="true"
-                 className={`melody-spinner ${size}`}
+                 className={`melody-spinner ${size} ${variant}`}
                  viewBox="0 0 100 101"
                  fill="none"
                  xmlns="http://www.w3.org/2000/svg">

@@ -1,4 +1,5 @@
 import { Switch as HeadlessSwitch } from '@headlessui/react'
+import './Switch.css'
 
 export const Switch = (props: {
     // variant: string,
