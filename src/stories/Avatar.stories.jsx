@@ -10,6 +10,12 @@ export default {
     },
     image: {
       control: { type: 'text' }
+    },
+    rounded: {
+      control: { type: 'boolean' }
+    },
+    ring: {
+      control: { type: 'boolean' }
     }
   },
 };

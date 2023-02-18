@@ -1,0 +1,15 @@
+.melody-rating {
+    @apply melody-flex melody-items-center melody-mb-5;
+}
+
+.melody-rating svg.small {
+    @apply melody-w-4 melody-h-4;
+}
+
+.melody-rating svg.medium {
+    @apply melody-w-5 melody-h-5;
+}
+
+.melody-rating svg.large {
+    @apply melody-w-6 melody-h-6;
+}

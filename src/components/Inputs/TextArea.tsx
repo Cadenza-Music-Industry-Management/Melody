@@ -15,7 +15,7 @@ export const TextArea = (props: TextInputProps) => {
 
     return (
         <div>
-            {label && <Label htmlFor={"textArea"} label={label} />}
+            {label && <Label {...{...label, htmlFor: "textArea"}} />}
             <textarea placeholder={placeholder}
                       value={value}
                       rows={4}

@@ -1,8 +1,8 @@
 import React from 'react';
-import {CadenzaPricingLayout} from '../components/Layouts/CadenzaPricingLayout';
+import {CadenzaPricingLayout} from '../components/Sections/CadenzaPricingLayout';
 
 export default {
-  title: 'Layout/Melody Cadenza Pricing Layout',
+  title: 'Section/Melody Cadenza Pricing Layout',
   component: CadenzaPricingLayout,
   argTypes: {
     size: {

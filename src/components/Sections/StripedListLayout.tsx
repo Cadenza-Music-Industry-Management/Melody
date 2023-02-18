@@ -1,7 +1,7 @@
 import React from 'react';
-import "./StrippedListLayout.css"
+import "./StripedListLayout.css"
 
-export const StrippedListLayout = (props: {
+export const StripedListLayout = (props: {
     size: string,
     label: string,
     subLabel: string

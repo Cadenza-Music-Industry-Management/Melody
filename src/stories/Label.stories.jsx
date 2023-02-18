@@ -7,6 +7,14 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select', options: ['small', 'medium', 'large'] }
+    },
+    required: {
+      control: { type: 'boolean' },
+      defaultValue: true
+    },
+    bold: {
+      control: { type: 'boolean' },
+      defaultValue: true
     }
   },
 };

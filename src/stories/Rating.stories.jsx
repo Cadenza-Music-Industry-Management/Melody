@@ -16,5 +16,6 @@ const Template = (args) => <Rating {...args} />;
 export const RatingTemplate = Template.bind({});
 RatingTemplate.args = {
   size: 'medium',
-  rating: 3
+  rating: 3,
+  starCount: 5
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import {StrippedListLayout} from '../components/Layouts/StrippedListLayout';
+import {StripedListLayout} from '../components/Sections/StripedListLayout';
 
 export default {
-  title: 'Layout/Melody Stripped List Layout',
-  component: StrippedListLayout,
+  title: 'Section/Melody Stripped List Layout',
+  component: StripedListLayout,
   argTypes: {
     size: {
       control: { type: 'select', options: ['small', 'medium', 'large'] }
@@ -11,7 +11,7 @@ export default {
   },
 };
 
-const Template = (args) => <StrippedListLayout {...args} />;
+const Template = (args) => <StripedListLayout {...args} />;
 
 export const StrippedListLayoutTemplate = Template.bind({});
 StrippedListLayoutTemplate.args = {

@@ -1,0 +1,15 @@
+.melody-avatar {
+    @apply melody-w-10 melody-h-10 melody-p-1;
+}
+
+.melody-avatar.ring, .melody-avatar-preview.ring {
+    @apply melody-ring-2 melody-ring-gray-300 dark:melody-ring-gray-500;
+}
+
+.melody-avatar-preview {
+    @apply melody-relative melody-w-10 melody-h-10 melody-overflow-hidden melody-bg-gray-100 dark:melody-bg-gray-600;
+}
+
+.melody-avatar-preview svg {
+    @apply melody-absolute melody-w-12 melody-h-12 melody-text-gray-400 -melody-left-1;
+}

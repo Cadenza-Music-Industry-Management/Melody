@@ -21,6 +21,11 @@ export const InputTemplate = Template.bind({});
 InputTemplate.args = {
   variant: "primary",
   size: 'medium',
-  label: 'Text Input',
+  label: {
+    size: 'medium',
+    label: 'Text Input',
+    required: true,
+    bold: true
+  },
   value: 'test'
 }

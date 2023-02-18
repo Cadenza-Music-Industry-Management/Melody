@@ -1,12 +1,12 @@
 // ./src/stories/Page.js
 
-import React from 'react';
+import React, {useState} from 'react';
 
 import { Header } from './Header';
 import './Page.css';
 
 export const Page = () => {
-  const [user, setUser] = React.useState();
+  const [user, setUser] = useState();
 
   return (
       <article>

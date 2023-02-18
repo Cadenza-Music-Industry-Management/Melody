@@ -1,0 +1,32 @@
+.melody-tooltip {
+    @apply melody-absolute melody-z-[999] melody-whitespace-nowrap melody-text-center melody-text-white melody-bg-gray-800 melody-rounded-lg melody-p-2 melody-text-sm;
+    transition: opacity 0.4s;
+}
+
+.tooltip-top {
+    margin-bottom: 5px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip-right {
+    margin-left: 5px;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tooltip-bottom {
+    margin-top: 5px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip-left {
+    margin-right: 5px;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}

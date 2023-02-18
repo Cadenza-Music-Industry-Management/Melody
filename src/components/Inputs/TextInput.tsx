@@ -31,7 +31,7 @@ export const TextInput = (props: TextInputProps) => {
 
     return (
         <div>
-            {label && <Label htmlFor={"textInput"} label={label} />}
+            {label && <Label {...{...label, htmlFor: "textInput"}} />}
             <input type={type}
                    placeholder={placeholder}
                    value={value}

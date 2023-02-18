@@ -21,6 +21,11 @@ export const TextAreaTemplate = Template.bind({});
 TextAreaTemplate.args = {
   variant: "primary",
   size: 'medium',
-  label: 'Text Area',
+  label: {
+    size: 'medium',
+    label: 'Text Area',
+    required: true,
+    bold: true
+  },
   value: 'test'
 }

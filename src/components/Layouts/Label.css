@@ -3,13 +3,13 @@
 }
 
 .melody-text-label.small {
-    @apply melody-text-sm melody-font-normal;
+    @apply melody-text-sm;
 }
 
 .melody-text-label.medium {
-    @apply melody-text-base melody-font-medium;
+    @apply melody-text-base;
 }
 
 .melody-text-label.large {
-    @apply melody-text-lg melody-font-bold;
+    @apply melody-text-lg;
 }

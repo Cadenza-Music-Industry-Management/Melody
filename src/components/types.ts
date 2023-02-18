@@ -1,3 +1,4 @@
+import {ReactNode} from "react";
 
 //Indicator
 export interface IndicatorProps {
@@ -12,7 +13,7 @@ export interface ButtonProps {
     variant?: 'solid' | 'outlined';
     size?: 'small' | 'medium' | 'large';
     label: string,
-    onClick: () => void
+    onClick?: () => void
 }
 
 //Dropdown
@@ -41,7 +42,7 @@ export interface DropdownProps {
 export interface TextInputProps {
     value: string,
     type?: 'text' | 'number'; //TODO other types
-    label?: string;
+    label?: LabelProps;
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
@@ -52,5 +53,15 @@ export interface TextInputProps {
 export interface LabelProps {
     size?: 'small' | 'medium' | 'large';
     label: string,
-    htmlFor?: string
+    htmlFor?: string,
+    required?: boolean,
+    bold?: boolean
 }
+
+//Tooltip
+export interface TooltipProps {
+    message: string;
+    direction?: 'top' | 'bottom' | 'left' | 'right';
+    delay?: number;
+    children: ReactNode;
+};
