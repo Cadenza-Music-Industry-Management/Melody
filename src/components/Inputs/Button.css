@@ -1,23 +1,39 @@
 .melody-button {
-    @apply melody-rounded melody-text-white melody-rounded-full melody-border-2 melody-font-bold melody-flex;
+    @apply melody-inline-flex melody-font-bold melody-rounded-md melody-shadow-md melody-transition-colors melody-duration-200 melody-ease-in-out;
 }
 
-.melody-button.primary {
-    @apply melody-text-black melody-bg-gradient-to-r melody-from-white melody-to-accent hover:melody-bg-gradient-to-bl focus:melody-ring-4 focus:melody-outline-none focus:melody-ring-cyan-300 dark:focus:melody-ring-cyan-800 melody-font-medium melody-rounded-lg melody-text-sm melody-px-5 melody-py-2.5 melody-text-center melody-mr-2 melody-mb-2;
+.melody-button-small {
+    @apply melody-text-xs melody-px-3 melody-py-1;
 }
 
-.melody-button.secondary {
-    @apply melody-bg-secondary;
+.melody-button-medium {
+    @apply melody-text-base melody-px-4 melody-py-2;
 }
 
-.melody-button.small {
-    @apply melody-p-2;
+.melody-button-large {
+    @apply melody-text-lg melody-px-6 melody-py-3;
 }
 
-.melody-button.medium {
-    @apply melody-p-3;
+.melody-button-gray-solid {
+    @apply melody-bg-gray-500 hover:melody-bg-gray-600 melody-text-white;
 }
 
-.melody-button.large {
-    @apply melody-p-4;
+.melody-button-gray-outlined {
+    @apply melody-border-2 melody-border-gray-500 hover:melody-bg-gray-500 hover:melody-text-white;
+}
+
+.melody-button-secondary-solid {
+    @apply melody-bg-secondary-100 hover:melody-bg-secondary-200 melody-text-white;
+}
+
+.melody-button-secondary-outlined {
+    @apply melody-border-2 melody-border-secondary-100 hover:melody-bg-secondary-200 hover:melody-text-white;
+}
+
+.melody-button-primary-solid {
+    @apply melody-bg-primary-100 hover:melody-bg-primary-200 melody-text-white;
+}
+
+.melody-button-primary-outlined {
+    @apply melody-border-2 melody-border-primary-100 hover:melody-bg-primary-200 hover:melody-text-white;
 }

@@ -17,10 +17,8 @@ export const DropdownTemplate = Template.bind({});
 DropdownTemplate.args = {
   label: 'Dropdown',
   name: 'DropdownName',
-  className: '',
-  size: 'medium',
   value: { label: "Test", value: 0 },
-  options: [{ label: "Test", value: 0 }],
+  options: [{ label: "Test", value: 0 }, { label: "Test 2", value: 1 }],
   onChange: (value) => console.log(value),
   isClearable: true,
   isSearchable: true,

@@ -1,0 +1,15 @@
+.melody-text-label {
+    @apply melody-block melody-text-gray-900 dark:melody-text-white;
+}
+
+.melody-text-label.small {
+    @apply melody-text-sm melody-font-normal;
+}
+
+.melody-text-label.medium {
+    @apply melody-text-base melody-font-medium;
+}
+
+.melody-text-label.large {
+    @apply melody-text-lg melody-font-bold;
+}

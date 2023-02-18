@@ -1,0 +1,15 @@
+.melody-text-input {
+    @apply melody-block melody-w-full melody-text-sm melody-text-gray-900 melody-bg-gray-50 melody-rounded-lg melody-border melody-border-gray-300 focus:melody-ring-blue-500 focus:melody-border-blue-500 dark:melody-bg-gray-700 dark:melody-border-gray-600 dark:melody-placeholder-gray-400 dark:melody-text-white dark:focus:melody-ring-blue-500 dark:focus:melody-border-blue-500;
+}
+
+.melody-text-input.small {
+    @apply melody-p-2.5;
+}
+
+.melody-text-input.medium {
+    @apply melody-p-3;
+}
+
+.melody-text-input.large {
+    @apply melody-p-3.5;
+}

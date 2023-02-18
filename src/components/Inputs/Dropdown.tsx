@@ -1,75 +1,83 @@
-import MultiSelect from "react-select";
+import Select from 'react-select';
 import './Dropdown.css'
+import {DropdownProps} from "../types";
+import {Label} from "../Layouts/Label";
+import React from "react";
 
-export const Dropdown = (props: {
-    name: string,
-    className: string,
-    size: string,
-    label: string,
-    value: boolean,
-    isMulti: boolean,
-    isClearable: boolean,
-    isSearchable: boolean,
-    isDisabled: boolean,
-    isLoading: boolean,
-    options: any[], //TODO need TS object
-    onChange: (selectedValue: any) => void //TODO could be one or many objects
-}) => {
+export const Dropdown = (props: DropdownProps) => {
     const {
         name,
-        className,
-        size,
+        size = 'regular',
+        color = 'primary',
         label,
         value,
-        isMulti,
-        isClearable,
-        isSearchable,
-        isDisabled,
-        isLoading,
+        isMulti = true,
+        isClearable = true,
+        isSearchable = true,
+        isDisabled = false,
+        isLoading = false,
         options,
         onChange
     } = props
 
-    const dropdownCustomStyling = {
-        control: (base: any, state: any) => ({
-            ...base,
-            borderRadius: 10,
-            "&:hover": {
-                borderColor: state.isFocused ? "#0C192C" : "rgba(12, 25, 44, 0.5)",
-                boxShadow: "0 0 0 1px #0C192C"
-            }
+    const customStyles = {
+        control: (provided: any, state: { isFocused: any; }) => ({
+            ...provided,
+            borderRadius: '0.5rem',
+            borderColor: state.isFocused ? '#B8B9C4' : provided.borderColor,
+            boxShadow: state.isFocused ? '0 0 0 2px rgba(51, 153, 255, 0.2)' : provided.boxShadow,
+            '&:hover': {
+                borderColor: '#B8B9C4',
+            },
         }),
-        option: (styles: any, {isFocused, isSelected}: any) => ({
-            ...styles,
-            color: isFocused || isSelected ? "white" : "black",
-            background: isFocused
-                ? 'rgba(12, 25, 44, 0.7)'
-                : isSelected
-                    ? 'rgba(12, 25, 44, 1)'
-                    : undefined,
-            zIndex: 1
+        option: (provided: any, state: { isFocused: any; }) => ({
+            ...provided,
+            backgroundColor: state.isFocused ? '#F7FAFC' : provided.backgroundColor,
+            color: state.isFocused ? '#333333' : provided.color,
+            '&:hover': {
+                backgroundColor: '#F7FAFC',
+            },
         }),
-    }
+        multiValue: (provided: any) => ({
+            ...provided,
+            backgroundColor: '#E2E8F0',
+        }),
+        multiValueLabel: (provided: any) => ({
+            ...provided,
+            color: '#4A5568',
+        }),
+        multiValueRemove: (provided: any) => ({
+            ...provided,
+            ':hover': {
+                backgroundColor: '#CBD5E0',
+                color: '#4A5568',
+            },
+        })
+    };
+
+    const sizeClasses = {
+        small: 'melody-h-8 melody-text-sm',
+        regular: 'melody-h-10 melody-text-base',
+        medium: 'melody-h-12 melody-text-base',
+        large: 'melody-h-14 melody-text-lg',
+    };
 
     return (
        <div>
-           {/*TODO label component?*/}
-           <p>
-               {label}
-           </p>
-           <MultiSelect
-               name={name}
-               styles={dropdownCustomStyling}
-               value={value}
-               className={className}
-               onChange={(tag) => onChange(tag)}
-               options={options}
-               isMulti={isMulti}
-               isClearable={isClearable}
-               isSearchable={isSearchable}
-               isDisabled={isDisabled}
-               isLoading={isLoading}
-           />
+           {label && <Label htmlFor={name} label={label} />}
+           <Select id={name}
+                   name={name}
+                   // className={`melody-dropdown ${sizeClasses[size]} ${colorClasses[color]} ${isDisabled && 'melody-opacity-50 melody-cursor-not-allowed'}`}
+                   // classNamePrefix="melody-dropdown"
+                   styles={customStyles}
+                   value={value}
+                   onChange={(tag) => onChange((tag as any))} //TODO needs casting
+                   options={options}
+                   isMulti={isMulti}
+                   isClearable={isClearable}
+                   isSearchable={isSearchable}
+                   isDisabled={isDisabled}
+                   isLoading={isLoading}/>
        </div>
     )
 }

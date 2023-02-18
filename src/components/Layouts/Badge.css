@@ -1,5 +1,5 @@
 .melody-badge {
-    @apply melody-font-medium melody-rounded melody-border;
+    @apply melody-font-medium melody-rounded melody-border melody-inline-flex melody-items-center;
 }
 
 .melody-badge.info {

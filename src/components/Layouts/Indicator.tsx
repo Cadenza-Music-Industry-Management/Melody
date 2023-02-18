@@ -1,20 +1,15 @@
 import React from 'react';
 import "./Indicator.css"
+import {IndicatorProps} from "../types";
 
-export const Indicator = (props: {
-    variant: string,
-    size: string,
-    animated: boolean
-}) => {
+export const Indicator = (props: IndicatorProps) => {
     const {
         variant,
         size,
         animated
     } = props
 
-    //TODO status icon like trello labels
-
     return (
-        <span className={`melody-indicator ${variant} ${size} ${animated && "melody-animate-pulse"}`} />
+        <span className={`melody-indicator ${variant} ${size} ${animated === true && "melody-animate-pulse"}`} />
     );
 };

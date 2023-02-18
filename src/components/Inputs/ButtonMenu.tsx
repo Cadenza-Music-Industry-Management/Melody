@@ -19,8 +19,6 @@ export const ButtonMenu = (props: {
         items
     } = props
 
-    //TODO or this solution? https://headlessui.com/react/popover
-
     return (
         <Menu as="div" className="melody-relative melody-inline-block melody-text-left">
             <div>

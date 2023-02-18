@@ -9,9 +9,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#0C192C',
-        'secondary': '#9F8560',
-        'accent': '#ABDDE5'
+        'primary': {
+          '100': '#0C192C',
+          '200': '#1B3B6B',
+          '300': '#2A63B6'
+        },
+        'secondary': {
+          '100': '#9F8560',
+          '200': '#DBAB67',
+          '300': '#F3CA91'
+        },
+        'accent': {
+          '100': '#ABDDE5',
+          '200': '#73ECFF',
+          '300': '#ABDDE5'
+        },
       },
       spacing: {
         '8xl': '96rem',

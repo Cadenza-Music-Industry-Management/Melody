@@ -1,15 +1,12 @@
 import React from 'react';
 import "./Button.css"
+import {ButtonProps} from "../types";
 
-export const Button = (props: {
-    variant: string,
-    size: string,
-    label: string,
-    onClick: () => void
-}) => {
+export const Button = (props: ButtonProps) => {
     const {
-        variant,
-        size,
+        size = 'medium',
+        color = 'primary',
+        variant = 'solid',
         label,
         onClick
     } = props
@@ -18,7 +15,7 @@ export const Button = (props: {
     return (
         <button type="button"
                 onClick={onClick}
-                className={`melody-button ${variant} ${size}`}>
+                className={`melody-button melody-button-${size} melody-button-${color}-${variant}`}>
             {label}
         </button>
     );

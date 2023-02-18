@@ -23,3 +23,15 @@ BadgeTemplate.args = {
   size: 'medium',
   text: 'Badge'
 }
+
+export const BadgeIndicatorTemplate = Template.bind({});
+BadgeIndicatorTemplate.args = {
+  variant: "info",
+  size: 'medium',
+  text: 'Badge',
+  indicator: {
+    variant: "info",
+    size: 'medium',
+    animated: false
+  }
+}
