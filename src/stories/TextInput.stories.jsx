@@ -19,9 +19,9 @@ const Template = (args) => <TextInput {...args} />;
 
 export const InputTemplate = Template.bind({});
 InputTemplate.args = {
-  icon: {
-    icon: 'melody-label'
-  },
+  // icon: {
+  //   icon: 'melody-label'
+  // },
   variant: "primary",
   size: 'medium',
   label: {
@@ -31,4 +31,16 @@ InputTemplate.args = {
     bold: true
   },
   value: 'test'
+}
+export const FormGroupTemplate = Template.bind({});
+FormGroupTemplate.args = {
+  variant: "primary",
+  size: 'medium',
+  label: {
+    size: 'large',
+    label: 'Form Groups'
+  },
+  value: 123,
+  headerComponent: <p>https://</p>,
+  trailerComponent: <p>test</p>
 }

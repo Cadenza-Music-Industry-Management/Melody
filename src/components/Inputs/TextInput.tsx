@@ -10,39 +10,41 @@ export const TextInput = (props: TextInputProps) => {
         type = 'text',
         label,
         placeholder,
-        size = "medium",
+        size = 'medium',
         disabled = false,
         onChange,
-        icon
+        icon,
+        headerComponent,
+        trailerComponent
     } = props
-
-    //TODO for add-on and trailing components https://tailwindui.com/components/preview#component-2607d970262ada86428f063c72b1e7bd
-    //TODO and another example for add-on here like our current design
-    // <div className="mt-1 flex rounded-md shadow-sm">
-    //                         <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500">
-    //                           http://
-    //                         </span>
-    //                         <input
-    //                           type="text"
-    //                           name="company-website"
-    //                           id="company-website"
-    //                           className="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-    //                           placeholder="www.example.com"
-    //                         />
-    //                       </div>
 
     //TODO icon implementation
 
     return (
         <div>
             {label && <Label {...{...label, htmlFor: "textInput"}} />}
-            <input type={type}
-                   placeholder={placeholder}
-                   value={value}
-                   disabled={disabled}
-                   onChange={(event => onChange(event.target.value))}
-                   id="textInput"
-                   className={`melody-text-input ${size}`} />
+            <div className="mt-1 melody-flex melody-rounded-md melody-shadow-sm">
+
+                {headerComponent &&
+                    <span className="melody-inline-flex melody-items-center melody-rounded-l-lg melody-border melody-border-r-0 melody-border-gray-300 melody-bg-gray-50 melody-px-3 melody-text-sm melody-text-gray-500">
+                        {headerComponent}
+                    </span>
+                }
+
+                <input type={type}
+                       placeholder={placeholder}
+                       value={value}
+                       disabled={disabled}
+                       onChange={(event => onChange(event.target.value))}
+                       id="textInput"
+                       className={`melody-text-input ${headerComponent ? (trailerComponent ? 'hasHeaderTrailer' : 'hasHeader') : (trailerComponent ? 'hasTrailer' : '')} ${size}`} />
+
+                {trailerComponent &&
+                    <span className="melody-inline-flex melody-items-center melody-rounded-r-lg melody-border melody-border-l-0 melody-border-gray-300 melody-bg-gray-50 melody-px-3 melody-text-sm melody-text-gray-500">
+                        {trailerComponent}
+                    </span>
+                }
+            </div>
         </div>
     );
 };

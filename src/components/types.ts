@@ -41,7 +41,7 @@ export interface DropdownProps {
 
 //Text Input/Area
 export interface TextInputProps {
-    value: string,
+    value: any,
     type?: 'text' | 'number'; //TODO other types
     label?: LabelProps;
     placeholder?: string;
@@ -49,6 +49,8 @@ export interface TextInputProps {
     disabled?: boolean;
     onChange: (value: string) => void;
     icon?: AddIconProps;
+    headerComponent?: ReactNode;
+    trailerComponent?: ReactNode;
 }
 
 //Label
