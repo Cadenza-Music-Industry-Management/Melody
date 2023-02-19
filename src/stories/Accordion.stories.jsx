@@ -11,7 +11,9 @@ export default {
   },
 };
 
-const Template = (args) => <Accordion {...args} />;
+const Template = (args) => <Accordion {...args}>
+  <h1>test</h1>
+</Accordion>;
 
 export const AccordionTemplate = Template.bind({});
 AccordionTemplate.args = {

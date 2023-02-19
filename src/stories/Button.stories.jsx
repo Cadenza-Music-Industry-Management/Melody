@@ -41,3 +41,16 @@ Secondary.args = {
   size: 'medium',
   label: 'Button',
 }
+
+export const IconButton = Template.bind({});
+IconButton.args = {
+  icon: {
+    icon: 'melody-label',
+    additionalStyles: {
+      fontSize: 26,
+    }
+  },
+  color: 'primary',
+  variant: 'outlined',
+  size: 'small'
+}

@@ -13,8 +13,8 @@ export default {
 
 const Template = (args) => <StripedListLayout {...args} />;
 
-export const StrippedListLayoutTemplate = Template.bind({});
-StrippedListLayoutTemplate.args = {
+export const StripedListLayoutTemplate = Template.bind({});
+StripedListLayoutTemplate.args = {
   size: 'medium',
   label: "Title here",
   subLabel: 'This is where the sub title info would go'

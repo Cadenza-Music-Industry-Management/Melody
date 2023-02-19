@@ -9,7 +9,7 @@ export interface IndicatorProps {
 
 //Button
 export interface ButtonProps {
-    color?: 'gray' | 'gold' | 'navy';
+    color?: 'gray' | 'secondary' | 'primary';
     variant?: 'solid' | 'outlined';
     size?: 'small' | 'medium' | 'large';
     label: string,
