@@ -2,6 +2,7 @@ import React from 'react';
 import "./TextInput.css"
 import {TextInputProps} from "../types";
 import {Label} from "../Layouts/Label";
+import {Icon} from "../Layouts/Icon";
 
 export const TextInput = (props: TextInputProps) => {
     const {
@@ -11,7 +12,8 @@ export const TextInput = (props: TextInputProps) => {
         placeholder,
         size = "medium",
         disabled = false,
-        onChange
+        onChange,
+        icon
     } = props
 
     //TODO for add-on and trailing components https://tailwindui.com/components/preview#component-2607d970262ada86428f063c72b1e7bd
@@ -28,6 +30,8 @@ export const TextInput = (props: TextInputProps) => {
     //                           placeholder="www.example.com"
     //                         />
     //                       </div>
+
+    //TODO icon implementation
 
     return (
         <div>

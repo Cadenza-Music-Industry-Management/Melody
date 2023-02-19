@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: 'icomoon';
+    src: url('/fonts/icomoon.eot?1er2f0');
+    src: url('/fonts/icomoon.eot?1er2f0#iefix') format('embedded-opentype'),
+    url('/fonts/icomoon.ttf?1er2f0') format('truetype'),
+    url('/fonts/icomoon.woff?1er2f0') format('woff'),
+    url('/fonts/icomoon.svg?1er2f0#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+}
+
+.melody-icon {
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  font-size: 24px;
+  line-height: 1;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  letter-spacing: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+
+.icomoon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+}
+
 .App {
   text-align: center;
 }
@@ -9,12 +45,6 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -28,15 +58,21 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.melody-artist:before {
+  content: "\e900";
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.melody-artist-management:before {
+  content: "\e901";
+}
+.melody-group:before {
+  content: "\e902";
+}
+.melody-join-group:before {
+  content: "\e903";
+}
+.melody-label:before {
+  content: "\e904";
+}
+.melody-owner:before {
+  content: "\e905";
 }

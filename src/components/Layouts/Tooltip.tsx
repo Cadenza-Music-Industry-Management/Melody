@@ -34,7 +34,7 @@ export const Tooltip = (props: TooltipProps) => {
     return (
         <div className="melody-inline-block melody-relative">
             <div className="melody-inline-block"
-                onMouseEnter={handleMouseEnter}
+                 onMouseEnter={handleMouseEnter}
                  onMouseLeave={handleMouseLeave}>
                 {children}
             </div>

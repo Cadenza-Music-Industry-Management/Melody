@@ -13,6 +13,7 @@ export interface ButtonProps {
     variant?: 'solid' | 'outlined';
     size?: 'small' | 'medium' | 'large';
     label: string,
+    icon?: AddIconProps,
     onClick?: () => void
 }
 
@@ -47,6 +48,7 @@ export interface TextInputProps {
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     onChange: (value: string) => void;
+    icon?: AddIconProps;
 }
 
 //Label
@@ -64,4 +66,18 @@ export interface TooltipProps {
     direction?: 'top' | 'bottom' | 'left' | 'right';
     delay?: number;
     children: ReactNode;
-};
+}
+
+//Icon
+export interface IconProps {
+    size?: string,
+    icon: string,
+    additionalStyles?: any,
+    additionalClasses?: string
+}
+
+export interface AddIconProps {
+    icon: string,
+    rightAligned: boolean,
+    additionalStyles?: any
+}

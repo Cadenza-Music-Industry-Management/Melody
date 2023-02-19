@@ -19,6 +19,9 @@ const Template = (args) => <TextInput {...args} />;
 
 export const InputTemplate = Template.bind({});
 InputTemplate.args = {
+  icon: {
+    icon: 'melody-label'
+  },
   variant: "primary",
   size: 'medium',
   label: {

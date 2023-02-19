@@ -22,6 +22,12 @@ const Template = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
+  icon: {
+    icon: 'melody-label',
+    additionalStyles: {
+      fontSize: 20
+    }
+  },
   color: 'primary',
   variant: 'outlined',
   size: 'medium',
