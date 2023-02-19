@@ -1,35 +1,37 @@
 import React from 'react';
 import "./ProgressBar.css"
+import {ProgressBarProps} from "../types";
 
-export const ProgressBar = (props: {
-    size: string,
-    progress: number,
-    label: string
-}) => {
+export const ProgressBar = (props: ProgressBarProps) => {
     const {
-        size,
+        size = 'medium',
         progress,
-        label
+        title,
+        subTitle,
+        label,
+        variant = 'info'
     } = props
 
-    //TODO sizes, variants https://flowbite.com/docs/components/progress/
-
     return (
-        <>
-            <div className="melody-flex melody-justify-between melody-mb-1">
-                <span className="melody-text-base melody-font-medium melody-text-blue-700 dark:melody-text-white">Top label</span>
-                <span className="melody-text-sm melody-font-medium melody-text-blue-700 dark:melody-text-white">{progress}%</span>
+        <div>
+            <div className="melody-progressbar-header">
+                <span className={`title ${size} ${variant}`}>
+                    {title}
+                </span>
+
+                <span className={`sub-title ${size} ${variant}`}>
+                    {subTitle ? <>{subTitle} ({progress}%)</> : <>{progress}%</>}
+                </span>
             </div>
 
-            <div className="melody-w-full melody-bg-gray-200 melody-rounded-full dark:melody-bg-gray-700">
-                <div className="melody-bg-blue-600 melody-text-xs melody-font-medium melody-text-blue-100 melody-text-center melody-p-0.5 melody-leading-none melody-rounded-full"
-                     style={{
-                         width: `${progress}%`,
-                     }}>
-                    {/*TODO hide label when progress too small (or elipsis?)*/}
-                    {label}
+            <div className="melody-progressbar-container">
+                <div className={`progress-bar ${size} ${variant}`}
+                     style={{width: `${progress}%`}}>
+                    <p className={`label ${variant}`}>
+                        {label}
+                    </p>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

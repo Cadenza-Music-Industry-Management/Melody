@@ -1,5 +1,5 @@
 .melody-tooltip {
-    @apply melody-absolute melody-z-[999] melody-whitespace-nowrap melody-text-center melody-text-white melody-bg-gray-800 melody-rounded-lg melody-p-2 melody-text-sm;
+    @apply melody-absolute melody-z-[999] melody-text-center melody-text-white melody-bg-gray-800 melody-bg-opacity-90 melody-rounded-lg melody-p-2 melody-text-sm melody-w-56;
     transition: opacity 0.4s;
 }
 

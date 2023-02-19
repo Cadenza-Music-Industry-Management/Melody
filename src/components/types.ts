@@ -81,3 +81,13 @@ export interface AddIconProps {
     rightAligned: boolean,
     additionalStyles?: any
 }
+
+//Progress Bar
+export interface ProgressBarProps {
+    size?: 'small' | 'medium' | 'large',
+    progress: number,
+    title: string,
+    label: string,
+    subTitle?: string,
+    variant?: 'info' | 'alert' | 'okay' | 'caution' | 'dark' | 'light'
+}

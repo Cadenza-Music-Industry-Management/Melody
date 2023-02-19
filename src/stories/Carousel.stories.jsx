@@ -16,6 +16,6 @@ const Template = (args) => <Carousel {...args} />;
 export const CarouselTemplate = Template.bind({});
 CarouselTemplate.args = {
   width: "100%",
-  height: 300,
+  height: 500,
   images: ['https://pixy.org/src/477/4774988.jpg', 'https://www.onimodglobal.com/wp-content/uploads/2017/09/Reasons-why-having-a-professional-website-is-important.jpeg']
 }

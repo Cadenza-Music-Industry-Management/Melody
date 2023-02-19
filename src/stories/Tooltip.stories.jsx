@@ -16,5 +16,5 @@ const Template = (args) => <Tooltip {...args}>
 
 export const TooltipTemplate = Template.bind({});
 TooltipTemplate.args = {
-  message: 'Test'
+  message: 'This is to test a longer message for your tooltip. It could even be two sentences!'
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import {PageContainer} from '../components/Sections/PageContainer';
+import {Button} from "../components/Inputs/Button";
 
 export default {
   title: 'Section/Melody Page Container',
@@ -7,6 +8,12 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select', options: ['small', 'medium', 'large'] }
+    },
+    headerBGColor: {
+      control: { type: 'text' }
+    },
+    headerTextColor: {
+      control: { type: 'text' }
     }
   },
 };
@@ -18,5 +25,6 @@ const Template = (args) => <PageContainer {...args}>
 export const PageContainerTemplate = Template.bind({});
 PageContainerTemplate.args = {
   title: 'Title',
-  buttonLabel: 'X'
+  textAlignClass: 'melody-text-center',
+  button: <Button label={"test"} color={"secondary"} />
 }

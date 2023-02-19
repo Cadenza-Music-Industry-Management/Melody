@@ -10,24 +10,22 @@ export const Tooltip = (props: TooltipProps) => {
         children
     } = props
 
-    const [showTooltip, setShowTooltip] = useState(false);
-    let timeout: ReturnType<typeof setTimeout>;
-
-    //TODO doesnt position correctly, and delay doesn't work?
+    const [showTooltip, setShowTooltip] = useState(false)
+    let timeout: ReturnType<typeof setTimeout>
 
     const handleMouseEnter = () => {
         timeout = setTimeout(() => {
-            setShowTooltip(true);
-        }, delay);
-    };
+            setShowTooltip(true)
+        }, delay)
+    }
 
     const handleMouseLeave = () => {
         clearTimeout(timeout);
-        setShowTooltip(false);
-    };
+        setShowTooltip(false)
+    }
 
     const tooltipClasses = `melody-tooltip ${direction === "top" ? "tooltip-top" : ""} ${direction === "right" ? "tooltip-right" : ""} 
-    ${direction === "bottom" ? "tooltip-bottom" : ""} ${direction === "left" ? "tooltip-left" : ""} ${showTooltip ? "melody-opacity-100" : "melody-opacity-0"}`;
+    ${direction === "bottom" ? "tooltip-bottom" : ""} ${direction === "left" ? "tooltip-left" : ""} ${showTooltip ? "melody-opacity-100" : "melody-opacity-0"}`
 
     //TODO need question mark state for cadenza (or split out to own component? needs color, fontSize?)) and also need disabled state of not showing tooltip for certain cases
 

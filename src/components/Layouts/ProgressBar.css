@@ -1,0 +1,103 @@
+.melody-progressbar-header {
+    @apply melody-flex melody-justify-between melody-mb-1 melody-font-medium;
+}
+
+.melody-progressbar-header > .title {
+    @apply melody-text-base;
+}
+
+.melody-progressbar-header > .sub-title {
+    @apply melody-text-sm;
+}
+
+.melody-progressbar-container {
+    @apply melody-w-full melody-bg-gray-200 melody-rounded-full dark:melody-bg-gray-700;
+}
+
+.melody-progressbar-container > .progress-bar {
+    @apply melody-text-center melody-leading-none melody-rounded-full;
+}
+
+.melody-progressbar-container > .progress-bar > .label {
+    @apply melody-truncate melody-text-xs melody-font-medium;
+}
+
+/*--Sizes--*/
+.melody-progressbar-container > .progress-bar.small {
+    @apply melody-p-0;
+}
+
+.melody-progressbar-container > .progress-bar.medium {
+    @apply melody-p-0.5;
+}
+
+.melody-progressbar-container > .progress-bar.large {
+    @apply melody-p-1;
+}
+
+/*--Variants--*/
+/*info*/
+.melody-progressbar-header > .title.info, .sub-title.info {
+    @apply melody-text-blue-700 dark:melody-text-white;
+}
+.melody-progressbar-container > .progress-bar.info {
+    @apply melody-bg-blue-100 dark:melody-bg-blue-900;
+}
+.melody-progressbar-container > .progress-bar > .label.info {
+    @apply melody-text-blue-700 dark:melody-bg-blue-100;
+}
+
+/*alert*/
+.melody-progressbar-header > .title.alert, .sub-title.alert {
+    @apply melody-text-red-700 dark:melody-text-white;
+}
+.melody-progressbar-container > .progress-bar.alert {
+    @apply melody-bg-red-100 dark:melody-bg-red-900;
+}
+.melody-progressbar-container > .progress-bar > .label.alert {
+    @apply melody-text-red-700 dark:melody-bg-red-100;
+}
+
+/*okay*/
+.melody-progressbar-header > .title.okay, .sub-title.okay {
+    @apply melody-text-green-700 dark:melody-text-white;
+}
+.melody-progressbar-container > .progress-bar.okay {
+    @apply melody-bg-green-100 dark:melody-bg-green-900;
+}
+.melody-progressbar-container > .progress-bar > .label.okay {
+    @apply melody-text-green-700 dark:melody-bg-green-100;
+}
+
+/*caution*/
+.melody-progressbar-header > .title.caution, .sub-title.caution {
+    @apply melody-text-yellow-700 dark:melody-text-white;
+}
+.melody-progressbar-container > .progress-bar.caution {
+    @apply melody-bg-yellow-100 dark:melody-bg-yellow-900;
+}
+.melody-progressbar-container > .progress-bar > .label.caution {
+    @apply melody-text-yellow-700 dark:melody-bg-yellow-100;
+}
+
+/*dark*/
+.melody-progressbar-header > .title.dark, .sub-title.dark {
+    @apply melody-text-gray-600 dark:melody-text-white;
+}
+.melody-progressbar-container > .progress-bar.dark {
+    @apply melody-bg-black dark:melody-bg-gray-900;
+}
+.melody-progressbar-container > .progress-bar > .label.dark {
+    @apply melody-text-gray-300 dark:melody-bg-gray-100;
+}
+
+/*light*/
+.melody-progressbar-header > .title.light, .sub-title.light {
+    @apply melody-text-gray-800 dark:melody-text-white;
+}
+.melody-progressbar-container > .progress-bar.light {
+    @apply melody-bg-white;
+}
+.melody-progressbar-container > .progress-bar > .label.light {
+    @apply melody-text-gray-800;
+}
