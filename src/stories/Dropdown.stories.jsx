@@ -16,7 +16,6 @@ const Template = (args) => <Dropdown {...args} />;
 export const DropdownTemplate = Template.bind({});
 DropdownTemplate.args = {
   label: 'Dropdown',
-  name: 'DropdownName',
   value: { label: "Test", value: 0 },
   options: [{ label: "Test", value: 0 }, { label: "Test 2", value: 1 }],
   onChange: (value) => console.log(value),

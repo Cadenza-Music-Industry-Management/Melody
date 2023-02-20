@@ -6,7 +6,6 @@ import React from "react";
 
 export const Dropdown = (props: DropdownProps) => {
     const {
-        name,
         size = 'regular',
         color = 'primary',
         label,
@@ -64,9 +63,9 @@ export const Dropdown = (props: DropdownProps) => {
 
     return (
        <div>
-           {label && <Label htmlFor={name} label={label} />}
-           <Select id={name}
-                   name={name}
+           {label && <Label htmlFor={'Dropdown'} label={label} />}
+           <Select id={'Dropdown'}
+                   name={'Dropdown'}
                    // className={`melody-dropdown ${sizeClasses[size]} ${colorClasses[color]} ${isDisabled && 'melody-opacity-50 melody-cursor-not-allowed'}`}
                    // classNamePrefix="melody-dropdown"
                    styles={customStyles}

@@ -1,9 +1,10 @@
 import {ReactNode} from "react";
+import {DatePicker} from "./Inputs/DatePicker";
 
 //Indicator
 export interface IndicatorProps {
-    variant: string,
-    size: string,
+    variant?: 'info' | 'alert' | 'okay' | 'caution' | 'dark' | 'light';
+    size?: 'small' | 'medium' | 'large';
     animated?: boolean
 }
 
@@ -24,7 +25,6 @@ export interface DropdownOption {
 }
 
 export interface DropdownProps {
-    name: string;
     label: string;
     options: DropdownOption[];
     onChange: (value: DropdownOption | DropdownOption[]) => void;
@@ -42,7 +42,7 @@ export interface DropdownProps {
 //Text Input/Area
 export interface TextInputProps {
     value: any,
-    type?: 'text' | 'number'; //TODO other types
+    type?: 'text' | 'number' | 'password';
     label?: LabelProps;
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';
@@ -91,5 +91,19 @@ export interface ProgressBarProps {
     title: string,
     label: string,
     subTitle?: string,
-    variant?: 'info' | 'alert' | 'okay' | 'caution' | 'dark' | 'light'
+    variant?: 'info' | 'alert' | 'okay' | 'caution' | 'dark' | 'light';
+}
+
+//Date Picker
+export interface DatePickerProps {
+    label?: LabelProps,
+    selected?: Date,
+    onChange?: (dates?: Date | Date[]) => void,
+    className?: string,
+    withPortal?: boolean,
+    selectRange?: boolean,
+    showTimeInput?: boolean,
+    startDate?: Date,
+    endDate?: Date,
+    dateFormat?: string
 }
