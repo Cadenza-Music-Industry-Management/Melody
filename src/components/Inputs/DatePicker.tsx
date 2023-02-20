@@ -19,7 +19,7 @@ export const DatePicker = (props: DatePickerProps) => {
         dateFormat
     } = props
 
-    const CustomSelectComponent = forwardRef<any>(({ value, onClick }: any, ref) => {
+    const ButtonInput = forwardRef<any>(({ value, onClick }: any, ref) => {
 
         const getButtonText = () => {
             if (startDate) {
@@ -51,7 +51,7 @@ export const DatePicker = (props: DatePickerProps) => {
             <ReactDatePicker id={'datePicker'}
                              selected={selected}
                              className={className}
-                             customInput={<CustomSelectComponent />}
+                             customInput={<ButtonInput />}
                              onChange={(dates: any) => onChange && onChange(dates)}
                              withPortal={withPortal}
                              selectsRange={selectRange}
