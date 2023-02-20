@@ -1,7 +1,8 @@
 import React from 'react';
 import "./Icon.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX } from '@fortawesome/free-solid-svg-icons';
+import { faX, faCheck } from '@fortawesome/free-solid-svg-icons';
+// import { fa } from '@fortawesome/free-regular-svg-icons';
 import {IconProps} from "../types";
 
 export const Icon = (props: IconProps) => {
@@ -12,8 +13,10 @@ export const Icon = (props: IconProps) => {
         additionalClasses
     } = props
 
-    const cadenzaIconMap: any = {
-        solidX: faX
+    const faIconMap: any = {
+        solidX: faX,
+        solidCheck: faCheck
+        //TODO will need to import and add here any font awesome icons I want
     }
 
     // const melodyIconNames = [
@@ -25,14 +28,13 @@ export const Icon = (props: IconProps) => {
     //     'melody-owner'
     // ]
 
-    //TODO using FontAwesome currently crashes app with babel configuration errors, so waiting on configuring for now and using our own icons
-
     return (
         <div className={"melody-flex"}>
-            {icon.includes('melody-') &&
+            {icon.includes('melody-') ?
                 <i style={{...additionalStyles}} className={`melody-icon icomoon ${icon} ${additionalClasses ? additionalClasses : ''}`} />
+                :
+                <FontAwesomeIcon style={{...additionalStyles}} className={additionalClasses ? additionalClasses : ''} icon={faIconMap[icon]} />
             }
-            {/*<FontAwesomeIcon color={color} icon={faIconMap[icon]} />*/}
         </div>
     )
 }

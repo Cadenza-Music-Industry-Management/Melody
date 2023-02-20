@@ -13,7 +13,7 @@ export interface ButtonProps {
     color?: 'gray' | 'secondary' | 'primary';
     variant?: 'solid' | 'outlined';
     size?: 'small' | 'medium' | 'large';
-    label: string,
+    label?: string,
     icon?: AddIconProps,
     onClick?: () => void
 }
@@ -80,7 +80,7 @@ export interface IconProps {
 
 export interface AddIconProps {
     icon: string,
-    rightAligned: boolean,
+    rightAligned?: boolean,
     additionalStyles?: any
 }
 
@@ -106,4 +106,13 @@ export interface DatePickerProps {
     startDate?: Date,
     endDate?: Date,
     dateFormat?: string
+}
+
+//Modal
+export interface ModalProps {
+    title: string,
+    open: boolean,
+    setOpen: (open: boolean) => void,
+    children?: ReactNode,
+    footerContent?: ReactNode
 }

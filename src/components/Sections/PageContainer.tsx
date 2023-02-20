@@ -1,7 +1,5 @@
 import React, {ReactNode} from 'react';
 import "./PageContainer.css"
-import {Button} from "../Inputs/Button";
-import {ButtonProps} from "../types";
 
 export const PageContainer = (props: {
     title: string,
