@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react';
 
-import { Header } from './Header';
+import { NavigationBar } from './NavigationBar';
 import './Page.css';
 
 export const Page = () => {
@@ -10,7 +10,7 @@ export const Page = () => {
 
   return (
       <article>
-        <Header
+        <NavigationBar
             user={user}
             onLogin={() => setUser({ name: 'Jane Doe' })}
             onLogout={() => setUser(undefined)}

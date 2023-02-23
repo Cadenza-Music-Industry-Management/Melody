@@ -2,13 +2,13 @@ import React from 'react';
 import "./Avatar.css"
 
 export const Avatar = (props: {
-    size: string,
+    size?: string,
     image: string | undefined,
     rounded?: boolean,
     ring?: boolean
 }) => {
     const {
-        size,
+        size = 'medium',
         image,
         rounded = true,
         ring = true

@@ -116,3 +116,22 @@ export interface ModalProps {
     children?: ReactNode,
     footerContent?: ReactNode
 }
+
+//Navigation Bar
+export interface NavigationBarProps {
+    user: UserProps,
+    navigation: NavBarItemProps[],
+}
+export interface NavBarItemProps {
+    name: string,
+    href: string,
+    current: boolean
+}
+
+//User
+export interface UserProps {
+    username: string,
+    name: string,
+    uid: string,
+    icon: string
+}

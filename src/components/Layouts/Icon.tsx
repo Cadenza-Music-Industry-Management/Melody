@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Icon.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faX, faCheck, faBars } from '@fortawesome/free-solid-svg-icons';
 // import { fa } from '@fortawesome/free-regular-svg-icons';
 import {IconProps} from "../types";
 
@@ -15,7 +15,8 @@ export const Icon = (props: IconProps) => {
 
     const faIconMap: any = {
         solidX: faX,
-        solidCheck: faCheck
+        solidCheck: faCheck,
+        solidBars: faBars
         //TODO will need to import and add here any font awesome icons I want
     }
 
