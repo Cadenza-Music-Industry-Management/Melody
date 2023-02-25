@@ -59,7 +59,8 @@ export interface LabelProps {
     label: string,
     htmlFor?: string,
     required?: boolean,
-    bold?: boolean
+    bold?: boolean,
+    additionalStyles?: any
 }
 
 //Tooltip

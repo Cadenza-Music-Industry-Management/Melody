@@ -1,5 +1,3 @@
-// ./src/stories/Header.js
-
 import React from 'react';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -31,7 +29,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
 
                             <div className="melody-absolute melody-inset-y-0 melody-left-0 melody-flex melody-items-center sm:melody-hidden">
                                 {/* Mobile menu button*/}
-                                <Disclosure.Button className="melody-inline-flex melody-items-center melody-justify-center melody-rounded-md melody-p-2
+                                <Disclosure.Button className="melody-inline-flex melody-items-center melody-justify-center melody-rounded-lg melody-p-2
                             melody-text-gray-400 hover:melody-bg-gray-700 hover:melody-text-white focus:melody-outline-none focus:melody-ring-2
                             focus:melody-ring-inset focus:melody-ring-white">
                                     <span className="melody-sr-only">Open main menu</span>
@@ -41,7 +39,6 @@ export const NavigationBar = (props: NavigationBarProps) => {
 
                             <div className="melody-flex melody-flex-1 melody-items-center melody-justify-center sm:melody-items-stretch sm:melody-justify-start">
                                 <div className="melody-flex melody-flex-shrink-0 melody-items-center">
-                                    {/*  TODO why duplicate images here with one hidden*/}
                                     <img className="melody-block melody-h-12 melody-w-auto lg:melody-melody-hidden"
                                          src={cadenzaMIMLogo}
                                          alt="Cadenza MIM" />
@@ -57,8 +54,8 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                             <a key={item.name}
                                                href={item.href}
                                                className={classNames(
-                                                   item.current ? 'melody-bg-gray-900 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
-                                                   'melody-px-3 melody-py-2 melody-rounded-md melody-text-sm melody-font-medium'
+                                                   item.current ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
+                                                   'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium'
                                                )}
                                                aria-current={item.current ? 'page' : undefined}>
                                                 {item.name}
@@ -85,10 +82,14 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                         leave="melody-transition melody-ease-in melody-duration-75"
                                         leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
                                         leaveTo="melody-transform melody-opacity-0 melody-scale-95">
-                                        <Menu.Items className="melody-absolute melody-right-0 melody-z-10 melody-mt-2 melody-w-48 melody-origin-top-right melody-rounded-md melody-bg-white melody-py-1 melody-shadow-lg melody-ring-1 melody-ring-black melody-ring-opacity-5 focus:melody-outline-none">
+                                        <Menu.Items className="melody-absolute melody-right-0 melody-z-10 melody-mt-2 melody-w-48 melody-origin-top-right melody-rounded-lg melody-bg-white melody-py-1 melody-shadow-lg melody-ring-1 melody-ring-black melody-ring-opacity-5 focus:melody-outline-none">
 
-                                            <div className={"melody-p-2 melody-border-b melody-border-gray-200 melody-font-bold"}>
-                                                <Label htmlFor={"textArea"} label={user.name}  />
+                                            <div className={'melody-p-2 melody-border-b melody-border-gray-200'}>
+                                                <Label label={user.name} additionalStyles={{
+                                                    fontWeight: 'bold',
+                                                    lineHeight: 1
+                                                }} />
+                                                <Label label={user.username} size={'small'} />
                                             </div>
 
                                             <Menu.Item>
@@ -131,8 +132,8 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                     as="a"
                                     href={item.href}
                                     className={classNames(
-                                        item.current ? 'melody-bg-gray-900 melody-text-white' : 'melody-text-gray-300 hover:melody-bg-gray-700 hover:melody-text-white',
-                                        'melody-block melody-px-3 melody-py-2 melody-rounded-md melody-text-base melody-font-medium'
+                                        item.current ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
+                                        'melody-block melody-px-3 melody-py-2 melody-rounded-lg melody-text-base melody-font-medium'
                                     )}
                                     aria-current={item.current ? 'page' : undefined}>
                                     {item.name}

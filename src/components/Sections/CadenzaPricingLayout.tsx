@@ -3,8 +3,8 @@ import "./CadenzaPricingLayout.css"
 import adagio from "../../assets/adagio_logo.png"
 import moderato from "../../assets/moderato_logo.png"
 import vivace from "../../assets/vivace_logo.png"
-import {ContentCreationLimits} from "../../constants";
-import {formatBytes} from "../../functions";
+import {ContentCreationLimits} from "../../utils/constants";
+import {formatBytes} from "../../utils/functions";
 
 export const CadenzaPricingLayout = (props: {
     size: string

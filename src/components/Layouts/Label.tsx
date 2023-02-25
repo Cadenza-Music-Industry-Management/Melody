@@ -4,11 +4,12 @@ import {LabelProps} from "../types";
 
 export const Label = (props: LabelProps) => {
     const {
-        size,
+        size = 'medium',
         label,
         htmlFor,
         required = false,
-        bold = false
+        bold = false,
+        additionalStyles
     } = props
 
     //TODO color?
@@ -16,7 +17,7 @@ export const Label = (props: LabelProps) => {
     //TODO required star
 
     return (
-        <label htmlFor={htmlFor} className={`melody-text-label ${bold && 'melody-font-bold'} ${size}`}>
+        <label htmlFor={htmlFor} className={`melody-text-label ${bold && 'melody-font-bold'} ${size}`} style={{...additionalStyles}}>
             {label}
             {required &&  <span className={"melody-text-red-600 melody-font-medium melody-ml-0.5"}>*</span>}
         </label>
