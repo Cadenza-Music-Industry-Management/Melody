@@ -13,7 +13,7 @@ export const PageContainer = (props: {
         title,
         textAlignClass = 'melody-text-left',
         headerBGColor = 'melody-bg-white',
-        headerTextColor = 'melody-text-black',
+        headerTextColor = 'melody-text-black-0',
         children,
         button
     } = props

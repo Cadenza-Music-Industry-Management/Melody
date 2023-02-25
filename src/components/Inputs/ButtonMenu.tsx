@@ -40,7 +40,7 @@ export const ButtonMenu = (props: {
                 leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
                 leaveTo="melody-transform melody-opacity-0 melody-scale-95"
             >
-                <Menu.Items className="melody-absolute melody-right-0 melody-z-10 melody-mt-2 melody-w-56 melody-origin-top-right melody-rounded-md melody-bg-white melody-shadow-lg melody-ring-1 melody-ring-black melody-ring-opacity-5 focus:melody-outline-none">
+                <Menu.Items className="melody-absolute melody-right-0 melody-z-10 melody-mt-2 melody-w-56 melody-origin-top-right melody-rounded-md melody-bg-white melody-shadow-lg melody-ring-1 melody-ring-black-0 melody-ring-opacity-5 focus:melody-outline-none">
                     <div className="melody-py-1">
                         <Menu.Item>
                             {({ active }) => (

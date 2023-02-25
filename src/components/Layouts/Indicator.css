@@ -19,7 +19,7 @@
 }
 
 .melody-indicator.dark {
-    @apply melody-bg-black dark:melody-bg-gray-900 melody-border-gray-400;
+    @apply melody-bg-black-0 dark:melody-bg-gray-900 melody-border-gray-400;
 }
 
 .melody-indicator.light {

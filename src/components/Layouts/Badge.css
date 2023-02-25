@@ -19,11 +19,11 @@
 }
 
 .melody-badge.dark {
-    @apply melody-bg-black melody-text-gray-200 dark:melody-bg-gray-900 dark:melody-text-gray-300 melody-border-gray-400;
+    @apply melody-bg-black-0 melody-text-gray-200 dark:melody-bg-gray-900 dark:melody-text-gray-300 melody-border-gray-400;
 }
 
 .melody-badge.light {
-    @apply melody-bg-white melody-text-black melody-border-gray-700;
+    @apply melody-bg-white melody-text-black-0 melody-border-gray-700;
 }
 
 .melody-badge.small {

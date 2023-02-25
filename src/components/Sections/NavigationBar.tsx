@@ -82,7 +82,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                       leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
                                       leaveTo="melody-transform melody-opacity-0 melody-scale-95">
                                       <Menu.Items
-                                        className="melody-absolute melody-right-0 melody-z-10 melody-mt-2 melody-w-48 melody-origin-top-right melody-rounded-lg melody-bg-white melody-py-1 melody-shadow-lg melody-ring-1 melody-ring-black melody-ring-opacity-5 focus:melody-outline-none">
+                                        className="melody-absolute melody-right-0 melody-z-10 melody-mt-2 melody-w-48 melody-origin-top-right melody-rounded-lg melody-bg-white melody-py-1 melody-shadow-lg melody-ring-1 melody-ring-black-0 melody-ring-opacity-5 focus:melody-outline-none">
 
                                         <div className={'melody-p-2 melody-border-b melody-border-gray-200'}>
                                           <Label label={user.name} additionalStyles={{

@@ -85,7 +85,7 @@
     @apply melody-text-gray-600 dark:melody-text-white;
 }
 .melody-progressbar-container > .progress-bar.dark {
-    @apply melody-bg-black dark:melody-bg-gray-900;
+    @apply melody-bg-black-0 dark:melody-bg-gray-900;
 }
 .melody-progressbar-container > .progress-bar > .label.dark {
     @apply melody-text-gray-300 dark:melody-bg-gray-100;
