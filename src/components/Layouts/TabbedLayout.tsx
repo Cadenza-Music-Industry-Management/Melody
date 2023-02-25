@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import "./TabbedLayout.css"
 import {Tab} from '@headlessui/react'
-
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ')
-}
+import { classNames } from "../../utils/functions";
 
 export const TabbedLayout = (props: {
     size: string,

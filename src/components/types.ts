@@ -120,12 +120,13 @@ export interface ModalProps {
 
 //Navigation Bar
 export interface NavigationBarProps {
-    user: UserProps,
+    user?: UserProps,
     navigation: NavBarItemProps[],
 }
 export interface NavBarItemProps {
     name: string,
-    href: string,
+    onClick?: () => void,
+    href?: string,
     current: boolean
 }
 

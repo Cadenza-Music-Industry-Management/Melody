@@ -1,10 +1,7 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import "./ButtonMenu.css"
-
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ')
-}
+import { classNames } from "../../utils/functions";
 
 export const ButtonMenu = (props: {
     // variant: string,
