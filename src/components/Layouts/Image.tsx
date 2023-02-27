@@ -1,8 +1,8 @@
 import React from 'react';
 import "./Image.css"
-import Image from "next/image"
+import NextImage from "next/image"
 
-export const ImageContainer = (props: {
+export const Image = (props: {
     src: any,
     alt?: string,
     additionalStyles?: any,
@@ -20,12 +20,12 @@ export const ImageContainer = (props: {
     } = props
 
     return (
-        <Image className={additionalClasses}
-               style={additionalStyles}
-               src={src}
-               width={width}
-               height={height}
-               aria-label="Icon"
-               alt={alt ?? ""} />
+        <NextImage className={additionalClasses}
+                   style={additionalStyles}
+                   src={src}
+                   width={width}
+                   height={height}
+                   aria-label="Icon"
+                   alt={alt ?? ""} />
     )
 };

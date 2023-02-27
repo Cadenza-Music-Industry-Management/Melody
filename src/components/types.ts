@@ -10,6 +10,7 @@ export interface IndicatorProps {
 
 //Button
 export interface ButtonProps {
+    type: 'button' | 'submit',
     color?: 'gray' | 'secondary' | 'primary';
     variant?: 'solid' | 'outlined';
     size?: 'small' | 'medium' | 'large';
@@ -120,14 +121,15 @@ export interface ModalProps {
 
 //Navigation Bar
 export interface NavigationBarProps {
-    user?: UserProps,
+    user?: any, //TODO need to use User props from other types file
     navigation: NavBarItemProps[],
+    userNavigation: NavBarItemProps[],
+    signOut: () => void
 }
 export interface NavBarItemProps {
     name: string,
     onClick?: () => void,
-    href?: string,
-    current: boolean
+    href?: string
 }
 
 //User

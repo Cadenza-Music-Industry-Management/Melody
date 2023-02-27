@@ -3,6 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+
+  @font-face {
+    font-family: 'Atami Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/Atami-Regular.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Atami Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/Atami-Bold.woff') format('woff');
+  }
+
   @font-face {
     font-family: 'icomoon';
     src: url('../fonts/icomoon.eot?1er2f0');

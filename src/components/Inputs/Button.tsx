@@ -10,13 +10,14 @@ export const Button = (props: ButtonProps) => {
         variant = 'solid',
         label,
         icon,
+        type = 'button',
         onClick
     } = props
 
     return (
-        <button type="button"
-                onClick={onClick}
-                className={`melody-button melody-button-${size} melody-button-${color}-${variant}`}>
+        <button className={`melody-button melody-button-${size} melody-button-${color}-${variant}`}
+                type={type}
+                onClick={onClick}>
             {icon && !icon.rightAligned && <div className={"melody-mr-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} /></div>}
             {label}
             {icon && icon.rightAligned && <div className={"melody-ml-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} /></div>}

@@ -5,6 +5,7 @@ import moderato from "../../assets/moderato_logo.png"
 import vivace from "../../assets/vivace_logo.png"
 import {ContentCreationLimits} from "../../utils/constants";
 import {formatBytes} from "../../utils/functions";
+import {Image} from '../Layouts/Image';
 
 export const CadenzaPricingLayout = (props: {
     size: string
@@ -32,7 +33,7 @@ export const CadenzaPricingLayout = (props: {
 
                             <div className="melody-text-white melody-p-2 melody-text-center melody-rounded-lg melody-bg-primary-300 melody-bg-opacity-75">
                                 <p className={"melody-text-md melody-font-medium"}>
-                                    If selecting a paid subscription for your organization, use the code 'CadenzaMIMDiscount' for 50% off!
+                                    If selecting a paid subscription for your organization, use the code &apos;CadenzaMIMDiscount&apos; for 50% off!
                                 </p>
                                 <p className={"melody-text-sm melody-font-medium"}>
                                     50% off for the entire year or 12 months of 50% off for a monthly subscription
@@ -49,7 +50,7 @@ export const CadenzaPricingLayout = (props: {
 
                             <div className="melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-px-4 md:melody-px-5 melody-py-4 md:melody-py-5 melody-mb-3 melody-mx-auto md:melody-my-2 melody-rounded-md melody-shadow-lg melody-shadow-gray-600 md:melody-flex md:melody-flex-col">
                                 <div className="melody-w-full melody-flex-grow">
-                                    <img src={adagio} alt={"Adagio"} style={{width: "100%", minWidth: 150, maxWidth: 250}}/>
+                                    <Image src={adagio} alt={"Adagio"} additionalStyles={{width: "100%", minWidth: 150, maxWidth: 250}}/>
 
                                     <h3 className="melody-text-center melody-font-bold melody-text-3xl melody-mb-5">
                                         Free
@@ -101,7 +102,7 @@ export const CadenzaPricingLayout = (props: {
 
                             <div className="melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-px-4 md:melody-px-5 melody-py-4 md:melody-py-5 melody-mb-3 melody-mx-auto md:-melody-mx-3 md:melody-mb-0 melody-rounded-md melody-shadow-lg melody-shadow-gray-600 md:melody-relative md:melody-z-50 md:melody-flex md:melody-flex-col">
                                 <div className="melody-w-full melody-flex-grow">
-                                    <img src={moderato} alt={"Moderato"} style={{width: "100%", minWidth: 150, maxWidth: 250}}/>
+                                    <Image src={moderato} alt={"Moderato"} additionalStyles={{width: "100%", minWidth: 150, maxWidth: 250}}/>
 
                                     <h3 className="melody-text-center melody-font-bold melody-text-3xl melody-mb-5">
                                         {viewingMonthly ?
@@ -165,8 +166,7 @@ export const CadenzaPricingLayout = (props: {
 
                             <div className="melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-px-4 md:melody-px-5 melody-py-4 md:melody-py-5 melody-mb-3 melody-mx-auto md:melody-my-2 melody-rounded-md melody-shadow-lg melody-shadow-gray-600 md:melody-flex md:melody-flex-col">
                                 <div className="melody-w-full melody-flex-grow">
-
-                                    <img src={vivace} alt={"Vivace"} style={{width: "100%", minWidth: 150, maxWidth: 250}}/>
+                                    <Image src={vivace} alt={"Vivace"} additionalStyles={{width: "100%", minWidth: 150, maxWidth: 250}}/>
 
                                     <h3 className="melody-text-center melody-font-bold melody-text-3xl melody-mb-5">
                                         {viewingMonthly ?
