@@ -3,11 +3,11 @@
 }
 
 .melody-text-input.hasHeader {
-    @apply melody-rounded-r-lg;
+    @apply melody-rounded-r-lg melody-rounded-l-none;
 }
 
 .melody-text-input.hasTrailer {
-    @apply melody-rounded-l-lg;
+    @apply melody-rounded-l-lg melody-rounded-r-none;
 }
 
 .melody-text-input.hasHeaderTrailer {

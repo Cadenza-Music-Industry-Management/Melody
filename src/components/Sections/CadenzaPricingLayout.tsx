@@ -17,7 +17,7 @@ export const CadenzaPricingLayout = (props: {
     const [viewingMonthly, setViewingMonthly] = useState(true)
 
     return (
-        <div className="melody-min-w-screen melody-min-h-screen melody-bg-gray-50 melody-px-5 melody-py-5">
+        <div className="melody-min-w-screen melody-bg-gray-50 melody-px-5 melody-py-5">
             <div className="melody-w-full melody-mx-auto melody-bg-white melody-px-5 melody-py-5 melody-text-gray-600 melody-mb-5 melody-rounded-md">
                 <div className="melody-max-w-5xl melody-mx-auto md:melody-flex">
 

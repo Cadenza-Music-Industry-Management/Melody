@@ -49,7 +49,6 @@ export interface TextInputProps {
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     onChange: (value: string) => void;
-    icon?: AddIconProps;
     headerComponent?: ReactNode;
     trailerComponent?: ReactNode;
 }

@@ -1,8 +1,45 @@
 import React from 'react';
 import "./Icon.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX, faCheck, faBars } from '@fortawesome/free-solid-svg-icons';
+import {
+    faXmark,
+    faCheck,
+    faBars,
+    faWindowMaximize,
+    faMagnifyingGlass,
+    faRotate,
+    faCaretDown,
+    faCaretUp,
+    faStar,
+    faHeart,
+    faCircleQuestion,
+    faQuestion,
+    faRightLong,
+    faLeftLong,
+    faComment,
+    faComments,
+    faShare,
+    faThumbsUp,
+    faThumbsDown,
+    faAt,
+    faLock,
+    faMoneyBillTrendUp, //Income
+    faMoneyBillTransfer, //Expense
+    faAnglesRight, //Pagination Next
+    faAnglesLeft, //Pagination Last
+    faEllipsis, //Multiple uses: Pagination, TODO
+    faEllipsisVertical, //Settings
+} from '@fortawesome/free-solid-svg-icons';
 // import { fa } from '@fortawesome/free-regular-svg-icons';
+import {
+    faTiktok,
+    faTwitter,
+    faInstagram,
+    faYoutube,
+    faFacebook,
+    faSoundcloud,
+    faCcStripe
+} from '@fortawesome/free-brands-svg-icons'
 import {IconProps} from "../types";
 
 export const Icon = (props: IconProps) => {
@@ -14,20 +51,42 @@ export const Icon = (props: IconProps) => {
     } = props
 
     const faIconMap: any = {
-        solidX: faX,
+        solidX: faXmark, //TODO need solid naming?
         solidCheck: faCheck,
-        solidBars: faBars
-        //TODO will need to import and add here any font awesome icons I want
+        solidBars: faBars,
+        website: faWindowMaximize,
+        magnifyingGlass: faMagnifyingGlass,
+        rotate: faRotate,
+        caretDown: faCaretDown,
+        caretUp: faCaretUp,
+        star: faStar,
+        heart: faHeart,
+        circleQuestion: faCircleQuestion,
+        question: faQuestion,
+        arrowRight: faRightLong,
+        arrowLeft: faLeftLong,
+        comment: faComment,
+        comments: faComments,
+        share: faShare,
+        thumbsUp: faThumbsUp,
+        thumbsDown: faThumbsDown,
+        income: faMoneyBillTrendUp,
+        expenses: faMoneyBillTransfer,
+        paginationRight: faAnglesRight,
+        paginationLeft: faAnglesLeft,
+        solidEllipsis: faEllipsis,
+        solidEllipsisVertical: faEllipsisVertical,
+        email: faAt,
+        password: faLock,
+        //Social media
+        tiktok: faTiktok,
+        twitter: faTwitter,
+        instagram: faInstagram,
+        youtube: faYoutube,
+        facebook: faFacebook,
+        soundcloud: faSoundcloud,
+        stripe: faCcStripe
     }
-
-    // const melodyIconNames = [
-    //     'melody-artist',
-    //     'melody-artist-management',
-    //     'melody-group',
-    //     'melody-join-group',
-    //     'melody-label',
-    //     'melody-owner'
-    // ]
 
     return (
         <div className={"melody-flex"}>

@@ -2,7 +2,6 @@ import React from 'react';
 import "./TextInput.css"
 import {TextInputProps} from "../types";
 import {Label} from "../Layouts/Label";
-import {Icon} from "../Layouts/Icon";
 
 export const TextInput = (props: TextInputProps) => {
     const {
@@ -13,7 +12,6 @@ export const TextInput = (props: TextInputProps) => {
         size = 'medium',
         disabled = false,
         onChange,
-        icon,
         headerComponent,
         trailerComponent
     } = props
@@ -21,7 +19,7 @@ export const TextInput = (props: TextInputProps) => {
     //TODO icon implementation
 
     return (
-        <div>
+        <div className={"melody-w-full"}>
             {label && <Label {...{...label, htmlFor: "textInput"}} />}
             <div className="mt-1 melody-flex melody-rounded-md melody-shadow-sm">
 

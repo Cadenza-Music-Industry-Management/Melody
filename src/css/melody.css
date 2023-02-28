@@ -73,21 +73,117 @@
   color: white;
 }
 
-.melody-artist:before {
+.melody-read:before {
   content: "\e900";
 }
-.melody-artist-management:before {
+.melody-bin:before {
   content: "\e901";
 }
-.melody-group:before {
+.melody-favorite:before {
   content: "\e902";
 }
-.melody-join-group:before {
+.melody-archive:before {
   content: "\e903";
 }
-.melody-label:before {
+.melody-image:before {
   content: "\e904";
 }
-.melody-owner:before {
+.melody-link:before {
   content: "\e905";
+}
+.melody-settings:before {
+  content: "\e906";
+}
+.melody-staff-management:before {
+  content: "\e907";
+}
+.melody-history:before {
+  content: "\e908";
+}
+.melody-payment-settings:before {
+  content: "\e909";
+}
+.melody-public-site:before {
+  content: "\e90a";
+}
+.melody-site-builder:before {
+  content: "\e90b";
+}
+.melody-visibility:before {
+  content: "\e90c";
+}
+.melody-accounting:before {
+  content: "\e90d";
+}
+.melody-calendar:before {
+  content: "\e90e";
+}
+.melody-email:before {
+  content: "\e90f";
+}
+.melody-file-storage:before {
+  content: "\e910";
+}
+.melody-promotion:before {
+  content: "\e911";
+}
+.melody-blog-post:before {
+  content: "\e912";
+}
+.melody-content:before {
+  content: "\e913";
+}
+.melody-csv:before {
+  content: "\e914";
+}
+.melody-kanban:before {
+  content: "\e915";
+}
+.melody-tools:before {
+  content: "\e916";
+}
+.melody-artist:before {
+  content: "\e917";
+}
+.melody-home:before {
+  content: "\e918";
+}
+.melody-info:before {
+  content: "\e919";
+}
+.melody-merchandise:before {
+  content: "\e91a";
+}
+.melody-releases:before {
+  content: "\e91b";
+}
+.melody-content-management:before {
+  content: "\e91c";
+}
+.melody-org-tools:before {
+  content: "\e91e";
+}
+.melody-legal:before {
+  content: "\e91f";
+}
+.melody-pricing:before {
+  content: "\e920";
+}
+.melody-artist-management:before {
+  content: "\e921";
+}
+.melody-artist-org:before {
+  content: "\e922";
+}
+.melody-org:before {
+  content: "\e923";
+}
+.melody-join-org:before {
+  content: "\e924";
+}
+.melody-label:before {
+  content: "\e925";
+}
+.melody-owner:before {
+  content: "\e926";
 }
