@@ -43,7 +43,7 @@ export interface DropdownProps {
 //Text Input/Area
 export interface TextInputProps {
     value: any,
-    type?: 'text' | 'number' | 'password';
+    type?: 'text' | 'number' | 'password' | 'email';
     label?: LabelProps;
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';

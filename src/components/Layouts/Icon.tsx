@@ -23,6 +23,8 @@ import {
     faThumbsDown,
     faAt,
     faLock,
+    faSignature, //TODO first or last name
+    faUserTie, //TODO username
     faMoneyBillTrendUp, //Income
     faMoneyBillTransfer, //Expense
     faAnglesRight, //Pagination Next
@@ -78,6 +80,8 @@ export const Icon = (props: IconProps) => {
         solidEllipsisVertical: faEllipsisVertical,
         email: faAt,
         password: faLock,
+        name: faSignature,
+        username: faUserTie,
         //Social media
         tiktok: faTiktok,
         twitter: faTwitter,
@@ -85,7 +89,7 @@ export const Icon = (props: IconProps) => {
         youtube: faYoutube,
         facebook: faFacebook,
         soundcloud: faSoundcloud,
-        stripe: faCcStripe
+        stripe: faCcStripe,
     }
 
     return (

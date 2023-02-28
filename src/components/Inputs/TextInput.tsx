@@ -16,8 +16,6 @@ export const TextInput = (props: TextInputProps) => {
         trailerComponent
     } = props
 
-    //TODO icon implementation
-
     return (
         <div className={"melody-w-full"}>
             {label && <Label {...{...label, htmlFor: "textInput"}} />}
