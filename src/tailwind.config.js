@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         atami: ['Atami Regular', 'sans-serif'],
         atamiBold: ['Atami Bold', 'sans-serif'],
+        icomoon: ['var(--icomoon-font)'],
       },
       colors: {
         'primary': {
@@ -30,7 +31,7 @@ module.exports = {
         'accent': {
           '100': '#ABDDE5',
           '200': '#73ECFF',
-          '300': '#ABDDE5'
+          '300': '#00DCFF'
         },
         black: {
           0: '#000000',

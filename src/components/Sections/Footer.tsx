@@ -9,7 +9,7 @@ export const Footer = (props: {
     } = props
 
     return (
-        <footer aria-label="Site Footer" className="melody-bg-white melody-border-t melody-border-primary-100">
+        <footer aria-label="Site Footer" className="melody-border-primary-100 melody-border-t melody-border-primary-100">
             <div className="melody-mx-auto melody-max-w-screen-xl melody-px-4 melody-py-16 sm:melody-px-6 lg:melody-px-8">
                 <div className="lg:melody-flex lg:melody-gap-8 melody-justify-center">
                     <div className="melody-mt-8 melody-grid melody-grid-cols-3 melody-gap-8 lg:melody-mt-0 lg:melody-grid-cols-3 lg:melody-gap-y-16">
@@ -21,7 +21,7 @@ export const Footer = (props: {
                                     <li>
                                         <a href="#" className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
                                             Home
-                                        {/*    TODO say organizations isntead of signed in?*/}
+                                        {/*    TODO say organizations instead of signed in?*/}
                                         </a>
                                     </li>
 
