@@ -10,13 +10,14 @@ export interface IndicatorProps {
 
 //Button
 export interface ButtonProps {
-    type: 'button' | 'submit',
+    type?: 'button' | 'submit',
     color?: 'gray' | 'secondary' | 'primary';
     variant?: 'solid' | 'outlined';
     size?: 'small' | 'medium' | 'large';
     label?: string,
     icon?: AddIconProps,
-    onClick?: () => void
+    onClick?: () => void,
+    disabled?: boolean
 }
 
 //Dropdown
@@ -55,12 +56,13 @@ export interface TextInputProps {
 
 //Label
 export interface LabelProps {
-    size?: 'small' | 'medium' | 'large';
+    size?: 'small' | 'medium' | 'large' | 'xlarge';
     label: string,
     htmlFor?: string,
     required?: boolean,
     bold?: boolean,
-    additionalStyles?: any
+    additionalStyles?: any,
+    additionalClasses?: string
 }
 
 //Tooltip

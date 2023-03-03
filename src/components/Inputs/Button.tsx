@@ -11,12 +11,14 @@ export const Button = (props: ButtonProps) => {
         label,
         icon,
         type = 'button',
-        onClick
+        onClick,
+        disabled = false
     } = props
 
     return (
         <button className={`melody-button melody-button-${size} melody-button-${color}-${variant}`}
                 type={type}
+                disabled={disabled}
                 onClick={onClick}>
             {icon && !icon.rightAligned && <div className={"melody-mr-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} /></div>}
             {label}

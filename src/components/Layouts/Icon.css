@@ -17,6 +17,6 @@
 
 .icomoon {
     /* use !important to prevent issues with browser extensions that change fonts */
-    @apply melody-font-icomoon !important;
-    /*font-family: 'icomoon' !important;*/
+    /*@apply melody-font-icomoon !important;*/
+    font-family: 'icomoon' !important;
 }

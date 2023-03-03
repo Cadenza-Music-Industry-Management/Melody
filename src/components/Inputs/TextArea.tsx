@@ -21,7 +21,7 @@ export const TextArea = (props: TextInputProps) => {
                       rows={4}
                       disabled={disabled}
                       onChange={(event => onChange(event.target.value))}
-                      id="textArea"
+                      //id={`textArea`} //TODO need unique id
                       className={`melody-text-input ${size}`} />
         </div>
     );

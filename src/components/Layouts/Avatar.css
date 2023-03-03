@@ -1,5 +1,5 @@
 .melody-avatar {
-    @apply melody-w-10 melody-h-10 melody-p-1;
+    @apply melody-w-10 melody-h-10 melody-p-1 melody-object-contain;
 }
 
 .melody-avatar.ring, .melody-avatar-preview.ring {

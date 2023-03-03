@@ -13,3 +13,7 @@
 .melody-text-label.large {
     @apply melody-text-lg;
 }
+
+.melody-text-label.xlarge {
+    @apply melody-text-[25px];
+}
