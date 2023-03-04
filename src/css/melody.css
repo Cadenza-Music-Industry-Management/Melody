@@ -18,17 +18,17 @@
     src: url('../fonts/Atami-Bold.woff') format('woff');
   }
 
-  @font-face {
-    font-family: 'icomoon';
-    src:  url('../fonts/icomoon.eot?ynkpq7');
-    src:  url('../fonts/icomoon.eot?ynkpq7#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?ynkpq7') format('truetype'),
-    url('../fonts/icomoon.woff?ynkpq7') format('woff'),
-    url('../fonts/icomoon.svg?ynkpq7#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-  }
+  /*@font-face {*/
+  /*  font-family: 'icomoon';*/
+  /*  src:  url('../fonts/icomoon.eot?ynkpq7');*/
+  /*  src:  url('../fonts/icomoon.eot?ynkpq7#iefix') format('embedded-opentype'),*/
+  /*  url('../fonts/icomoon.ttf?ynkpq7') format('truetype'),*/
+  /*  url('../fonts/icomoon.woff?ynkpq7') format('woff'),*/
+  /*  url('../fonts/icomoon.svg?ynkpq7#icomoon') format('svg');*/
+  /*  font-weight: normal;*/
+  /*  font-style: normal;*/
+  /*  font-display: block;*/
+  /*}*/
 }
 
 .melody-icon {

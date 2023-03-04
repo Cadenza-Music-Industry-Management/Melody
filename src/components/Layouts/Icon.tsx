@@ -24,13 +24,13 @@ import {
     faAt,
     faLock,
     faPeopleGroup,
-    faSignature, //TODO first or last name
+    faSignature,
     faUserTie, //TODO username
     faMoneyBillTrendUp, //Income
     faMoneyBillTransfer, //Expense
     faAnglesRight, //Pagination Next
     faAnglesLeft, //Pagination Last
-    faEllipsis, //Multiple uses: Pagination, TODO
+    faEllipsis, //Multiple uses: Pagination, what else?
     faEllipsisVertical, //Settings
 } from '@fortawesome/free-solid-svg-icons';
 // import { fa } from '@fortawesome/free-regular-svg-icons';

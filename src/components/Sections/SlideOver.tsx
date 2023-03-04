@@ -1,16 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactNode } from "react";
 import "./SlideOver.css"
 import { Dialog, Transition } from '@headlessui/react'
+import { Button } from "@/components/Melody/src/components/Inputs/Button";
 
 export const SlideOver = (props: {
     title: string,
     open: boolean,
-    setOpen: (open: boolean) => void
+    setOpen: (open: boolean) => void,
+    children: ReactNode
 }) => {
     const {
         title,
         open,
-        setOpen
+        setOpen,
+        children
     } = props
 
     return (
@@ -39,28 +42,24 @@ export const SlideOver = (props: {
                                 leaveFrom="melody-translate-x-0"
                                 leaveTo="melody-translate-x-full">
                                 <Dialog.Panel className="melody-pointer-events-auto melody-w-screen melody-max-w-md">
-                                    <div className="melody-flex h-full melody-flex-col melody-overflow-y-scroll melody-bg-white melody-shadow-xl">
-                                        <div className="melody-flex-1 melody-overflow-y-auto melody-py-6 melody-px-4 sm:melody-px-6">
-                                            <div className="melody-flex melody-items-start melody-justify-between">
-                                                <Dialog.Title className="melody-text-lg melody-font-medium melody-text-gray-900">
+                                    <div className="melody-flex melody-h-full melody-flex-col melody-overflow-y-auto melody-bg-white melody-shadow-xl">
+                                        <div className="melody-flex-1 melody-overflow-y-auto">
+
+                                            <div className="melody-flex melody-items-start melody-justify-between melody-p-6 melody-bg-secondary-100 melody-text-white">
+                                                {/*TODO label props*/}
+                                                <Dialog.Title className="melody-text-lg melody-font-bold">
                                                     {title}
                                                 </Dialog.Title>
 
                                                 <div className="melody-ml-3 melody-flex melody-h-7 melody-items-center">
-                                                    <button type="button"
-                                                            className="-melody-m-2 melody-p-2 melody-text-gray-400 hover:melody-text-gray-500"
-                                                            onClick={() => setOpen(false)}>
-                                                        <span className="melody-sr-only">Close panel</span>
-                                                        {/*TODO X / close icon*/}
-                                                        X
-                                                    </button>
+                                                    <Button icon={{ icon: "solidX" }} onClick={() => setOpen(false)} />
                                                 </div>
                                             </div>
 
                                             {/*TODO contents*/}
-                                            <div className="melody-mt-8">
+                                            <div className="melody-p-4">
                                                 <div className="melody-flow-root">
-
+                                                    {children}
                                                 </div>
                                             </div>
                                         </div>

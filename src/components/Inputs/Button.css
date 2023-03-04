@@ -19,7 +19,7 @@
 }
 
 .melody-button-gray-outlined {
-    @apply melody-border-2 melody-border-gray-500 hover:melody-bg-gray-500 hover:melody-text-white;
+    @apply melody-bg-transparent melody-border-2 melody-border-gray-500 hover:melody-bg-gray-500 hover:melody-text-white;
 }
 
 .melody-button-secondary-solid {
@@ -27,7 +27,7 @@
 }
 
 .melody-button-secondary-outlined {
-    @apply melody-border-2 melody-border-secondary-100 hover:melody-bg-secondary-200 hover:melody-text-white;
+    @apply melody-bg-transparent melody-border-2 melody-border-secondary-100 hover:melody-bg-secondary-200 hover:melody-text-white;
 }
 
 .melody-button-primary-solid {
@@ -35,5 +35,5 @@
 }
 
 .melody-button-primary-outlined {
-    @apply melody-border-2 melody-border-primary-100 hover:melody-bg-primary-200 hover:melody-text-white;
+    @apply melody-bg-transparent melody-border-2 melody-border-primary-100 hover:melody-bg-primary-200 hover:melody-text-white;
 }
