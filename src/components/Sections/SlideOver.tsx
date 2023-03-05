@@ -16,6 +16,8 @@ export const SlideOver = (props: {
         children
     } = props
 
+    //TODO move as much of this as I can to CSS classes, are transitions re-usable globally?
+
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="melody-relative melody-z-10" onClose={setOpen}>
@@ -56,7 +58,6 @@ export const SlideOver = (props: {
                                                 </div>
                                             </div>
 
-                                            {/*TODO contents*/}
                                             <div className="melody-p-4">
                                                 <div className="melody-flow-root">
                                                     {children}

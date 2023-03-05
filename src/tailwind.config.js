@@ -1,3 +1,6 @@
+
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // Needed for now as breaking buttons with transparency https://stackoverflow.com/questions/70536210/unexpected-behavior-when-using-tailwind-and-mui-in-nextjs-project-white-button
@@ -13,9 +16,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        atami: ['Atami Regular', 'sans-serif'],
-        atamiBold: ['Atami Bold', 'sans-serif'],
+        // atami: ['Atami Regular', 'sans-serif'],
+        // atamiBold: ['Atami Bold', 'sans-serif'],
         icomoon: ['var(--icomoon-font)'],
+        sans: ['var(--inter-font)', ...fontFamily.sans],
       },
       colors: {
         'primary': {

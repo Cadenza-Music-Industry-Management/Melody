@@ -44,6 +44,42 @@ import {
     faCcStripe
 } from '@fortawesome/free-brands-svg-icons'
 import {IconProps} from "../types";
+import {
+    MelodyAccounting, MelodyArchive, MelodyArtist, MelodyArtistManagementOrg, MelodyArtistOrg,
+    MelodyBin,
+    MelodyBlogPost,
+    MelodyCalendar,
+    MelodyContent,
+    MelodyContentManagement,
+    MelodyCSV,
+    MelodyEmail,
+    MelodyFavorite,
+    MelodyFileStorage,
+    MelodyHistory,
+    MelodyHome,
+    MelodyImage,
+    MelodyInfo,
+    MelodyJoinOrg,
+    MelodyLabel,
+    MelodyLegal,
+    MelodyLinks,
+    MelodyMerchandise,
+    MelodyOrg,
+    MelodyOrgTools,
+    MelodyOwner,
+    MelodyPaymentSettings,
+    MelodyPlanningBoard,
+    MelodyPricing,
+    MelodyPromotion,
+    MelodyPublicSite,
+    MelodyRead,
+    MelodyReleases,
+    MelodySettings,
+    MelodySiteBuilder,
+    MelodyStaffManagement,
+    MelodyTools,
+    MelodyVisibility
+} from "@/components/Melody/src/components/Layouts/IcomoonExports";
 
 export const Icon = (props: IconProps) => {
     const {
@@ -94,10 +130,61 @@ export const Icon = (props: IconProps) => {
         stripe: faCcStripe,
     }
 
+    //TODO using bad method of individual SVGs until I can get icomoon font working in NextJS Cadenza app (works in storybook??)
+    //<i style={{...additionalStyles}} className={`melody-icon icomoon ${icon} ${additionalClasses ? additionalClasses : ''}`} />
+    const melodyIconMap: any = {
+        'melody-accounting': MelodyAccounting,
+        'melody-archive': MelodyArchive,
+        'melody-artist': MelodyArtist,
+        'melody-artist-management': MelodyArtistManagementOrg,
+        'melody-artist-org': MelodyArtistOrg,
+        'melody-bin': MelodyBin,
+        'melody-blog-post': MelodyBlogPost,
+        'melody-calendar': MelodyCalendar,
+        'melody-content': MelodyContent,
+        'melody-content-management': MelodyContentManagement,
+        'melody-csv': MelodyCSV,
+        'melody-email': MelodyEmail,
+        'melody-favorite': MelodyFavorite,
+        'melody-file-storage': MelodyFileStorage,
+        'melody-history': MelodyHistory,
+        'melody-home': MelodyHome,
+        'melody-image': MelodyImage,
+        'melody-info': MelodyInfo,
+        'melody-join-org': MelodyJoinOrg,
+        'melody-label': MelodyLabel,
+        'melody-legal': MelodyLegal,
+        'melody-link': MelodyLinks,
+        'melody-merchandise': MelodyMerchandise,
+        'melody-org': MelodyOrg,
+        'melody-org-tools': MelodyOrgTools,
+        'melody-owner': MelodyOwner,
+        'melody-payment-settings': MelodyPaymentSettings,
+        'melody-kanban': MelodyPlanningBoard,
+        'melody-pricing': MelodyPricing,
+        'melody-promotion': MelodyPromotion,
+        'melody-public-site': MelodyPublicSite,
+        'melody-read': MelodyRead,
+        'melody-releases': MelodyReleases,
+        'melody-settings': MelodySettings,
+        'melody-site-builder': MelodySiteBuilder,
+        'melody-staff-management': MelodyStaffManagement,
+        'melody-tools': MelodyTools,
+        'melody-visibility': MelodyVisibility
+    }
+
+    function getMelodyIcon() {
+        const Component = melodyIconMap[icon]
+        if (!Component) return;
+
+        return <Component style={{...additionalStyles}} className={`melody-icon icomoon ${icon} ${additionalClasses ? additionalClasses : ''}`} />
+    }
+
+    //TODO For custom icons, additionalClasses does not override properties such as font size that is defined in melody-icon but additionalStyles does
     return (
-        <div className={"melody-flex"}>
+        <div className={"melody-flex melody-justify-center"}>
             {icon.includes('melody-') ?
-                <i style={{...additionalStyles}} className={`melody-icon icomoon ${icon} ${additionalClasses ? additionalClasses : ''}`} />
+                getMelodyIcon()
                 :
                 <FontAwesomeIcon style={{...additionalStyles}} className={additionalClasses ? additionalClasses : ''} icon={faIconMap[icon]} />
             }

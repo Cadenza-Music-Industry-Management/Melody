@@ -6,12 +6,13 @@ import vivace from "../../assets/vivace_logo.png"
 import {ContentCreationLimits} from "../../utils/constants";
 import {formatBytes} from "../../utils/functions";
 import {Image} from '../Layouts/Image';
+import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 
 export const CadenzaPricingLayout = (props: {
-    size: string
+
 }) => {
     const {
-        size
+
     } = props
 
     const [viewingMonthly, setViewingMonthly] = useState(true)
@@ -48,7 +49,7 @@ export const CadenzaPricingLayout = (props: {
                     <div className="md:melody-w-3/4">
                         <div className="melody-max-w-4xl melody-mx-auto md:melody-flex">
 
-                            <div className="melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-px-4 md:melody-px-5 melody-py-4 md:melody-py-5 melody-mb-3 melody-mx-auto md:melody-my-2 melody-rounded-md melody-shadow-lg melody-shadow-gray-600 md:melody-flex md:melody-flex-col">
+                            <div className="melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-px-4 md:melody-px-5 melody-py-4 md:melody-py-5 melody-mb-3 melody-mx-auto md:melody-my-2 melody-rounded-md melody-shadow melody-border melody-border-gray-300 md:melody-flex md:melody-flex-col">
                                 <div className="melody-w-full melody-flex-grow">
                                     <Image src={adagio} alt={"Adagio"} additionalStyles={{width: "100%", minWidth: 150, maxWidth: 250}}/>
 
@@ -57,37 +58,48 @@ export const CadenzaPricingLayout = (props: {
                                     </h3>
 
                                     <ul className="melody-text-sm melody-mb-4">
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Releases management (Limit: {ContentCreationLimits.RELEASE_ADAGIO})
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Artist management (Limit: {ContentCreationLimits.ARTIST_ADAGIO})
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Blog Post management (Limit: {ContentCreationLimits.BLOG_ADAGIO})
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Apparel management (Limit: {ContentCreationLimits.APPAREL_ADAGIO})
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Apparel Orders management (Limit: {ContentCreationLimits.APPAREL_ORDER_ADAGIO})
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Planning Board tool
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Calendar tool
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Staff Management tool (Limit: {ContentCreationLimits.STAFF_ADAGIO} accounts)
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Public Site tool
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to File Storage tool (Storage limit: {formatBytes(ContentCreationLimits.FILE_STORAGE_ADAGIO)})
                                         </li>
-                                          <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Email Hub tool (Tracked emails per month limit: {ContentCreationLimits.EMAIL_ADAGIO})
                                         </li>
                                     </ul>
@@ -100,7 +112,7 @@ export const CadenzaPricingLayout = (props: {
                                 {/*</div>*/}
                             </div>
 
-                            <div className="melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-px-4 md:melody-px-5 melody-py-4 md:melody-py-5 melody-mb-3 melody-mx-auto md:-melody-mx-3 md:melody-mb-0 melody-rounded-md melody-shadow-lg melody-shadow-gray-600 md:melody-relative md:melody-z-50 md:melody-flex md:melody-flex-col">
+                            <div className="melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-px-4 md:melody-px-5 melody-py-4 md:melody-py-5 melody-mb-3 melody-mx-auto md:-melody-mx-3 md:melody-mb-0 melody-rounded-md melody-shadow melody-border melody-border-gray-300 md:melody-relative md:melody-z-50 md:melody-flex md:melody-flex-col">
                                 <div className="melody-w-full melody-flex-grow">
                                     <Image src={moderato} alt={"Moderato"} additionalStyles={{width: "100%", minWidth: 150, maxWidth: 250}}/>
 
@@ -117,41 +129,53 @@ export const CadenzaPricingLayout = (props: {
                                     </h3>
 
                                     <ul className="melody-text-sm melody-mb-4">
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Accounting tool{" "}
-                                            <span style={{fontSize: 12, fontWeight: "bold"}}>- Available for free on Adagio tier until Dec. 31st</span>
+                                            <span className={"melody-text-sm melody-font-bold melody-contents"}>- Available for free on Adagio tier until Dec. 31st</span>
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Event History tool
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Additional customization in Public Site Builder (about us and contact us page)
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Staff account limit raised to {ContentCreationLimits.STAFF_MODERATO}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Release limit raised to {ContentCreationLimits.RELEASE_MODERATO}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Artist limit raised to {ContentCreationLimits.ARTIST_MODERATO}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Blog Post limit raised to {ContentCreationLimits.BLOG_MODERATO}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Apparel limit raised to {ContentCreationLimits.APPAREL_MODERATO}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Apparel Order limit raised to {ContentCreationLimits.APPAREL_ORDER_MODERATO}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             File Storage limit raised to: {formatBytes(ContentCreationLimits.FILE_STORAGE_MODERATO)}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Email Hub limit raised to: {ContentCreationLimits.EMAIL_MODERATO}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Everything from the Adagio tier
                                         </li>
                                     </ul>
@@ -164,7 +188,7 @@ export const CadenzaPricingLayout = (props: {
                                 {/*</div>*/}
                             </div>
 
-                            <div className="melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-px-4 md:melody-px-5 melody-py-4 md:melody-py-5 melody-mb-3 melody-mx-auto md:melody-my-2 melody-rounded-md melody-shadow-lg melody-shadow-gray-600 md:melody-flex md:melody-flex-col">
+                            <div className="melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-px-4 md:melody-px-5 melody-py-4 md:melody-py-5 melody-mb-3 melody-mx-auto md:melody-my-2 melody-rounded-md melody-shadow melody-border melody-border-gray-300 md:melody-flex md:melody-flex-col">
                                 <div className="melody-w-full melody-flex-grow">
                                     <Image src={vivace} alt={"Vivace"} additionalStyles={{width: "100%", minWidth: 150, maxWidth: 250}}/>
 
@@ -181,56 +205,63 @@ export const CadenzaPricingLayout = (props: {
                                     </h3>
 
                                     <ul className="melody-text-sm melody-mb-4">
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Access to Music Promotion tool{" "}
-                                            <span style={{fontSize: 12, fontWeight: "bold"}}>- Available for free on Adagio tier until Dec. 31st</span>
+                                            <span className={"melody-text-sm melody-font-bold melody-contents"}>- Available for free on Adagio tier until Dec. 31st</span>
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Ability to export all data from each content type to excel document
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Ability to create data through CSV importing{" "}
-                                            <span style={{fontSize: 12, fontWeight: "bold"}}>- Available for free on Adagio tier until Dec. 31st</span>
+                                            <span className={"melody-text-sm melody-font-bold melody-contents"}>- Available for free on Adagio tier until Dec. 31st</span>
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Additional customization in Public Site Builder (music player page, custom footers, and
                                             Vivace-exclusive layouts)
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Staff account limit raised to {ContentCreationLimits.STAFF_VIVACE}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Release limit raised to {ContentCreationLimits.RELEASE_VIVACE}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Artist limit raised to {ContentCreationLimits.ARTIST_VIVACE}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Blog Post limit raised to {ContentCreationLimits.BLOG_VIVACE}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Apparel limit raised to {ContentCreationLimits.APPAREL_VIVACE}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Apparel Order limit raised to {ContentCreationLimits.APPAREL_ORDER_VIVACE}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             File Storage limit raised to: {formatBytes(ContentCreationLimits.FILE_STORAGE_VIVACE)}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Email Hub limit raised to: {ContentCreationLimits.EMAIL_VIVACE}
                                         </li>
-                                        <li className="melody-leading-tight melody-mb-0.5">
+                                        <li className="melody-leading-tight melody-mb-0.5 melody-flex">
+                                            <Icon icon={'solidCheck'} additionalClasses={'melody-text-green-600'} />
                                             Everything from the Moderato and Adagio tiers
                                         </li>
                                     </ul>
                                 </div>
-
-                                {/*<div className="melody-w-full">*/}
-                                {/*    <button className="melody-font-bold melody-bg-gray-600 hover:melody-bg-gray-700 melody-text-white melody-rounded-md px-5 melody-py-2 melody-transition-colors melody-w-full">*/}
-                                {/*        Buy Now*/}
-                                {/*    </button>*/}
-                                {/*</div>*/}
                             </div>
                         </div>
                     </div>
