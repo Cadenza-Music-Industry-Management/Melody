@@ -24,7 +24,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
     const pathname = usePathname()
 
     return (
-        <Disclosure as="nav" className="melody-bg-gray-50 melody-border-b melody-border-primary-100 melody-p-2">
+        <Disclosure as="nav" className="melody-bg-gray-50 melody-border-b melody-border-primary-100 melody-p-1">
             {({ open }: { open: boolean }) => (
                 <>
                     <div className="melody-mx-auto melody-px-2 sm:melody-px-4 lg:melody-px-8">
@@ -43,7 +43,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                             <div className="melody-flex melody-flex-1 melody-items-center melody-justify-center sm:melody-items-stretch sm:melody-justify-start">
                                 <div className="melody-flex melody-flex-shrink-0 melody-items-center">
                                    <Link href={"/"}>
-                                       <Image additionalClasses="melody-block melody-h-12 melody-w-auto lg:melody-melody-hidden"
+                                       <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-melody-hidden"
                                               src={cadenzaMIMLogo}
                                               alt="Cadenza MIM" />
                                    </Link>

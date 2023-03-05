@@ -16,11 +16,9 @@ export const SlideOver = (props: {
         children
     } = props
 
-    //TODO move as much of this as I can to CSS classes, are transitions re-usable globally?
-
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="melody-relative melody-z-10" onClose={setOpen}>
+            <Dialog as="div" className="melody-slide-over-dialog" onClose={setOpen}>
                 <Transition.Child
                     as={Fragment}
                     enter="melody-ease-in-out melody-duration-500"
@@ -32,9 +30,10 @@ export const SlideOver = (props: {
                     <div className="melody-fixed melody-inset-0 melody-bg-gray-500 melody-bg-opacity-75 melody-transition-opacity" />
                 </Transition.Child>
 
-                <div className="melody-fixed melody-inset-0 melody-overflow-hidden">
+                <div className="melody-slide-over-parent">
+                    {/*TODO this div needed below? What should class name be if so?*/}
                     <div className="melody-absolute melody-inset-0 melody-overflow-hidden">
-                        <div className="melody-pointer-events-none melody-fixed melody-inset-y-0 melody-right-0 melody-flex melody-max-w-full melody-pl-10">
+                        <div className="melody-slide-over-container">
                             <Transition.Child
                                 as={Fragment}
                                 enter="melody-transform melody-transition melody-ease-in-out melody-duration-500 sm:melody-duration-700"
@@ -43,29 +42,28 @@ export const SlideOver = (props: {
                                 leave="melody-transform melody-transition melody-ease-in-out melody-duration-500 sm:melody-duration-700"
                                 leaveFrom="melody-translate-x-0"
                                 leaveTo="melody-translate-x-full">
-                                <Dialog.Panel className="melody-pointer-events-auto melody-w-screen melody-max-w-md">
-                                    <div className="melody-flex melody-h-full melody-flex-col melody-overflow-y-auto melody-bg-white melody-shadow-xl">
-                                        <div className="melody-flex-1 melody-overflow-y-auto">
 
-                                            <div className="melody-flex melody-items-start melody-justify-between melody-p-6 melody-bg-secondary-100 melody-text-white">
-                                                {/*TODO label props*/}
-                                                <Dialog.Title className="melody-text-lg melody-font-bold">
-                                                    {title}
-                                                </Dialog.Title>
+                                <Dialog.Panel className="melody-slide-over-dialog-panel">
+                                    <div className="melody-slide-over-dialog-panel-container">
+                                        <div className="melody-slide-over-header">
+                                            {/*TODO label props*/}
+                                            <Dialog.Title className="melody-text-lg melody-font-bold">
+                                                {title}
+                                            </Dialog.Title>
 
-                                                <div className="melody-ml-3 melody-flex melody-h-7 melody-items-center">
-                                                    <Button icon={{ icon: "solidX" }} onClick={() => setOpen(false)} />
-                                                </div>
+                                            <div className="melody-ml-3 melody-flex melody-h-7 melody-items-center">
+                                                <Button icon={{ icon: "solidX" }} onClick={() => setOpen(false)} />
                                             </div>
+                                        </div>
 
-                                            <div className="melody-p-4">
-                                                <div className="melody-flow-root">
-                                                    {children}
-                                                </div>
+                                        <div className="melody-p-4">
+                                            <div className="melody-flow-root">
+                                                {children}
                                             </div>
                                         </div>
                                     </div>
                                 </Dialog.Panel>
+
                             </Transition.Child>
                         </div>
                     </div>
