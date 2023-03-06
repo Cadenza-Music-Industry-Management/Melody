@@ -12,7 +12,7 @@ export const Button = (props: ButtonProps) => {
         icon,
         type = 'button',
         onClick,
-        disabled = false
+        disabled = false,
     } = props
 
     return (
@@ -20,9 +20,9 @@ export const Button = (props: ButtonProps) => {
                 type={type}
                 disabled={disabled}
                 onClick={onClick}>
-            {icon && !icon.rightAligned && <div className={"melody-mr-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} /></div>}
+            {icon && !icon.rightAligned && <div className={"melody-mr-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} additionalClasses={icon.additionalClasses} /></div>}
             {label}
-            {icon && icon.rightAligned && <div className={"melody-ml-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} /></div>}
+            {icon && icon.rightAligned && <div className={"melody-ml-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} additionalClasses={icon.additionalClasses} /></div>}
         </button>
     );
 };

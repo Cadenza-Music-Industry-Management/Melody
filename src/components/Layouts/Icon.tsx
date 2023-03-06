@@ -8,6 +8,8 @@ import {
     faWindowMaximize,
     faMagnifyingGlass,
     faRotate,
+    faCaretRight,
+    faCaretLeft,
     faCaretDown,
     faCaretUp,
     faStar,
@@ -86,7 +88,8 @@ export const Icon = (props: IconProps) => {
         size = 'medium',
         icon,
         additionalStyles,
-        additionalClasses
+        additionalClasses,
+        containerType = 'flex'
     } = props
 
     const faIconMap: any = {
@@ -96,6 +99,8 @@ export const Icon = (props: IconProps) => {
         website: faWindowMaximize,
         magnifyingGlass: faMagnifyingGlass,
         rotate: faRotate,
+        caretRight: faCaretRight,
+        caretLeft: faCaretLeft,
         caretDown: faCaretDown,
         caretUp: faCaretUp,
         star: faStar,
@@ -177,12 +182,12 @@ export const Icon = (props: IconProps) => {
         const Component = melodyIconMap[icon]
         if (!Component) return;
 
-        return <Component style={{...additionalStyles}} className={`melody-icon icomoon ${icon} ${additionalClasses ? additionalClasses : ''}`} />
+        return <Component style={{...additionalStyles}} className={`melody-icon ${additionalClasses ? additionalClasses : ''}`} />
     }
 
     //TODO For custom icons, additionalClasses does not override properties such as font size that is defined in melody-icon but additionalStyles does
     return (
-        <div className={"melody-flex melody-justify-center"}>
+        <div className={containerType === 'flex' ? 'melody-flex melody-justify-center' : 'melody-contents'}>
             {icon.includes('melody-') ?
                 getMelodyIcon()
                 :

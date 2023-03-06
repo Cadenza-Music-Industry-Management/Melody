@@ -11,14 +11,14 @@ import {Image} from '../Layouts/Image';
 import { classNames } from "../../utils/functions";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useProSidebar } from "react-pro-sidebar";
 
 export const NavigationBar = (props: NavigationBarProps) => {
 
     const {
         navigation,
         userNavigation,
-        user,
-        signOut
+        user
     } = props
 
     const pathname = usePathname()

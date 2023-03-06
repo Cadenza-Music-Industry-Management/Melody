@@ -1,0 +1,23 @@
+.melody-sidebar-dialog {
+    @apply melody-relative melody-z-10;
+}
+
+.melody-sidebar-parent {
+    @apply melody-inset-0 melody-overflow-hidden;
+}
+
+.melody-sidebar-container {
+    @apply melody-pointer-events-none melody-fixed melody-inset-y-0 melody-left-0 melody-flex melody-max-w-full melody-pr-10;
+}
+
+.melody-sidebar-dialog-panel {
+    @apply melody-pointer-events-auto melody-w-screen melody-max-w-md;
+}
+
+.melody-sidebar-dialog-panel-container {
+    @apply melody-flex melody-h-full melody-flex-col melody-overflow-y-auto melody-bg-white melody-shadow-xl melody-flex-1 melody-overflow-y-auto;
+}
+
+.melody-sidebar-header {
+    @apply melody-flex melody-items-start melody-justify-between melody-p-6 melody-bg-secondary-100 melody-text-white;
+}

@@ -78,13 +78,16 @@ export interface IconProps {
     size?: string,
     icon: string,
     additionalStyles?: any,
-    additionalClasses?: string
+    additionalClasses?: string,
+    containerType?: 'flex' | 'contents' //Contents needed for sidebar icons
 }
 
 export interface AddIconProps {
     icon: string,
     rightAligned?: boolean,
-    additionalStyles?: any
+    additionalStyles?: any,
+    additionalClasses?: string,
+    containerType?: 'flex' | 'contents'
 }
 
 //Progress Bar
@@ -124,8 +127,7 @@ export interface ModalProps {
 export interface NavigationBarProps {
     user?: any, //TODO need to use User props from other types file
     navigation: NavBarItemProps[],
-    userNavigation: NavBarItemProps[],
-    signOut: () => void
+    userNavigation: NavBarItemProps[]
 }
 export interface NavBarItemProps {
     name: string,
