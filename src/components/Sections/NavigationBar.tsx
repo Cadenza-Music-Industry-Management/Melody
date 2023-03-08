@@ -24,7 +24,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
     const pathname = usePathname()
 
     return (
-        <Disclosure as="nav" className="melody-bg-gray-50 melody-border-b melody-border-primary-100 melody-p-1">
+        <Disclosure as="nav" className="melody-bg-gray-50 melody-border-b melody-border-primary-100 melody-p-1 melody-font-sans">
             {({ open }: { open: boolean }) => (
                 <>
                     <div className="melody-mx-auto melody-px-2 sm:melody-px-4 lg:melody-px-8">
@@ -77,7 +77,6 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                     <div>
                                       <Menu.Button
                                         className="melody-flex melody-rounded-full melody-bg-gray-800 melody-text-sm focus:melody-outline-none focus:melody-ring-2 focus:melody-ring-white focus:melody-ring-offset-2 focus:melody-ring-offset-gray-800">
-                                          {/*TODO use avatar component*/}
                                         <span className="melody-sr-only">Open user menu</span>
                                         <Avatar image={user?.icon} />
                                       </Menu.Button>
