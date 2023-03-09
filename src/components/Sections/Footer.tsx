@@ -2,6 +2,7 @@ import React from 'react';
 import "./Footer.css"
 import Link from "next/link";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
+import { motion } from "framer-motion";
 
 export const Footer = () => {
     return (
@@ -133,36 +134,42 @@ export const Footer = () => {
 
                         <ul className="melody-col-span-2 melody-flex melody-justify-center melody-p-2 md:melody-p-0 melody-gap-6 lg:melody-col-span-5">
                             <li>
-                                <Link
-                                    href="https://www.facebook.com/cadenzamim"
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                    className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
-                                    <span className="melody-sr-only">Facebook</span>
-                                    <Icon icon={'facebook'} />
-                                </Link>
+                                <motion.div whileHover={{scale: 0.90}}>
+                                    <Link
+                                        href="https://www.facebook.com/cadenzamim"
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                        className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
+                                        <span className="melody-sr-only">Facebook</span>
+                                        <Icon icon={'facebook'} />
+                                    </Link>
+                                </motion.div>
                             </li>
 
                             <li>
-                                <Link
-                                    href="https://www.instagram.com/cadenzamim"
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                    className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
-                                    <span className="melody-sr-only">Instagram</span>
-                                    <Icon icon={'instagram'} />
-                                </Link>
+                                <motion.div whileHover={{scale: 0.90}}>
+                                    <Link
+                                        href="https://www.instagram.com/cadenzamim"
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                        className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
+                                        <span className="melody-sr-only">Instagram</span>
+                                        <Icon icon={'instagram'} />
+                                    </Link>
+                                </motion.div>
                             </li>
 
                             <li>
-                                <Link
-                                    href="https://twitter.com/cadenzamim"
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                    className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
-                                    <span className="melody-sr-only">Twitter</span>
-                                    <Icon icon={'twitter'} />
-                                </Link>
+                                <motion.div whileHover={{scale: 0.90}}>
+                                    <Link
+                                        href="https://twitter.com/cadenzamim"
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                        className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
+                                        <span className="melody-sr-only">Twitter</span>
+                                        <Icon icon={'twitter'} />
+                                    </Link>
+                                </motion.div>
                             </li>
                         </ul>
 

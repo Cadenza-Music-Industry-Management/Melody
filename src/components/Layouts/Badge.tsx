@@ -3,15 +3,16 @@ import "./Badge.css"
 import {IndicatorProps} from "../types";
 import {Indicator} from "./Indicator";
 
+//TODO move interface to Melody types file
 export const Badge = (props: {
     variant: string,
-    size: string,
+    size?: string,
     text: string,
     indicator?: IndicatorProps,
 }) => {
     const {
         variant,
-        size,
+        size = 'small',
         text,
         indicator
     } = props

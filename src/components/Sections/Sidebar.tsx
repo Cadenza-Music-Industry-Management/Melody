@@ -11,8 +11,9 @@ import {
 } from "react-pro-sidebar";
 import {Avatar} from "../Layouts/Avatar"
 import {Icon} from "../Layouts/Icon"
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
+import { Transition } from "@headlessui/react";
 
 type SidebarLinkProps = {
     type: string,
@@ -26,16 +27,6 @@ type SidebarLinkProps = {
 type SidebarProps = {
     links: SidebarLinkProps[]
 }
-
-//TODO we have our own function of this, bring to utils?
-// hex to rgba converter
-const hexToRgba = (hex: string, alpha: number) => {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-};
 
 export const Sidebar = (props: SidebarProps) => {
 
@@ -75,27 +66,30 @@ export const Sidebar = (props: SidebarProps) => {
 
     const menuItemStyles: MenuItemStyles = {
         root: {
-            fontSize: '13px',
+            fontSize: 13,
             fontWeight: 400,
         },
         SubMenuExpandIcon: {
             color: '#b6b7b9',
         },
-        subMenuContent: ({ level }) => ({
-            backgroundColor:
-                level === 0
-                    ? "#fbfcfd"
-                    : 'transparent',
+        //TODO this isnt working for changing icon to white
+        icon: ({ active, open }) => ({
+            fill: (active || open) ? '#FFFFFF' : '0C192C', //TODO once font working for custom icons, can remove this line
+            color: (active || open) ? '#FFFFFF' : '0C192C'
         }),
-        button: {
+        subMenuContent: ({ level, active }) => ({
+            backgroundColor: active ? '#0C192C' : level === 0 ? '#fbfcfd' : 'transparent',
+        }),
+        button: ({  active , open }) => ({
             [`&.${menuClasses.disabled}`]: {
                 color: '#9fb6cf',
             },
             '&:hover': {
-                backgroundColor: hexToRgba('#0C192C', 1),
-                color: '#FFFFFF',
+                backgroundColor: '#cdcdcd'
             },
-        },
+            backgroundColor: active ? '#1B3B6B' : open ? '#0C192C' : '#FFFFFF',
+            color: (active || open) ? '#FFFFFF' : '#0C192C'
+        }),
         label: ({ open }) => ({
             fontWeight: open ? 800 : undefined,
         }),
@@ -103,9 +97,7 @@ export const Sidebar = (props: SidebarProps) => {
 
     function generateMenuItem(link: SidebarLinkProps) {
 
-        //TODO need href/onClick logic
-
-        //TODO icon not changing color on storybook hover, but hopefully just way we are loading svgs in webpack?
+        //TODO icon not changing color on hover. Broken on Cadenza and Storybook :(
 
         switch (link.type) {
             case 'menu':
@@ -115,6 +107,7 @@ export const Sidebar = (props: SidebarProps) => {
                                             additionalStyles={link.icon.additionalStyles}
                                             additionalClasses={'hover:melody-text-white'} />
 
+                //TODO for link, need to append current dashboard path name and add link.href to end
                 let component;
                 if (link.href) {
                     component = <Link href={link.href} />
@@ -147,21 +140,25 @@ export const Sidebar = (props: SidebarProps) => {
     }
 
     //TODO need group type
-    function getGroupLayout(groupToDisplay: any) {
+    //TODO need link component if listItemIndex !== -1 (root component)
+    function getGroupLayout(groupToDisplay: any, listItemIndex: number) {
         return (
-            <div className={"melody-flex"}>
+            <div className={`melody-flex melody-p-2 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200' : ''} ${(listItemIndex !== -1 && listItemIndex !== groupsToSelect.length  - 1) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
                 <Avatar image={groupToDisplay?.icon} />
-                <div className={"melody-p-1"}>
+
+                {!collapsed &&
+                  <div className={"melody-p-1 melody-text-left"}>
                     <p className={"melody-text-sm melody-font-bold"}>
                         {groupToDisplay?.groupName}
                     </p>
-                    <p className={"melody-text-sm melody-text-gray-600"}>
-                        @{groupToDisplay?.groupUniqueId}
+                    <p className={`melody-text-sm ${listItemIndex !== -1 ? 'melody-text-gray-600' : 'melody-text-gray-100'}`}>
+                      @{groupToDisplay?.groupUniqueId}
                     </p>
-                    <p className={"melody-text-xs melody-text-gray-600"}>
+                    <p className={`melody-text-xs ${listItemIndex !== -1 ? 'melody-text-gray-600' : 'melody-text-gray-100'}`}>
                         {groupToDisplay?.groupType}
                     </p>
-                </div>
+                  </div>
+                }
             </div>
         )
     }
@@ -171,27 +168,36 @@ export const Sidebar = (props: SidebarProps) => {
             breakPoint="lg"
             backgroundColor={"#FFFFFF"}
             width={"300px"}
-            rootStyles={{ color: "#0C192C" }}>
-            <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            rootStyles={{ color: "#0C192C", borderRight: "1px solid #0C192C" }}>
+            <div className={"melody-flex melody-flex-col melody-h-full"}>
 
                 {/*HEADER*/}
                 <div className={"melody-p-2 melody-relative"}>
-                    <div className={`melody-flex melody-p-1 melody-bg-white melody-rounded-lg melody-shadow melody-items-center ${!collapsed ? 'melody-cursor-pointer' : ''}`}
+                    <div className={`melody-flex melody-bg-secondary-100 melody-text-white melody-rounded-lg melody-shadow melody-items-center ${!collapsed ? 'melody-cursor-pointer' : 'melody-justify-center'}`}
                          onClick={() => !collapsed && setShowOrgSelector(!showOrgSelector)}>
-                        {getGroupLayout(group)}
+                        {getGroupLayout(group, -1)}
 
-                        <div className={"melody-ml-auto melody-pr-1"}>
-                            <Icon icon={'caretUp'} additionalClasses={'melody-text-primary-100'} />
-                            <Icon icon={'caretDown'} additionalClasses={'melody-text-primary-100'} />
-                        </div>
+                        {!collapsed &&
+                          <div className={"melody-ml-auto melody-pr-2"}>
+                            <Icon icon={'caretUp'} />
+                            <Icon icon={'caretDown'} />
+                          </div>
+                        }
                     </div>
 
-                    {showOrgSelector &&
-                        <div className={"melody-absolute melody-z-10 melody-bg-white melody-border melody-border-gray-300 melody-w-[275px] melody-rounded-lg melody-shadow melody-p-2 melody-mt-1 melody-ml-1"}>
-                            {/*TODO need list of groups with group details and link to other dashboard*/}
-                            {groupsToSelect.map(groupToSelect => getGroupLayout(groupToSelect))}
+                    <Transition
+                        as={Fragment}
+                        show={showOrgSelector}
+                        enter="melody-transition melody-ease-out melody-duration-100"
+                        enterFrom="melody-transform melody-opacity-0 melody-scale-95"
+                        enterTo="melody-transform opacity-100 melody-scale-100"
+                        leave="melody-transition melody-ease-in melody-duration-75"
+                        leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
+                        leaveTo="melody-transform melody-opacity-0 melody-scale-95">
+                        <div className={"melody-absolute melody-z-10 melody-bg-white melody-border melody-border-gray-300 melody-w-[275px] melody-rounded-lg melody-shadow melody-mt-1 melody-ml-1"}>
+                            {groupsToSelect.map((groupToSelect, index) => getGroupLayout(groupToSelect, index))}
                         </div>
-                    }
+                    </Transition>
                 </div>
 
                 {/*CONTENT*/}

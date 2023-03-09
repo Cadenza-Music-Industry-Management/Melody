@@ -178,9 +178,12 @@ export const Icon = (props: IconProps) => {
         'melody-visibility': MelodyVisibility
     }
 
+    //TODO 'color' does not work using direct SVG now instead of font for Melody icons, need to use 'fill' instead
+
     function getMelodyIcon() {
         const Component = melodyIconMap[icon]
         if (!Component) return;
+
 
         return <Component style={{...additionalStyles}} className={`melody-icon ${additionalClasses ? additionalClasses : ''}`} />
     }
