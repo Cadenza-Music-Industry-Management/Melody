@@ -7,13 +7,15 @@ export const SlideOver = (props: {
     title: string,
     open: boolean,
     setOpen: (open: boolean) => void,
-    children: ReactNode
+    children: ReactNode,
+    widthClassName?: string
 }) => {
     const {
         title,
         open,
         setOpen,
-        children
+        children,
+        widthClassName
     } = props
 
     return (
@@ -43,7 +45,7 @@ export const SlideOver = (props: {
                                 leaveFrom="melody-translate-x-0"
                                 leaveTo="melody-translate-x-full">
 
-                                <Dialog.Panel className="melody-slide-over-dialog-panel">
+                                <Dialog.Panel className={`melody-slide-over-dialog-panel ${widthClassName ?? 'melody-max-w-md'}`}>
                                     <div className="melody-slide-over-dialog-panel-container">
                                         <div className="melody-slide-over-header">
                                             {/*TODO label props*/}

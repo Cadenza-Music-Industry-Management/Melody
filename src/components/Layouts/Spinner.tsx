@@ -2,12 +2,12 @@ import React from 'react';
 import "./Spinner.css"
 
 export const Spinner = (props: {
-    size: string,
-    variant: string
+    size?: string,
+    variant?: string
 }) => {
     const {
-        size,
-        variant
+        size = 'medium',
+        variant = 'info'
     } = props
 
     //TODO use text-[left,center,right] for alignment

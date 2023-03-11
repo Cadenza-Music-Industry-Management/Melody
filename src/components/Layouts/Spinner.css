@@ -3,7 +3,7 @@
 }
 
 .melody-spinner.info {
-    @apply melody-fill-blue-100 dark:melody-fill-blue-900;
+    @apply melody-fill-primary-300 dark:melody-fill-primary-100;
 }
 
 .melody-spinner.alert {

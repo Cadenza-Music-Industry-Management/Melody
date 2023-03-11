@@ -11,7 +11,7 @@
 }
 
 .melody-slide-over-dialog-panel {
-    @apply melody-pointer-events-auto melody-w-screen melody-max-w-md;
+    @apply melody-pointer-events-auto melody-w-screen;
 }
 
 .melody-slide-over-dialog-panel-container {

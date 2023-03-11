@@ -6,7 +6,7 @@ import vivace from "../../assets/vivace_logo.png"
 import {ContentCreationLimits} from "../../utils/constants";
 import {formatBytes} from "../../utils/functions";
 import {Image} from '../Layouts/Image';
-import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
+import { Icon } from "../Layouts/Icon";
 
 export const CadenzaPricingLayout = (props: {
 
