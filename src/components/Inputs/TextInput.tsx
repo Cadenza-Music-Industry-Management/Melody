@@ -32,7 +32,7 @@ export const TextInput = (props: TextInputProps) => {
                        value={value}
                        disabled={disabled}
                        onChange={(event => onChange(event.target.value))}
-                       //id={`textInput`} //TODO need unique id
+                       //id={`textInput`} //TODO need unique id?
                        className={`melody-text-input ${headerComponent ? (trailerComponent ? 'hasHeaderTrailer' : 'hasHeader') : (trailerComponent ? 'hasTrailer' : '')} ${size}`} />
 
                 {trailerComponent &&

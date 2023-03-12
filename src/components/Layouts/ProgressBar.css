@@ -59,13 +59,13 @@
 }
 
 /*okay*/
-.melody-progressbar-header > .title.okay, .sub-title.okay {
+.melody-progressbar-header > .title.success, .sub-title.success {
     @apply melody-text-green-700 dark:melody-text-white;
 }
-.melody-progressbar-container > .progress-bar.okay {
+.melody-progressbar-container > .progress-bar.success {
     @apply melody-bg-green-100 dark:melody-bg-green-900;
 }
-.melody-progressbar-container > .progress-bar > .label.okay {
+.melody-progressbar-container > .progress-bar > .label.success {
     @apply melody-text-green-700 dark:melody-bg-green-100;
 }
 

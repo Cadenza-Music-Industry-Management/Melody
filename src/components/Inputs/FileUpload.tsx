@@ -1,18 +1,24 @@
 import './FileUpload.css'
+import { ChangeEvent } from "react";
 
+//TODO move to melody interface types file
 export const FileUpload = (props: {
     variant: string, //bar, dropdown
     size: string,
     label: string,
     multiple: boolean,
-    acceptedFileTypes?: string[],
+    acceptedFileTypes?: string,
+    onChange: (changeEvent: ChangeEvent<HTMLInputElement>) => void,
+    disabled?: boolean
 }) => {
     const {
         variant,
         size,
         label,
         multiple,
-        acceptedFileTypes
+        acceptedFileTypes,
+        onChange,
+        disabled = false
     } = props
 
     //TODO sizes of file upload here https://tailwind-elements.com/docs/standard/forms/file-input/#:~:text=Tailwind%20File%20input%20component%20File%20upload%20input%20built,any%20other%20file%20type%29%20from%20the%20local%20storage.
@@ -30,6 +36,9 @@ export const FileUpload = (props: {
                     <input className="melody-file-upload melody-block melody-w-full melody-text-sm melody-text-gray-900 melody-border melody-border-gray-300 melody-rounded-lg melody-cursor-pointer melody-bg-gray-50 dark:melody-text-gray-400 focus:melody-outline-none dark:melody-bg-gray-700 dark:melody-border-gray-600 dark:melody-placeholder-gray-400"
                            type="file"
                            id="fileUpload"
+                           disabled={disabled}
+                           accept={acceptedFileTypes ?? '.jpg,.jpeg,.png'}
+                           onChange={onChange}
                            multiple={multiple} />
                 </div>
             :
@@ -51,6 +60,7 @@ export const FileUpload = (props: {
                             </div>
                             <input type="file"
                                    id="fileUpload"
+                                   disabled={disabled}
                                    className="melody-file-upload melody-hidden"
                                    multiple={multiple} />
                         </label>

@@ -1,4 +1,4 @@
-import React, {Fragment, ReactNode, useRef} from 'react';
+import React, {Fragment, useRef} from 'react';
 import "./ModalTemplate.css"
 import { Dialog, Transition } from '@headlessui/react'
 import {Button} from "../Inputs/Button";
@@ -10,7 +10,8 @@ export const ModalTemplate = (props: ModalProps) => {
         open,
         setOpen,
         children,
-        footerContent
+        footerContent,
+        size = 'medium'
     } = props
 
     const cancelButtonRef = useRef(null)
@@ -61,27 +62,12 @@ export const ModalTemplate = (props: ModalProps) => {
                                     {children}
                                 </div>
 
-                                {/*Footer*/}
-                                {footerContent &&
-                                    <div className=" melody-border-t-2 melody-bg-gray-50 melody-px-4 melody-py-3 sm:melody-flex sm:melody-flex-row-reverse sm:melody-px-6">
-                                        {footerContent}
-
-                                        {/*TODO keeping for CSS for now*/}
-                                        {/*<button*/}
-                                        {/*    type="button"*/}
-                                        {/*    className="melody-inline-flex melody-w-full melody-justify-center melody-rounded-md melody-border melody-border-transparent melody-bg-red-600 melody-px-4 melody-py-2 melody-text-base melody-font-medium melody-text-white melody-shadow-sm hover:melody-bg-red-700 focus:melody-outline-none focus:melody-ring-2 focus:melody-ring-red-500 focus:melody-ring-offset-2 sm:melody-ml-3 sm:melody-w-auto sm:melody-text-sm"*/}
-                                        {/*    onClick={() => setOpen(false)}>*/}
-                                        {/*    Deactivate*/}
-                                        {/*</button>*/}
-                                        {/*<button*/}
-                                        {/*    type="button"*/}
-                                        {/*    className="melody-mt-3 melody-inline-flex melody-w-full melody-justify-center melody-rounded-md melody-border melody-border-gray-300 melody-bg-white melody-px-4 melody-py-2 melody-text-base melody-font-medium melody-text-gray-700 melody-shadow-sm hover:melody-melody-bg-gray-50 focus:melody-outline-none focus:melody-ring-2 focus:melody-ring-indigo-500 focus:melody-ring-offset-2 sm:melody-mt-0 sm:melody-ml-3 sm:melody-w-auto sm:melody-text-sm"*/}
-                                        {/*    onClick={() => setOpen(false)}*/}
-                                        {/*    ref={cancelButtonRef}>*/}
-                                        {/*    Cancel*/}
-                                        {/*</button>*/}
-                                    </div>
-                                }
+                                {/*/!*Footer*!/*/}
+                                {/*{footerContent &&*/}
+                                {/*    <div className=" melody-border-t-2 melody-bg-gray-50 melody-px-4 melody-py-3 sm:melody-flex sm:melody-flex-row-reverse sm:melody-px-6">*/}
+                                {/*        {footerContent}*/}
+                                {/*    </div>*/}
+                                {/*}*/}
                             </Dialog.Panel>
                         </Transition.Child>
                     </div>

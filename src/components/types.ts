@@ -3,7 +3,7 @@ import {DatePicker} from "./Inputs/DatePicker";
 
 //Indicator
 export interface IndicatorProps {
-    variant?: 'info' | 'alert' | 'okay' | 'caution' | 'dark' | 'light';
+    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light';
     size?: 'small' | 'medium' | 'large';
     animated?: boolean
 }
@@ -71,6 +71,8 @@ export interface TooltipProps {
     direction?: 'top' | 'bottom' | 'left' | 'right';
     delay?: number;
     children: ReactNode;
+    iconTooltip?: boolean,
+    additionalClasses?: string
 }
 
 //Icon
@@ -97,7 +99,7 @@ export interface ProgressBarProps {
     title: string,
     label: string,
     subTitle?: string,
-    variant?: 'info' | 'alert' | 'okay' | 'caution' | 'dark' | 'light';
+    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light';
 }
 
 //Date Picker
@@ -120,7 +122,8 @@ export interface ModalProps {
     open: boolean,
     setOpen: (open: boolean) => void,
     children?: ReactNode,
-    footerContent?: ReactNode
+    footerContent?: ReactNode,
+    size?: 'small' | 'medium' | 'large'
 }
 
 //Navigation Bar

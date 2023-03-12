@@ -10,7 +10,7 @@
     @apply melody-fill-red-100 dark:melody-fill-red-900;
 }
 
-.melody-spinner.okay {
+.melody-spinner.success {
     @apply melody-fill-green-100 dark:melody-fill-green-900;
 }
 
@@ -36,4 +36,8 @@
 
 .melody-spinner.large {
     @apply melody-w-12 melody-h-12;
+}
+
+.melody-spinner.xlarge {
+    @apply melody-w-20 melody-h-20;
 }

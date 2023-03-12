@@ -25,3 +25,7 @@
 .melody-text-input.large {
     @apply melody-p-3.5;
 }
+
+.melody-text-input:disabled {
+    @apply melody-bg-gray-200;
+}

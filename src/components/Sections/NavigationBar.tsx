@@ -70,7 +70,6 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                 </div>
 
                                 {/*TODO turn this into reusable icon dropdown component*/}
-
                                 {/* Profile dropdown */}
                                 {user &&
                                   <Menu as="div" className="melody-relative melody-ml-3">
@@ -78,7 +77,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                       <Menu.Button
                                         className="melody-flex melody-rounded-full melody-bg-gray-800 melody-text-sm focus:melody-outline-none focus:melody-ring-2 focus:melody-ring-white focus:melody-ring-offset-2 focus:melody-ring-offset-gray-800">
                                         <span className="melody-sr-only">Open user menu</span>
-                                        <Avatar image={user?.icon} />
+                                        <Avatar image={user?.image} />
                                       </Menu.Button>
                                     </div>
                                     <Transition

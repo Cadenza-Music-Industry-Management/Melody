@@ -7,7 +7,9 @@ export const Tooltip = (props: TooltipProps) => {
         message,
         direction = 'right',
         delay = 150,
-        children
+        children,
+        iconTooltip = false,
+        additionalClasses
     } = props
 
     const [showTooltip, setShowTooltip] = useState(false)
@@ -30,7 +32,7 @@ export const Tooltip = (props: TooltipProps) => {
     //TODO need question mark state for cadenza (or split out to own component? needs color, fontSize?)) and also need disabled state of not showing tooltip for certain cases
 
     return (
-        <div className="melody-inline-block melody-relative">
+        <div className={`melody-inline-block melody-relative ${additionalClasses ?? ''}`}>
             <div className="melody-inline-block"
                  onMouseEnter={handleMouseEnter}
                  onMouseLeave={handleMouseLeave}>

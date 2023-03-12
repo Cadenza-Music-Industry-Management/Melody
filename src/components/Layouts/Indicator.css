@@ -10,7 +10,7 @@
     @apply melody-bg-red-100 dark:melody-bg-red-900 melody-border-red-400;
 }
 
-.melody-indicator.okay {
+.melody-indicator.success {
     @apply melody-bg-green-100 dark:melody-bg-green-900 melody-border-green-400;
 }
 
