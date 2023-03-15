@@ -4,8 +4,8 @@ import {IndicatorProps} from "../types";
 
 export const Indicator = (props: IndicatorProps) => {
     const {
-        variant,
-        size,
+        variant = 'info',
+        size = 'medium',
         animated
     } = props
 

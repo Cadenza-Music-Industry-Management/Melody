@@ -107,11 +107,13 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                                               <span onClick={item.onClick}
                                                                     className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
                                                                   {item.name}
+                                                                  {item.trailerComponent}
                                                               </span>
                                                             :
                                                               <a href={item.href}
                                                                  className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
                                                                   {item.name}
+                                                                  {item.trailerComponent}
                                                               </a>
                                                           }
                                                       </>

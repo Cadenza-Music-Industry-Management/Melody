@@ -17,7 +17,8 @@ export interface ButtonProps {
     label?: string,
     icon?: AddIconProps,
     onClick?: () => void,
-    disabled?: boolean
+    disabled?: boolean,
+    indicator?: IndicatorProps
 }
 
 //Dropdown
@@ -135,7 +136,8 @@ export interface NavigationBarProps {
 export interface NavBarItemProps {
     name: string,
     onClick?: () => void,
-    href?: string
+    href?: string,
+    trailerComponent?: ReactNode
 }
 
 //User
@@ -144,4 +146,12 @@ export interface UserProps {
     name: string,
     uid: string,
     icon: string
+}
+
+//Badge
+export interface BadgeProps {
+    variant: string,
+    size?: string,
+    text: string,
+    indicator?: IndicatorProps
 }

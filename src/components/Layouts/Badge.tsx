@@ -1,15 +1,9 @@
 import React from 'react';
 import "./Badge.css"
-import {IndicatorProps} from "../types";
+import { BadgeProps } from "../types";
 import {Indicator} from "./Indicator";
 
-//TODO move interface to Melody types file
-export const Badge = (props: {
-    variant: string,
-    size?: string,
-    text: string,
-    indicator?: IndicatorProps,
-}) => {
+export const Badge = (props: BadgeProps) => {
     const {
         variant,
         size = 'small',
@@ -21,9 +15,7 @@ export const Badge = (props: {
         <span className={`melody-badge ${variant} ${size}`}>
             {indicator &&
                 <div className={"melody-mr-0.5"}>
-                    <Indicator variant={indicator.variant}
-                               size={indicator.size}
-                               animated={indicator.animated} />
+                  <Indicator {...indicator} />
                 </div>
             }
 
