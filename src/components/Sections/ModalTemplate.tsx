@@ -45,6 +45,7 @@ export const ModalTemplate = (props: ModalProps) => {
                             leaveTo="melody-opacity-0 melody-translate-y-4 sm:melody-translate-y-0 sm:melody-scale-95">
                             <Dialog.Panel className="melody-relative melody-transform melody-overflow-hidden melody-rounded-lg melody-bg-white melody-text-left melody-shadow-xl melody-transition-all melody-w-full sm:melody-my-8 sm:melody-max-w-lg md:melody-max-w-2xl">
                                 {/*Header*/}
+                                {/*TODO size variants would be set here at end of css for md: case*/}
                                 <div className={`melody-bg-gray-50 melody-border-b-2 border-gray-600 melody-p-3 melody-rounded-t-lg melody-flex melody-flex-col sm:melody-flex-row melody-justify-between melody-items-center`}>
                                     <h2 className={`melody-text-lg melody-font-medium melody-mb-4 sm:melody-mb-0`}>{title}</h2>
                                     {/*TODO better variant for close button?*/}
