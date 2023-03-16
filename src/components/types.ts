@@ -140,6 +140,14 @@ export interface NavBarItemProps {
     trailerComponent?: ReactNode
 }
 
+//Button Menu
+export interface ButtonMenuProps {
+    size?: 'small' | 'medium' | 'large',
+    buttonContents: ReactNode,
+    dropdownHeaderItem?: ReactNode,
+    items: NavBarItemProps[] //TODO Own type or rename?
+}
+
 //User
 export interface UserProps {
     username: string,
