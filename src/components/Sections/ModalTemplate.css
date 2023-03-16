@@ -1,0 +1,38 @@
+.melody-modal-bg-overlay {
+    @apply melody-fixed melody-inset-0 melody-bg-gray-500 melody-bg-opacity-75 melody-transition-opacity;
+}
+
+.melody-modal-fixed-container {
+    @apply melody-fixed melody-inset-0 melody-z-10 melody-overflow-y-auto;
+}
+
+.melody-modal-container {
+    @apply melody-flex melody-min-h-full melody-items-end melody-justify-center melody-p-4 melody-text-center sm:melody-items-center sm:melody-p-0;
+}
+
+/*TODO size variants would be set here at end of css for md: case*/
+.melody-modal-panel {
+    @apply melody-relative melody-transform melody-overflow-hidden melody-rounded-lg melody-bg-white melody-text-left melody-shadow-xl melody-transition-all melody-w-full sm:melody-my-8 sm:melody-max-w-lg;
+}
+
+.melody-modal-header {
+    @apply melody-bg-gray-50 melody-border-b-2 melody-border-gray-600 melody-p-3 melody-rounded-t-lg melody-flex melody-flex-col sm:melody-flex-row melody-justify-between melody-items-center;
+}
+
+.melody-modal-contents {
+    @apply melody-bg-white melody-px-4 melody-pt-5 melody-pb-4 sm:melody-p-6 sm:melody-pb-4;
+}
+
+/*Sizes*/
+.melody-modal-panel.xsmall {
+    @apply md:melody-max-w-sm;
+}
+.melody-modal-panel.small {
+    @apply md:melody-max-w-lg;
+}
+.melody-modal-panel.medium {
+    @apply md:melody-max-w-xl;
+}
+.melody-modal-panel.large {
+    @apply md:melody-max-w-2xl;
+}

@@ -124,7 +124,7 @@ export interface ModalProps {
     setOpen: (open: boolean) => void,
     children?: ReactNode,
     footerContent?: ReactNode,
-    size?: 'small' | 'medium' | 'large'
+    size?: 'xsmall' | 'small' | 'medium' | 'large'
 }
 
 //Navigation Bar
