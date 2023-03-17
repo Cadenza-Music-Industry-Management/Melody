@@ -10,7 +10,6 @@ export const ModalTemplate = (props: ModalProps) => {
         open,
         setOpen,
         children,
-        footerContent,
         size = 'medium'
     } = props
 

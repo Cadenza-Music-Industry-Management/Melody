@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import "./Tooltip.css"
 import {TooltipProps} from "../types";
 

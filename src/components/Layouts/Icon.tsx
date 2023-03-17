@@ -27,6 +27,7 @@ import {
     faLock,
     faPeopleGroup,
     faSignature,
+    faBan,
     faUserTie, //TODO username
     faMoneyBillTrendUp, //Income
     faMoneyBillTransfer, //Expense
@@ -35,7 +36,6 @@ import {
     faEllipsis, //Multiple uses: Pagination, what else?
     faEllipsisVertical, //Settings
 } from '@fortawesome/free-solid-svg-icons';
-// import { fa } from '@fortawesome/free-regular-svg-icons';
 import {
     faTiktok,
     faTwitter,
@@ -47,7 +47,11 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import {IconProps} from "../types";
 import {
-    MelodyAccounting, MelodyArchive, MelodyArtist, MelodyArtistManagementOrg, MelodyArtistOrg,
+    MelodyAccounting,
+    MelodyArchive,
+    MelodyArtist,
+    MelodyArtistManagementOrg,
+    MelodyArtistOrg,
     MelodyBin,
     MelodyBlogPost,
     MelodyCalendar,
@@ -82,6 +86,7 @@ import {
     MelodyTools,
     MelodyVisibility
 } from "@/components/Melody/src/components/Layouts/IcomoonExports";
+// import { fa } from '@fortawesome/free-regular-svg-icons';
 
 export const Icon = (props: IconProps) => {
     const {
@@ -125,6 +130,7 @@ export const Icon = (props: IconProps) => {
         firstName: faSignature,
         lastName: faPeopleGroup,
         username: faUserTie,
+        ban: faBan,
         //Social media
         tiktok: faTiktok,
         twitter: faTwitter,
