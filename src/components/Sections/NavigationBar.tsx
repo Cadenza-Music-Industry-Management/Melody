@@ -24,6 +24,14 @@ export const NavigationBar = (props: NavigationBarProps) => {
 
     const pathname = usePathname()
 
+    function checkURL(url: string) {
+        if (url === "/") {
+            return url === pathname
+        } else {
+            return pathname.includes(url)
+        }
+    }
+
     return (
         <Disclosure as="nav" className="melody-bg-gray-50 melody-border-b melody-border-primary-100 melody-p-1 melody-font-sans">
             {({ open }: { open: boolean }) => (
@@ -60,10 +68,10 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                             <a key={item.name}
                                                href={item.href}
                                                className={classNames(
-                                                   pathname === item.href ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
+                                                   checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
                                                    'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium'
                                                )}
-                                               aria-current={pathname === item.href ? 'page' : undefined}>
+                                               aria-current={checkURL(item.href ?? "no-href") ? 'page' : undefined}>
                                                 {item.name}
                                             </a>
                                         ))}

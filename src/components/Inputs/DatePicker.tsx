@@ -44,6 +44,7 @@ export const DatePicker = (props: DatePickerProps) => {
             </button>
         )
     })
+    ButtonInput.displayName = 'ButtonInput'
 
     return (
         <div>
