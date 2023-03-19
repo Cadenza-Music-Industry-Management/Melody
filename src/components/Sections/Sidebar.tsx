@@ -25,37 +25,18 @@ type SidebarLinkProps = {
 };
 
 type SidebarProps = {
-    links: SidebarLinkProps[]
+    links: SidebarLinkProps[],
+    organization?: any, //TODO need type from Cadenza
+    organizations?: any[] //TODO need type from Cadenza
 }
 
 export const Sidebar = (props: SidebarProps) => {
 
-    const {
-        links
+    let {
+        links,
+        organization,
+        organizations
     } = props
-
-    //TODO temp group object
-    const group: any = {
-        groupName: 'The Landing Strip Records',
-        groupUniqueId: 'tlsrecords',
-        icon: 'https://cadenzamim.com/static/media/black_icon.65d98686b4a6aec00d0a.png',
-        groupType: 'Record Label'
-    }
-
-    const groupsToSelect: any[] = [
-        {
-            groupName: 'Group 1',
-            groupUniqueId: 'group1',
-            icon: 'https://cadenzamim.com/static/media/black_icon.65d98686b4a6aec00d0a.png',
-            groupType: 'Record Label'
-        },
-        {
-            groupName: 'Group 2',
-            groupUniqueId: 'group2',
-            icon: 'https://cadenzamim.com/static/media/black_icon.65d98686b4a6aec00d0a.png',
-            groupType: 'Artist'
-        }
-    ]
 
     const { collapseSidebar, collapsed } = useProSidebar()
     const [showOrgSelector, setShowOrgSelector] = useState(false)
@@ -139,17 +120,16 @@ export const Sidebar = (props: SidebarProps) => {
         }
     }
 
-    //TODO need group type
-    //TODO need link component if listItemIndex !== -1 (root component)
     function getGroupLayout(groupToDisplay: any, listItemIndex: number) {
-        return (
-            <div className={`melody-flex melody-p-2 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200' : ''} ${(listItemIndex !== -1 && listItemIndex !== groupsToSelect.length  - 1) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
+
+        const orgComponent = (
+            <div className={`melody-flex melody-p-2 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== organizations?.length  - 1) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
                 <Avatar image={groupToDisplay?.icon} />
 
                 {!collapsed &&
                   <div className={"melody-p-1 melody-text-left"}>
                     <p className={"melody-text-sm melody-font-bold"}>
-                        {groupToDisplay?.groupName}
+                        {groupToDisplay?.name}
                     </p>
                     <p className={`melody-text-sm ${listItemIndex !== -1 ? 'melody-text-gray-600' : 'melody-text-gray-100'}`}>
                       @{groupToDisplay?.groupUniqueId}
@@ -160,6 +140,18 @@ export const Sidebar = (props: SidebarProps) => {
                   </div>
                 }
             </div>
+        )
+
+        return (
+            <>
+                {listItemIndex !== -1 ?
+                    <Link href={`/dashboard/${groupToDisplay.groupUniqueId}`}>
+                        {orgComponent}
+                    </Link>
+                    :
+                    orgComponent
+                }
+            </>
         )
     }
 
@@ -175,7 +167,7 @@ export const Sidebar = (props: SidebarProps) => {
                 <div className={"melody-p-2 melody-relative"}>
                     <div className={`melody-flex melody-bg-secondary-100 melody-text-white melody-rounded-lg melody-shadow melody-items-center ${!collapsed ? 'melody-cursor-pointer' : 'melody-justify-center'}`}
                          onClick={() => !collapsed && setShowOrgSelector(!showOrgSelector)}>
-                        {getGroupLayout(group, -1)}
+                        {getGroupLayout(organization, -1)}
 
                         {!collapsed &&
                           <div className={"melody-ml-auto melody-pr-2"}>
@@ -195,7 +187,13 @@ export const Sidebar = (props: SidebarProps) => {
                         leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
                         leaveTo="melody-transform melody-opacity-0 melody-scale-95">
                         <div className={"melody-absolute melody-z-10 melody-bg-white melody-border melody-border-gray-300 melody-w-[275px] melody-rounded-lg melody-shadow melody-mt-1 melody-ml-1"}>
-                            {groupsToSelect.map((groupToSelect, index) => getGroupLayout(groupToSelect, index))}
+                            {organizations?.map((groupToSelect, index) => getGroupLayout(groupToSelect, index))}
+
+                            {organizations?.length === 0 &&
+                              <p className={"melody-p-4 melody-font-bold melody-text-center melody-text-sm"}>
+                                User is not part of any other organization
+                              </p>
+                            }
                         </div>
                     </Transition>
                 </div>
