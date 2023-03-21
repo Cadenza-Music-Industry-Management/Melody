@@ -71,7 +71,7 @@ export interface TooltipProps {
     message: string;
     direction?: 'top' | 'bottom' | 'left' | 'right';
     delay?: number;
-    children: ReactNode;
+    children?: ReactNode;
     iconTooltip?: boolean,
     additionalClasses?: string
 }

@@ -29,7 +29,7 @@ export const Checkbox = (props: {
                    disabled={disabled}
                    checked={value}
                    onClick={() => handleChange(!value)}
-                   className={`melody-checkbox ${variant } ${size}`} />
+                   className={`melody-checkbox ${variant} ${size}`} />
 
             {(label || subLabel) &&
               <div className="melody-ml-2 melody-text-sm">

@@ -2,6 +2,10 @@
     @apply melody-inline-flex melody-items-center melody-font-bold melody-rounded-md melody-shadow-md melody-transition-colors melody-duration-200 melody-ease-in-out;
 }
 
+.melody-button:disabled {
+    @apply melody-cursor-not-allowed;
+}
+
 .melody-button-small {
     @apply melody-text-xs melody-px-3 melody-py-1;
 }

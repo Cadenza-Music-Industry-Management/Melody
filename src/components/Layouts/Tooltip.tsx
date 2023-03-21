@@ -15,13 +15,13 @@ export const Tooltip = (props: TooltipProps) => {
     const [showTooltip, setShowTooltip] = useState(false)
     let timeout: ReturnType<typeof setTimeout>
 
-    const handleMouseEnter = () => {
+    function handleMouseEnter() {
         timeout = setTimeout(() => {
             setShowTooltip(true)
         }, delay)
     }
 
-    const handleMouseLeave = () => {
+    function handleMouseLeave() {
         clearTimeout(timeout);
         setShowTooltip(false)
     }
@@ -30,6 +30,7 @@ export const Tooltip = (props: TooltipProps) => {
     ${direction === "bottom" ? "tooltip-bottom" : ""} ${direction === "left" ? "tooltip-left" : ""} ${showTooltip ? "melody-opacity-100" : "melody-opacity-0"}`
 
     //TODO need question mark state for cadenza (or split out to own component? needs color, fontSize?)) and also need disabled state of not showing tooltip for certain cases
+    // could just manage children state, so if question=true, then set children to question mark icon
 
     return (
         <div className={`melody-inline-block melody-relative ${additionalClasses ?? ''}`}>

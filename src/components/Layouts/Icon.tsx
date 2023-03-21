@@ -2,6 +2,7 @@ import React from 'react';
 import "./Icon.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+    faPlus,
     faXmark,
     faCheck,
     faBars,
@@ -24,18 +25,23 @@ import {
     faThumbsUp,
     faThumbsDown,
     faAt,
+    faEdit,
+    faRefresh,
+    faSearch,
     faLock,
     faPeopleGroup,
     faSignature,
     faBan,
+    faImage,
+    faDesktop,
     faUserTie, //TODO username
     faMoneyBillTrendUp, //Income
     faMoneyBillTransfer, //Expense
     faAnglesRight, //Pagination Next
     faAnglesLeft, //Pagination Last
     faEllipsis, //Multiple uses: Pagination, what else?
-    faEllipsisVertical, //Settings
-} from '@fortawesome/free-solid-svg-icons';
+    faEllipsisVertical //Settings
+} from "@fortawesome/free-solid-svg-icons";
 import {
     faTiktok,
     faTwitter,
@@ -43,7 +49,11 @@ import {
     faYoutube,
     faFacebook,
     faSoundcloud,
-    faCcStripe
+    faCcStripe,
+    faSpotify,
+    faApple,
+    faAmazon,
+    faDeezer,
 } from '@fortawesome/free-brands-svg-icons'
 import {IconProps} from "../types";
 import {
@@ -98,6 +108,7 @@ export const Icon = (props: IconProps) => {
     } = props
 
     const faIconMap: any = {
+        plus: faPlus,
         solidX: faXmark, //TODO need solid naming?
         solidCheck: faCheck,
         solidBars: faBars,
@@ -125,12 +136,17 @@ export const Icon = (props: IconProps) => {
         paginationLeft: faAnglesLeft,
         solidEllipsis: faEllipsis,
         solidEllipsisVertical: faEllipsisVertical,
+        desktop: faDesktop,
         email: faAt,
+        search: faSearch,
+        refresh: faRefresh,
         password: faLock,
         firstName: faSignature,
         lastName: faPeopleGroup,
         username: faUserTie,
         ban: faBan,
+        image: faImage,
+        edit: faEdit,
         //Social media
         tiktok: faTiktok,
         twitter: faTwitter,
@@ -139,6 +155,10 @@ export const Icon = (props: IconProps) => {
         facebook: faFacebook,
         soundcloud: faSoundcloud,
         stripe: faCcStripe,
+        spotify: faSpotify,
+        apple: faApple,
+        amazon: faAmazon,
+        deezer: faDeezer
     }
 
     //TODO using bad method of individual SVGs until I can get icomoon font working in NextJS Cadenza app (works in storybook??)

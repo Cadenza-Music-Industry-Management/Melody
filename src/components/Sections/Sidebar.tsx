@@ -1,3 +1,5 @@
+"use client"
+
 import { AddIconProps } from "../types";
 import { Button } from "../Inputs/Button";
 import {
@@ -14,6 +16,7 @@ import {Icon} from "../Layouts/Icon"
 import React, { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
+import { usePathname } from "next/navigation";
 
 type SidebarLinkProps = {
     type: string,
@@ -21,6 +24,7 @@ type SidebarLinkProps = {
     href?: string,
     onClick?: () => void, //open slideover for example
     icon?: AddIconProps,
+    selected?: boolean,
     children?: SidebarLinkProps[]
 };
 
@@ -38,6 +42,7 @@ export const Sidebar = (props: SidebarProps) => {
         organizations
     } = props
 
+    const pathname = usePathname()
     const { collapseSidebar, collapsed } = useProSidebar()
     const [showOrgSelector, setShowOrgSelector] = useState(false)
 
@@ -48,7 +53,7 @@ export const Sidebar = (props: SidebarProps) => {
     const menuItemStyles: MenuItemStyles = {
         root: {
             fontSize: 13,
-            fontWeight: 400,
+            fontWeight: 400
         },
         SubMenuExpandIcon: {
             color: '#b6b7b9',
@@ -76,7 +81,7 @@ export const Sidebar = (props: SidebarProps) => {
         }),
     }
 
-    function generateMenuItem(link: SidebarLinkProps) {
+    function generateMenuItem(link: SidebarLinkProps, rootLevel = true) {
 
         //TODO icon not changing color on hover. Broken on Cadenza and Storybook :(
 
@@ -97,11 +102,11 @@ export const Sidebar = (props: SidebarProps) => {
                 }
 
                 if (link.children) {
-                    return <SubMenu label={link.title} icon={icon} component={component}>
-                        {link.children.map(link => generateMenuItem(link))}
+                    return <SubMenu label={link.title} icon={icon} component={component} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
+                        {link.children.map(link => generateMenuItem(link, false))}
                     </SubMenu>
                 } else {
-                    return <MenuItem icon={icon} component={component}>
+                    return <MenuItem icon={icon} component={component} active={link.onClick ? (link.selected ?? false) : pathname.includes(link.href ?? "")}>
                         {link.title}
                     </MenuItem>
                 }
@@ -116,6 +121,15 @@ export const Sidebar = (props: SidebarProps) => {
             case 'separator':
                 return <div className={"melody-p-3"}>
                     <hr className={"melody-bg-primary-100 melody-h-[2px]"} />
+                </div>
+            case 'button':
+                return <div className={"melody-p-3 melody-text-center melody-w-full"}>
+                    <Button label={link.title ?? ""}
+                            icon={link.icon}
+                            onClick={link.onClick ?? null}
+                            size={'small'}
+                            variant={'outlined'}
+                            color={'primary'} />
                 </div>
         }
     }
