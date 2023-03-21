@@ -93,7 +93,6 @@ export const Sidebar = (props: SidebarProps) => {
                                             additionalStyles={link.icon.additionalStyles}
                                             additionalClasses={'hover:melody-text-white'} />
 
-                //TODO for link, need to append current dashboard path name and add link.href to end
                 let component;
                 if (link.href) {
                     component = <Link href={link.href} />
@@ -102,11 +101,13 @@ export const Sidebar = (props: SidebarProps) => {
                 }
 
                 if (link.children) {
+                    //TODO need to set active submenu prop if its open or any children are active
                     return <SubMenu label={link.title} icon={icon} component={component} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
                         {link.children.map(link => generateMenuItem(link, false))}
                     </SubMenu>
                 } else {
-                    return <MenuItem icon={icon} component={component} active={link.onClick ? (link.selected ?? false) : pathname.includes(link.href ?? "")}>
+                    //TODO selection logic is broken, check settings tab for example (payment tab selected and default settings is selected)
+                    return <MenuItem icon={icon} component={component} active={link.selected !== undefined ? (link.selected ?? false) : pathname.includes(link.href ?? "")} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
                         {link.title}
                     </MenuItem>
                 }
@@ -191,6 +192,7 @@ export const Sidebar = (props: SidebarProps) => {
                         }
                     </div>
 
+                    {/*TODO if we click outside this area, we should close popup too*/}
                     <Transition
                         as={Fragment}
                         show={showOrgSelector}
