@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import "./Carousel.css"
+import Image from "next/image";
 
 export const Carousel = (props: {
     width: any,
@@ -35,10 +36,10 @@ export const Carousel = (props: {
     return (
         <div className="melody-relative">
             <div className="melody-aspect-w-16 melody-aspect-h-9">
-                <img className="melody-object-cover melody-w-full melody-h-full"
-                     src={images[currentImageIndex]}
-                     style={{ width, height }}
-                     alt="carousel" />
+                <Image className="melody-object-cover melody-w-full melody-h-full"
+                       src={images[currentImageIndex]}
+                       style={{ width, height }}
+                       alt="carousel" />
             </div>
 
             {/*TODO turn into melody buttons wrapped with absolute divs*/}

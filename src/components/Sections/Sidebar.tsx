@@ -17,16 +17,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
 import { usePathname } from "next/navigation";
-
-type SidebarLinkProps = {
-    type: string,
-    title?: string,
-    href?: string,
-    onClick?: () => void, //open slideover for example
-    icon?: AddIconProps,
-    selected?: boolean,
-    children?: SidebarLinkProps[]
-};
+import { SidebarLinkProps } from "@/constants/types";
 
 type SidebarProps = {
     links: SidebarLinkProps[],
@@ -107,7 +98,8 @@ export const Sidebar = (props: SidebarProps) => {
                     </SubMenu>
                 } else {
                     //TODO selection logic is broken, check settings tab for example (payment tab selected and default settings is selected)
-                    return <MenuItem icon={icon} component={component} active={link.selected !== undefined ? (link.selected ?? false) : pathname.includes(link.href ?? "")} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
+                    //Note: usePathname() returns string, but fails with possibly null in build
+                    return <MenuItem icon={icon} component={component} active={link.selected !== undefined ? (link.selected ?? false) : pathname?.includes(link.href ?? "") ?? false} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
                         {link.title}
                     </MenuItem>
                 }
@@ -127,7 +119,7 @@ export const Sidebar = (props: SidebarProps) => {
                 return <div className={"melody-p-3 melody-text-center melody-w-full"}>
                     <Button label={link.title ?? ""}
                             icon={link.icon}
-                            onClick={link.onClick ?? null}
+                            onClick={link.onClick ?? undefined}
                             size={'small'}
                             variant={'outlined'}
                             color={'primary'} />
@@ -137,25 +129,29 @@ export const Sidebar = (props: SidebarProps) => {
 
     function getGroupLayout(groupToDisplay: any, listItemIndex: number) {
 
-        const orgComponent = (
-            <div className={`melody-flex melody-p-2 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== organizations?.length  - 1) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
-                <Avatar image={groupToDisplay?.icon} />
+        let orgComponent;
 
-                {!collapsed &&
-                  <div className={"melody-p-1 melody-text-left"}>
-                    <p className={"melody-text-sm melody-font-bold"}>
-                        {groupToDisplay?.name}
-                    </p>
-                    <p className={`melody-text-sm ${listItemIndex !== -1 ? 'melody-text-gray-600' : 'melody-text-gray-100'}`}>
-                      @{groupToDisplay?.groupUniqueId}
-                    </p>
-                    <p className={`melody-text-xs ${listItemIndex !== -1 ? 'melody-text-gray-600' : 'melody-text-gray-100'}`}>
-                        {groupToDisplay?.groupType}
-                    </p>
-                  </div>
-                }
-            </div>
-        )
+        if (organizations) {
+            orgComponent = (
+                <div className={`melody-flex melody-p-2 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== organizations?.length  - 1) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
+                    <Avatar image={groupToDisplay?.icon} />
+
+                    {!collapsed &&
+                      <div className={"melody-p-1 melody-text-left"}>
+                        <p className={"melody-text-sm melody-font-bold"}>
+                            {groupToDisplay?.name}
+                        </p>
+                        <p className={`melody-text-sm ${listItemIndex !== -1 ? 'melody-text-gray-600' : 'melody-text-gray-100'}`}>
+                          @{groupToDisplay?.groupUniqueId}
+                        </p>
+                        <p className={`melody-text-xs ${listItemIndex !== -1 ? 'melody-text-gray-600' : 'melody-text-gray-100'}`}>
+                            {groupToDisplay?.groupType}
+                        </p>
+                      </div>
+                    }
+                </div>
+            )
+        }
 
         return (
             <>

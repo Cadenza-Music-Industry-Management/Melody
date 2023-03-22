@@ -25,10 +25,12 @@ export const NavigationBar = (props: NavigationBarProps) => {
     const pathname = usePathname()
 
     function checkURL(url: string) {
-        if (url === "/") {
-            return url === pathname
-        } else {
-            return pathname.includes(url)
+        if (pathname) { //Note: usePathname() returns string, but fails with possibly null in build
+            if (url === "/") {
+                return url === pathname
+            } else {
+                return pathname.includes(url)
+            }
         }
     }
 

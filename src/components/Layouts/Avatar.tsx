@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Avatar.css"
+import Image from "next/image";
 
 export const Avatar = (props: {
     size?: string,
@@ -19,8 +20,8 @@ export const Avatar = (props: {
     return (
         <>
             {image ?
-                <img className={`melody-avatar ${size} ${rounded && 'melody-rounded-full'} ${ring && 'ring'}`}
-                     src={image} alt="Bordered avatar" />
+                <Image className={`melody-avatar ${size} ${rounded && 'melody-rounded-full'} ${ring && 'ring'}`}
+                       src={image} alt="Bordered avatar" />
                 :
                 <div className={`melody-avatar-preview ${rounded && 'melody-rounded-full'} ${ring && 'ring'}`}>
                     <svg fill="currentColor"

@@ -1,5 +1,6 @@
 import './FileUpload.css'
 import { ChangeEvent } from "react";
+import Image from "next/image";
 
 //TODO move to melody interface types file
 export const FileUpload = (props: {
@@ -47,9 +48,9 @@ export const FileUpload = (props: {
                         <label className="melody-cursor-pointer melody-flex melody-flex-col melody-rounded-lg melody-border-4 melody-border-dashed melody-w-full melody-h-60 melody-p-10 melody-group melody-text-center">
                             <div className="melody-h-full melody-w-full melody-text-center melody-flex melody-flex-col melody-items-center melody-justify-center melody-items-center">
                                 <div className="melody-flex melody-flex-auto melody-max-h-48 melody-mx-auto">
-                                    <img className="melody-has-mask melody-h-36 melody-object-center"
-                                         src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
-                                         alt="dropzone for upload" />
+                                    <Image className="melody-has-mask melody-h-36 melody-object-center"
+                                           src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
+                                           alt="dropzone for upload" />
                                 </div>
 
                                 <p className="melody-pointer-none melody-text-gray-500">

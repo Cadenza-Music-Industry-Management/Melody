@@ -82,7 +82,8 @@ export interface IconProps {
     icon: string,
     additionalStyles?: any,
     additionalClasses?: string,
-    containerType?: 'flex' | 'contents' //Contents needed for sidebar icons
+    //Contents needed for sidebar icons
+    containerType?: string //TODO not working with 'flex' | 'contents'?
 }
 
 export interface AddIconProps {
@@ -90,7 +91,7 @@ export interface AddIconProps {
     rightAligned?: boolean,
     additionalStyles?: any,
     additionalClasses?: string,
-    containerType?: 'flex' | 'contents'
+    containerType?: string //TODO not working with 'flex' | 'contents'?
 }
 
 //Progress Bar
