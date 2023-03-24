@@ -34,7 +34,7 @@ export const Sidebar = (props: SidebarProps) => {
     } = props
 
     const pathname = usePathname()
-    const { collapseSidebar, collapsed } = useProSidebar()
+    const { collapseSidebar, collapsed, toggleSidebar, toggled, broken } = useProSidebar()
     const [showOrgSelector, setShowOrgSelector] = useState(false)
 
     useEffect(() => {
@@ -72,7 +72,7 @@ export const Sidebar = (props: SidebarProps) => {
         }),
     }
 
-    function generateMenuItem(link: SidebarLinkProps, rootLevel = true) {
+    function generateMenuItem(link: SidebarLinkProps, rootLevel , index) {
 
         //TODO icon not changing color on hover. Broken on Cadenza and Storybook :(
 
@@ -94,7 +94,7 @@ export const Sidebar = (props: SidebarProps) => {
                 if (link.children) {
                     //TODO need to set active submenu prop if its open or any children are active
                     return <SubMenu label={link.title} icon={icon} component={component} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
-                        {link.children.map(link => generateMenuItem(link, false))}
+                        {link.children.map((link, childIndex) => generateMenuItem(link, false, `index-${index}-child-${childIndex}`))}
                     </SubMenu>
                 } else {
                     //TODO selection logic is broken, check settings tab for example (payment tab selected and default settings is selected)
@@ -167,67 +167,83 @@ export const Sidebar = (props: SidebarProps) => {
     }
 
     return (
-        <ProSidebar
-            breakPoint="lg"
-            backgroundColor={"#FFFFFF"}
-            width={"300px"}
-            rootStyles={{ color: "#0C192C", borderRight: "1px solid #0C192C" }}>
-            <div className={"melody-flex melody-flex-col melody-h-full"}>
+       <>
+           {broken &&
+               <div className={"melody-fixed melody-bottom-1 melody-left-1"}>
+                 <Button label={'Sidebar'} icon={{ icon: 'plus', rightAligned: true }} onClick={() => toggleSidebar(!toggled)} />
+               </div>
+           }
 
-                {/*HEADER*/}
-                <div className={"melody-p-2 melody-relative"}>
-                    <div className={`melody-flex melody-bg-secondary-100 melody-text-white melody-rounded-lg melody-shadow melody-items-center ${!collapsed ? 'melody-cursor-pointer' : 'melody-justify-center'}`}
-                         onClick={() => !collapsed && setShowOrgSelector(!showOrgSelector)}>
-                        {getGroupLayout(organization, -1)}
+           <ProSidebar
+               breakPoint="md"
+               backgroundColor={"#FFFFFF"}
+               width={"300px"}
+               rootStyles={{ color: "#0C192C", borderRight: "1px solid #0C192C" }}>
+               <div className={"melody-flex melody-flex-col melody-h-full"}>
 
-                        {!collapsed &&
-                          <div className={"melody-ml-auto melody-pr-2"}>
-                            <Icon icon={'caretUp'} />
-                            <Icon icon={'caretDown'} />
-                          </div>
-                        }
-                    </div>
+                   {/*HEADER*/}
+                   <div className={"melody-p-2 melody-relative"}>
+                       <div className={`melody-flex melody-bg-secondary-100 melody-text-white melody-rounded-lg melody-shadow melody-items-center ${!collapsed ? 'melody-cursor-pointer' : 'melody-justify-center'}`}
+                            onClick={() => !collapsed && setShowOrgSelector(!showOrgSelector)}>
+                           {getGroupLayout(organization, -1)}
 
-                    {/*TODO if we click outside this area, we should close popup too*/}
-                    <Transition
-                        as={Fragment}
-                        show={showOrgSelector}
-                        enter="melody-transition melody-ease-out melody-duration-100"
-                        enterFrom="melody-transform melody-opacity-0 melody-scale-95"
-                        enterTo="melody-transform opacity-100 melody-scale-100"
-                        leave="melody-transition melody-ease-in melody-duration-75"
-                        leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
-                        leaveTo="melody-transform melody-opacity-0 melody-scale-95">
-                        <div className={"melody-absolute melody-z-10 melody-bg-white melody-border melody-border-gray-300 melody-w-[275px] melody-rounded-lg melody-shadow melody-mt-1 melody-ml-1"}>
-                            {organizations?.map((groupToSelect, index) => getGroupLayout(groupToSelect, index))}
+                           {!collapsed &&
+                             <div className={"melody-ml-auto melody-pr-2"}>
+                               <Icon icon={'caretUp'} />
+                               <Icon icon={'caretDown'} />
+                             </div>
+                           }
+                       </div>
 
-                            {organizations?.length === 0 &&
-                              <p className={"melody-p-4 melody-font-bold melody-text-center melody-text-sm"}>
-                                User is not part of any other organization
-                              </p>
-                            }
-                        </div>
-                    </Transition>
-                </div>
+                       {/*TODO if we click outside this area, we should close popup too*/}
+                       <Transition
+                           as={Fragment}
+                           show={showOrgSelector}
+                           enter="melody-transition melody-ease-out melody-duration-100"
+                           enterFrom="melody-transform melody-opacity-0 melody-scale-95"
+                           enterTo="melody-transform opacity-100 melody-scale-100"
+                           leave="melody-transition melody-ease-in melody-duration-75"
+                           leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
+                           leaveTo="melody-transform melody-opacity-0 melody-scale-95">
+                           <div className={"melody-absolute melody-z-10 melody-bg-white melody-border melody-border-gray-300 melody-w-[275px] melody-rounded-lg melody-shadow melody-mt-1 melody-ml-1"}>
+                               {organizations?.map((groupToSelect, index) => getGroupLayout(groupToSelect, index))}
 
-                {/*CONTENT*/}
-                <div className={"melody-flex-1 melody-mb-6"}>
-                    <Menu menuItemStyles={menuItemStyles}>
-                        {links.map(link => generateMenuItem(link))}
-                    </Menu>
-                </div>
+                               {organizations?.length === 0 &&
+                                 <p className={"melody-p-4 melody-font-bold melody-text-center melody-text-sm"}>
+                                   User is not part of any other organization
+                                 </p>
+                               }
+                           </div>
+                       </Transition>
+                   </div>
 
-                {/*FOOTER*/}
-                <div className={`melody-p-2 melody-border-t melody-border-gray-300 ${collapsed ? 'melody-text-center' : 'melody-text-right'}`}>
-                    <Button variant={'outlined'}
-                            icon={{
-                                icon: collapsed ? 'caretRight' : 'caretLeft'
-                            }}
-                            color={'primary'}
-                            onClick={() => collapseSidebar(!collapsed)} />
-                </div>
+                   {/*CONTENT*/}
+                   <div className={"melody-flex-1 melody-mb-6"}>
+                       <Menu menuItemStyles={menuItemStyles}>
+                           {links.map((link, index) => generateMenuItem(link, true, `index-${index}`))}
+                       </Menu>
+                   </div>
 
-            </div>
-        </ProSidebar>
+                   {/*FOOTER*/}
+                   <div className={`melody-p-2 melody-flex melody-gap-x-1 melody-gap-y-1 melody-justify-end melody-border-t melody-border-gray-300 ${collapsed ? 'melody-text-center melody-flex-col' : 'melody-text-right melody-flex-row'}`}>
+                       <Button variant={'outlined'}
+                               icon={{
+                                   icon: collapsed ? 'caretRight' : 'caretLeft'
+                               }}
+                               color={'primary'}
+                               onClick={() => collapseSidebar(!collapsed)} />
+
+                       {/*TODO fix later with weird width*/}
+                       {/*{broken &&*/}
+                       {/*  <Button variant={'outlined'}*/}
+                       {/*          icon={{ icon: 'solidX' }}*/}
+                       {/*          color={'primary'}*/}
+                       {/*          onClick={() => toggleSidebar(false)} />*/}
+                       {/*}*/}
+                   </div>
+
+               </div>
+           </ProSidebar>
+       </>
     );
 }

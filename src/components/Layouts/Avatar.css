@@ -1,5 +1,21 @@
+.melody-avatar-container {
+    @apply melody-flex melody-items-center;
+}
+
+.melody-avatar-container.small {
+    @apply melody-w-8 melody-h-8;
+}
+
+.melody-avatar-container.medium {
+    @apply melody-w-10 melody-h-10;
+}
+
+.melody-avatar-container.medium {
+    @apply melody-w-12 melody-h-12;
+}
+
 .melody-avatar {
-    @apply melody-w-10 melody-h-10 melody-p-1 melody-object-contain melody-bg-gray-100 dark:melody-bg-gray-600;
+    @apply melody-p-1 melody-object-contain melody-bg-gray-100 dark:melody-bg-gray-600;
 }
 
 .melody-avatar.ring, .melody-avatar-preview.ring {
@@ -7,9 +23,5 @@
 }
 
 .melody-avatar-preview {
-    @apply melody-relative melody-w-10 melody-h-10 melody-overflow-hidden melody-bg-gray-100 dark:melody-bg-gray-600;
-}
-
-.melody-avatar-preview svg {
-    @apply melody-absolute melody-w-12 melody-h-12 melody-text-gray-400 -melody-left-1;
+    @apply melody-flex melody-justify-center melody-bg-gray-100 dark:melody-bg-gray-600 melody-w-full melody-h-full melody-items-center;
 }
