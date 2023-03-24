@@ -71,7 +71,7 @@ export const Sidebar = (props: SidebarProps) => {
         }),
     }
 
-    function generateMenuItem(link: SidebarLinkProps, rootLevel , index) {
+    function generateMenuItem(link: SidebarLinkProps, rootLevel: boolean, index: string) {
 
         //TODO icon not changing color on hover. Broken on Cadenza and Storybook :(
 
