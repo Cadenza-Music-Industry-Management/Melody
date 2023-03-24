@@ -1,10 +1,11 @@
 import React from 'react';
 import "./StripedListLayout.css"
 
+//TOOD move to interface types file
 export const StripedListLayout = (props: {
-    size: string,
     label: string,
-    subLabel: string
+    subLabel: string,
+    size?: string,
 }) => {
     const {
         size,
