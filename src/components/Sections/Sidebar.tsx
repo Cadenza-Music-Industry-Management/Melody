@@ -1,6 +1,5 @@
 "use client"
 
-import { AddIconProps } from "../types";
 import { Button } from "../Inputs/Button";
 import {
     Sidebar as ProSidebar,
