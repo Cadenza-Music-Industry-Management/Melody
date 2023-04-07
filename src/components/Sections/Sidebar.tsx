@@ -16,10 +16,10 @@ import React, { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
 import { usePathname } from "next/navigation";
-import { SidebarLinkProps } from "@/constants/types";
+//import { SidebarLinkProps } from "@/constants/types";
 
 type SidebarProps = {
-    links: SidebarLinkProps[],
+    links: any[], //TODO need type from cadenza SidebarLinkProps
     organization?: any, //TODO need type from Cadenza
     organizations?: any[] //TODO need type from Cadenza
 }
@@ -71,7 +71,8 @@ export const Sidebar = (props: SidebarProps) => {
         }),
     }
 
-    function generateMenuItem(link: SidebarLinkProps, rootLevel: boolean, index: string) {
+    //TODO SidebarLinkProps
+    function generateMenuItem(link: any, rootLevel: boolean, index: string) {
 
         //TODO icon not changing color on hover. Broken on Cadenza and Storybook :(
 
@@ -93,7 +94,7 @@ export const Sidebar = (props: SidebarProps) => {
                 if (link.children) {
                     //TODO need to set active submenu prop if its open or any children are active
                     return <SubMenu label={link.title} icon={icon} component={component} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
-                        {link.children.map((link, childIndex) => generateMenuItem(link, false, `index-${index}-child-${childIndex}`))}
+                        {link.children.map((link: any, childIndex: any) => generateMenuItem(link, false, `index-${index}-child-${childIndex}`))}
                     </SubMenu>
                 } else {
                     //TODO selection logic is broken, check settings tab for example (payment tab selected and default settings is selected)

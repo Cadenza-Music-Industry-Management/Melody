@@ -35,10 +35,13 @@ export const Carousel = (props: {
 
     return (
         <div className="melody-relative">
-            <div className="melody-aspect-w-16 melody-aspect-h-9">
+            <div className="melody-aspect-w-16 melody-aspect-h-9" style={{
+                width,
+                height
+            }}>
                 <Image className="melody-object-cover melody-w-full melody-h-full"
                        src={images[currentImageIndex]}
-                       style={{ width, height }}
+                       fill={true}
                        alt="carousel" />
             </div>
 

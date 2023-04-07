@@ -2,24 +2,18 @@ import { SVGProps, useState} from 'react'
 import {RadioGroup as HeadlessRadioGroup} from '@headlessui/react'
 import './RadioGroup.css'
 
-const plans = [
+const options = [
     {
-        name: 'Startup',
-        ram: '12GB',
-        cpus: '6 CPUs',
-        disk: '160 GB SSD disk',
+        name: 'A',
+        description: 'test'
     },
     {
-        name: 'Business',
-        ram: '16GB',
-        cpus: '8 CPUs',
-        disk: '512 GB SSD disk',
+        name: 'B',
+        description: 'test'
     },
     {
-        name: 'Enterprise',
-        ram: '32GB',
-        cpus: '12 CPUs',
-        disk: '1024 GB SSD disk',
+        name: 'C',
+        description: 'test'
     },
 ]
 
@@ -33,7 +27,7 @@ export const RadioGroup = (props: {
         size,
         label
     } = props
-    const [selected, setSelected] = useState(plans[0])
+    const [selected, setSelected] = useState(options[0])
 
     return (
         <div className="melody-w-full melody-px-4 melody-py-16">
@@ -44,10 +38,10 @@ export const RadioGroup = (props: {
                     </HeadlessRadioGroup.Label>
 
                     <div className="melody-space-y-2">
-                        {plans.map((plan) => (
+                        {options.map((option) => (
                             <HeadlessRadioGroup.Option
-                                key={plan.name}
-                                value={plan}
+                                key={option.name}
+                                value={option}
                                 className={({active, checked}) => `${active ? 'melody-ring-2 melody-ring-white melody-ring-opacity-60 melody-ring-offset-2 melody-ring-offset-sky-300' : ''} ${checked ? 'melody-bg-sky-900 melody-bg-opacity-75 melody-text-white' : 'melody-bg-white'} melody-relative melody-flex melody-cursor-pointer melody-rounded-lg melody-px-5 melody-py-4 melody-shadow-md focus:melody-outline-none`}>
                                 {({active, checked}) => (
                                     <>
@@ -59,18 +53,16 @@ export const RadioGroup = (props: {
                                                         className={`melody-font-medium  ${
                                                             checked ? 'melody-text-white' : 'melody-text-gray-900'
                                                         }`}>
-                                                        {plan.name}
+                                                        {option.name}
                                                     </HeadlessRadioGroup.Label>
                                                     <HeadlessRadioGroup.Description
                                                         as="span"
                                                         className={`melody-inline ${
                                                             checked ? 'melody-text-sky-100' : 'melody-text-gray-500'
                                                         }`}>
-                                                        <span>
-                                                            {plan.ram}/{plan.cpus}
-                                                        </span>{' '}
-                                                        <span aria-hidden="true">&middot;</span>{' '}
-                                                        <span>{plan.disk}</span>
+                                                        <p>
+                                                            {option.description}
+                                                        </p>{' '}
                                                     </HeadlessRadioGroup.Description>
                                                 </div>
                                             </div>
