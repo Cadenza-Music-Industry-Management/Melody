@@ -8,7 +8,7 @@ This library is in development for the 2023 NextJS redesign of [Cadenza Music In
 * Button
 * Button Menu
 * Checkbox
-* Color Picker
+* Color Picker - not developed
 * Date Picker - not in use yet
 * Dropdown (React-Select implementation)
 * File Upload
@@ -24,9 +24,9 @@ This library is in development for the 2023 NextJS redesign of [Cadenza Music In
 * Alert
 * Avatar
 * Badge
-* Banner
-* Breadcrumb
-* Carousel
+* Banner - not designed yet 
+* Breadcrumb - not designed yet 
+* Carousel - not designed yet 
 * Icon
 * Image - may be combined with ImagePlaceholder below (or deleted)
 * Image Placeholder
