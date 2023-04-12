@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from "react";
 import "./StripedListLayout.css"
 
-//TOOD move to interface types file
+//TODO move to interface types file
 export const StripedListLayout = (props: {
     label: string,
     subLabel: string,
     size?: string,
+    items: {
+        key: ReactNode,
+        value: ReactNode
+    }[]
 }) => {
     const {
         size,
@@ -13,8 +17,10 @@ export const StripedListLayout = (props: {
         subLabel
     } = props
 
+    //TODO how to access form here though if passing in custom list?
+
     return (
-        <div className="melody-overflow-hidden melody-bg-white melody-shadow sm:melody-rounded-lg">
+        <div className="melody-overflow-hidden melody-bg-white melody-shadow melody-rounded">
             <div className="melody-px-4 melody-py-5 sm:melody-px-6">
                 <h3 className="melody-text-lg melody-font-medium melody-leading-6 melody-text-gray-900">
                     {label}

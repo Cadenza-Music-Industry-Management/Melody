@@ -48,13 +48,13 @@ export const Sidebar = (props: SidebarProps) => {
         SubMenuExpandIcon: {
             color: '#b6b7b9',
         },
-        //TODO this isnt working for changing icon to white
+        //TODO this isn't working for changing icon to white
         icon: ({ active, open }) => ({
             fill: (active || open) ? '#FFFFFF' : '0C192C', //TODO once font working for custom icons, can remove this line
             color: (active || open) ? '#FFFFFF' : '0C192C'
         }),
         subMenuContent: ({ level, active }) => ({
-            backgroundColor: active ? '#0C192C' : level === 0 ? '#fbfcfd' : 'transparent',
+            backgroundColor: active ? '#0C192C' : level === 0 ? '#fbfcfd' : '#FFFFFF',
         }),
         button: ({  active , open }) => ({
             [`&.${menuClasses.disabled}`]: {
@@ -99,7 +99,7 @@ export const Sidebar = (props: SidebarProps) => {
                 } else {
                     //TODO selection logic is broken, check settings tab for example (payment tab selected and default settings is selected)
                     //Note: usePathname() returns string, but fails with possibly null in build
-                    return <MenuItem icon={icon} component={component} active={link.selected !== undefined ? (link.selected ?? false) : pathname?.includes(link.href ?? "") ?? false} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
+                    return <MenuItem icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : (pathname?.includes(link.href ?? "") ?? false)} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
                         {link.title}
                     </MenuItem>
                 }
@@ -218,7 +218,7 @@ export const Sidebar = (props: SidebarProps) => {
                    </div>
 
                    {/*CONTENT*/}
-                   <div className={"melody-flex-1 melody-mb-6"}>
+                   <div className={"melody-flex-1 melody-mb-6 melody-bg-white"}>
                        <Menu menuItemStyles={menuItemStyles}>
                            {links.map((link, index) => generateMenuItem(link, true, `index-${index}`))}
                        </Menu>
