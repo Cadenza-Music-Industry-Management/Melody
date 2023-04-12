@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./Carousel.css"
 import Image from "next/image";
+import {Button} from "../Inputs/Button";
 
 export const Carousel = (props: {
     width: any,
@@ -45,15 +46,12 @@ export const Carousel = (props: {
                        alt="carousel" />
             </div>
 
-            {/*TODO turn into melody buttons wrapped with absolute divs*/}
-            <button className={`melody-absolute melody-top-1/2 melody-left-2 melody-z-10 melody-transform -melody-translate-y-1/2 melody-p-2 melody-rounded-full melody-text-white melody-transition-colors melody-duration-200 focus:melody-outline-none focus:melody-ring-2 focus:melody-ring-blue-600 melody-bg-gray-700 hover:melody-bg-gray-800 focus:melody-ring-gray-600`}
-                    onClick={goToPreviousImage}>
-                Prev
-            </button>
-            <button className={`melody-absolute melody-top-1/2 melody-right-2 melody-z-10 melody-transform -melody-translate-y-1/2 melody-p-2 melody-rounded-full melody-text-white melody-transition-colors melody-duration-200 focus:melody-outline-none focus:melody-ring-2 focus:melody-ring-blue-600 melody-bg-gray-700 hover:melody-bg-gray-800 focus:melody-ring-gray-600`}
-                    onClick={goToNextImage}>
-                Next
-            </button>
+            <div className={'melody-absolute melody-top-1/2 melody-left-2 melody-z-10 melody-transform -melody-translate-y-1/2'}>
+                <Button onClick={goToPreviousImage} icon={{ icon: 'arrowLeft' }} />
+            </div>
+            <div className={'melody-absolute melody-top-1/2 melody-right-2 melody-z-10 melody-transform -melody-translate-y-1/2'}>
+                <Button onClick={goToNextImage} icon={{ icon: 'arrowRight', rightAligned: true }} />
+            </div>
         </div>
     )
 }
