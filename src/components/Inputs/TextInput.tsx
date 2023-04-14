@@ -12,13 +12,16 @@ export const TextInput = (props: TextInputProps) => {
         size = 'medium',
         disabled = false,
         onChange,
+        onBlur,
         headerComponent,
-        trailerComponent
+        trailerComponent,
+        max,
+        min
     } = props
 
     return (
         <div className={"melody-w-full"}>
-            {label && <Label {...{...label, htmlFor: "textInput"}} />}
+            {label && <Label {...label} />}
             <div className="mt-1 melody-flex melody-rounded-md melody-shadow-sm">
 
                 {headerComponent &&
@@ -28,11 +31,17 @@ export const TextInput = (props: TextInputProps) => {
                 }
 
                 <input type={type}
+                       max={max}
+                       min={min}
                        placeholder={placeholder}
                        value={value}
                        disabled={disabled}
-                       onChange={(event => onChange(event.target.value))}
-                       //id={`textInput`} //TODO need unique id?
+                       onChange={(event => {
+                           if (onChange) onChange(event.target.value)
+                       })}
+                       onBlur={(event => {
+                           if (onBlur) onBlur(event.target.value)
+                       })}
                        className={`melody-text-input ${headerComponent ? (trailerComponent ? 'hasHeaderTrailer' : 'hasHeader') : (trailerComponent ? 'hasTrailer' : '')} ${size}`} />
 
                 {trailerComponent &&

@@ -58,6 +58,9 @@ import {
 import {IconProps} from "../types";
 import {
     MelodyAccounting,
+    MelodyExpenses,
+    MelodyIncome,
+    MelodySources,
     MelodyArchive,
     MelodyArtist,
     MelodyArtistManagementOrg,
@@ -94,7 +97,8 @@ import {
     MelodySiteBuilder,
     MelodyStaffManagement,
     MelodyTools,
-    MelodyVisibility
+    MelodyVisibility,
+    MelodyNone
 } from "@/components/Melody/src/components/Layouts/IcomoonExports";
 // import { fa } from '@fortawesome/free-regular-svg-icons';
 
@@ -165,6 +169,9 @@ export const Icon = (props: IconProps) => {
     //<i style={{...additionalStyles}} className={`melody-icon icomoon ${icon} ${additionalClasses ? additionalClasses : ''}`} />
     const melodyIconMap: any = {
         'melody-accounting': MelodyAccounting,
+        'melody-expenses': MelodyExpenses,
+        'melody-income': MelodyIncome,
+        'melody-sources': MelodySources,
         'melody-archive': MelodyArchive,
         'melody-artist': MelodyArtist,
         'melody-artist-management': MelodyArtistManagementOrg,
@@ -201,7 +208,8 @@ export const Icon = (props: IconProps) => {
         'melody-site-builder': MelodySiteBuilder,
         'melody-staff-management': MelodyStaffManagement,
         'melody-tools': MelodyTools,
-        'melody-visibility': MelodyVisibility
+        'melody-visibility': MelodyVisibility,
+        'melody-none': MelodyNone
     }
 
     //TODO 'color' does not work using direct SVG now instead of font for Melody icons, need to use 'fill' instead

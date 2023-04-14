@@ -18,7 +18,8 @@ export interface ButtonProps {
     icon?: AddIconProps,
     onClick?: () => void,
     disabled?: boolean,
-    indicator?: IndicatorProps
+    indicator?: IndicatorProps,
+    trailerComponent?: ReactNode
 }
 
 //Dropdown
@@ -50,9 +51,12 @@ export interface TextInputProps {
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
-    onChange: (value: string) => void;
+    onChange?: (value: string) => void;
+    onBlur?: (value: string) => void;
     headerComponent?: ReactNode;
     trailerComponent?: ReactNode;
+    max?: number,
+    min?: number
 }
 
 //Label

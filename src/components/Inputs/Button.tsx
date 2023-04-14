@@ -14,7 +14,8 @@ export const Button = (props: ButtonProps) => {
         type = 'button',
         onClick,
         disabled = false,
-        indicator
+        indicator,
+        trailerComponent
     } = props
 
     return (
@@ -30,6 +31,7 @@ export const Button = (props: ButtonProps) => {
                 <Indicator {...indicator} />
               </div>
             }
+            {trailerComponent}
         </button>
     );
 };
