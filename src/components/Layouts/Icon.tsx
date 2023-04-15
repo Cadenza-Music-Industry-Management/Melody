@@ -215,11 +215,14 @@ export const Icon = (props: IconProps) => {
     //TODO 'color' does not work using direct SVG now instead of font for Melody icons, need to use 'fill' instead
 
     function getMelodyIcon() {
-        const Component = melodyIconMap[icon]
-        if (!Component) return;
 
+        return    <i style={{...additionalStyles}} className={`melody-icon icomoon ${icon} ${additionalClasses ? additionalClasses : ''}`} />
 
-        return <Component style={{...additionalStyles}} className={`melody-icon ${additionalClasses ? additionalClasses : ''}`} />
+        // const Component = melodyIconMap[icon]
+        // if (!Component) return;
+        //
+        //
+        // return <Component style={{...additionalStyles}} className={`melody-icon ${additionalClasses ? additionalClasses : ''}`} />
     }
 
     //TODO For custom icons, additionalClasses does not override properties such as font size that is defined in melody-icon but additionalStyles does

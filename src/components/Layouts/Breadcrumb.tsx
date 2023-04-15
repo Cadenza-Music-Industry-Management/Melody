@@ -31,6 +31,7 @@ export const Breadcrumb = (props: BreadcrumbProps) => {
             <ol className="melody-breadcrumb-item-container">
                 {items.map((item, index) => (
                     <li className="melody-inline-flex melody-items-center" key={index}>
+                        {/*TODO will we need to manually add pointer css here once using link?*/}
                         {item.link ?
                             <Link href={item.link}>
                                 {getBreadcrumbItemContents(item)}

@@ -3,6 +3,7 @@
     @apply melody-flex melody-px-5 melody-py-3 melody-border melody-rounded-lg;
 }
 
+/*TODO text hover effect should move to this as currently all text changes when hovering over breadcrumb*/
 .melody-breadcrumb-item {
     @apply melody-inline-flex melody-items-center melody-self-center melody-text-sm melody-font-medium;
 }
