@@ -1,60 +1,49 @@
-import React from 'react';
 import "./Breadcrumb.css"
+import { BreadcrumbItemProps, BreadcrumbProps } from "@/components/Melody/src/components/types";
+import Link from "next/link";
+import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 
-export const Breadcrumb = (props: {
-    size: string,
-    variant: string
-}) => {
+export const Breadcrumb = (props: BreadcrumbProps) => {
     const {
-        size,
-        variant //transparent, light, dark, status colors?
+        size = 'medium',
+        variant = 'transparent',
+        items
     } = props
 
-    //TODO dropdown in breadcrumb https://flowbite.com/docs/components/breadcrumb/#breadcrumb-with-dropdown
+    function getBreadcrumbItemContents(item: BreadcrumbItemProps) {
+        return <div className={"melody-breadcrumb-item"}>
+
+            {item.icon && !item.icon.rightAligned && <div className={"melody-mr-0.5"}>
+                <Icon icon={item.icon.icon} additionalStyles={item.icon.additionalStyles} additionalClasses={item.icon.additionalClasses} />
+            </div>}
+
+            {item.label}
+
+            {item.icon && item.icon.rightAligned && <div className={"melody-mr-0.5"}>
+                <Icon icon={item.icon.icon} additionalStyles={item.icon.additionalStyles} additionalClasses={item.icon.additionalClasses} />
+            </div>}
+
+        </div>
+    }
 
     return (
-        <nav className="melody-flex melody-px-5 melody-py-3 melody-text-gray-700 melody-border melody-border-gray-200 melody-rounded-lg melody-bg-gray-50 dark:melody-bg-gray-800 dark:melody-border-gray-700"
-             aria-label="Breadcrumb">
-            <ol className="melody-inline-flex melody-items-center melody-space-x-1 md:melody-space-x-3">
-                <li className="melody-inline-flex melody-items-center">
-                    <a href="#"
-                       className="melody-inline-flex melody-items-center melody-text-sm melody-font-medium melody-text-gray-700 hover:melody-text-blue-600 dark:melody-text-gray-400 dark:melody-hover:text-white">
-                        <svg aria-hidden="true" className="melody-w-4 melody-h-4 melody-mr-2" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-                        </svg>
-                        A
-                    </a>
-                </li>
-                <li>
-                    <div className="melody-flex melody-items-center">
-                        <svg aria-hidden="true" className="melody-w-6 melody-h-6 melody-text-gray-400" fill="currentColor"
-                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clipRule="evenodd"></path>
-                        </svg>
-                        <a href="#"
-                           className="melody-ml-1 melody-text-sm melody-font-medium melody-text-gray-700 hover:melody-text-blue-600 md:melody-ml-2 dark:melody-text-gray-400 dark:hover:melody-text-white">
-                            B
-                        </a>
-                    </div>
-                </li>
-                <li aria-current="page">
-                    <div className="melody-flex melody-items-center">
-                        <svg aria-hidden="true" className="melody-w-6 melody-h-6 melody-text-gray-400" fill="currentColor"
-                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fillRule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clipRule="evenodd"></path>
-                        </svg>
-                        <span
-                            className="melody-ml-1 melody-text-sm melody-font-medium melody-text-gray-500 md:melody-ml-2 dark:melody-text-gray-400">
-                            C
-                        </span>
-                    </div>
-                </li>
+        <nav className={`melody-breadcrumb ${size} ${variant}`} aria-label="Breadcrumb">
+            <ol className="melody-breadcrumb-item-container">
+                {items.map((item, index) => (
+                    <li className="melody-inline-flex melody-items-center" key={index}>
+                        {item.link ?
+                            <Link href={item.link}>
+                                {getBreadcrumbItemContents(item)}
+                            </Link>
+                            :
+                            getBreadcrumbItemContents(item)
+                        }
+
+                        {index !== items.length - 1 &&
+                            <Icon icon={'caretRight'} additionalClasses={'melody-ml-2 melody-font-bold'} />
+                        }
+                    </li>
+                ))}
             </ol>
         </nav>
     )

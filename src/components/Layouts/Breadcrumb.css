@@ -1,0 +1,43 @@
+
+.melody-breadcrumb {
+    @apply melody-flex melody-px-5 melody-py-3 melody-border melody-rounded-lg;
+}
+
+.melody-breadcrumb-item {
+    @apply melody-inline-flex melody-items-center melody-self-center melody-text-sm melody-font-medium;
+}
+
+.melody-breadcrumb-item-container {
+    @apply melody-inline-flex melody-items-center melody-space-x-1 md:melody-space-x-3;
+}
+
+/*Variants*/
+.melody-breadcrumb.transparent {
+    @apply melody-text-gray-600 melody-border-gray-200 melody-bg-gray-300/[0.4] hover:melody-text-gray-900;
+}
+
+.melody-breadcrumb.primary {
+    @apply melody-text-white melody-border-primary-200 melody-bg-primary-100 hover:melody-text-gray-300;
+}
+
+.melody-breadcrumb.secondary {
+    @apply melody-text-white melody-border-secondary-200 melody-bg-secondary-100 hover:melody-text-gray-300;
+}
+
+.melody-breadcrumb.transparent {
+    @apply melody-text-gray-600 melody-border-gray-400 melody-bg-white hover:melody-text-gray-900;
+}
+
+/*Sizes*/
+/*TODO*/
+.melody-breadcrumb.small {
+    /*@apply ;*/
+}
+
+.melody-breadcrumb.medium {
+    /*@apply ;*/
+}
+
+.melody-breadcrumb.large {
+    /*@apply ;*/
+}

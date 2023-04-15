@@ -167,3 +167,16 @@ export interface BadgeProps {
     text: string,
     indicator?: IndicatorProps
 }
+
+//Breadcrumb
+export interface BreadcrumbProps {
+    size?: 'small' | 'medium' | 'large',
+    variant?: 'transparent' | 'primary' | 'secondary' | 'light',
+    items: BreadcrumbItemProps[]
+}
+
+export interface BreadcrumbItemProps {
+    link?: string,
+    label?: string,
+    icon?: AddIconProps
+}
