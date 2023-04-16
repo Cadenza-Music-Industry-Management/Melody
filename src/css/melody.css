@@ -19,15 +19,15 @@
   }
 
   @font-face {
-    font-family: 'icomoon';
-    src:  url('../fonts/icomoon.eot?ynkpq7');
-    src:  url('../fonts/icomoon.eot?ynkpq7#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?ynkpq7') format('truetype'),
-    url('../fonts/icomoon.woff?ynkpq7') format('woff'),
-    url('../fonts/icomoon.svg?ynkpq7#icomoon') format('svg');
+    font-family: 'melody_icons';
+    src: url('../fonts/melody_icons.eot?77105065');
+    src: url('../fonts/melody_icons.eot?77105065#iefix') format('embedded-opentype'),
+    url('../fonts/melody_icons.woff2?77105065') format('woff2'),
+    url('../fonts/melody_icons.woff?77105065') format('woff'),
+    url('../fonts/melody_icons.ttf?77105065') format('truetype'),
+    url('../fonts/melody_icons.svg?77105065#melody_icons') format('svg');
     font-weight: normal;
     font-style: normal;
-    font-display: block;
   }
 }
 
@@ -48,9 +48,9 @@
   font-feature-settings: 'liga';
 }
 
-.icomoon {
+.melody-custom-font {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: 'melody_icons' !important;
 }
 
 .App {
@@ -73,117 +73,55 @@
   color: white;
 }
 
-.melody-read:before {
-  content: "\e900";
-}
-.melody-bin:before {
-  content: "\e901";
-}
-.melody-favorite:before {
-  content: "\e902";
-}
-.melody-archive:before {
-  content: "\e903";
-}
-.melody-image:before {
-  content: "\e904";
-}
-.melody-link:before {
-  content: "\e905";
-}
-.melody-settings:before {
-  content: "\e906";
-}
-.melody-staff-management:before {
-  content: "\e907";
-}
-.melody-history:before {
-  content: "\e908";
-}
-.melody-payment-settings:before {
-  content: "\e909";
-}
-.melody-public-site:before {
-  content: "\e90a";
-}
-.melody-site-builder:before {
-  content: "\e90b";
-}
-.melody-visibility:before {
-  content: "\e90c";
-}
-.melody-accounting:before {
-  content: "\e90d";
-}
-.melody-calendar:before {
-  content: "\e90e";
-}
-.melody-email:before {
-  content: "\e90f";
-}
-.melody-file-storage:before {
-  content: "\e910";
-}
-.melody-promotion:before {
-  content: "\e911";
-}
-.melody-blog-post:before {
-  content: "\e912";
-}
-.melody-content:before {
-  content: "\e913";
-}
-.melody-csv:before {
-  content: "\e914";
-}
-.melody-kanban:before {
-  content: "\e915";
-}
-.melody-tools:before {
-  content: "\e916";
-}
-.melody-artist:before {
-  content: "\e917";
-}
-.melody-home:before {
-  content: "\e918";
-}
-.melody-info:before {
-  content: "\e919";
-}
-.melody-merchandise:before {
-  content: "\e91a";
-}
-.melody-releases:before {
-  content: "\e91b";
-}
-.melody-content-management:before {
-  content: "\e91c";
-}
-.melody-org-tools:before {
-  content: "\e91e";
-}
-.melody-legal:before {
-  content: "\e91f";
-}
-.melody-pricing:before {
-  content: "\e920";
-}
-.melody-artist-management:before {
-  content: "\e921";
-}
-.melody-artist-org:before {
-  content: "\e922";
-}
-.melody-org:before {
-  content: "\e923";
-}
-.melody-join-org:before {
-  content: "\e924";
-}
-.melody-label:before {
-  content: "\e925";
-}
-.melody-owner:before {
-  content: "\e926";
-}
+.melody-none:before { content: '\e800'; } /* '' */
+.melody-org:before { content: '\e801'; } /* '' */
+.melody-org-tools:before { content: '\e802'; } /* '' */
+.melody-owner:before { content: '\e803'; } /* '' */
+.melody-pandora:before { content: '\e804'; } /* '' */
+.melody-payment-settings:before { content: '\e805'; } /* '' */
+.melody-kanban:before { content: '\e806'; } /* '' */
+.melody-pricing:before { content: '\e807'; } /* '' */
+.melody-promoters:before { content: '\e808'; } /* '' */
+.melody-promotion:before { content: '\e809'; } /* '' */
+.melody-promotion-pages:before { content: '\e80a'; } /* '' */
+.melody-public-site:before { content: '\e80b'; } /* '' */
+.melody-read:before { content: '\e80c'; } /* '' */
+.melody-release-promotions:before { content: '\e80d'; } /* '' */
+.melody-releases:before { content: '\e80e'; } /* '' */
+.melody-send-email:before { content: '\e80f'; } /* '' */
+.melody-settings:before { content: '\e810'; } /* '' */
+.melody-site-builder:before { content: '\e811'; } /* '' */
+.melody-sources:before { content: '\e812'; } /* '' */
+.melody-staff-management:before { content: '\e813'; } /* '' */
+.melody-tidal:before { content: '\e814'; } /* '' */
+.melody-tiktok:before { content: '\e815'; } /* '' */
+.melody-tools:before { content: '\e816'; } /* '' */
+.melody-visibility:before { content: '\e817'; } /* '' */
+.melody-accounting:before { content: '\e818'; } /* '' */
+.melody-archive:before { content: '\e819'; } /* '' */
+.melody-artist:before { content: '\e81a'; } /* '' */
+.melody-artist-management:before { content: '\e81b'; } /* '' */
+.melody-artist-org:before { content: '\e81c'; } /* '' */
+.melody-audius:before { content: '\e81d'; } /* '' */
+.melody-beatport:before { content: '\e81e'; } /* '' */
+.melody-melody-bin:before { content: '\e81f'; } /* '' */
+.melody-blog-post:before { content: '\e820'; } /* '' */
+.melody-calendar:before { content: '\e821'; } /* '' */
+.melody-content:before { content: '\e822'; } /* '' */
+.melody-content-management:before { content: '\e823'; } /* '' */
+.melody-csv:before { content: '\e824'; } /* '' */
+.melody-email:before { content: '\e825'; } /* '' */
+.melody-expenses:before { content: '\e826'; } /* '' */
+.melody-favorite:before { content: '\e827'; } /* '' */
+.melody-file-storage:before { content: '\e828'; } /* '' */
+.melody-history:before { content: '\e829'; } /* '' */
+.melody-home:before { content: '\e82a'; } /* '' */
+.melody-iheartradio:before { content: '\e82b'; } /* '' */
+.melody-image:before { content: '\e82c'; } /* '' */
+.melody-income:before { content: '\e82d'; } /* '' */
+.melody-info:before { content: '\e82e'; } /* '' */
+.melody-join-org:before { content: '\e82f'; } /* '' */
+.melody-label:before { content: '\e830'; } /* '' */
+.melody-legal:before { content: '\e831'; } /* '' */
+.melody-links:before { content: '\e832'; } /* '' */
+.melody-merchandise:before { content: '\e833'; } /* '' */

@@ -56,51 +56,6 @@ import {
     faDeezer,
 } from '@fortawesome/free-brands-svg-icons'
 import {IconProps} from "../types";
-import {
-    MelodyAccounting,
-    MelodyExpenses,
-    MelodyIncome,
-    MelodySources,
-    MelodyArchive,
-    MelodyArtist,
-    MelodyArtistManagementOrg,
-    MelodyArtistOrg,
-    MelodyBin,
-    MelodyBlogPost,
-    MelodyCalendar,
-    MelodyContent,
-    MelodyContentManagement,
-    MelodyCSV,
-    MelodyEmail,
-    MelodyFavorite,
-    MelodyFileStorage,
-    MelodyHistory,
-    MelodyHome,
-    MelodyImage,
-    MelodyInfo,
-    MelodyJoinOrg,
-    MelodyLabel,
-    MelodyLegal,
-    MelodyLinks,
-    MelodyMerchandise,
-    MelodyOrg,
-    MelodyOrgTools,
-    MelodyOwner,
-    MelodyPaymentSettings,
-    MelodyPlanningBoard,
-    MelodyPricing,
-    MelodyPromotion,
-    MelodyPublicSite,
-    MelodyRead,
-    MelodyReleases,
-    MelodySettings,
-    MelodySiteBuilder,
-    MelodyStaffManagement,
-    MelodyTools,
-    MelodyVisibility,
-    MelodyNone
-} from "@/components/Melody/src/components/Layouts/IcomoonExports";
-// import { fa } from '@fortawesome/free-regular-svg-icons';
 
 export const Icon = (props: IconProps) => {
     const {
@@ -165,71 +120,11 @@ export const Icon = (props: IconProps) => {
         deezer: faDeezer
     }
 
-    //TODO using bad method of individual SVGs until I can get icomoon font working in NextJS Cadenza app (works in storybook??)
-    //<i style={{...additionalStyles}} className={`melody-icon icomoon ${icon} ${additionalClasses ? additionalClasses : ''}`} />
-    const melodyIconMap: any = {
-        'melody-accounting': MelodyAccounting,
-        'melody-expenses': MelodyExpenses,
-        'melody-income': MelodyIncome,
-        'melody-sources': MelodySources,
-        'melody-archive': MelodyArchive,
-        'melody-artist': MelodyArtist,
-        'melody-artist-management': MelodyArtistManagementOrg,
-        'melody-artist-org': MelodyArtistOrg,
-        'melody-bin': MelodyBin,
-        'melody-blog-post': MelodyBlogPost,
-        'melody-calendar': MelodyCalendar,
-        'melody-content': MelodyContent,
-        'melody-content-management': MelodyContentManagement,
-        'melody-csv': MelodyCSV,
-        'melody-email': MelodyEmail,
-        'melody-favorite': MelodyFavorite,
-        'melody-file-storage': MelodyFileStorage,
-        'melody-history': MelodyHistory,
-        'melody-home': MelodyHome,
-        'melody-image': MelodyImage,
-        'melody-info': MelodyInfo,
-        'melody-join-org': MelodyJoinOrg,
-        'melody-label': MelodyLabel,
-        'melody-legal': MelodyLegal,
-        'melody-link': MelodyLinks,
-        'melody-merchandise': MelodyMerchandise,
-        'melody-org': MelodyOrg,
-        'melody-org-tools': MelodyOrgTools,
-        'melody-owner': MelodyOwner,
-        'melody-payment-settings': MelodyPaymentSettings,
-        'melody-kanban': MelodyPlanningBoard,
-        'melody-pricing': MelodyPricing,
-        'melody-promotion': MelodyPromotion,
-        'melody-public-site': MelodyPublicSite,
-        'melody-read': MelodyRead,
-        'melody-releases': MelodyReleases,
-        'melody-settings': MelodySettings,
-        'melody-site-builder': MelodySiteBuilder,
-        'melody-staff-management': MelodyStaffManagement,
-        'melody-tools': MelodyTools,
-        'melody-visibility': MelodyVisibility,
-        'melody-none': MelodyNone
-    }
-
-    //TODO 'color' does not work using direct SVG now instead of font for Melody icons, need to use 'fill' instead
-
-    function getMelodyIcon() {
-
-        return    <i style={{...additionalStyles}} className={`melody-icon icomoon ${icon} ${additionalClasses ? additionalClasses : ''}`} />
-
-        // const Component = melodyIconMap[icon]
-        // if (!Component) return;
-        //
-        //
-        // return <Component style={{...additionalStyles}} className={`melody-icon ${additionalClasses ? additionalClasses : ''}`} />
-    }
-
     //TODO For custom icons, additionalClasses does not override properties such as font size that is defined in melody-icon but additionalStyles does
     return (
         <div className={containerType === 'flex' ? 'melody-flex melody-justify-center' : 'melody-contents'}>
             {icon.includes('melody-') ?
-                getMelodyIcon()
+                <i style={{...additionalStyles}} className={`melody-icon melody-custom-font ${icon} ${additionalClasses ? additionalClasses : ''}`} />
                 :
                 <FontAwesomeIcon style={{...additionalStyles}} className={additionalClasses ? additionalClasses : ''} icon={faIconMap[icon]} />
             }

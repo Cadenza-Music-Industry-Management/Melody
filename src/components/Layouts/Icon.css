@@ -1,23 +1,23 @@
-.melody-icon {
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    font-size: 24px;
-    line-height: 1;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    letter-spacing: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    font-feature-settings: 'liga';
-}
+/*.melody-icon {*/
+/*    font-style: normal;*/
+/*    font-weight: normal;*/
+/*    font-variant: normal;*/
+/*    text-transform: none;*/
+/*    font-size: 24px;*/
+/*    line-height: 1;*/
+/*    white-space: nowrap;*/
+/*    word-wrap: normal;*/
+/*    direction: ltr;*/
+/*    letter-spacing: normal;*/
+/*    -webkit-font-smoothing: antialiased;*/
+/*    -moz-osx-font-smoothing: grayscale;*/
+/*    text-rendering: optimizeLegibility;*/
+/*    font-feature-settings: 'liga';*/
+/*}*/
 
-.icomoon {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    /*@apply melody-font-icomoon !important;*/
-    font-family: 'icomoon' !important;
-    /*font-family: var(--icomoon-font) !important;*/
-}
+/*.icomoon {*/
+/*    !* use !important to prevent issues with browser extensions that change fonts *!*/
+/*    !*@apply melody-font-icomoon !important;*!*/
+/*    font-family: 'icomoon' !important;*/
+/*    !*font-family: var(--icomoon-font) !important;*!*/
+/*}*/

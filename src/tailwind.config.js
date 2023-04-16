@@ -18,7 +18,7 @@ module.exports = {
       fontFamily: {
         // atami: ['Atami Regular', 'sans-serif'],
         // atamiBold: ['Atami Bold', 'sans-serif'],
-        icomoon: ['var(--icomoon-font)'],
+        melodyIcons: ['var(--melody-icon-font)'],
         sans: ['var(--inter-font)', ...fontFamily.sans],
       },
       colors: {
