@@ -62,8 +62,7 @@ export const Icon = (props: IconProps) => {
         size = 'medium',
         icon,
         additionalStyles,
-        additionalClasses,
-        containerType = 'flex'
+        additionalClasses
     } = props
 
     const faIconMap: any = {
@@ -122,7 +121,7 @@ export const Icon = (props: IconProps) => {
 
     //TODO For custom icons, additionalClasses does not override properties such as font size that is defined in melody-icon but additionalStyles does
     return (
-        <div className={containerType === 'flex' ? 'melody-flex melody-justify-center' : 'melody-contents'}>
+        <div className={'melody-flex melody-justify-center'}>
             {icon.includes('melody-') ?
                 <i style={{...additionalStyles}} className={`melody-icon melody-custom-font ${icon} ${additionalClasses ? additionalClasses : ''}`} />
                 :

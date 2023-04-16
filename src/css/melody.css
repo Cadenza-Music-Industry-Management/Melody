@@ -31,28 +31,6 @@
   }
 }
 
-.melody-icon {
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  font-size: 24px;
-  line-height: 1;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  letter-spacing: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-feature-settings: 'liga';
-}
-
-.melody-custom-font {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'melody_icons' !important;
-}
-
 .App {
   text-align: center;
 }
@@ -73,6 +51,7 @@
   color: white;
 }
 
+/*TODO these are required for storybook to work but also has additional redefinition in globals.css for NextJS site to work*/
 .melody-none:before { content: '\e800'; } /* '' */
 .melody-org:before { content: '\e801'; } /* '' */
 .melody-org-tools:before { content: '\e802'; } /* '' */

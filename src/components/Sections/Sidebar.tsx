@@ -80,7 +80,6 @@ export const Sidebar = (props: SidebarProps) => {
             case 'menu':
                 let icon = <span />
                 if (link.icon) icon = <Icon icon={link.icon.icon}
-                                            containerType={link.icon.containerType}
                                             additionalStyles={link.icon.additionalStyles}
                                             additionalClasses={'hover:melody-text-white'} />
 
