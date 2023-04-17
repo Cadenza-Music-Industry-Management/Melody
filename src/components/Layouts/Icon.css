@@ -18,5 +18,10 @@
 .melody-custom-font {
     /* use !important to prevent issues with browser extensions that change fonts */
     @apply melody-font-melodyIcons !important;
-    font-family: 'melody_icons' !important; /*Note: This line is used for it to work in storybook as the above tailwind property is not defined correctly as '--melody-icon-font' var is missing from next/font/local*/
+    /*font-family: 'melody_icons'; !*Note: This line is used for it to work in storybook as the above tailwind property is not defined correctly as '--melody-icon-font' var is missing from next/font/local*!*/
+}
+
+/**Note: This is used for it to work in storybook as the above tailwind property is not defined correctly as '--melody-icon-font' var is missing. Next/font/local not working correctly*!*/
+.melody-custom-font-storybook-hack {
+    font-family: 'melody_icons' !important;
 }

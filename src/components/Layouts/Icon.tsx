@@ -119,11 +119,13 @@ export const Icon = (props: IconProps) => {
         deezer: faDeezer
     }
 
-    //TODO For custom icons, additionalClasses does not override properties such as font size that is defined in melody-icon but additionalStyles does
+    //Note to load icons for Storybook because next/font doesn't work correctly yet
+    const isStorybook = document.querySelector("html")?.dataset.isStorybook
+
     return (
         <div className={'melody-flex melody-justify-center'}>
             {icon.includes('melody-') ?
-                <i style={{...additionalStyles}} className={`melody-icon melody-custom-font ${icon} ${additionalClasses ? additionalClasses : ''}`} />
+                <i style={{...additionalStyles}} className={`melody-icon ${isStorybook ? 'melody-custom-font-storybook-hack' : 'melody-custom-font'} ${icon} ${additionalClasses ? additionalClasses : ''}`} />
                 :
                 <FontAwesomeIcon style={{...additionalStyles}} className={additionalClasses ? additionalClasses : ''} icon={faIconMap[icon]} />
             }
