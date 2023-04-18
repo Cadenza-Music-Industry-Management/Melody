@@ -120,7 +120,7 @@ export const Icon = (props: IconProps) => {
     }
 
     //Note to load icons for Storybook because next/font doesn't work correctly yet
-    const isStorybook = document.querySelector("html")?.dataset.isStorybook
+    const isStorybook = typeof document !== 'undefined' && document.querySelector("html")?.dataset.isStorybook
 
     return (
         <div className={'melody-flex melody-justify-center'}>
