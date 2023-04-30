@@ -15,12 +15,12 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { OrganizationSelector } from "@/components/Melody/src/components/Sections/Sidebar/OrganizationSelector";
-import { Group, SidebarLinkProps } from "@/constants/types";
+import { Group, GroupList, SidebarLinkProps } from "@/constants/types";
 
 type SidebarProps = {
     links: SidebarLinkProps[],
     organization: Group | null,
-    organizations: Group[] | null
+    organizations: GroupList[]
 }
 
 export const Sidebar = (props: SidebarProps) => {

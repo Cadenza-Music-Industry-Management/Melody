@@ -4,11 +4,11 @@ import Link from "next/link";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 import { Transition } from "@headlessui/react";
 import { useCloseOnClickAway } from "@/components/Melody/src/utils/hooks";
-import { Group } from "@/constants/types";
+import { Group, GroupList } from "@/constants/types";
 
 export const OrganizationSelector = (props: {
     organization: Group | null,
-    organizations: Group[] | null
+    organizations: GroupList[]
     collapsed: boolean
 }) => {
 
