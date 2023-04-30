@@ -11,16 +11,16 @@ import {
     MenuItemStyles,
 } from "react-pro-sidebar";
 import {Icon} from "../../Layouts/Icon"
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Transition } from "@headlessui/react";
 import { usePathname } from "next/navigation";
 import { OrganizationSelector } from "@/components/Melody/src/components/Sections/Sidebar/OrganizationSelector";
+import { Group, SidebarLinkProps } from "@/constants/types";
 
 type SidebarProps = {
-    links: any[], //TODO need type from cadenza SidebarLinkProps
-    organization?: any, //TODO need type from Cadenza
-    organizations?: any[] //TODO need type from Cadenza
+    links: SidebarLinkProps[],
+    organization?: Group,
+    organizations?: Group[]
 }
 
 export const Sidebar = (props: SidebarProps) => {

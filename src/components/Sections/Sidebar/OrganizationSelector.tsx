@@ -4,10 +4,11 @@ import Link from "next/link";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 import { Transition } from "@headlessui/react";
 import { useCloseOnClickAway } from "@/components/Melody/src/utils/hooks";
+import { Group } from "@/constants/types";
 
 export const OrganizationSelector = (props: {
-    organization?: any, //TODO need type from Cadenza
-    organizations?: any[] //TODO need type from Cadenza
+    organization?: Group,
+    organizations?: Group[]
     collapsed: boolean
 }) => {
 
@@ -31,8 +32,9 @@ export const OrganizationSelector = (props: {
 
     function getGroupLayout(groupToDisplay: any, listItemIndex: number) {
 
+        const orgLength = organizations ? organizations.length - 1 : 0
         let orgComponent = (
-            <div className={`melody-flex melody-p-2 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== organizations.length - 1) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
+            <div className={`melody-flex melody-p-2 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== orgLength) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
                 <Avatar image={groupToDisplay?.icon} />
 
                 {!collapsed &&
