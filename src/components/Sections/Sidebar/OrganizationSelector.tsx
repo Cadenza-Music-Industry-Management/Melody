@@ -7,8 +7,8 @@ import { useCloseOnClickAway } from "@/components/Melody/src/utils/hooks";
 import { Group } from "@/constants/types";
 
 export const OrganizationSelector = (props: {
-    organization?: Group,
-    organizations?: Group[]
+    organization: Group | null,
+    organizations: Group[] | null
     collapsed: boolean
 }) => {
 

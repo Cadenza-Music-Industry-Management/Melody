@@ -19,8 +19,8 @@ import { Group, SidebarLinkProps } from "@/constants/types";
 
 type SidebarProps = {
     links: SidebarLinkProps[],
-    organization?: Group,
-    organizations?: Group[]
+    organization: Group | null,
+    organizations: Group[] | null
 }
 
 export const Sidebar = (props: SidebarProps) => {
