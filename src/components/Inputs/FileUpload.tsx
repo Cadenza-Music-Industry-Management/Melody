@@ -27,13 +27,13 @@ export const FileUpload = (props: {
     //TODO need to create variant dropzone
 
     return (
-        <div className="flex justify-center">
+        <div>
             <label className="melody-text-sm melody-font-bold melody-text-gray-500 melody-tracking-wide">
                 {label}
             </label>
 
             {variant === 'bar' ?
-                <div className="mb-3 w-96">
+                <div className="melody-p-0.5">
                     <input className="melody-file-upload melody-block melody-w-full melody-text-sm melody-text-gray-900 melody-border melody-border-gray-300 melody-rounded-lg melody-cursor-pointer melody-bg-gray-50 dark:melody-text-gray-400 focus:melody-outline-none dark:melody-bg-gray-700 dark:melody-border-gray-600 dark:melody-placeholder-gray-400"
                            type="file"
                            id="fileUpload"

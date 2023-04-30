@@ -2,6 +2,7 @@ import "./ColorPicker.css"
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import { TextInput } from "@/components/Melody/src/components/Inputs/TextInput";
+import { useCloseOnClickAway } from "@/components/Melody/src/utils/hooks";
 
 //TODO come up with better color selection
 const COLORS = [
@@ -33,22 +34,11 @@ export const ColorPicker = (props: {
 
     const [isOpen, setIsOpen] = useState(false)
     const [selectedColorState, setSelectedColorState] = useState("#FFFFF")
-    const colorPickerContainerRef = useRef<HTMLInputElement>(null)
+    const colorPickerContainerRef = useCloseOnClickAway(toggleOpen)
 
     useMemo(() => {
         setSelectedColorState(value)
     }, [value])
-
-    useEffect(() => {
-        document.addEventListener('click', clickOutsideColorContainer, false)
-        return () => document.removeEventListener('click', clickOutsideColorContainer, false)
-    }, [])
-
-    function clickOutsideColorContainer(event: Event) {
-        if (colorPickerContainerRef.current && !colorPickerContainerRef.current.contains((event.target as Node))) {
-            setIsOpen(false)
-        }
-    }
 
     function toggleOpen() {
         setIsOpen((prevState) => !prevState)

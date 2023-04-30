@@ -5,15 +5,17 @@ import { Label } from "components/Melody/src/components/Layouts/Label";
 
 export const PageContainer = (props: {
     title?: LabelProps,
+    subTitle?: LabelProps,
     textAlignClass?: 'melody-text-left' | 'melody-text-center' | 'melody-text-right', //TODO only used when there is no button passed in
     headerBGColor?: string,
     headerTextColor?: string,
-    children: ReactNode,
+    children?: ReactNode,
     button?: ReactNode,
     additionalClasses?: string
 }) => {
     const {
         title,
+        subTitle,
         textAlignClass = 'melody-text-left',
         headerBGColor = 'melody-bg-white',
         headerTextColor = 'melody-text-black-0',
@@ -27,15 +29,21 @@ export const PageContainer = (props: {
     return (
         <div className="melody-bg-white melody-shadow melody-rounded-lg melody-w-full">
             {(title || button) &&
-              <div className={`melody-border-b border-gray-600 melody-p-3 melody-rounded-t-lg ${additionalClasses} ${textAlignClass} ${headerTextColor} ${headerBGColor} ${button ? 'melody-flex melody-flex-col sm:melody-flex-row' : ''} melody-justify-between melody-items-center`}>
-                  {title && <Label {...{...title, additionalClasses: `${button ? 'melody-mb-4 sm:melody-mb-0' : ''}`}} />}
-                {button && button}
+              <div className={`${children ? 'melody-border-b melody-border-gray-400 melody-rounded-t-lg' : 'melody-rounded-lg'} melody-px-4 melody-py-5 sm:melody-px-6 ${additionalClasses} ${textAlignClass} ${headerTextColor} ${headerBGColor} ${button ? 'melody-flex melody-flex-col sm:melody-flex-row' : ''} melody-justify-between melody-items-center`}>
+                  <div className={button ? 'melody-mb-4 sm:melody-mb-0' : ''}>
+                      {title && <Label {...title} />}
+                      {subTitle && <Label {...subTitle} />}
+                  </div>
+
+                  {button && button}
               </div>
             }
 
-            <div className="melody-p-6">
-                {children}
-            </div>
+            {children &&
+              <div className="melody-p-6">
+                  {children}
+              </div>
+            }
         </div>
     );
 };

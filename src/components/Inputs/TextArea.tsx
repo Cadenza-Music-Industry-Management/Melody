@@ -14,7 +14,7 @@ export const TextArea = (props: TextInputProps) => {
     } = props
 
     return (
-        <div>
+        <div className={"melody-w-full"}>
             {label && <Label {...{...label, htmlFor: "textArea"}} />}
             <textarea placeholder={placeholder}
                       value={value}

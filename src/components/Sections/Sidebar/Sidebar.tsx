@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "../Inputs/Button";
+import { Button } from "../../Inputs/Button";
 import {
     Sidebar as ProSidebar,
     Menu,
@@ -10,13 +10,12 @@ import {
     menuClasses,
     MenuItemStyles,
 } from "react-pro-sidebar";
-import {Avatar} from "../Layouts/Avatar"
-import {Icon} from "../Layouts/Icon"
+import {Icon} from "../../Layouts/Icon"
 import React, { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
 import { usePathname } from "next/navigation";
-//import { SidebarLinkProps } from "@/constants/types";
+import { OrganizationSelector } from "@/components/Melody/src/components/Sections/Sidebar/OrganizationSelector";
 
 type SidebarProps = {
     links: any[], //TODO need type from cadenza SidebarLinkProps
@@ -126,45 +125,6 @@ export const Sidebar = (props: SidebarProps) => {
         }
     }
 
-    function getGroupLayout(groupToDisplay: any, listItemIndex: number) {
-
-        let orgComponent;
-
-        if (organizations) {
-            orgComponent = (
-                <div className={`melody-flex melody-p-2 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== organizations?.length  - 1) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
-                    <Avatar image={groupToDisplay?.icon} />
-
-                    {!collapsed &&
-                      <div className={"melody-p-1 melody-text-left"}>
-                        <p className={"melody-text-sm melody-font-bold"}>
-                            {groupToDisplay?.name}
-                        </p>
-                        <p className={`melody-text-sm ${listItemIndex !== -1 ? 'melody-text-gray-600' : 'melody-text-gray-100'}`}>
-                          @{groupToDisplay?.groupUniqueId}
-                        </p>
-                        <p className={`melody-text-xs ${listItemIndex !== -1 ? 'melody-text-gray-600' : 'melody-text-gray-100'}`}>
-                            {groupToDisplay?.groupType}
-                        </p>
-                      </div>
-                    }
-                </div>
-            )
-        }
-
-        return (
-            <>
-                {listItemIndex !== -1 ?
-                    <Link href={`/dashboard/${groupToDisplay.groupUniqueId}`}>
-                        {orgComponent}
-                    </Link>
-                    :
-                    orgComponent
-                }
-            </>
-        )
-    }
-
     return (
        <>
            {broken &&
@@ -182,38 +142,9 @@ export const Sidebar = (props: SidebarProps) => {
 
                    {/*HEADER*/}
                    <div className={"melody-p-2 melody-relative"}>
-                       <div className={`melody-flex melody-bg-secondary-100 melody-text-white melody-rounded-lg melody-shadow melody-items-center ${!collapsed ? 'melody-cursor-pointer' : 'melody-justify-center'}`}
-                            onClick={() => !collapsed && setShowOrgSelector(!showOrgSelector)}>
-                           {getGroupLayout(organization, -1)}
-
-                           {!collapsed &&
-                             <div className={"melody-ml-auto melody-pr-2"}>
-                               <Icon icon={'caretUp'} />
-                               <Icon icon={'caretDown'} />
-                             </div>
-                           }
-                       </div>
-
-                       {/*TODO if we click outside this area, we should close popup too*/}
-                       <Transition
-                           as={Fragment}
-                           show={showOrgSelector}
-                           enter="melody-transition melody-ease-out melody-duration-100"
-                           enterFrom="melody-transform melody-opacity-0 melody-scale-95"
-                           enterTo="melody-transform opacity-100 melody-scale-100"
-                           leave="melody-transition melody-ease-in melody-duration-75"
-                           leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
-                           leaveTo="melody-transform melody-opacity-0 melody-scale-95">
-                           <div className={"melody-absolute melody-z-10 melody-bg-white melody-border melody-border-gray-300 melody-w-[275px] melody-rounded-lg melody-shadow melody-mt-1 melody-ml-1"}>
-                               {organizations?.map((groupToSelect, index) => getGroupLayout(groupToSelect, index))}
-
-                               {organizations?.length === 0 &&
-                                 <p className={"melody-p-4 melody-font-bold melody-text-center melody-text-sm"}>
-                                   User is not part of any other organization
-                                 </p>
-                               }
-                           </div>
-                       </Transition>
+                       <OrganizationSelector organization={organization}
+                                             organizations={organizations}
+                                             collapsed={collapsed} />
                    </div>
 
                    {/*CONTENT*/}
