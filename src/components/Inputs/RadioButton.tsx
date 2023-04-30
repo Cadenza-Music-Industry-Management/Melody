@@ -1,17 +1,16 @@
 import './RadioButton.css'
 import {Label} from "../Layouts/Label";
 import React from "react";
+import { RadioButtonProps } from "@/components/Melody/src/components/types";
 
-export const RadioButton = (props: {
-    variant?: string,
-    size?: string,
-    label?: string,
-    value: boolean | undefined
-}) => {
+export const RadioButton = (props: RadioButtonProps) => {
     const {
+        handleChange,
+        disabled,
         variant,
         size,
         label,
+        subLabel,
         value
     } = props
 
@@ -23,14 +22,21 @@ export const RadioButton = (props: {
         <div className="melody-flex melody-items-center melody-mb-4">
 
             <input type="radio"
-                   // value={"radio_value"} //TODO hardcoded
+                   disabled={disabled}
                    checked={value}
+                   onClick={() => handleChange(!value)}
                    name="radio-button"
-                   className="melody-w-4 melody-h-4 melody-text-blue-600 melody-bg-gray-100 melody-border-gray-300 focus:melody-ring-blue-500 dark:focus:melody-ring-blue-600 dark:melody-ring-offset-gray-800 focus:melody-ring-2 dark:melody-bg-gray-700 dark:melody-border-gray-600" />
+                   className={`melody-w-4 melody-h-4 melody-text-blue-600 melody-bg-gray-100 melody-border-gray-300 focus:melody-ring-blue-500 dark:focus:melody-ring-blue-600 dark:melody-ring-offset-gray-800 focus:melody-ring-2 dark:melody-bg-gray-700 dark:melody-border-gray-600 ${variant} ${size}`} />
 
-            {label &&
-                <div className={"melody-ml-2"}>
-                    <Label htmlFor={"radio-button-input"} label={label} />
+            {(label || subLabel) &&
+                <div className="melody-ml-2 melody-text-sm">
+                    {label && <Label label={label} />}
+
+                    {subLabel &&
+                        <p className="melody-text-xs melody-font-normal melody-text-gray-500">
+                            {subLabel}
+                        </p>
+                    }
                 </div>
             }
         </div>

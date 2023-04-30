@@ -1,18 +1,10 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import "./PageContainer.css"
-import { LabelProps } from "components/Melody/src/components/types";
+import { PageContainerProps } from "components/Melody/src/components/types";
 import { Label } from "components/Melody/src/components/Layouts/Label";
 
-export const PageContainer = (props: {
-    title?: LabelProps,
-    subTitle?: LabelProps,
-    textAlignClass?: 'melody-text-left' | 'melody-text-center' | 'melody-text-right', //TODO only used when there is no button passed in
-    headerBGColor?: string,
-    headerTextColor?: string,
-    children?: ReactNode,
-    button?: ReactNode,
-    additionalClasses?: string
-}) => {
+export const PageContainer = (props: PageContainerProps) => {
+
     const {
         title,
         subTitle,

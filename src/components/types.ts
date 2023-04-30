@@ -177,3 +177,49 @@ export interface BreadcrumbItemProps {
     label?: string,
     icon?: AddIconProps
 }
+
+//Page Container
+export interface PageContainerProps {
+    title?: LabelProps,
+    subTitle?: LabelProps,
+    textAlignClass?: 'melody-text-left' | 'melody-text-center' | 'melody-text-right', //TODO only used when there is no button passed in
+    headerBGColor?: string,
+    headerTextColor?: string,
+    children?: ReactNode,
+    button?: ReactNode,
+    additionalClasses?: string
+}
+
+//Form List Layout
+export interface FormListLayoutProps {
+    label: string,
+    subLabel: string,
+    footerComponent?: ReactNode,
+    items: {
+        key: ReactNode,
+        value: ReactNode
+    }[]
+}
+
+//Radio Button
+export interface RadioButtonProps {
+    handleChange: (checked: boolean) => void,
+    variant?: string,
+    size?: string,
+    label?: string,
+    subLabel?: string,
+    disabled?: boolean,
+    value: boolean | undefined
+}
+
+
+//Checkbox
+export interface CheckboxProps {
+    handleChange: (checked: boolean) => void,
+    value: boolean | undefined,
+    size?: string,
+    variant?: string,
+    label?: string,
+    subLabel?: string,
+    disabled?: boolean
+}

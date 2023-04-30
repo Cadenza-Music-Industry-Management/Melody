@@ -1,16 +1,9 @@
-import React, { ReactNode } from "react";
-import "./StripedListLayout.css"
+import React from "react";
+import "./FormListLayout.css"
+import { FormListLayoutProps } from "@/components/Melody/src/components/types";
 
-//TODO move to interface types file
-export const FormListLayout = (props: {
-    label: string,
-    subLabel: string,
-    footerComponent?: ReactNode,
-    items: {
-        key: ReactNode,
-        value: ReactNode
-    }[] //UseFieldArrayProps
-}) => {
+export const FormListLayout = (props: FormListLayoutProps) => {
+
     const {
         label,
         subLabel,
