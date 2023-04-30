@@ -6,7 +6,7 @@ export const RadioButton = (props: {
     variant?: string,
     size?: string,
     label?: string,
-    value: boolean
+    value: boolean | undefined
 }) => {
     const {
         variant,
