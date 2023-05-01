@@ -15,11 +15,12 @@ export const Button = (props: ButtonProps) => {
         onClick,
         disabled = false,
         indicator,
-        trailerComponent
+        trailerComponent,
+        additionalClasses
     } = props
 
     return (
-        <button className={`melody-button melody-button-${size} melody-button-${color}-${variant}`}
+        <button className={`melody-button melody-button-${size} melody-button-${color}-${variant} ${additionalClasses}`}
                 type={type}
                 disabled={disabled}
                 onClick={onClick}>

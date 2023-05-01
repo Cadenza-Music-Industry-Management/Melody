@@ -13,7 +13,7 @@ export const FormListLayout = (props: FormListLayoutProps) => {
 
     return (
         <div className="melody-overflow-hidden melody-bg-white melody-shadow melody-rounded-lg">
-            <div className="melody-px-4 melody-py-5 sm:melody-px-6 melody-border-b melody-border-gray-400">
+            <div className="melody-px-4 melody-py-5 sm:melody-px-6 melody-border-b melody-border-gray-300">
                 <h3 className="melody-text-lg melody-font-medium melody-leading-6 melody-text-gray-900">
                     {label}
                 </h3>
@@ -25,7 +25,7 @@ export const FormListLayout = (props: FormListLayoutProps) => {
 
             <div>
                 {items.map((item, index) => (
-                    <div key={index} className={`${index % 2 === 0 ? 'melody-bg-white' : 'melody-bg-gray-50'} melody-px-4 melody-py-5 sm:melody-grid sm:melody-grid-cols-3 sm:melody-gap-4 sm:melody-px-6`}>
+                    <div key={index} className={`${index % 2 === 0 ? 'melody-bg-white' : 'melody-bg-gray-50'} melody-px-3 melody-py-4 sm:melody-grid sm:melody-grid-cols-3 sm:melody-gap-4 sm:melody-px-6`}>
                         <div className={"melody-items-center melody-flex"}>
                             {item.key}
                         </div>
@@ -37,7 +37,7 @@ export const FormListLayout = (props: FormListLayoutProps) => {
             </div>
 
             {footerComponent &&
-                <div className={"melody-border-t melody-border-gray-400"}>
+                <div className={"melody-border-t melody-border-gray-300"}>
                     {footerComponent}
                 </div>
             }

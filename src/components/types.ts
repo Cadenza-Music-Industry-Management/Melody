@@ -19,7 +19,8 @@ export interface ButtonProps {
     onClick?: () => void,
     disabled?: boolean,
     indicator?: IndicatorProps,
-    trailerComponent?: ReactNode
+    trailerComponent?: ReactNode,
+    additionalClasses?: string
 }
 
 //Dropdown

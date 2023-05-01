@@ -21,13 +21,17 @@ export const PageContainer = (props: PageContainerProps) => {
     return (
         <div className="melody-bg-white melody-shadow melody-rounded-lg melody-w-full">
             {(title || button) &&
-              <div className={`${children ? 'melody-border-b melody-border-gray-400 melody-rounded-t-lg' : 'melody-rounded-lg'} melody-px-4 melody-py-5 sm:melody-px-6 ${additionalClasses} ${textAlignClass} ${headerTextColor} ${headerBGColor} ${button ? 'melody-flex melody-flex-col sm:melody-flex-row' : ''} melody-justify-between melody-items-center`}>
+              <div className={`${children ? 'melody-border-b melody-border-gray-300 melody-rounded-t-lg' : 'melody-rounded-lg'} melody-px-4 melody-py-5 sm:melody-px-6 ${additionalClasses} ${textAlignClass} ${headerTextColor} ${headerBGColor} ${button ? 'melody-flex melody-flex-col sm:melody-flex-row' : ''} melody-justify-between melody-items-center`}>
                   <div className={button ? 'melody-mb-4 sm:melody-mb-0' : ''}>
                       {title && <Label {...title} />}
                       {subTitle && <Label {...subTitle} />}
                   </div>
 
-                  {button && button}
+                  {button &&
+                    <div className={"melody-min-w-[150px] melody-flex melody-justify-center"}>
+                        {button}
+                    </div>
+                  }
               </div>
             }
 
