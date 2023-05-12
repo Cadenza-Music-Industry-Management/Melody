@@ -1,3 +1,5 @@
+"use client"
+
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 import { Tooltip } from "@/components/Melody/src/components/Layouts/Tooltip";
 import { IconTooltipProps } from "@/components/Melody/src/components/types";
