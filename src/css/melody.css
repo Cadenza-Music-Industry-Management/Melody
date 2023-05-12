@@ -20,12 +20,12 @@
 
   @font-face {
     font-family: 'melody_icons';
-    src: url('../fonts/melody_icons.eot?77105065');
-    src: url('../fonts/melody_icons.eot?77105065#iefix') format('embedded-opentype'),
-    url('../fonts/melody_icons.woff2?77105065') format('woff2'),
-    url('../fonts/melody_icons.woff?77105065') format('woff'),
-    url('../fonts/melody_icons.ttf?77105065') format('truetype'),
-    url('../fonts/melody_icons.svg?77105065#melody_icons') format('svg');
+    src: url('../fonts/melody_icons.eot?36244805');
+    src: url('../fonts/melody_icons.eot?36244805#iefix') format('embedded-opentype'),
+    url('../fonts/melody_icons.woff2?36244805') format('woff2'),
+    url('../fonts/melody_icons.woff?36244805') format('woff'),
+    url('../fonts/melody_icons.ttf?36244805') format('truetype'),
+    url('../fonts/melody_icons.svg?36244805#melody_icons') format('svg');
     font-weight: normal;
     font-style: normal;
   }
@@ -51,7 +51,7 @@
   color: white;
 }
 
-/*TODO these are required for storybook to work but also has additional redefinition in globals.css for NextJS site to work*/
+/*Note these are required for storybook to work but also has additional redefinition in globals.css for NextJS site to work*/
 .melody-none:before { content: '\e800'; } /* '' */
 .melody-org:before { content: '\e801'; } /* '' */
 .melody-org-tools:before { content: '\e802'; } /* '' */
@@ -104,3 +104,6 @@
 .melody-legal:before { content: '\e831'; } /* '' */
 .melody-links:before { content: '\e832'; } /* '' */
 .melody-merchandise:before { content: '\e833'; } /* '' */
+.melody-apparel-order:before { content: '\e834'; } /* '' */
+.melody-apparel-items:before { content: '\e835'; } /* '' */
+
