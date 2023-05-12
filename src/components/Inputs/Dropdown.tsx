@@ -2,7 +2,6 @@ import Select from 'react-select';
 import './Dropdown.css'
 import {DropdownProps} from "../types";
 import {Label} from "../Layouts/Label";
-import React from "react";
 
 export const Dropdown = (props: DropdownProps) => {
     const {

@@ -1,6 +1,8 @@
 import React from "react";
 import "./FormListLayout.css"
 import { FormListLayoutProps } from "@/components/Melody/src/components/types";
+import { Label } from "@/components/Melody/src/components/Layouts/Label";
+import { IconTooltip } from "@/components/Melody/src/components/Layouts/IconTooltip";
 
 export const FormListLayout = (props: FormListLayoutProps) => {
 
@@ -8,14 +10,16 @@ export const FormListLayout = (props: FormListLayoutProps) => {
         label,
         subLabel,
         footerComponent,
-        items
+        items,
+        tooltip
     } = props
 
     return (
         <div className="melody-overflow-hidden melody-bg-white melody-shadow melody-rounded-lg">
             <div className="melody-px-4 melody-py-5 sm:melody-px-6 melody-border-b melody-border-gray-300">
-                <h3 className="melody-text-lg melody-font-medium melody-leading-6 melody-text-gray-900">
+                <h3 className="melody-flex melody-gap-x-0.5 melody-text-lg melody-font-medium melody-leading-6 melody-text-gray-900">
                     {label}
+                    {tooltip && <div className={"melody-pl-1"}><IconTooltip {...tooltip} /></div>}
                 </h3>
 
                 <p className="melody-mt-1 melody-max-w-2xl melody-text-sm melody-text-gray-500">
@@ -29,7 +33,7 @@ export const FormListLayout = (props: FormListLayoutProps) => {
                         <div className={"melody-items-center melody-flex"}>
                             {item.key}
                         </div>
-                        <div className="melody-mt-1 sm:melody-col-span-2 sm:melody-mt-0">
+                        <div className="melody-flex melody-items-center melody-mt-1 sm:melody-col-span-2 sm:melody-mt-0">
                             {item.value}
                         </div>
                     </div>

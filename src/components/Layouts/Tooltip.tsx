@@ -1,4 +1,6 @@
-import {useState} from 'react';
+'use client'
+
+import React, {useState} from 'react';
 import "./Tooltip.css"
 import {TooltipProps} from "../types";
 
@@ -8,7 +10,6 @@ export const Tooltip = (props: TooltipProps) => {
         direction = 'right',
         delay = 150,
         children,
-        iconTooltip = false,
         additionalClasses
     } = props
 

@@ -1,36 +1,35 @@
-.melody-checkbox-container {
+.melody-radio-checkbox-container {
     @apply melody-flex melody-justify-center;
 }
 
-.melody-checkbox {
+.melody-radio-checkbox {
     @apply melody-w-5 melody-h-5 melody-bg-gray-100 melody-text-primary-100 melody-border-gray-300 melody-rounded focus:melody-ring-2;
 }
 
-.melody-checkbox.primary {
+.melody-radio-checkbox.primary {
     @apply focus:melody-ring-primary-200;
 }
 
-.melody-checkbox.secondary {
+.melody-radio-checkbox.secondary {
     @apply focus:melody-ring-secondary-200;
 }
 
-/*Note: Need to use accent color to change bg of checkbox*/
-.melody-checkbox.primary:checked {
+.melody-radio-checkbox.primary:checked {
     @apply melody-accent-primary-100;
 }
 
-.melody-checkbox.secondary:checked {
+.melody-radio-checkbox.secondary:checked {
     @apply melody-accent-secondary-100;
 }
 
-.melody-checkbox.small {
+.melody-radio-checkbox.small {
     @apply melody-w-4 melody-h-4;
 }
 
-.melody-checkbox.medium {
+.melody-radio-checkbox.medium {
     @apply melody-w-5 melody-h-5;
 }
 
-.melody-checkbox.large {
+.melody-radio-checkbox.large {
     @apply melody-w-6 melody-h-6;
 }

@@ -1,5 +1,6 @@
-import {ReactNode} from "react";
+import { CSSProperties, ReactNode } from "react";
 import {DatePicker} from "./Inputs/DatePicker";
+import { IconTooltip } from "@/components/Melody/src/components/Layouts/IconTooltip";
 
 //Indicator
 export interface IndicatorProps {
@@ -73,11 +74,10 @@ export interface LabelProps {
 
 //Tooltip
 export interface TooltipProps {
-    message: string;
-    direction?: 'top' | 'bottom' | 'left' | 'right';
-    delay?: number;
-    children?: ReactNode;
-    iconTooltip?: boolean,
+    message: string,
+    direction?: 'top' | 'bottom' | 'left' | 'right',
+    delay?: number,
+    children?: ReactNode,
     additionalClasses?: string
 }
 
@@ -188,7 +188,8 @@ export interface PageContainerProps {
     headerTextColor?: string,
     children?: ReactNode,
     button?: ReactNode,
-    additionalClasses?: string
+    additionalClasses?: string,
+    tooltip?: IconTooltipProps
 }
 
 //Form List Layout
@@ -199,7 +200,8 @@ export interface FormListLayoutProps {
     items: {
         key: ReactNode,
         value: ReactNode
-    }[]
+    }[],
+    tooltip?: IconTooltipProps
 }
 
 //Radio Button
@@ -210,7 +212,8 @@ export interface RadioButtonProps {
     label?: string,
     subLabel?: string,
     disabled?: boolean,
-    value: boolean | undefined
+    value: boolean | undefined,
+    additionalParentStyles?: CSSProperties
 }
 
 
@@ -222,5 +225,15 @@ export interface CheckboxProps {
     variant?: string,
     label?: string,
     subLabel?: string,
-    disabled?: boolean
+    disabled?: boolean,
+    additionalParentStyles?: CSSProperties
+}
+
+//Icon Tooltip
+export interface IconTooltipProps {
+    icon?: string,
+    fontSize?: number,
+    fontColor?: string,
+    message: string,
+    direction?: 'top' | 'bottom' | 'left' | 'right'
 }

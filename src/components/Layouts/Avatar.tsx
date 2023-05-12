@@ -19,7 +19,7 @@ export const Avatar = (props: {
     //TODO props like adding ring, size, variant (could this be ring?)?
 
     return (
-        <div className={`melody-avatar-container ${size}`}>
+        <div className={`melody-avatar-container melody-relative ${size}`}>
             {image ?
                 <Image className={`melody-avatar ${rounded && 'melody-rounded-full'} ${ring && 'ring'}`}
                        src={image}

@@ -1,4 +1,3 @@
-import React from 'react';
 import "./Alert.css"
 
 export const Alert = (props: {
@@ -15,6 +14,7 @@ export const Alert = (props: {
     return (
         <div className={`melody-alert ${variant} ${size}`}
              role="alert">
+            {/*TODO replace with icon*/}
             <svg aria-hidden="true" className="melody-flex-shrink-0 melody-inline melody-w-5 melody-h-5 melody-mr-3" fill="currentColor"
                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd"

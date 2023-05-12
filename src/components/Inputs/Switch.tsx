@@ -1,7 +1,6 @@
 import { Switch as HeadlessSwitch } from '@headlessui/react'
 import './Switch.css'
 import {Label} from "../Layouts/Label";
-import React from "react";
 
 export const Switch = (props: {
     // variant: string,

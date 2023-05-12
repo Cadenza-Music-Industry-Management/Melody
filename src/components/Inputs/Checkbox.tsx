@@ -1,17 +1,9 @@
-import './Checkbox.css'
+import './RadioCheckbox.css'
 import {Label} from "../Layouts/Label";
-import React from "react";
+import { CheckboxProps } from "@/components/Melody/src/components/types";
 
-//TODO move to interface types file for melody
-export const Checkbox = (props: {
-    handleChange: (checked: boolean) => void,
-    value: boolean | undefined,
-    size?: string,
-    variant?: string,
-    label?: string,
-    subLabel?: string,
-    disabled?: boolean
-}) => {
+export const Checkbox = (props: CheckboxProps) => {
+
     const {
         variant = 'primary',
         size = 'medium',
@@ -19,17 +11,18 @@ export const Checkbox = (props: {
         subLabel,
         handleChange,
         value,
-        disabled
+        disabled,
+        additionalParentStyles
     } = props
 
     return (
-        <div className="melody-checkbox-container">
+        <div className="melody-radio-checkbox-container" style={additionalParentStyles}>
             <input aria-describedby="checkbox-sub-label"
                    type="checkbox"
                    disabled={disabled}
                    checked={value}
                    onClick={() => handleChange(!value)}
-                   className={`melody-checkbox ${variant} ${size}`} />
+                   className={`melody-radio-checkbox ${variant} ${size}`} />
 
             {(label || subLabel) &&
               <div className="melody-ml-2 melody-text-sm">
