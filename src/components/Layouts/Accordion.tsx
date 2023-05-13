@@ -6,6 +6,7 @@ import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 interface AccordionButtonProps {
     title?: string,
     variant?: string,
+    size?: string,
     customComponent?: ReactNode
 }
 
@@ -21,7 +22,7 @@ export const Accordion = (props: {
 
     //TODO variants for different colors for primary, secondary, white?, transparent?
 
-    //TODO this currently makes the button and children appear next to each other, need to have like custom hook that returns the button component that activates accordian and then accordian in separate field. So we can have in seperate places
+    //TODO this currently makes the button and children appear next to each other, need to have like custom hook that returns the button component that activates Accordion and then Accordion in separate field. So we can have in seperate places
 
     function getAccordionButton(open: boolean) {
 
@@ -31,7 +32,7 @@ export const Accordion = (props: {
             return accordionButton.customComponent
         } else {
             return (
-                <Disclosure.Button className="melody-flex melody-w-full melody-justify-between melody-rounded-lg melody-bg-secondary-100 melody-px-4 melody-py-2 melody-text-left melody-text-sm melody-font-medium melody-text-white hover:melody-bg-secondary-200 focus:melody-outline-none focus-visible:melody-ring focus-visible:melody-ring-secondary-300 focus-visible:melody-ring-opacity-75">
+                <Disclosure.Button className={`melody-accordion ${accordionButton.variant ?? 'secondary'} ${accordionButton.size ?? 'medium'}`}>
                     <span>{accordionButton.title}</span>
                     <Icon icon={open ? "caretDown" : "caretRight"} additionalClasses={`melody-h-5 melody-w-5`} />
                 </Disclosure.Button>
@@ -47,7 +48,7 @@ export const Accordion = (props: {
                         leave="melody-transition melody-duration-75 melody-ease-out"
                         leaveFrom="melody-transform melody-scale-100 melody-opacity-100"
                         leaveTo="melody-transform melody-scale-95 melody-opacity-0">
-                <Disclosure.Panel className="melody-px-4 melody-pt-4 melody-pb-2">
+                <Disclosure.Panel className="melody-px-2 melody-py-2">
                     {children}
                 </Disclosure.Panel>
             </Transition>
@@ -55,7 +56,7 @@ export const Accordion = (props: {
     }
 
     return (
-        <div className="melody-mx-auto melody-w-full melody-rounded-2xl melody-bg-white melody-p-2">
+        <div className="melody-mx-auto melody-w-full melody-rounded-2xl melody-bg-white melody-p-1">
             {/*TODO   Render a `div` for the root `Disclosure` component
             <Disclosure as="div">*/}
             <Disclosure>

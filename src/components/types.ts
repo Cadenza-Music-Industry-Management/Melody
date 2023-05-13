@@ -160,7 +160,7 @@ export interface UserProps {
 
 //Badge
 export interface BadgeProps {
-    variant: string,
+    variant?: string,
     size?: string,
     text: string,
     indicator?: IndicatorProps

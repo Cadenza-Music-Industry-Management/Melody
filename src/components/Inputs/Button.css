@@ -30,12 +30,20 @@
     @apply melody-bg-secondary-100 hover:melody-bg-secondary-200 melody-text-white;
 }
 
+.melody-button-secondary-solid:disabled {
+    @apply melody-bg-secondary-200 melody-text-gray-200;
+}
+
 .melody-button-secondary-outlined {
     @apply melody-bg-transparent melody-border-2 melody-border-secondary-100 hover:melody-bg-secondary-200 hover:melody-text-white;
 }
 
 .melody-button-primary-solid {
     @apply melody-bg-primary-100 hover:melody-bg-primary-200 melody-text-white;
+}
+
+.melody-button-primary-solid:disabled {
+    @apply melody-bg-primary-200 melody-text-gray-400;
 }
 
 .melody-button-primary-outlined {

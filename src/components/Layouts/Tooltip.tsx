@@ -8,7 +8,7 @@ export const Tooltip = (props: TooltipProps) => {
     const {
         message,
         direction = 'right',
-        delay = 150,
+        delay = 200,
         children,
         additionalClasses
     } = props
@@ -41,7 +41,7 @@ export const Tooltip = (props: TooltipProps) => {
                 {children}
             </div>
 
-            {showTooltip &&
+            {showTooltip && message !== "" &&
                 <div className={tooltipClasses}>
                     {message}
                 </div>

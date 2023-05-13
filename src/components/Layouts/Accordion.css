@@ -1,0 +1,23 @@
+.melody-accordion {
+    @apply melody-flex melody-items-center melody-w-full melody-justify-between melody-rounded-lg melody-text-left melody-font-medium melody-text-white  focus:melody-outline-none focus-visible:melody-ring focus-visible:melody-ring-opacity-75;
+}
+
+.melody-accordion.small {
+    @apply melody-text-xs melody-px-2 melody-py-1;
+}
+
+.melody-accordion.medium {
+    @apply melody-text-sm melody-px-4 melody-py-2;
+}
+
+.melody-accordion.large {
+    @apply melody-text-sm melody-px-6 melody-py-3;
+}
+
+.melody-accordion.primary {
+    @apply melody-bg-primary-100 hover:melody-bg-primary-200  focus-visible:melody-ring-primary-300;
+}
+
+.melody-accordion.secondary {
+    @apply melody-bg-secondary-100 hover:melody-bg-secondary-200  focus-visible:melody-ring-secondary-300;
+}

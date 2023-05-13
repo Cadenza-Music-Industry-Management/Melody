@@ -5,7 +5,7 @@ import {Indicator} from "./Indicator";
 
 export const Badge = (props: BadgeProps) => {
     const {
-        variant,
+        variant = 'info',
         size = 'small',
         text,
         indicator
