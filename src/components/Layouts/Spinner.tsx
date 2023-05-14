@@ -17,7 +17,7 @@ export const Spinner = (props: {
 
 
     return (
-        <div role="status">
+        <div role="status" className={"melody-flex melody-justify-center"}>
             <svg aria-hidden="true"
                  className={`melody-spinner ${size} ${variant}`}
                  viewBox="0 0 100 101"
