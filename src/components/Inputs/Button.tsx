@@ -18,6 +18,8 @@ export const Button = (props: ButtonProps) => {
         additionalClasses
     } = props
 
+    //TODO loading boolean property to add spinner to button
+
     return (
         <button className={`melody-button melody-button-${size} melody-button-${color}-${variant} ${additionalClasses}`}
                 type={type}

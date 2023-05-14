@@ -33,7 +33,7 @@ export const FormListLayout = (props: FormListLayoutProps) => {
                         <div className={"melody-items-center melody-flex"}>
                             {item.key}
                         </div>
-                        <div className="melody-flex melody-items-center melody-mt-1 sm:melody-col-span-2 sm:melody-mt-0">
+                        <div className="melody-flex melody-flex-col melody-text-left melody-items-start melody-justify-around melody-mt-1 sm:melody-col-span-2 sm:melody-mt-0">
                             {item.value}
                         </div>
                     </div>
