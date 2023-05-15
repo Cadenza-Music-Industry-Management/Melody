@@ -4,7 +4,7 @@ import { RadioButtonProps } from "@/components/Melody/src/components/types";
 
 export const RadioButton = (props: RadioButtonProps) => {
     const {
-        handleChange,
+        onChange,
         disabled,
         variant = 'primary',
         size = 'medium',
@@ -22,7 +22,7 @@ export const RadioButton = (props: RadioButtonProps) => {
             <input type="radio"
                    disabled={disabled}
                    checked={value}
-                   onClick={() => handleChange(!value)}
+                   onClick={() => onChange(!value)}
                    name="radio-button"
                    className={`melody-radio-checkbox ${variant} ${size}`} />
 

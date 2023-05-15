@@ -9,7 +9,7 @@ export const Checkbox = (props: CheckboxProps) => {
         size = 'medium',
         label,
         subLabel,
-        handleChange,
+        onChange,
         value,
         disabled,
         additionalParentStyles
@@ -21,7 +21,7 @@ export const Checkbox = (props: CheckboxProps) => {
                    type="checkbox"
                    disabled={disabled}
                    checked={value}
-                   onClick={() => handleChange(!value)}
+                   onClick={() => onChange(!value)}
                    className={`melody-radio-checkbox ${variant} ${size}`} />
 
             {(label || subLabel) &&

@@ -208,7 +208,7 @@ export interface FormListLayoutProps {
 
 //Radio Button
 export interface RadioButtonProps {
-    handleChange: (checked: boolean) => void,
+    onChange: (checked: boolean) => void,
     variant?: string,
     size?: string,
     label?: string,
@@ -221,7 +221,7 @@ export interface RadioButtonProps {
 
 //Checkbox
 export interface CheckboxProps {
-    handleChange: (checked: boolean) => void,
+    onChange: (checked: boolean) => void,
     value: boolean | undefined,
     size?: string,
     variant?: string,
