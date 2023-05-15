@@ -99,21 +99,24 @@ export const Sidebar = (props: SidebarProps) => {
                         {childrenComponents}
                     </SubMenu>
                 } else {
-                    //TODO selection logic is broken, check settings tab for example (payment tab selected and default settings is selected)
                     return <MenuItem icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : checkPathnameForSidebar(pathname, organization?.groupUniqueId, link.href ?? "")} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
                         {link.title}
                     </MenuItem>
                 }
             case 'title':
-                return <p className={"melody-text-lg melody-font-bold melody-p-3"}>
-                    {link.title}
-                </p>
+                return <div className={"melody-bg-white"}>
+                    <p className={"melody-text-lg melody-font-bold melody-p-3"}>
+                        {link.title}
+                    </p>
+                </div>
             case 'text':
-                return <p className={"melody-text-sm melody-p-1"}>
-                    {link.title}
-                </p>
+                return <div className={"melody-bg-white"}>
+                    <p className={"melody-text-sm melody-p-1"}>
+                        {link.title}
+                    </p>
+                </div>
             case 'separator':
-                return <div className={"melody-p-3"}>
+                return <div className={"melody-bg-white melody-p-3"}>
                     <hr className={"melody-bg-primary-100 melody-h-[2px]"} />
                 </div>
             case 'button':

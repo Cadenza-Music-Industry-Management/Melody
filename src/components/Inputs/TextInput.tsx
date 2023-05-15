@@ -15,10 +15,12 @@ export const TextInput = (props: TextInputProps) => {
         onBlur,
         headerComponent,
         trailerComponent,
+        maxLength,
         max,
         min
     } = props
 
+    console.log(max)
     return (
         <div className={"melody-w-full"}>
             {label && <Label {...label} />}
@@ -33,6 +35,7 @@ export const TextInput = (props: TextInputProps) => {
                 <input type={type}
                        max={max}
                        min={min}
+                       maxLength={maxLength}
                        placeholder={placeholder}
                        value={value}
                        disabled={disabled}

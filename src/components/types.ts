@@ -58,6 +58,7 @@ export interface TextInputProps {
     onBlur?: (value: string) => void;
     headerComponent?: ReactNode;
     trailerComponent?: ReactNode;
+    maxLength?: number,
     max?: number,
     min?: number
 }

@@ -77,7 +77,7 @@ export const ColorPicker = (props: {
                 </div>
 
                 <div className={"melody-p-2"}>
-                    <TextInput label={{ label: 'Enter Custom Hex Value', bold: true }} value={selectedColorState} onChange={onChange} onBlur={handleColorClick} max={10} />
+                    <TextInput label={{ label: 'Enter Custom Hex Value', bold: true }} value={selectedColorState} onChange={onChange} onBlur={handleColorClick} maxLength={10} />
                 </div>
             </div>
         </div>
