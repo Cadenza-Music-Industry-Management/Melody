@@ -16,6 +16,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { OrganizationSelector } from "@/components/Melody/src/components/Sections/Sidebar/OrganizationSelector";
 import { Group, GroupList, SidebarLinkProps } from "@/constants/types";
+import { checkPathnameForSidebar } from "@/components/Melody/src/utils/functions";
 
 type SidebarProps = {
     links: SidebarLinkProps[],
@@ -47,22 +48,20 @@ export const Sidebar = (props: SidebarProps) => {
         SubMenuExpandIcon: {
             color: '#b6b7b9',
         },
-        //TODO this isn't working for changing icon to white
         icon: ({ active, open }) => ({
-            fill: (active || open) ? '#FFFFFF' : '0C192C', //TODO once font working for custom icons, can remove this line
             color: (active || open) ? '#FFFFFF' : '0C192C'
         }),
         subMenuContent: ({ level, active }) => ({
             backgroundColor: active ? '#0C192C' : level === 0 ? '#fbfcfd' : '#FFFFFF',
         }),
-        button: ({  active , open }) => ({
+        button: ({  active , open, isSubmenu }) => ({
             [`&.${menuClasses.disabled}`]: {
                 color: '#9fb6cf',
             },
             '&:hover': {
                 backgroundColor: '#cdcdcd'
             },
-            backgroundColor: active ? '#1B3B6B' : open ? '#0C192C' : '#FFFFFF',
+            backgroundColor: (active && !isSubmenu) ? '#1B3B6B' : (open || (active && isSubmenu)) ? '#0C192C' : '#FFFFFF',
             color: (active || open) ? '#FFFFFF' : '#0C192C'
         }),
         label: ({ open }) => ({
@@ -73,14 +72,11 @@ export const Sidebar = (props: SidebarProps) => {
     //TODO SidebarLinkProps
     function generateMenuItem(link: any, rootLevel: boolean, index: string) {
 
-        //TODO icon not changing color on hover. Broken on Cadenza and Storybook :(
-
         switch (link.type) {
             case 'menu':
                 let icon = <span />
                 if (link.icon) icon = <Icon icon={link.icon.icon}
-                                            additionalStyles={link.icon.additionalStyles}
-                                            additionalClasses={'hover:melody-text-white'} />
+                                            additionalStyles={link.icon.additionalStyles} />
 
                 let component;
                 if (link.href) {
@@ -90,14 +86,21 @@ export const Sidebar = (props: SidebarProps) => {
                 }
 
                 if (link.children) {
-                    //TODO need to set active submenu prop if its open or any children are active
-                    return <SubMenu label={link.title} icon={icon} component={component} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
-                        {link.children.map((link: any, childIndex: any) => generateMenuItem(link, false, `index-${index}-child-${childIndex}`))}
+                    const childrenComponents = link.children.map((link: any, childIndex: any) => generateMenuItem(link, false, `index-${index}-child-${childIndex}`))
+                    const childIsSelected = childrenComponents.some((child: any) => {
+                        return child.props.active ?? false
+                    })
+
+                    return <SubMenu label={link.title}
+                                    icon={icon}
+                                    component={component}
+                                    active={childIsSelected}
+                                    className={`${rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}`}>
+                        {childrenComponents}
                     </SubMenu>
                 } else {
                     //TODO selection logic is broken, check settings tab for example (payment tab selected and default settings is selected)
-                    //Note: usePathname() returns string, but fails with possibly null in build
-                    return <MenuItem icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : (pathname?.includes(link.href ?? "") ?? false)} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
+                    return <MenuItem icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : checkPathnameForSidebar(pathname, organization?.groupUniqueId, link.href ?? "")} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
                         {link.title}
                     </MenuItem>
                 }
