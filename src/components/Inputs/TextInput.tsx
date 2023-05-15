@@ -20,7 +20,6 @@ export const TextInput = (props: TextInputProps) => {
         min
     } = props
 
-    console.log(max)
     return (
         <div className={"melody-w-full"}>
             {label && <Label {...label} />}

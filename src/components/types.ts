@@ -126,7 +126,7 @@ export interface DatePickerProps {
 export interface ModalProps {
     title: string,
     open: boolean,
-    setOpen: (open: boolean) => void,
+    setOpen?: (open: boolean) => void,
     children?: ReactNode,
     size?: 'xsmall' | 'small' | 'medium' | 'large'
 }

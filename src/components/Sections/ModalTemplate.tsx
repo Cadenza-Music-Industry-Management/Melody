@@ -15,11 +15,11 @@ export const ModalTemplate = (props: ModalProps) => {
 
     const cancelButtonRef = useRef(null)
 
-    //TODO move to CSS file
-
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="melody-relative melody-z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+            <Dialog as="div" className="melody-relative melody-z-10" initialFocus={cancelButtonRef} onClose={(value) => {
+                if (setOpen) setOpen(value)
+            }}>
                 {/*Dark background of model*/}
                 <Transition.Child
                     as={Fragment}
@@ -42,17 +42,18 @@ export const ModalTemplate = (props: ModalProps) => {
                             leave="melody-ease-in melody-duration-200"
                             leaveFrom="melody-opacity-100 melody-translate-y-0 sm:melody-scale-100"
                             leaveTo="melody-opacity-0 melody-translate-y-4 sm:melody-translate-y-0 sm:melody-scale-95">
-                            {/*TODO size variants would be set here at end of css for md: case*/}
                             <Dialog.Panel className={`melody-modal-panel ${size}`}>
                                 {/*Header*/}
                                 <div className={'melody-modal-header'}>
                                     <h2 className={`melody-text-lg melody-font-medium melody-mb-4 sm:melody-mb-0`}>{title}</h2>
                                     {/*TODO better variant for close button?*/}
-                                    <Button onClick={() => setOpen(false)}
-                                            icon={{
-                                                icon: 'solidX',
-                                                additionalStyles: {fontSize: 14}
-                                            }} />
+                                    {setOpen &&
+                                      <Button onClick={() => setOpen(false)}
+                                              icon={{
+                                                  icon: 'solidX',
+                                                  additionalStyles: { fontSize: 14 }
+                                              }} />
+                                    }
                                 </div>
 
                                 {/*Content*/}

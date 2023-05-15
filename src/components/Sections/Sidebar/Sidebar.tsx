@@ -17,6 +17,7 @@ import { usePathname } from "next/navigation";
 import { OrganizationSelector } from "@/components/Melody/src/components/Sections/Sidebar/OrganizationSelector";
 import { Group, GroupList, SidebarLinkProps } from "@/constants/types";
 import { checkPathnameForSidebar } from "@/components/Melody/src/utils/functions";
+import { Tooltip } from "@/components/Melody/src/components/Layouts/Tooltip";
 
 type SidebarProps = {
     links: SidebarLinkProps[],
@@ -99,8 +100,15 @@ export const Sidebar = (props: SidebarProps) => {
                         {childrenComponents}
                     </SubMenu>
                 } else {
-                    return <MenuItem icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : checkPathnameForSidebar(pathname, organization?.groupUniqueId, link.href ?? "")} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
-                        {link.title}
+                    return <MenuItem disabled={link.disabled?.value} icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : checkPathnameForSidebar(pathname, organization?.groupUniqueId, link.href ?? "")} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
+                        {/*TODO disabled correctly but cursor not passed through so tooltip doesn't work yet*/}
+                        {link.disabled?.value ?
+                            link.title
+                            :
+                            <Tooltip message={link.disabled?.message ?? 'You don\'t have the needed permission'}>
+                                {link.title}
+                            </Tooltip>
+                            }
                     </MenuItem>
                 }
             case 'title':
@@ -134,7 +142,7 @@ export const Sidebar = (props: SidebarProps) => {
     return (
        <>
            {broken &&
-               <div className={"melody-fixed melody-bottom-1 melody-left-1"}>
+               <div className={"melody-fixed melody-bottom-1 melody-left-1 melody-z-10"}>
                  <Button label={'Sidebar'} icon={{ icon: 'plus', rightAligned: true }} onClick={() => toggleSidebar(!toggled)} />
                </div>
            }
