@@ -1,5 +1,5 @@
 import "./ColorPicker.css"
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import { TextInput } from "@/components/Melody/src/components/Inputs/TextInput";
 import { useCloseOnClickAway } from "@/components/Melody/src/utils/hooks";
