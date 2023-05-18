@@ -34,7 +34,7 @@ export const OrganizationSelector = (props: {
 
         const orgLength = organizations ? organizations.length - 1 : 0
         let orgComponent = (
-            <div className={`melody-flex melody-p-2 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== orgLength) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
+            <div className={`melody-flex melody-items-center melody-p-1 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== orgLength) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
                 <Avatar image={groupToDisplay?.icon} />
 
                 {!collapsed &&

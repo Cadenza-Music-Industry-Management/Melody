@@ -12,7 +12,7 @@ export interface IndicatorProps {
 //Button
 export interface ButtonProps {
     type?: 'button' | 'submit',
-    color?: 'gray' | 'secondary' | 'primary';
+    color?: 'gray' | 'white' | 'secondary' | 'primary';
     variant?: 'solid' | 'outlined';
     size?: 'small' | 'medium' | 'large';
     label?: string,
@@ -65,7 +65,7 @@ export interface TextInputProps {
 
 //Label
 export interface LabelProps {
-    size?: 'small' | 'medium' | 'large' | 'xlarge';
+    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
     label: string,
     htmlFor?: string,
     required?: boolean,

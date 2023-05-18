@@ -14,23 +14,22 @@ import {Icon} from "../../Layouts/Icon"
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { OrganizationSelector } from "@/components/Melody/src/components/Sections/Sidebar/OrganizationSelector";
-import { Group, GroupList, SidebarLinkProps } from "@/constants/types";
+import { Group, SidebarLinkProps } from "@/constants/types";
 import { checkPathnameForSidebar } from "@/components/Melody/src/utils/functions";
 import { Tooltip } from "@/components/Melody/src/components/Layouts/Tooltip";
+import { Image } from "@/components/Melody/src/components/Layouts/Image";
+import cadenzaMIMLogo from "@/components/Melody/src/assets/white_logo_mim.png";
 
 type SidebarProps = {
     links: SidebarLinkProps[],
-    organization: Group | null,
-    organizations: GroupList[]
+    organization: Group | null
 }
 
 export const Sidebar = (props: SidebarProps) => {
 
-    let {
+    const {
         links,
-        organization,
-        organizations
+        organization
     } = props
 
     const pathname = usePathname()
@@ -50,20 +49,27 @@ export const Sidebar = (props: SidebarProps) => {
             color: '#b6b7b9',
         },
         icon: ({ active, open }) => ({
-            color: (active || open) ? '#FFFFFF' : '0C192C'
+            color: (active || open) ? '#0C192C' : '#FFFFFF'
         }),
         subMenuContent: ({ level, active }) => ({
-            backgroundColor: active ? '#0C192C' : level === 0 ? '#fbfcfd' : '#FFFFFF',
+            overflow: "hidden",
+            borderRadius: 15,
+            backgroundColor: '#0C192C'
         }),
         button: ({  active , open, isSubmenu }) => ({
             [`&.${menuClasses.disabled}`]: {
                 color: '#9fb6cf',
             },
             '&:hover': {
-                backgroundColor: '#cdcdcd'
+                backgroundColor: '#cdcdcd',
+                borderRadius: 15
             },
-            backgroundColor: (active && !isSubmenu) ? '#1B3B6B' : (open || (active && isSubmenu)) ? '#0C192C' : '#FFFFFF',
-            color: (active || open) ? '#FFFFFF' : '#0C192C'
+            margin: 2,
+            border: 0,
+            borderRadius: 15,
+            height: 40,
+            backgroundColor: (active && !isSubmenu) ? '#FFFFFF' : (open || (active && isSubmenu)) ? '#e0e0e0' : '#0C192C',
+            color: (active || open) ? '#0C192C' : '#FFFFFF'
         }),
         label: ({ open }) => ({
             fontWeight: open ? 800 : undefined,
@@ -96,35 +102,36 @@ export const Sidebar = (props: SidebarProps) => {
                                     icon={icon}
                                     component={component}
                                     active={childIsSelected}
-                                    className={`${rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}`}>
+                                    className={`${rootLevel ? "" : ""}`}>
                         {childrenComponents}
                     </SubMenu>
                 } else {
-                    return <MenuItem disabled={link.disabled?.value} icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : checkPathnameForSidebar(pathname, organization?.groupUniqueId, link.href ?? "")} className={rootLevel ? "melody-border-b melody-border-b-gray-300" : ""}>
+                    return <MenuItem disabled={link.disabled?.value} icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : checkPathnameForSidebar(pathname, organization?.groupUniqueId, link.href ?? "")} className={rootLevel ? "" : ""}>
                         {/*TODO disabled correctly but cursor not passed through so tooltip doesn't work yet*/}
-                        {link.disabled?.value ?
+                        {!link.disabled || !link.disabled?.value ?
                             link.title
                             :
                             <Tooltip message={link.disabled?.message ?? 'You don\'t have the needed permission'}>
+                                {/*TODO this has weird overlap z-index issue*/}
                                 {link.title}
                             </Tooltip>
                             }
                     </MenuItem>
                 }
             case 'title':
-                return <div className={"melody-bg-white"}>
+                return <div className={"melody-bg-primary-100 melody-rounded-[15px] melody-m-1"}>
                     <p className={"melody-text-lg melody-font-bold melody-p-3"}>
                         {link.title}
                     </p>
                 </div>
             case 'text':
-                return <div className={"melody-bg-white"}>
+                return <div className={"melody-bg-primary-100 melody-rounded-[15px] melody-m-1"}>
                     <p className={"melody-text-sm melody-p-1"}>
                         {link.title}
                     </p>
                 </div>
             case 'separator':
-                return <div className={"melody-bg-white melody-p-3"}>
+                return <div className={"melody-p-3"}>
                     <hr className={"melody-bg-primary-100 melody-h-[2px]"} />
                 </div>
             case 'button':
@@ -149,20 +156,22 @@ export const Sidebar = (props: SidebarProps) => {
 
            <ProSidebar
                breakPoint="md"
-               backgroundColor={"#FFFFFF"}
+               backgroundColor={"#0C192C"}
                width={"300px"}
-               rootStyles={{ color: "#0C192C", borderRight: "1px solid #0C192C" }}>
+               rootStyles={{ color: "white", borderRight: "1px solid white" }}>
                <div className={"melody-flex melody-flex-col melody-h-full"}>
 
                    {/*HEADER*/}
-                   <div className={"melody-p-2 melody-relative"}>
-                       <OrganizationSelector organization={organization}
-                                             organizations={organizations}
-                                             collapsed={collapsed} />
+                   <div className={"melody-p-2 melody-relative melody-flex melody-items-center "}>
+                       <Link href={"/"}>
+                           <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-melody-hidden"
+                                  src={cadenzaMIMLogo}
+                                  alt="Cadenza MIM" />
+                       </Link>
                    </div>
 
                    {/*CONTENT*/}
-                   <div className={"melody-flex-1 melody-mb-6 melody-bg-white"}>
+                   <div className={"melody-flex-1 melody-mb-6 melody-px-6 melody-pt-12"}>
                        <Menu menuItemStyles={menuItemStyles}>
                            {links.map((link, index) => generateMenuItem(link, true, `index-${index}`))}
                        </Menu>
@@ -170,11 +179,11 @@ export const Sidebar = (props: SidebarProps) => {
 
                    {/*FOOTER*/}
                    <div className={`melody-p-2 melody-flex melody-gap-x-1 melody-gap-y-1 melody-justify-end melody-border-t melody-border-gray-300 ${collapsed ? 'melody-text-center melody-flex-col' : 'melody-text-right melody-flex-row'}`}>
-                       <Button variant={'outlined'}
+                       <Button variant={'solid'}
                                icon={{
                                    icon: collapsed ? 'caretRight' : 'caretLeft'
                                }}
-                               color={'primary'}
+                               color={'white'}
                                onClick={() => collapseSidebar(!collapsed)} />
 
                        {/*TODO fix later with weird width*/}

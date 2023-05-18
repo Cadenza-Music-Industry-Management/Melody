@@ -18,6 +18,14 @@
     @apply melody-text-lg melody-px-6 melody-py-3;
 }
 
+.melody-button-white-solid {
+    @apply melody-bg-white hover:melody-bg-gray-100 melody-text-black-0;
+}
+
+.melody-button-gray-outlined {
+    @apply melody-bg-transparent melody-border-2 melody-border-white hover:melody-bg-white hover:melody-text-black-0;
+}
+
 .melody-button-gray-solid {
     @apply melody-bg-gray-500 hover:melody-bg-gray-600 melody-text-white;
 }

@@ -113,44 +113,24 @@ export const Footer = () => {
                         </p>
 
                         <ul className="melody-col-span-2 melody-flex melody-justify-center melody-p-2 md:melody-p-0 melody-gap-6 lg:melody-col-span-5">
-                            <li>
-                                <motion.div whileHover={{scale: 0.90}}>
-                                    <Link
-                                        href="https://www.facebook.com/cadenzamim"
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                        className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
-                                        <span className="melody-sr-only">Facebook</span>
-                                        <Icon icon={'facebook'} />
-                                    </Link>
-                                </motion.div>
-                            </li>
-
-                            <li>
-                                <motion.div whileHover={{scale: 0.90}}>
-                                    <Link
-                                        href="https://www.instagram.com/cadenzamim"
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                        className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
-                                        <span className="melody-sr-only">Instagram</span>
-                                        <Icon icon={'instagram'} />
-                                    </Link>
-                                </motion.div>
-                            </li>
-
-                            <li>
-                                <motion.div whileHover={{scale: 0.90}}>
-                                    <Link
-                                        href="https://twitter.com/cadenzamim"
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                        className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
-                                        <span className="melody-sr-only">Twitter</span>
-                                        <Icon icon={'twitter'} />
-                                    </Link>
-                                </motion.div>
-                            </li>
+                            {[
+                                { href: "https://www.facebook.com/cadenzamim", title: "Facebook", icon: "facebook" },
+                                { href: "https://www.instagram.com/cadenzamim", title: "Instagram", icon: "instagram" },
+                                { href: "https://twitter.com/cadenzamim", title: "Twitter", icon: "twitter" }
+                            ].map((socialMedia, index) => (
+                                <li key={index}>
+                                    <motion.div whileHover={{scale: 0.90}}>
+                                        <Link
+                                            href={socialMedia.href}
+                                            rel="noopener noreferrer"
+                                            target="_blank"
+                                            className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
+                                            <span className="melody-sr-only">{socialMedia.title}</span>
+                                            <Icon icon={socialMedia.icon} />
+                                        </Link>
+                                    </motion.div>
+                                </li>
+                            ))}
                         </ul>
 
                         <nav aria-label="Footer Navigation - Support" className="melody-mt-8 sm:melody-mt-0">

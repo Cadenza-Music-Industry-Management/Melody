@@ -2,6 +2,10 @@
     @apply melody-block melody-text-gray-900 dark:melody-text-white;
 }
 
+.melody-text-label.xsmall {
+    @apply melody-text-xs;
+}
+
 .melody-text-label.small {
     @apply melody-text-sm;
 }
