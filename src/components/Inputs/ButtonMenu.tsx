@@ -20,7 +20,7 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
             {({ open }) => (
                 <>
                     <div>
-                        <Menu.Button>
+                        <Menu.Button className={"melody-bg-transparent"}>
                             {buttonContents ?? <Button label={label} icon={{ icon: open ? 'caretUp' : 'caretDown', rightAligned: true }} />}
                         </Menu.Button>
                     </div>
