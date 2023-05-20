@@ -4,22 +4,24 @@ import {Label} from "../Layouts/Label";
 import React, {forwardRef} from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Button } from "@/components/Melody/src/components/Inputs/Button";
 
 export const DatePicker = (props: DatePickerProps) => {
     const {
         label,
-        selected,
+        value,
         onChange,
         className,
-        withPortal = true,
+        withPortal = false,
         selectRange = false,
         showTimeInput = false,
         startDate, //TODO default?
         endDate, //TODO default?
-        dateFormat
+        dateFormat,
+        disabled = false
     } = props
 
-    const ButtonInput = forwardRef<any>(({ value, onClick }: any, ref) => {
+    const ButtonInput = forwardRef<any>(({ onClick }: any, ref) => {
 
         const getButtonText = () => {
             if (startDate) {
@@ -29,19 +31,20 @@ export const DatePicker = (props: DatePickerProps) => {
                     return startDate?.toDateString()
                 }
             } else {
-                return `Select Date`
+                if (value) {
+                    return value?.toDateString()
+                } else {
+                    return `Select Date`
+                }
             }
         }
 
-        //For full width:  melody-w-full
         return (
-            <button
-                onClick={onClick}
-                ref={ref}
-                type="button"
-                className='melody-datepicker-button'>
-                {getButtonText()}
-            </button>
+            <Button label={getButtonText()}
+                    additionalClasses={"melody-w-full"}
+                    color={"white"}
+                    onClick={onClick}
+                    ref={ref} />
         )
     })
     ButtonInput.displayName = 'ButtonInput'
@@ -50,10 +53,14 @@ export const DatePicker = (props: DatePickerProps) => {
         <div>
             {label && <Label {...{...label, htmlFor: 'datePicker'}} />}
             <ReactDatePicker id={'datePicker'}
-                             selected={selected}
+                             selected={value}
                              className={className}
+                             disabled={disabled}
                              customInput={<ButtonInput />}
-                             onChange={(dates: any) => onChange && onChange(dates)}
+                             onChange={(dates: any) => {
+                                 console.log(dates)
+                                 if (onChange) onChange(dates)
+                             }}
                              withPortal={withPortal}
                              selectsRange={selectRange}
                              startDate={startDate}

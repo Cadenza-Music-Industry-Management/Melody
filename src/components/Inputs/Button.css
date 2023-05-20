@@ -22,7 +22,7 @@
     @apply melody-bg-white hover:melody-bg-gray-100 melody-text-black-0;
 }
 
-.melody-button-gray-outlined {
+.melody-button-white-outlined {
     @apply melody-bg-transparent melody-border-2 melody-border-white hover:melody-bg-white hover:melody-text-black-0;
 }
 

@@ -17,11 +17,13 @@ export const Button = (props: ButtonProps) => {
         indicator,
         trailerComponent,
         additionalClasses,
-        loading = false
+        loading = false,
+        ref
     } = props
 
     return (
         <button className={`melody-button melody-button-${size} melody-button-${color}-${variant} ${additionalClasses}`}
+                ref={ref}
                 type={type}
                 disabled={disabled || loading}
                 onClick={onClick}>

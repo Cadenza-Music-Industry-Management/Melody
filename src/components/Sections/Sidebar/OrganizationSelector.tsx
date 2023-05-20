@@ -9,21 +9,15 @@ import { Group, GroupList } from "@/constants/types";
 export const OrganizationSelector = (props: {
     organization: Group | null,
     organizations: GroupList[]
-    collapsed: boolean
 }) => {
 
     const {
         organization,
-        organizations,
-        collapsed
+        organizations
     } = props
     
     const [showOrgSelector, setShowOrgSelector] = useState(false)
     const organizationSelectorRef = useCloseOnClickAway(toggleOpen)
-
-    useEffect(() => {
-        if (collapsed && showOrgSelector) setShowOrgSelector(false)
-    }, [collapsed])
 
     //TODO this is not working with useCloseOnClickAway hook, if I add a log it sometimes works??????
     function toggleOpen() {
@@ -37,7 +31,6 @@ export const OrganizationSelector = (props: {
             <div className={`melody-flex melody-items-center melody-p-1 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== orgLength) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
                 <Avatar image={groupToDisplay?.icon} />
 
-                {!collapsed &&
                   <div className={"melody-p-1 melody-text-left"}>
                     <p className={"melody-text-sm melody-font-bold"}>
                         {groupToDisplay?.name}
@@ -49,7 +42,6 @@ export const OrganizationSelector = (props: {
                         {groupToDisplay?.groupType}
                     </p>
                   </div>
-                }
             </div>
         )
 
@@ -71,17 +63,15 @@ export const OrganizationSelector = (props: {
     return (
         <>
             <div ref={organizationSelectorRef}
-                 className={`melody-flex melody-bg-secondary-100 melody-text-white melody-rounded-lg melody-shadow melody-items-center ${!collapsed ? 'melody-cursor-pointer' : 'melody-justify-center'}`}
-                 onClick={() => !collapsed && setShowOrgSelector(!showOrgSelector)}>
+                 className={`melody-flex melody-bg-secondary-100 melody-text-white melody-rounded-lg melody-shadow melody-items-center melody-cursor-pointer`}
+                 onClick={() => setShowOrgSelector(!showOrgSelector)}>
                 {getGroupLayout(organization, -1)}
 
 
-                {!collapsed &&
                   <div className={"melody-ml-auto melody-pr-2"}>
                     <Icon icon={'caretUp'} />
                     <Icon icon={'caretDown'} />
                   </div>
-                }
             </div>
 
             {/*TODO if we click outside this area, we should close popup too*/}

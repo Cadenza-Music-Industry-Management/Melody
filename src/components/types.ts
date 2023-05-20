@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ForwardedRef, ReactNode } from "react";
 import {DatePicker} from "./Inputs/DatePicker";
 import { IconTooltip } from "@/components/Melody/src/components/Layouts/IconTooltip";
 
@@ -22,7 +22,8 @@ export interface ButtonProps {
     indicator?: IndicatorProps,
     trailerComponent?: ReactNode,
     additionalClasses?: string,
-    loading?: boolean
+    loading?: boolean,
+    ref?: ForwardedRef<any>
 }
 
 //Dropdown
@@ -32,9 +33,10 @@ export interface DropdownOption {
 }
 
 export interface DropdownProps {
-    label: string;
+    label: LabelProps;
     options: DropdownOption[];
-    onChange: (value: DropdownOption | DropdownOption[]) => void;
+    onChange?: (value: DropdownOption | DropdownOption[]) => void;
+    defaultValue?: DropdownOption,
     value?: DropdownOption | DropdownOption[];
     placeholder?: string;
     isDisabled?: boolean;
@@ -48,7 +50,7 @@ export interface DropdownProps {
 
 //Text Input/Area
 export interface TextInputProps {
-    value: any,
+    value?: any,
     type?: 'text' | 'number' | 'password' | 'email';
     label?: LabelProps;
     placeholder?: string;
@@ -111,7 +113,7 @@ export interface ProgressBarProps {
 //Date Picker
 export interface DatePickerProps {
     label?: LabelProps,
-    selected?: Date,
+    value?: Date,
     onChange?: (dates?: Date | Date[]) => void,
     className?: string,
     withPortal?: boolean,
@@ -119,7 +121,8 @@ export interface DatePickerProps {
     showTimeInput?: boolean,
     startDate?: Date,
     endDate?: Date,
-    dateFormat?: string
+    dateFormat?: string,
+    disabled?: boolean
 }
 
 //Modal
@@ -147,8 +150,10 @@ export interface NavBarItemProps {
 //Button Menu
 export interface ButtonMenuProps {
     size?: 'small' | 'medium' | 'large',
-    buttonContents: ReactNode,
+    buttonContents?: ReactNode,
     dropdownHeaderItem?: ReactNode,
+    additionalClasses?: string,
+    label?: string,
     items: NavBarItemProps[] //TODO Own type or rename?
 }
 
@@ -206,8 +211,8 @@ export interface FormListLayoutProps {
     tooltip?: IconTooltipProps
 }
 
-//Radio Button
-export interface RadioButtonProps {
+//Checkbox & Radio Button
+export interface CheckboxRadioButtonProps {
     onChange: (checked: boolean) => void,
     variant?: string,
     size?: string,
@@ -215,19 +220,6 @@ export interface RadioButtonProps {
     subLabel?: string,
     disabled?: boolean,
     value: boolean | undefined,
-    additionalParentStyles?: CSSProperties
-}
-
-
-//Checkbox
-export interface CheckboxProps {
-    onChange: (checked: boolean) => void,
-    value: boolean | undefined,
-    size?: string,
-    variant?: string,
-    label?: string,
-    subLabel?: string,
-    disabled?: boolean,
     additionalParentStyles?: CSSProperties
 }
 

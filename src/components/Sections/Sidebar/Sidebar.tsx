@@ -19,6 +19,7 @@ import { checkPathnameForSidebar } from "@/components/Melody/src/utils/functions
 import { Tooltip } from "@/components/Melody/src/components/Layouts/Tooltip";
 import { Image } from "@/components/Melody/src/components/Layouts/Image";
 import cadenzaMIMLogo from "@/components/Melody/src/assets/white_logo_mim.png";
+import cadenzaMIMIcon from "@/components/Melody/src/assets/white_icon.png";
 
 type SidebarProps = {
     links: SidebarLinkProps[],
@@ -53,7 +54,7 @@ export const Sidebar = (props: SidebarProps) => {
         }),
         subMenuContent: ({ level, active }) => ({
             overflow: "hidden",
-            borderRadius: 15,
+            borderRadius: 10,
             backgroundColor: '#0C192C'
         }),
         button: ({  active , open, isSubmenu }) => ({
@@ -62,11 +63,11 @@ export const Sidebar = (props: SidebarProps) => {
             },
             '&:hover': {
                 backgroundColor: '#cdcdcd',
-                borderRadius: 15
+                borderRadius: 10
             },
             margin: 2,
             border: 0,
-            borderRadius: 15,
+            borderRadius: 10,
             height: 40,
             backgroundColor: (active && !isSubmenu) ? '#FFFFFF' : (open || (active && isSubmenu)) ? '#e0e0e0' : '#0C192C',
             color: (active || open) ? '#0C192C' : '#FFFFFF'
@@ -141,7 +142,7 @@ export const Sidebar = (props: SidebarProps) => {
                             onClick={link.onClick ?? undefined}
                             size={'small'}
                             variant={'outlined'}
-                            color={'primary'} />
+                            color={'white'} />
                 </div>
         }
     }
@@ -165,7 +166,7 @@ export const Sidebar = (props: SidebarProps) => {
                    <div className={"melody-p-2 melody-relative melody-flex melody-items-center "}>
                        <Link href={"/"}>
                            <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-melody-hidden"
-                                  src={cadenzaMIMLogo}
+                                  src={collapsed ? cadenzaMIMIcon : cadenzaMIMLogo}
                                   alt="Cadenza MIM" />
                        </Link>
                    </div>

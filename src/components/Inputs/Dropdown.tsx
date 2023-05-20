@@ -8,9 +8,11 @@ export const Dropdown = (props: DropdownProps) => {
         size = 'regular',
         color = 'primary',
         label,
+        placeholder,
+        defaultValue,
         value,
-        isMulti = true,
-        isClearable = true,
+        isMulti = false,
+        isClearable = false,
         isSearchable = true,
         isDisabled = false,
         isLoading = false,
@@ -62,14 +64,15 @@ export const Dropdown = (props: DropdownProps) => {
 
     return (
        <div>
-           {label && <Label htmlFor={'Dropdown'} label={label} />}
+           {label && <Label {...label} />}
            <Select id={'Dropdown'}
                    name={'Dropdown'}
                    // className={`melody-dropdown ${sizeClasses[size]} ${colorClasses[color]} ${isDisabled && 'melody-opacity-50 melody-cursor-not-allowed'}`}
                    // classNamePrefix="melody-dropdown"
                    styles={customStyles}
                    value={value}
-                   onChange={(tag) => onChange((tag as any))} //TODO needs casting
+                   defaultValue={defaultValue}
+                   onChange={(tag) => { if (onChange) onChange((tag as any)) }} //TODO needs casting
                    options={options}
                    isMulti={isMulti}
                    isClearable={isClearable}

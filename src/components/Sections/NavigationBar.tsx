@@ -93,7 +93,8 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                             }} />
                                             <Label label={user.username} size={'small'} />
                                         </div>
-                                    } items={userNavigation} />
+                                    } items={userNavigation}
+                                    additionalClasses={"melody-ml-3"} />
                                 }
                             </div>
                         </div>
