@@ -21,12 +21,14 @@ export const Checkbox = (props: CheckboxRadioButtonProps) => {
                    type="checkbox"
                    disabled={disabled}
                    checked={value}
-                   onClick={() => onChange(!value)}
+                   onClick={() => {
+                       if (onChange) onChange(!value)
+                   }}
                    className={`melody-radio-checkbox ${variant} ${size}`} />
 
             {(label || subLabel) &&
               <div className="melody-ml-2 melody-text-sm">
-                  {label && <Label label={label} />}
+                  {label && <Label {...label} />}
 
                   {subLabel &&
                     <p className="melody-text-xs melody-font-normal melody-text-gray-500">

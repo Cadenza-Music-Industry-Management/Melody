@@ -5,6 +5,7 @@ import React, {forwardRef} from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
+import dayjs from "dayjs";
 
 export const DatePicker = (props: DatePickerProps) => {
     const {
@@ -26,13 +27,13 @@ export const DatePicker = (props: DatePickerProps) => {
         const getButtonText = () => {
             if (startDate) {
                 if (endDate) {
-                    return `${startDate.toDateString()} - ${endDate.toDateString()}`
+                    return `${showTimeInput ? dayjs(startDate).format("MM-DD-YYYY HH:mm A") : dayjs(startDate).format("MM-DD-YYYY")} - ${showTimeInput ? dayjs(endDate).format("MM-DD-YYYY HH:mm A") : dayjs(endDate).format("MM-DD-YYYY")}`
                 } else {
-                    return startDate?.toDateString()
+                    return showTimeInput ? dayjs(startDate).format("MM-DD-YYYY HH:mm A") : dayjs(startDate).format("MM-DD-YYYY")
                 }
             } else {
                 if (value) {
-                    return value?.toDateString()
+                    return showTimeInput ? dayjs(value).format("MM-DD-YYYY HH:mm A") : dayjs(value).format("MM-DD-YYYY")
                 } else {
                     return `Select Date`
                 }
@@ -58,7 +59,6 @@ export const DatePicker = (props: DatePickerProps) => {
                              disabled={disabled}
                              customInput={<ButtonInput />}
                              onChange={(dates: any) => {
-                                 console.log(dates)
                                  if (onChange) onChange(dates)
                              }}
                              withPortal={withPortal}

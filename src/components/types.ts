@@ -213,13 +213,13 @@ export interface FormListLayoutProps {
 
 //Checkbox & Radio Button
 export interface CheckboxRadioButtonProps {
-    onChange: (checked: boolean) => void,
+    onChange?: (checked: boolean) => void,
     variant?: string,
     size?: string,
-    label?: string,
+    label?: LabelProps,
     subLabel?: string,
     disabled?: boolean,
-    value: boolean | undefined,
+    value?: boolean,
     additionalParentStyles?: CSSProperties
 }
 
