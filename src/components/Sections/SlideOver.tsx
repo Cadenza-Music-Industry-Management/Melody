@@ -58,7 +58,7 @@ export const SlideOver = (props: {
                                             </div>
                                         </div>
 
-                                        <div className="melody-p-4">
+                                        <div className="melody-p-4 melody-overflow-y-auto">
                                             <div className="melody-flow-root">
                                                 {children}
                                             </div>

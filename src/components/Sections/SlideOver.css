@@ -15,7 +15,7 @@
 }
 
 .melody-slide-over-dialog-panel-container {
-    @apply melody-flex melody-h-full melody-flex-col melody-overflow-y-auto melody-bg-white melody-shadow-xl melody-flex-1 melody-overflow-y-auto;
+    @apply melody-flex melody-h-full melody-flex-col melody-bg-white melody-shadow-xl melody-flex-1;
 }
 
 .melody-slide-over-header {

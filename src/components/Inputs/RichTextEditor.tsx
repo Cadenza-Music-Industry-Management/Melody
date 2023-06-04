@@ -14,7 +14,6 @@ import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
 import { DropdownOption, RichTextEditorProps } from "@/components/Melody/src/components/types";
 import { Level } from "@tiptap/extension-heading";
 import { ColorPicker } from "@/components/Melody/src/components/Inputs/ColorPicker";
-import { Tooltip } from "../Layouts/Tooltip";
 import { Label } from "../Layouts/Label";
 import { AbsoluteTooltip } from "@/components/Melody/src/components/Layouts/AbsoluteTooltip";
 
