@@ -14,11 +14,10 @@ export const IconTooltip = (props: IconTooltipProps) => {
         direction = 'right'
     } = props
 
+    //TODO motion.div was causing tooltip to not work correctly (vanishing)
     return (
-        <motion.div whileHover={{scale: 0.97}}>
-           <Tooltip message={message} direction={direction}>
-               <Icon icon={icon} additionalStyles={{color: fontColor, fontSize: fontSize, cursor: "pointer"}} />
-           </Tooltip>
-       </motion.div>
+       <Tooltip message={message} direction={direction}>
+           <Icon icon={icon} additionalStyles={{color: fontColor, fontSize: fontSize, cursor: "pointer"}} />
+       </Tooltip>
     );
 };

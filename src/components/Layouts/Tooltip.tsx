@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState} from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import "./Tooltip.css"
 import {TooltipProps} from "../types";
 
@@ -14,8 +14,56 @@ export const Tooltip = (props: TooltipProps) => {
         widthClass = 'melody-w-56'
     } = props
 
+    const parentRef = useRef<any>(null);
+    const tooltipRef = useRef<any>(null);
+    const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
     const [showTooltip, setShowTooltip] = useState(false)
     let timeout: ReturnType<typeof setTimeout>
+
+    useEffect(() => {
+        const parentElement = parentRef.current;
+        const tooltipElement = tooltipRef.current;
+
+        const updateTooltipPosition = () => {
+            let parentRect = parentElement?.getBoundingClientRect();
+            const tooltipRect = tooltipElement?.getBoundingClientRect();
+
+            let top, left;
+
+            console.log(parentRect)
+            const slideOver = document.querySelector('.melody-slide-over-dialog-panel');
+            if (slideOver) parentRect.width = slideOver.getBoundingClientRect().width
+            console.log(parentRect)
+
+            if (direction === 'left') {
+                top = parentRect.top;
+                left = parentRect.left - tooltipRect?.width - 5;
+            } else if (direction === 'right') {
+                top = parentRect.top;
+                left = parentRect.left + parentRect?.width + 5;
+            } else if (direction === 'bottom') {
+                top = parentRect.top + parentRect?.height + 5;
+                left = parentRect.left;
+            } else {
+                top = parentRect.top - tooltipRect?.height - 5;
+                left = parentRect.left;
+            }
+
+            //Account for fixed width from slideover
+            //const slideOver = document.querySelector('.melody-slide-over-dialog-panel');
+            //if (slideOver) left = left - (slideOver.getBoundingClientRect().width + 50) / 2;
+
+            setTooltipPosition({ top, left });
+        };
+
+        if (showTooltip) updateTooltipPosition();
+
+        window.addEventListener('resize', updateTooltipPosition);
+
+        return () => {
+            window.removeEventListener('resize', updateTooltipPosition);
+        };
+    }, [showTooltip])
 
     function handleMouseEnter() {
         timeout = setTimeout(() => {
@@ -28,25 +76,22 @@ export const Tooltip = (props: TooltipProps) => {
         setShowTooltip(false)
     }
 
-    const tooltipClasses = `melody-tooltip ${direction === "top" ? "tooltip-top" : ""} ${direction === "right" ? "tooltip-right" : ""} 
-    ${direction === "bottom" ? "tooltip-bottom" : ""} ${direction === "left" ? "tooltip-left" : ""} ${showTooltip ? "melody-opacity-100" : "melody-opacity-0"}  ${widthClass ?? ''}`
-
-    //TODO need question mark state for cadenza (or split out to own component? needs color, fontSize?)) and also need disabled state of not showing tooltip for certain cases
-    // could just manage children state, so if question=true, then set children to question mark icon
+    const tooltipClasses = `melody-tooltip melody-fixed ${showTooltip ? "melody-opacity-100" : "melody-opacity-0"}  ${widthClass ?? ''}`
 
     return (
         <div className={`melody-inline-block melody-relative ${additionalClasses ?? ''}`}>
             <div className="melody-inline-block melody-h-full"
+                 ref={parentRef}
                  onPointerEnter={handleMouseEnter}
                  onPointerLeave={handleMouseLeave}>
                 {children}
             </div>
 
-            {showTooltip && message !== "" &&
-                <div className={tooltipClasses}>
-                    {message}
-                </div>
-            }
+            <div className={tooltipClasses}
+                 style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
+                 ref={tooltipRef}>
+                {message}
+            </div>
         </div>
     )
 }

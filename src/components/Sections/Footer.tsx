@@ -27,7 +27,7 @@ export const Footer = () => {
                             <p className="melody-font-medium melody-underline">Overview</p>
 
                             <nav aria-label="Footer Navigation - Services" className="melody-mt-6">
-                                <ul className="melody-space-y-4 melody-text-sm">
+                                <ul className="melody-space-y-4 melody-text-sm melody-list-none">
                                     <li>
                                         <Link href="/" className="melody-text-gray-200 melody-transition hover:melody-opacity-75">
                                             Home
@@ -62,7 +62,7 @@ export const Footer = () => {
                             <p className="melody-font-medium melody-underline">Pricing</p>
 
                             <nav aria-label="Footer Navigation - Company" className="melody-mt-6">
-                                <ul className="melody-space-y-4 melody-text-sm">
+                                <ul className="melody-space-y-4 melody-text-sm melody-list-none">
                                     <li>
                                         <Link href="/pages/pricing" className="melody-text-gray-200 melody-transition hover:melody-opacity-75">
                                             Subscriptions
@@ -82,7 +82,7 @@ export const Footer = () => {
                             <p className="melody-font-medium melody-underline">Help</p>
 
                             <nav aria-label="Footer Navigation - Company" className="melody-mt-6">
-                                <ul className="melody-space-y-4 melody-text-sm">
+                                <ul className="melody-space-y-4 melody-text-sm melody-list-none">
                                     <li>
                                         <Link href="/pages/support" className="melody-text-gray-200 melody-transition hover:melody-opacity-75">
                                             Support
@@ -112,7 +112,7 @@ export const Footer = () => {
                             &copy; 2023. Cadenza Music Industry Management LLC. All rights reserved.
                         </p>
 
-                        <ul className="melody-col-span-2 melody-flex melody-justify-center melody-p-2 md:melody-p-0 melody-gap-6 lg:melody-col-span-5">
+                        <ul className="melody-col-span-2 melody-flex melody-justify-center melody-p-2 md:melody-p-0 melody-gap-6 lg:melody-col-span-5 melody-list-none">
                             {[
                                 { href: "https://www.facebook.com/cadenzamim", title: "Facebook", icon: "facebook" },
                                 { href: "https://www.instagram.com/cadenzamim", title: "Instagram", icon: "instagram" },
@@ -134,7 +134,7 @@ export const Footer = () => {
                         </ul>
 
                         <nav aria-label="Footer Navigation - Support" className="melody-mt-8 sm:melody-mt-0">
-                            <ul className="melody-flex melody-flex-wrap melody-justify-start melody-gap-4 melody-text-xs lg:melody-justify-end">
+                            <ul className="melody-flex melody-flex-wrap melody-justify-start melody-gap-4 melody-text-xs lg:melody-justify-end melody-list-none">
                                 <li>
                                     <Link href="/pages/tos" className="melody-text-gray-700 melody-transition hover:melody-opacity-75">
                                         Terms Of Service

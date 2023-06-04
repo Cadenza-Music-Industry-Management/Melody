@@ -16,6 +16,7 @@ import { Level } from "@tiptap/extension-heading";
 import { ColorPicker } from "@/components/Melody/src/components/Inputs/ColorPicker";
 import { Tooltip } from "../Layouts/Tooltip";
 import { Label } from "../Layouts/Label";
+import { AbsoluteTooltip } from "@/components/Melody/src/components/Layouts/AbsoluteTooltip";
 
 const RichTextEditor = (props: RichTextEditorProps) => {
 
@@ -116,9 +117,9 @@ function MenuBar(props: {
     }
 
     function wrapTooltipComponent(message: string, component: ReactNode) {
-        return <Tooltip message={message} direction={"top"} widthClass={"melody-text-center melody-w-28"}>
+        return <AbsoluteTooltip message={message} direction={"top"} widthClass={"melody-text-center melody-w-28"}>
             {component}
-        </Tooltip>
+        </AbsoluteTooltip>
     }
 
     return (
