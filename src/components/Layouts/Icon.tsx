@@ -19,6 +19,8 @@ import {
     faQuestion,
     faRightLong,
     faLeftLong,
+    faRotateRight,
+    faRotateLeft,
     faComment,
     faComments,
     faShare,
@@ -34,6 +36,11 @@ import {
     faBan,
     faImage,
     faDesktop,
+    faList,
+    faListOl,
+    faCode,
+    faFileCode,
+    faQuoteLeft,
     faUserTie, //TODO username
     faMoneyBillTrendUp, //Income
     faMoneyBillTransfer, //Expense
@@ -83,6 +90,8 @@ export const Icon = (props: IconProps) => {
         question: faQuestion,
         arrowRight: faRightLong,
         arrowLeft: faLeftLong,
+        rotateArrowRight: faRotateRight,
+        rotateArrowLeft: faRotateLeft,
         comment: faComment,
         comments: faComments,
         share: faShare,
@@ -105,6 +114,11 @@ export const Icon = (props: IconProps) => {
         ban: faBan,
         image: faImage,
         edit: faEdit,
+        bulletList: faList,
+        numberList: faListOl,
+        code: faCode,
+        blockCode: faFileCode,
+        quoteLeft: faQuoteLeft,
         //Social media
         tiktok: faTiktok,
         twitter: faTwitter,

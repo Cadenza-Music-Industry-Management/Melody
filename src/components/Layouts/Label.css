@@ -1,5 +1,5 @@
 .melody-text-label {
-    @apply melody-block melody-text-gray-900 dark:melody-text-white;
+    @apply melody-block;
 }
 
 .melody-text-label.xsmall {

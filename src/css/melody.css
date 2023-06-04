@@ -107,3 +107,33 @@
 .melody-apparel-order:before { content: '\e834'; } /* '' */
 .melody-apparel-items:before { content: '\e835'; } /* '' */
 
+/*Heading CSS (not working without?)*/
+h1 {
+  @apply melody-inline-block melody-align-top melody-leading-none melody-font-[900] melody-text-[22px];
+  margin: 6px 0 6px 10px;
+}
+
+h2 {
+  @apply melody-inline-block melody-align-top melody-leading-none melody-font-[800] melody-text-[20px];
+  margin: 6px 0 6px 10px;
+}
+
+h3 {
+  @apply melody-inline-block melody-align-top melody-leading-none melody-font-[700] melody-text-[18px];
+  margin: 6px 0 6px 10px;
+}
+
+h4 {
+  @apply melody-inline-block melody-align-top melody-leading-none melody-font-[600] melody-text-[16px];
+  margin: 6px 0 6px 10px;
+}
+
+h5 {
+  @apply melody-inline-block melody-align-top melody-leading-none melody-font-[500] melody-text-[14px];
+  margin: 6px 0 6px 10px;
+}
+
+h6 {
+  @apply melody-inline-block melody-align-top melody-leading-none melody-font-[400] melody-text-[12px];
+  margin: 6px 0 6px 10px;
+}

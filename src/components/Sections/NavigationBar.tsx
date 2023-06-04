@@ -11,7 +11,6 @@ import {Image} from '../Layouts/Image';
 import { classNames } from "../../utils/functions";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useProSidebar } from "react-pro-sidebar";
 import { ButtonMenu } from "@/components/Melody/src/components/Inputs/ButtonMenu";
 
 export const NavigationBar = (props: NavigationBarProps) => {

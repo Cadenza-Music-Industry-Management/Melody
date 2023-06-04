@@ -1,8 +1,9 @@
 import "./Button.css"
 import {ButtonProps} from "../types";
 import {Icon} from "../Layouts/Icon";
-import { Indicator } from "@/components/Melody/src/components/Layouts/Indicator";
-import { Spinner } from "@/components/Melody/src/components/Layouts/Spinner";
+import { Indicator } from "../Layouts/Indicator";
+import { Spinner } from "../Layouts/Spinner";
+import { Label } from "../Layouts/Label";
 
 export const Button = (props: ButtonProps) => {
     const {
@@ -10,6 +11,7 @@ export const Button = (props: ButtonProps) => {
         color = 'primary',
         variant = 'solid',
         label,
+        customLabel,
         icon,
         type = 'button',
         onClick,
@@ -22,13 +24,14 @@ export const Button = (props: ButtonProps) => {
     } = props
 
     return (
-        <button className={`melody-button melody-button-${size} melody-button-${color}-${variant} ${additionalClasses}`}
+        <button className={`melody-button melody-button-${size} melody-button-${color}-${variant} ${additionalClasses ?? ''}`}
                 ref={ref}
                 type={type}
                 disabled={disabled || loading}
                 onClick={onClick}>
             {icon && !icon.rightAligned && <div className={"melody-mr-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} additionalClasses={icon.additionalClasses} /></div>}
             {label}
+            {customLabel && <Label {...customLabel} additionalStyles={{cursor: "pointer"}} />}
             {icon && icon.rightAligned && <div className={"melody-ml-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} additionalClasses={icon.additionalClasses} /></div>}
             {indicator &&
               <div className={"melody-mr-0.5"}>

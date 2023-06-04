@@ -1,5 +1,5 @@
 .melody-button {
-    @apply melody-inline-flex melody-items-center melody-justify-center melody-font-bold melody-rounded-md melody-shadow-md melody-transition-colors melody-duration-200 melody-ease-in-out;
+    @apply melody-inline-flex melody-h-full melody-items-center melody-justify-center melody-font-bold melody-rounded-md melody-shadow-md melody-transition-colors melody-duration-200 melody-ease-in-out;
 }
 
 .melody-button:disabled {

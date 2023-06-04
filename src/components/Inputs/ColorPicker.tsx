@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import { TextInput } from "@/components/Melody/src/components/Inputs/TextInput";
 import { useCloseOnClickAway } from "@/components/Melody/src/utils/hooks";
+import { ColorPickerProps } from "@/components/Melody/src/components/types";
 
 //TODO come up with better color selection
 const COLORS = [
@@ -18,16 +19,14 @@ const COLORS = [
     "#FFFFFF",
     "#F4F1F1",
     "#9CA3AF",
+    "#000000",
 ]
 
-export const ColorPicker = (props: {
-    title?: string,
-    value: string,
-    onChange: (color: string) => void
-}) => {
+export const ColorPicker = (props: ColorPickerProps) => {
 
     const {
-        title = 'Select Color',
+        buttonColor = 'primary',
+        title,
         value,
         onChange
     } = props
@@ -54,19 +53,24 @@ export const ColorPicker = (props: {
     return (
         <div className={"melody-relative"} ref={colorPickerContainerRef}>
 
-            <div className={"melody-text-center"}>
-                {/*TODO will need to support button variants at some point*/}
-                <Button label={title} onClick={toggleOpen} trailerComponent={
-                    <div className={"melody-ml-2"}>
+            <div className={"melody-text-center melody-h-full"}>
+                {/*TODO custom size for button from prop*/}
+                <Button customLabel={title}
+                        size={"small"}
+                        onClick={toggleOpen}
+                        additionalClasses={"melody-h-full"}
+                        color={buttonColor}
+                        trailerComponent={
+                    <div className={title ? "melody-ml-2" : ""}>
                         <div style={{ backgroundColor: selectedColorState }}
-                             className={"melody-h-5 melody-w-5 melody-border melody-border-white melody-rounded-md"} />
+                             className={"melody-h-6 melody-w-6 melody-border melody-border-white melody-rounded-md"} />
                     </div>
                 } />
             </div>
 
             <div className={`${
                 isOpen ? "melody-block" : "melody-hidden"
-            } melody-absolute melody-z-10 melody-mt-2 melody-w-full melody-justify-center melody-rounded-md melody-shadow-lg melody-border-2 melody-border-primary-100 melody-bg-white`}>
+            } melody-absolute melody-z-10 melody-mt-2 melody-w-[300px] melody-justify-center melody-rounded-md melody-shadow-lg melody-border-2 melody-border-primary-100 melody-bg-white`}>
                 <div className="melody-flex melody-flex-wrap melody-p-1">
                     {COLORS.map((color) => (
                         <div key={color}

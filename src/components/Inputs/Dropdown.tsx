@@ -5,7 +5,7 @@ import {Label} from "../Layouts/Label";
 
 export const Dropdown = (props: DropdownProps) => {
     const {
-        size = 'regular',
+        size = 'medium',
         color = 'primary',
         label,
         placeholder,
@@ -24,11 +24,18 @@ export const Dropdown = (props: DropdownProps) => {
         control: (provided: any, state: { isFocused: any; }) => ({
             ...provided,
             borderRadius: '0.5rem',
+            minHeight: size === 'small' ? '1.5rem' : size === 'large' ? '2.5rem' : '2rem',
+            fontSize: size === 'small' ? '0.75rem' : size === 'large' ? '1.125rem' : '0.875rem',
             borderColor: state.isFocused ? '#B8B9C4' : provided.borderColor,
             boxShadow: state.isFocused ? '0 0 0 2px rgba(51, 153, 255, 0.2)' : provided.boxShadow,
             '&:hover': {
                 borderColor: '#B8B9C4',
             },
+        }),
+        menu: (styles: any) => ({
+            ...styles,
+            fontSize: size === 'small' ? '0.75rem' : size === 'large' ? '1.125rem' : '0.875rem',
+            borderRadius: size === 'small' ? '0.125rem' : size === 'large' ? '0.375rem' : '0.25rem',
         }),
         option: (provided: any, state: { isFocused: any; }) => ({
             ...provided,
@@ -37,6 +44,10 @@ export const Dropdown = (props: DropdownProps) => {
             '&:hover': {
                 backgroundColor: '#F7FAFC',
             },
+        }),
+        dropdownIndicator: (styles: any) => ({
+            ...styles,
+            padding: size === 'small' ? 2 : size === 'large' ? 8 : 4,
         }),
         multiValue: (provided: any) => ({
             ...provided,
@@ -55,18 +66,13 @@ export const Dropdown = (props: DropdownProps) => {
         })
     };
 
-    const sizeClasses = {
-        small: 'melody-h-8 melody-text-sm',
-        regular: 'melody-h-10 melody-text-base',
-        medium: 'melody-h-12 melody-text-base',
-        large: 'melody-h-14 melody-text-lg',
-    };
-
     return (
-       <div>
+       <div className={"melody-w-full"}>
            {label && <Label {...label} />}
            <Select id={'Dropdown'}
                    name={'Dropdown'}
+                   // menuPlacement="auto"
+                   // menuPosition="fixed"
                    // className={`melody-dropdown ${sizeClasses[size]} ${colorClasses[color]} ${isDisabled && 'melody-opacity-50 melody-cursor-not-allowed'}`}
                    // classNamePrefix="melody-dropdown"
                    styles={customStyles}

@@ -10,11 +10,17 @@ export const Label = (props: LabelProps) => {
         required = false,
         bold = false,
         additionalStyles,
-        additionalClasses
+        additionalClasses,
+        color = "black"
     } = props
 
     return (
-        <label htmlFor={htmlFor} className={`melody-text-label ${bold && 'melody-font-bold'} ${size} ${additionalClasses}`} style={{...additionalStyles}}>
+        <label htmlFor={htmlFor}
+               className={`melody-text-label ${bold && 'melody-font-bold'} ${size} ${additionalClasses}`}
+               style={{
+                   ...additionalStyles,
+                   color: color
+        }}>
             {label}
             {required && <span className={"melody-text-red-600 melody-font-medium melody-ml-0.5"}>*</span>}
         </label>

@@ -16,6 +16,7 @@ export interface ButtonProps {
     variant?: 'solid' | 'outlined';
     size?: 'small' | 'medium' | 'large';
     label?: string,
+    customLabel?: LabelProps, //TODO combine label and customLabel? (will need to refactor all current buttons)
     icon?: AddIconProps,
     onClick?: () => void,
     disabled?: boolean,
@@ -33,7 +34,7 @@ export interface DropdownOption {
 }
 
 export interface DropdownProps {
-    label: LabelProps;
+    label?: LabelProps;
     options: DropdownOption[];
     onChange?: (value: DropdownOption | DropdownOption[]) => void;
     defaultValue?: DropdownOption,
@@ -46,6 +47,27 @@ export interface DropdownProps {
     isLoading?: boolean;
     size?: 'small' | 'medium' | 'large';
     color?: 'primary' | 'secondary' | 'tertiary';
+}
+
+//Rich Text Editor
+export interface RichTextEditorProps {
+    label?: LabelProps,
+    value: string,
+    placeholder: string,
+    readOnly?: boolean,
+    disabled?: boolean,
+    toolbar?: boolean,
+    className?: string,
+    onBlur?: (event: any) => void,
+    characterLimit?: number
+}
+
+//Color Picker
+export interface ColorPickerProps {
+    title?: LabelProps,
+    buttonColor?: 'gray' | 'white' | 'secondary' | 'primary',
+    value: string,
+    onChange: (color: string) => void
 }
 
 //Text Input/Area
@@ -73,7 +95,8 @@ export interface LabelProps {
     required?: boolean,
     bold?: boolean,
     additionalStyles?: any,
-    additionalClasses?: string
+    additionalClasses?: string,
+    color?: string
 }
 
 //Tooltip
@@ -82,7 +105,8 @@ export interface TooltipProps {
     direction?: 'top' | 'bottom' | 'left' | 'right',
     delay?: number,
     children?: ReactNode,
-    additionalClasses?: string
+    additionalClasses?: string,
+    widthClass?: string
 }
 
 //Icon
