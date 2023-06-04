@@ -1,5 +1,4 @@
 import "./RichTextEditor.scss"
-import "../../css/tailwind_output.css" //TODO required import to get h1-h6 tags to work. Shouldn't be required though
 import { EditorContent, useEditor, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
