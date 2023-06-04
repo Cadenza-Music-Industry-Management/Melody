@@ -58,6 +58,12 @@ const RichTextEditor = (props: RichTextEditorProps) => {
         editable: !readOnly && !disabled
     });
 
+    function sendEditorContents() {
+        if (onBlur) {
+            onBlur(editor?.getHTML() ?? "");
+        }
+    }
+
     return (
        <div className={"melody-w-full"}>
            {label && <Label {...label} />}
@@ -66,7 +72,7 @@ const RichTextEditor = (props: RichTextEditorProps) => {
                <MenuBar editor={editor} toolbar={toolbar} />
 
                <div className={`${readOnly ? 'melody-bg-gray-100' : 'melody-bg-white'} melody-border-b melody-border-b-gray-200 melody-p-4 ${disabled ? 'melody-opacity-50 melody-pointer-events-none' : ''}`}
-                    onBlur={onBlur}>
+                    onBlur={sendEditorContents}>
                    <EditorContent editor={editor} placeholder={placeholder} />
                </div>
 

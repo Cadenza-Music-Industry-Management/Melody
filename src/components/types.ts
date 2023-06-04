@@ -52,13 +52,13 @@ export interface DropdownProps {
 //Rich Text Editor
 export interface RichTextEditorProps {
     label?: LabelProps,
-    value: string,
-    placeholder: string,
+    value?: string,
+    placeholder?: string,
     readOnly?: boolean,
     disabled?: boolean,
     toolbar?: boolean,
     className?: string,
-    onBlur?: (event: any) => void,
+    onBlur?: (value: string) => void,
     characterLimit?: number
 }
 
