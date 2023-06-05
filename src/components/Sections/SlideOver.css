@@ -19,5 +19,5 @@
 }
 
 .melody-slide-over-header {
-    @apply melody-flex melody-items-start melody-justify-between melody-p-6 melody-bg-secondary-100 melody-text-white;
+    @apply melody-flex melody-items-center melody-justify-between melody-p-4 melody-bg-secondary-100 melody-text-white;
 }
