@@ -41,6 +41,7 @@ import {
     faCode,
     faFileCode,
     faQuoteLeft,
+    faCalculator,
     faUserTie, //TODO username
     faMoneyBillTrendUp, //Income
     faMoneyBillTransfer, //Expense
@@ -113,6 +114,7 @@ export const Icon = (props: IconProps) => {
         username: faUserTie,
         ban: faBan,
         image: faImage,
+        calculator: faCalculator,
         edit: faEdit,
         bulletList: faList,
         numberList: faListOl,

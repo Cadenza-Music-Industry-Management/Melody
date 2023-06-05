@@ -159,6 +159,7 @@ export const Sidebar = (props: SidebarProps) => {
                breakPoint="md"
                backgroundColor={"#0C192C"}
                width={"300px"}
+               // collapsedWidth={"100px"}
                rootStyles={{ color: "white", borderRight: "1px solid white" }}>
                <div className={"melody-flex melody-flex-col melody-h-full"}>
 

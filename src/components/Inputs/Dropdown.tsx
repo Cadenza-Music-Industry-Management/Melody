@@ -26,10 +26,10 @@ export const Dropdown = (props: DropdownProps) => {
             borderRadius: '0.5rem',
             minHeight: size === 'small' ? '1.5rem' : size === 'large' ? '2.5rem' : '2rem',
             fontSize: size === 'small' ? '0.75rem' : size === 'large' ? '1.125rem' : '0.875rem',
-            borderColor: state.isFocused ? '#B8B9C4' : provided.borderColor,
+            borderColor: state.isFocused ? "#0C192C" : "rgba(12, 25, 44, 0.5)",
             boxShadow: state.isFocused ? '0 0 0 2px rgba(51, 153, 255, 0.2)' : provided.boxShadow,
             '&:hover': {
-                borderColor: '#B8B9C4',
+                borderColor: '#0C192C',
             },
         }),
         menu: (styles: any) => ({
@@ -37,12 +37,12 @@ export const Dropdown = (props: DropdownProps) => {
             fontSize: size === 'small' ? '0.75rem' : size === 'large' ? '1.125rem' : '0.875rem',
             borderRadius: size === 'small' ? '0.125rem' : size === 'large' ? '0.375rem' : '0.25rem',
         }),
-        option: (provided: any, state: { isFocused: any; }) => ({
+        option: (provided: any, state: { isFocused: boolean, isSelected: boolean }) => ({
             ...provided,
-            backgroundColor: state.isFocused ? '#F7FAFC' : provided.backgroundColor,
-            color: state.isFocused ? '#333333' : provided.color,
+            color: state.isFocused || state.isSelected ? "white" : "black",
+            background: state.isFocused ? 'rgba(12, 25, 44, 0.7)' : state.isSelected ? 'rgba(12, 25, 44, 1)' : undefined,
             '&:hover': {
-                backgroundColor: '#F7FAFC',
+                backgroundColor: '#0C192C',
             },
         }),
         dropdownIndicator: (styles: any) => ({
@@ -51,7 +51,7 @@ export const Dropdown = (props: DropdownProps) => {
         }),
         multiValue: (provided: any) => ({
             ...provided,
-            backgroundColor: '#E2E8F0',
+            backgroundColor: '#0C192C',
         }),
         multiValueLabel: (provided: any) => ({
             ...provided,
