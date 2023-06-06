@@ -29,12 +29,6 @@ export const Tooltip = (props: TooltipProps) => {
             const tooltipRect = tooltipElement?.getBoundingClientRect();
 
             let top, left;
-
-            console.log(parentRect)
-            const slideOver = document.querySelector('.melody-slide-over-dialog-panel');
-            if (slideOver) parentRect.width = slideOver.getBoundingClientRect().width
-            console.log(parentRect)
-
             if (direction === 'left') {
                 top = parentRect.top;
                 left = parentRect.left - tooltipRect?.width - 5;
@@ -48,10 +42,6 @@ export const Tooltip = (props: TooltipProps) => {
                 top = parentRect.top - tooltipRect?.height - 5;
                 left = parentRect.left;
             }
-
-            //Account for fixed width from slideover
-            //const slideOver = document.querySelector('.melody-slide-over-dialog-panel');
-            //if (slideOver) left = left - (slideOver.getBoundingClientRect().width + 50) / 2;
 
             setTooltipPosition({ top, left });
         };
