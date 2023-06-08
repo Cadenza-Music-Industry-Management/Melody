@@ -260,11 +260,14 @@ export interface TableProps<TData> {
     tableName: string, //Used to display when loading data
     data: TData[] | null | undefined,
     rowsCanExpand?: boolean,
-    columnsToDisplay: MelodyTableColumn<TData>[]
+    columnsToDisplay: MelodyTableColumn<TData>[],
+    showRowCount?: boolean,
+    showPagination?: boolean
 }
 
 export interface MelodyTableColumn<TData> {
     accessorKey: string,
+    formatType?: "date" | "datetime" | "text",
     header: MelodyTableHeader<TData>
 }
 
