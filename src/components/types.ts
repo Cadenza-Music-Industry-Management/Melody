@@ -1,6 +1,5 @@
 import { CSSProperties, ForwardedRef, ReactNode } from "react";
-import {DatePicker} from "./Inputs/DatePicker";
-import { IconTooltip } from "@/components/Melody/src/components/Layouts/IconTooltip";
+import { Row } from "@tanstack/react-table";
 
 //Indicator
 export interface IndicatorProps {
@@ -254,4 +253,26 @@ export interface IconTooltipProps {
     fontColor?: string,
     message: string,
     direction?: 'top' | 'bottom' | 'left' | 'right'
+}
+
+//Melody Table
+export interface TableProps<TData> {
+    tableName: string, //Used to display when loading data
+    data: TData[] | null | undefined,
+    rowsCanExpand?: boolean,
+    columnsToDisplay: MelodyTableColumn<TData>[]
+}
+
+export interface MelodyTableColumn<TData> {
+    accessorKey: string,
+    header: MelodyTableHeader<TData>
+}
+
+export interface MelodyTableHeader<TData> {
+    type?: string,
+    title?: string,
+    image?: string,
+    width?: string | number,
+    additionalCSS?: CSSProperties,
+    tooltipMessage?: string
 }

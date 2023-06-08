@@ -77,6 +77,13 @@ export const Sidebar = (props: SidebarProps) => {
         }),
     }
 
+    function closePopupWhenItemIsClicked(onClick: any) {
+        //TODO currently having a z-index issue where slideover is not allowing sidebar to be clicked when broken (mobile) even though it has higher z-index,
+        // so just closing sidebar for now when onclick is triggered
+        if (broken) toggleSidebar()
+        onClick()
+    }
+
     //TODO SidebarLinkProps
     function generateMenuItem(link: any, rootLevel: boolean, index: string) {
 
@@ -90,7 +97,7 @@ export const Sidebar = (props: SidebarProps) => {
                 if (link.href) {
                     component = <Link href={link.href} />
                 } else if (link.onClick) {
-                    component = <div onClick={link.onClick} />
+                    component = <div onClick={() => closePopupWhenItemIsClicked(link.onClick)} />
                 }
 
                 if (link.children) {
@@ -160,7 +167,7 @@ export const Sidebar = (props: SidebarProps) => {
                backgroundColor={"#0C192C"}
                width={"300px"}
                // collapsedWidth={"100px"}
-               rootStyles={{ color: "white", borderRight: "1px solid white" }}>
+               rootStyles={{ color: "white", borderRight: "1px solid white", zIndex: 11 }}>
                <div className={"melody-flex melody-flex-col melody-h-full"}>
 
                    {/*HEADER*/}
