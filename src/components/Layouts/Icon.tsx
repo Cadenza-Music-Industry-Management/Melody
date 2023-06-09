@@ -42,6 +42,8 @@ import {
     faFileCode,
     faQuoteLeft,
     faCalculator,
+    faGear,
+    faArrowTurnDown,
     faUserTie, //TODO username
     faMoneyBillTrendUp, //Income
     faMoneyBillTransfer, //Expense
@@ -113,7 +115,9 @@ export const Icon = (props: IconProps) => {
         lastName: faPeopleGroup,
         username: faUserTie,
         ban: faBan,
+        arrowTurnDown: faArrowTurnDown,
         image: faImage,
+        gear: faGear,
         calculator: faCalculator,
         edit: faEdit,
         bulletList: faList,

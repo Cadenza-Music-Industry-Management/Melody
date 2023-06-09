@@ -1,0 +1,13 @@
+
+th {
+    @apply melody-relative;
+}
+
+/*NOTE making transparent as don't like styling of bar that does not line up to where we drag*/
+.resizer {
+    @apply melody-absolute melody-right-0 melody-top-0 melody-h-full melody-w-[3px] melody-bg-transparent melody-cursor-col-resize melody-select-none melody-touch-none melody-opacity-0;
+}
+
+.resizer.isResizing {
+    @apply melody-bg-transparent melody-opacity-100;
+}

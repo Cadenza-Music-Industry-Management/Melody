@@ -1,5 +1,5 @@
 .melody-text-label {
-    @apply melody-block;
+    @apply melody-block melody-whitespace-pre-wrap;
 }
 
 .melody-text-label.xsmall {

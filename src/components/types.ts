@@ -1,5 +1,4 @@
 import { CSSProperties, ForwardedRef, ReactNode } from "react";
-import { Row } from "@tanstack/react-table";
 
 //Indicator
 export interface IndicatorProps {
@@ -167,7 +166,8 @@ export interface NavBarItemProps {
     name: string,
     onClick?: () => void,
     href?: string,
-    trailerComponent?: ReactNode
+    trailerComponent?: ReactNode,
+    disabled?: boolean
 }
 
 //Button Menu
@@ -262,20 +262,53 @@ export interface TableProps<TData> {
     rowsCanExpand?: boolean,
     columnsToDisplay: MelodyTableColumn<TData>[],
     showRowCount?: boolean,
-    showPagination?: boolean
+    showPagination?: boolean,
+    columnResizing?: boolean
 }
 
 export interface MelodyTableColumn<TData> {
     accessorKey: string,
-    formatType?: "date" | "datetime" | "text",
-    header: MelodyTableHeader<TData>
+    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "checkbox",
+    header: MelodyTableHeader<TData>,
+    dropdownOptions?: MelodyTableColumnDropdownOptions[],
+    disabled?: boolean,
+    disabledSettings?: MelodyTableColumnDisabledSettings[],
+    function?: MelodyTableColumnFunction<TData>,
+    size?: number,
+    minSize?: number,
+    maxSize?: number
 }
 
 export interface MelodyTableHeader<TData> {
-    type?: string,
+    formatType?: "text" | "image",
     title?: string,
     image?: string,
-    width?: string | number,
     additionalCSS?: CSSProperties,
     tooltipMessage?: string
+}
+
+export interface MelodyTableColumnFunction<TData> {
+    linkedFunctions?: any[],
+    linkedFunctionIdParam?: boolean,
+}
+
+export interface MelodyTableColumnDropdownOptions {
+    title: string,
+    dropdownFunction: any,
+    dropdownParams: MelodyTableColumnDropdownParamSettings[],
+    icon?: string,
+    disabled?: boolean,
+    disabledSettings?: MelodyTableColumnDisabledSettings[]
+}
+
+export interface MelodyTableColumnDropdownParamSettings {
+    propertyValue: boolean,
+    stringValue: string
+}
+
+export interface MelodyTableColumnDisabledSettings {
+    disabledField: string,
+    userPermission?: boolean,
+    nullCheck?: boolean,
+    disabledMessage: string
 }

@@ -127,16 +127,16 @@ function MenuBar(props: {
             <div className="melody-flex melody-space-x-2 melody-space-y-2 melody-flex-wrap">
                 <div className={"melody-flex melody-items-end"}>
                     {wrapTooltipComponent("Text Sizing", <Dropdown size={"small"}
-                                                                    onChange={value => changeTextSizing(Number((value as DropdownOption).value))}
-                                                                    options={[
-                                                                        { label: "Paragraph", value: "0" },
-                                                                        { label: "Header 1", value: "1" },
-                                                                        { label: "Header 2", value: "2" },
-                                                                        { label: "Header 3", value: "3" },
-                                                                        { label: "Header 4", value: "4" },
-                                                                        { label: "Header 5", value: "5" },
-                                                                        { label: "Header 6", value: "6" }
-                                                                    ]}  />)}
+                                                                   onChange={value => changeTextSizing(Number((value as DropdownOption).value))}
+                                                                   options={[
+                                                                       { label: "Paragraph", value: "0" },
+                                                                       { label: "Header 1", value: "1" },
+                                                                       { label: "Header 2", value: "2" },
+                                                                       { label: "Header 3", value: "3" },
+                                                                       { label: "Header 4", value: "4" },
+                                                                       { label: "Header 5", value: "5" },
+                                                                       { label: "Header 6", value: "6" }
+                                                                   ]}  />)}
                 </div>
 
                 {wrapTooltipComponent("Bold", <Button customLabel={{ label: "B", bold: true, color: editor.isActive('bold') ? "white" : "black" }}

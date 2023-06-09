@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { CSSProperties } from "react";
 import "./Image.css"
 import NextImage from "next/image"
 
 export const Image = (props: {
     src: any,
     alt?: string,
-    additionalStyles?: any,
+    additionalStyles?: CSSProperties,
     additionalClasses?: string,
-    height?: any,
-    width?: any
+    height?: number,
+    width?: number,
+    fill?: boolean,
 }) => {
     const {
         src,
         alt,
         additionalStyles,
         additionalClasses,
-        height,
-        width
+        height = undefined,
+        width = undefined
     } = props
 
     return (

@@ -55,7 +55,8 @@ export const Sidebar = (props: SidebarProps) => {
         subMenuContent: ({ level, active }) => ({
             overflow: "hidden",
             borderRadius: 10,
-            backgroundColor: '#0C192C'
+            backgroundColor: '#0C192C',
+            border: level === 0 ? "2px solid white" : 0
         }),
         button: ({  active , open, isSubmenu }) => ({
             [`&.${menuClasses.disabled}`]: {

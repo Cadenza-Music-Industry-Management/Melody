@@ -77,11 +77,13 @@ export const Tooltip = (props: TooltipProps) => {
                 {children}
             </div>
 
-            <div className={tooltipClasses}
-                 style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
-                 ref={tooltipRef}>
-                {message}
-            </div>
+            {message !== "" &&
+              <div className={tooltipClasses}
+                   style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
+                   ref={tooltipRef}>
+                  {message}
+              </div>
+            }
         </div>
     )
 }

@@ -4,10 +4,11 @@ import "./ButtonMenu.css"
 import { classNames } from "../../utils/functions";
 import { ButtonMenuProps } from "@/components/Melody/src/components/types";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
+import Link from "next/link";
 
 export const ButtonMenu = (props: ButtonMenuProps) => {
     const {
-        size = 'medium', //TODO
+        size = 'medium',
         buttonContents,
         dropdownHeaderItem,
         items,
@@ -16,12 +17,12 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
     } = props
 
     return (
-        <Menu as="div" className={`melody-relative ${additionalClasses}`}>
+        <Menu as="div" className={`melody-relative ${additionalClasses ?? ''}`}>
             {({ open }) => (
                 <>
                     <div>
                         <Menu.Button className={"melody-bg-transparent"}>
-                            {buttonContents ?? <Button label={label} icon={{ icon: open ? 'caretUp' : 'caretDown', rightAligned: true }} />}
+                            {buttonContents ?? <Button size={size} label={label} icon={{ icon: open ? 'caretUp' : 'caretDown', rightAligned: true }} />}
                         </Menu.Button>
                     </div>
 
@@ -41,18 +42,23 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
                                 <Menu.Item key={item.name}>
                                     {({ active }: { active: boolean }) => (
                                         <>
-                                            {item.onClick ?
-                                                <span onClick={item.onClick}
-                                                      className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
-                                            {item.name}
-                                                    {item.trailerComponent}
-                                        </span>
-                                                :
-                                                <a href={item.href}
-                                                   className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
+                                            {item.disabled ?
+                                                <div className={'melody-cursor-pointer melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-800 melody-cursor-not-allowed'}>
                                                     {item.name}
                                                     {item.trailerComponent}
-                                                </a>
+                                                </div>
+                                                : item.onClick ?
+                                                    <div onClick={item.onClick}
+                                                          className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
+                                                        {item.name}
+                                                        {item.trailerComponent}
+                                                    </div>
+                                                    :
+                                                    <Link href={item.href ?? ""}
+                                                          className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
+                                                        {item.name}
+                                                        {item.trailerComponent}
+                                                    </Link>
                                             }
                                         </>
                                     )}
