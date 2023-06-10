@@ -30,9 +30,9 @@ import { Checkbox } from "@/components/Melody/src/components/Inputs/Checkbox";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 import { useDashboardState } from "@/zustand/stores";
 import { ButtonMenu } from "@/components/Melody/src/components/Inputs/ButtonMenu";
-import { useQuery, useQueryClient } from "react-query";
-import { TextInput } from "@/components/Melody/src/components/Inputs/TextInput";
+import { useQuery } from "react-query";
 import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
+import { useMelodySearch } from "@/components/Melody/src/components/Sections/MelodySearch";
 
 type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter
 
@@ -45,42 +45,61 @@ export function MelodyTable(
         showPagination = true,
         columnResizing = false,
         fetchData,
-        defaultPageSize = 10
+        defaultPageSize = 10,
+        filterItems
     }: TableProps<AcceptableCastTypes>) {
 
-    //TODO use this for items such as siteEnabled and userPermissions, but if used outside of dashboard, will show up as null hopefully
+    //NOTE use this for items such as siteEnabled and userPermissions, but if used outside of dashboard, will show up as null hopefully
+    //TODO issue with this probably as zustand is local to iQ, not to melody library
     const currentOrg = useDashboardState((state) => state.group)
 
-    //TODO can remove api call from parent class and use pagination / react-query to do it here
-    const [{ pageIndex, pageSize }, setPagination] =
-        useState<PaginationState>({
-            pageIndex: 0,
-            pageSize: defaultPageSize,
-        })
+    const [processingRequest, setProcessingRequest] = useState(false)
+    const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>(
+        { pageIndex: 0, pageSize: defaultPageSize }
+    )
 
-    const fetchDataOptions = {
-        pageIndex,
-        pageSize,
+    //TODO need to check for url for dashboard so not to check this if outside of org
+    function getQueryIsEnabled() {
+        return currentOrg !== null
     }
+
+
+    const {
+        filters,
+        searchUI
+    } = useMelodySearch({
+        onSearch: () => dataQuery.refetch(),
+        items: filterItems ?? [],
+        processingRequest
+    });
+
+    const fetchDataOptions = useMemo(() => {
+        return {
+            pageIndex,
+            pageSize,
+            filters
+        };
+    }, [pageIndex, pageSize, filters]);
 
     const dataQuery = useQuery(
         ["data", fetchDataOptions],
         () => fetchData(fetchDataOptions),
-        { keepPreviousData: true }
+        { keepPreviousData: true, enabled: getQueryIsEnabled() }
     )
 
-    //TODO is this necessary with requiring currentOrg in fetchData functions in dashboard
-    const queryClient = useQueryClient()
     useEffect(() => {
-        if (currentOrg) {
-            queryClient.invalidateQueries({ queryKey: ['data'] })
-        }
-    }, [currentOrg])
+        dataQuery.refetch()
+    }, [filters])
+
+    useEffect(() => {
+        setProcessingRequest(dataQuery.isLoading)
+    }, [dataQuery.isLoading])
 
     const pagination = useMemo(
         () => ({
             pageIndex,
             pageSize,
+
         }),
         [pageIndex, pageSize]
     )
@@ -98,7 +117,7 @@ export function MelodyTable(
             pagination,
         },
         onPaginationChange: setPagination,
-        manualPagination: true,
+        manualPagination: true
     })
 
     const renderSubComponent = ({ row }: { row: Row<AcceptableCastTypes> }) => {
@@ -343,50 +362,28 @@ export function MelodyTable(
 
     function getPaginationComponentSection() {
         return (
-            <div className="melody-flex melody-items-center melody-gap-2">
+            <div className="melody-flex melody-items-center melody-gap-2 melody-flex-wrap melody-ml-auto">
 
-                <Button label={'<<'} //TODO icon
-                        color={'white'}
-                        size={"small"}
-                        disabled={!table.getCanPreviousPage()}
-                        onClick={() => table.setPageIndex(0)} />
+                {dataQuery.isFetching ? 'Loading...' : null}
 
-                <Button label={'<'} //TODO icon
-                        color={'white'}
-                        size={"small"}
-                        disabled={!table.getCanPreviousPage()}
-                        onClick={() => table.previousPage()} />
-
-                <Button label={'>'} //TODO icon
-                        color={'white'}
-                        size={"small"}
-                        disabled={!table.getCanNextPage()}
-                        onClick={() => table.nextPage()} />
-
-                <Button label={'>>'} //TODO icon
-                        color={'white'}
-                        size={"small"}
-                        disabled={!table.getCanNextPage()}
-                        onClick={() => table.setPageIndex(table.getPageCount() - 1)} />
-
-                <span className="melody-flex melody-items-center melody-gap-1">
+                <div className="melody-flex melody-items-center melody-gap-1">
                     <Label label={`Page ${table.getState().pagination.pageIndex + 1} of ${table.getPageCount()}`} size={"small"} bold={true} />
-                </span>
+                </div>
 
-                <span className="melody-flex melody-items-center melody-gap-1">
-                    <Label label={"| Go To Page:"} size={"small"} />
-                    <div className={"melody-max-w-[150px]"}>
-                         <TextInput type={"number"}
-                                    defaultValue={table.getState().pagination.pageIndex + 1}
-                                    size={"small"}
-                                    min={1}
-                                    disabled={!table.getCanNextPage() && !table.getCanPreviousPage()}
-                                    onChange={(newValue) => {
-                                        const page = newValue ? Number(newValue) - 1 : 0
-                                        table.setPageIndex(page)
-                                    }} />
-                    </div>
-                </span>
+                {/*<span className="melody-flex melody-items-center melody-gap-1">*/}
+                {/*    <Label label={"| Go To Page:"} size={"small"} />*/}
+                {/*    <div className={"melody-max-w-[150px]"}>*/}
+                {/*         <TextInput type={"number"}*/}
+                {/*                    defaultValue={table.getState().pagination.pageIndex + 1}*/}
+                {/*                    size={"small"}*/}
+                {/*                    min={1}*/}
+                {/*                    disabled={!table.getCanNextPage() && !table.getCanPreviousPage()}*/}
+                {/*                    onChange={(newValue) => {*/}
+                {/*                        const page = newValue ? Number(newValue) - 1 : 0*/}
+                {/*                        table.setPageIndex(page)*/}
+                {/*                    }} />*/}
+                {/*    </div>*/}
+                {/*</span>*/}
 
                 <div className={"melody-max-w-[150px]"}>
                     <Dropdown onChange={(selection) => table.setPageSize(Number((selection as DropdownOption).value)) }
@@ -395,7 +392,29 @@ export function MelodyTable(
                               options={[10, 20, 30, 40, 50].map(pageSizeListVal => ({ label: `Show ${pageSizeListVal}`, value: pageSizeListVal }))} />
                 </div>
 
-                {dataQuery.isFetching ? 'Loading...' : null}
+                <Button icon={{ icon: "paginationLeft" }}
+                        color={'white'}
+                        size={"small"}
+                        disabled={!table.getCanPreviousPage()}
+                        onClick={() => table.setPageIndex(0)} />
+
+                <Button icon={{ icon: "caretLeft" }}
+                        color={'white'}
+                        size={"small"}
+                        disabled={!table.getCanPreviousPage()}
+                        onClick={() => table.previousPage()} />
+
+                <Button icon={{ icon: "caretRight" }}
+                        color={'white'}
+                        size={"small"}
+                        disabled={!table.getCanNextPage()}
+                        onClick={() => table.nextPage()} />
+
+                <Button icon={{ icon: "paginationRight" }}
+                        color={'white'}
+                        size={"small"}
+                        disabled={!table.getCanNextPage()}
+                        onClick={() => table.setPageIndex(table.getPageCount() - 1)} />
 
             </div>
         )
@@ -403,6 +422,9 @@ export function MelodyTable(
 
     return (
         <div className="melody-p-1 melody-w-full melody-block">
+
+            {searchUI}
+
             {dataQuery.data && dataQuery.data?.rows.length > 0 &&
               <table className={"melody-rounded-lg melody-border-separate melody-border-spacing-0 melody-w-full"}>
                 <thead>
@@ -522,14 +544,15 @@ export function MelodyTable(
             }
 
             {dataQuery.data?.rows && dataQuery.data?.rows.length > 0 && (showRowCount || showPagination) &&
-              <div className={"melody-py-1 melody-flex melody-items-center melody-justify-end"}>
-                  {/*TODO moving items to end until we set up right styling for actions dropdown here*/}
-                  {showPagination && getPaginationComponentSection()}
+              <div className={"melody-py-1 melody-flex melody-items-center"}>
+
                   {showRowCount &&
                     <p className={"melody-text-left melody-font-bold melody-text-sm melody-pl-2"}>
                         {table.getRowModel().rows.length} Rows
                     </p>
                   }
+
+                  {showPagination && getPaginationComponentSection()}
               </div>
             }
         </div>

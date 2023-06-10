@@ -1,6 +1,7 @@
 import './RadioCheckbox.css'
 import {Label} from "../Layouts/Label";
 import { CheckboxRadioButtonProps } from "@/components/Melody/src/components/types";
+import { useEffect, useMemo, useState } from "react";
 
 export const Checkbox = (props: CheckboxRadioButtonProps) => {
 
@@ -15,13 +16,20 @@ export const Checkbox = (props: CheckboxRadioButtonProps) => {
         additionalParentStyles
     } = props
 
+    const [stateValue, setStateValue] = useState(value)
+
+    useEffect(() => {
+        if (value && value !== stateValue) setStateValue(value)
+    }, [value])
+
     return (
         <div className="melody-radio-checkbox-container" style={additionalParentStyles}>
             <input aria-describedby="checkbox-sub-label"
                    type="checkbox"
                    disabled={disabled}
-                   checked={value}
-                   onClick={() => {
+                   checked={stateValue}
+                   onChange={() => {
+                       setStateValue(!stateValue)
                        if (onChange) onChange(!value)
                    }}
                    className={`melody-radio-checkbox ${variant} ${size}`} />

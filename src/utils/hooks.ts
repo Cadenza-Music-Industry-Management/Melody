@@ -4,6 +4,8 @@ export function useCloseOnClickAway(
     onClickAway: () => void
 ) {
 
+    //TODO doesnt seem to work at all right now
+
     const ref = useRef<HTMLInputElement | null>(null)
 
     useEffect(() => {
@@ -20,3 +22,20 @@ export function useCloseOnClickAway(
 
     return ref
 }
+
+//TODO not used right now
+export function useTimeout(callback: () => void, delay: number) {
+    const callbackRef = useRef(callback);
+
+    useEffect(() => {
+        callbackRef.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+        if (delay !== null) {
+            const timer = setTimeout(() => callbackRef.current(), delay);
+
+            return () => clearTimeout(timer);
+        }
+    }, [delay]);
+};

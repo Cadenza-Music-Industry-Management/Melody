@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import "./TextInput.css"
 import {TextInputProps} from "../types";
 import {Label} from "../Layouts/Label";
@@ -21,6 +21,12 @@ export const TextInput = (props: TextInputProps) => {
         min
     } = props
 
+    const [stateValue, setStateValue] = useState(value)
+
+    useEffect(() => {
+        if (value !== stateValue) setStateValue(value === null ? "" : value)
+    }, [value])
+
     return (
         <div className={"melody-w-full"}>
             {label && <Label {...label} />}
@@ -37,7 +43,7 @@ export const TextInput = (props: TextInputProps) => {
                        min={min}
                        maxLength={maxLength}
                        placeholder={placeholder}
-                       value={value}
+                       value={stateValue}
                        defaultValue={defaultValue}
                        disabled={disabled}
                        onChange={(event => {

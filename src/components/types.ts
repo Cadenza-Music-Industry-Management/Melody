@@ -267,11 +267,14 @@ export interface TableProps<TData> {
     showPagination?: boolean,
     columnResizing?: boolean,
     fetchData: (options: MelodyTableFetchDataOptions) => Promise<{ rows: TData[], pageCount: number }>,
-    defaultPageSize?: number
+    defaultPageSize?: number,
+    filterItems?: MelodySearchParamListEntry[]
 }
 
 export interface MelodyTableFetchDataOptions {
-    pageIndex: number, pageSize: number
+    pageIndex: number,
+    pageSize: number,
+    filters: MelodySearchParams
 }
 
 export interface MelodyTableColumn<TData> {
@@ -319,4 +322,46 @@ export interface MelodyTableColumnDisabledSettings {
     userPermission?: boolean,
     nullCheck?: boolean,
     disabledMessage: string
+}
+
+//Search
+
+export interface MelodySearchProps {
+    onSearch: () => void,
+    items: MelodySearchParamListEntry[],
+    processingRequest: boolean
+}
+
+export interface MelodySearchParams {
+    title?: string | null,
+    artists?: string[] | null,
+    genres?: string[] | null,
+    releases?: string[] | null,
+    tags?: string[] | null,
+    apparel?: string[] | null,
+    sources?: string[] | null,
+    startDate?: any | null,
+    endDate?: any | null,
+    email?: string | null,
+    username?: string | null,
+    writer?: string | null,
+    contentId?: string | null,
+    contentIdType?: any | null,
+    actions?: string[] | null,
+    fileType?: string[] | null,
+    emailType?: string | null,
+    emailFilter?: string | null,
+    activeStatus?: string | null
+}
+
+export interface MelodySearchParamListEntry {
+    filterProperty?: string, //What property from the search modal should we use
+    type: "text" | "releases" | "date" | "submit" | "refresh",
+    validation?: 'text' | 'number' | 'password' | 'email';
+    colSize: string,
+    title?: string,
+    primaryColor?: string,
+    secondaryColor?: string,
+    textColor?: string,
+    publicSiteSelection?: boolean
 }
