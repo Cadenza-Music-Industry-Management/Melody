@@ -2,9 +2,10 @@ import React, { Fragment } from "react";
 import { Menu, Transition } from '@headlessui/react'
 import "./ButtonMenu.css"
 import { classNames } from "../../utils/functions";
-import { ButtonMenuProps } from "@/components/Melody/src/components/types";
+import { ButtonMenuProps, NavBarItemProps } from "@/components/Melody/src/components/types";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import Link from "next/link";
+import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 
 export const ButtonMenu = (props: ButtonMenuProps) => {
     const {
@@ -15,6 +16,14 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
         additionalClasses,
         label
     } = props
+
+    function getItemDetails(item: NavBarItemProps) {
+        return <>
+            {item.name}
+            {item.trailerComponent}
+            {item.icon && <div className={"melody-pl-1"}><Icon icon={item.icon} /></div>}
+        </>
+    }
 
     return (
         <Menu as="div" className={`melody-relative ${additionalClasses ?? ''}`}>
@@ -43,21 +52,18 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
                                     {({ active }: { active: boolean }) => (
                                         <>
                                             {item.disabled ?
-                                                <div className={'melody-cursor-pointer melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-800 melody-cursor-not-allowed'}>
-                                                    {item.name}
-                                                    {item.trailerComponent}
+                                                <div className={'melody-cursor-pointer melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-800 melody-cursor-not-allowed'}>
+                                                    {getItemDetails(item)}
                                                 </div>
                                                 : item.onClick ?
                                                     <div onClick={item.onClick}
-                                                          className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
-                                                        {item.name}
-                                                        {item.trailerComponent}
+                                                          className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
+                                                        {getItemDetails(item)}
                                                     </div>
                                                     :
                                                     <Link href={item.href ?? ""}
-                                                          className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-block melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
-                                                        {item.name}
-                                                        {item.trailerComponent}
+                                                          className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
+                                                        {getItemDetails(item)}
                                                     </Link>
                                             }
                                         </>

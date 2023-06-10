@@ -6,6 +6,7 @@ import {Label} from "../Layouts/Label";
 export const TextInput = (props: TextInputProps) => {
     const {
         value,
+        defaultValue,
         type = 'text',
         label,
         placeholder,
@@ -37,6 +38,7 @@ export const TextInput = (props: TextInputProps) => {
                        maxLength={maxLength}
                        placeholder={placeholder}
                        value={value}
+                       defaultValue={defaultValue}
                        disabled={disabled}
                        onChange={(event => {
                            if (onChange) onChange(event.target.value)

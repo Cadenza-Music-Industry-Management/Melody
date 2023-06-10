@@ -71,6 +71,7 @@ export interface ColorPickerProps {
 //Text Input/Area
 export interface TextInputProps {
     value?: any,
+    defaultValue?: any,
     type?: 'text' | 'number' | 'password' | 'email';
     label?: LabelProps;
     placeholder?: string;
@@ -167,6 +168,7 @@ export interface NavBarItemProps {
     onClick?: () => void,
     href?: string,
     trailerComponent?: ReactNode,
+    icon?: string,
     disabled?: boolean
 }
 
@@ -258,12 +260,18 @@ export interface IconTooltipProps {
 //Melody Table
 export interface TableProps<TData> {
     tableName: string, //Used to display when loading data
-    data: TData[] | null | undefined,
+    // data: TData[] | null | undefined,
     rowsCanExpand?: boolean,
     columnsToDisplay: MelodyTableColumn<TData>[],
     showRowCount?: boolean,
     showPagination?: boolean,
-    columnResizing?: boolean
+    columnResizing?: boolean,
+    fetchData: (options: MelodyTableFetchDataOptions) => Promise<{ rows: TData[], pageCount: number }>,
+    defaultPageSize?: number
+}
+
+export interface MelodyTableFetchDataOptions {
+    pageIndex: number, pageSize: number
 }
 
 export interface MelodyTableColumn<TData> {

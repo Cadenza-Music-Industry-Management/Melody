@@ -15,7 +15,7 @@
 }
 
 .melody-text-input.small {
-    @apply melody-p-2.5;
+    @apply melody-px-2.5 melody-py-2;
 }
 
 .melody-text-input.medium {

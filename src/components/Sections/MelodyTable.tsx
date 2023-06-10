@@ -1,5 +1,6 @@
 import "./MelodyTable.css"
 import {
+    DropdownOption,
     MelodyTableColumn,
     MelodyTableColumnDisabledSettings,
     MelodyTableHeader,
@@ -12,11 +13,12 @@ import {
     getCoreRowModel,
     getExpandedRowModel,
     Getter,
+    PaginationState,
     Row,
     useReactTable
 } from "@tanstack/react-table";
 import { IApparel, IApparelOrder, IArtist, IBlogPost, IEventHistory, IPromoter, IRelease } from "@/constants/types";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { convertUTCDateToLocalDate } from "@/utils/functions";
 import { Label } from "../Layouts/Label";
 import { Spinner } from "@/components/Melody/src/components/Layouts/Spinner";
@@ -28,31 +30,75 @@ import { Checkbox } from "@/components/Melody/src/components/Inputs/Checkbox";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 import { useDashboardState } from "@/zustand/stores";
 import { ButtonMenu } from "@/components/Melody/src/components/Inputs/ButtonMenu";
+import { useQuery, useQueryClient } from "react-query";
+import { TextInput } from "@/components/Melody/src/components/Inputs/TextInput";
+import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
 
 type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter
 
 export function MelodyTable(
     {
         tableName,
-        data,
         rowsCanExpand = false,
         columnsToDisplay,
         showRowCount = true,
         showPagination = true,
-        columnResizing = false
-
+        columnResizing = false,
+        fetchData,
+        defaultPageSize = 10
     }: TableProps<AcceptableCastTypes>) {
 
     //TODO use this for items such as siteEnabled and userPermissions, but if used outside of dashboard, will show up as null hopefully
     const currentOrg = useDashboardState((state) => state.group)
 
+    //TODO can remove api call from parent class and use pagination / react-query to do it here
+    const [{ pageIndex, pageSize }, setPagination] =
+        useState<PaginationState>({
+            pageIndex: 0,
+            pageSize: defaultPageSize,
+        })
+
+    const fetchDataOptions = {
+        pageIndex,
+        pageSize,
+    }
+
+    const dataQuery = useQuery(
+        ["data", fetchDataOptions],
+        () => fetchData(fetchDataOptions),
+        { keepPreviousData: true }
+    )
+
+    //TODO is this necessary with requiring currentOrg in fetchData functions in dashboard
+    const queryClient = useQueryClient()
+    useEffect(() => {
+        if (currentOrg) {
+            queryClient.invalidateQueries({ queryKey: ['data'] })
+        }
+    }, [currentOrg])
+
+    const pagination = useMemo(
+        () => ({
+            pageIndex,
+            pageSize,
+        }),
+        [pageIndex, pageSize]
+    )
+
     const table = useReactTable<AcceptableCastTypes>({
-        data: data ?? [],
+        data: dataQuery.data?.rows ?? [],
         columns: getColumnsToDisplay(),
         getRowCanExpand: () => rowsCanExpand,
         getCoreRowModel: getCoreRowModel(),
         getExpandedRowModel: getExpandedRowModel(),
-        columnResizeMode: columnResizing ? "onChange" : undefined
+        columnResizeMode: columnResizing ? "onChange" : undefined,
+        //Pagination
+        pageCount: dataQuery.data?.pageCount ?? -1,
+        state: {
+            pagination,
+        },
+        onPaginationChange: setPagination,
+        manualPagination: true,
     })
 
     const renderSubComponent = ({ row }: { row: Row<AcceptableCastTypes> }) => {
@@ -146,7 +192,7 @@ export function MelodyTable(
                 onClick: () => option.dropdownFunction.apply(null, functionArguments),
                 disabled: disabledResultFound,
                 //TODO need disabled hover message
-                trailerComponent: option.icon ? <Icon icon={option.icon} /> : null,
+                icon: option.icon
             }
         })
     }
@@ -295,9 +341,69 @@ export function MelodyTable(
         return columns
     }
 
+    function getPaginationComponentSection() {
+        return (
+            <div className="melody-flex melody-items-center melody-gap-2">
+
+                <Button label={'<<'} //TODO icon
+                        color={'white'}
+                        size={"small"}
+                        disabled={!table.getCanPreviousPage()}
+                        onClick={() => table.setPageIndex(0)} />
+
+                <Button label={'<'} //TODO icon
+                        color={'white'}
+                        size={"small"}
+                        disabled={!table.getCanPreviousPage()}
+                        onClick={() => table.previousPage()} />
+
+                <Button label={'>'} //TODO icon
+                        color={'white'}
+                        size={"small"}
+                        disabled={!table.getCanNextPage()}
+                        onClick={() => table.nextPage()} />
+
+                <Button label={'>>'} //TODO icon
+                        color={'white'}
+                        size={"small"}
+                        disabled={!table.getCanNextPage()}
+                        onClick={() => table.setPageIndex(table.getPageCount() - 1)} />
+
+                <span className="melody-flex melody-items-center melody-gap-1">
+                    <Label label={`Page ${table.getState().pagination.pageIndex + 1} of ${table.getPageCount()}`} size={"small"} bold={true} />
+                </span>
+
+                <span className="melody-flex melody-items-center melody-gap-1">
+                    <Label label={"| Go To Page:"} size={"small"} />
+                    <div className={"melody-max-w-[150px]"}>
+                         <TextInput type={"number"}
+                                    defaultValue={table.getState().pagination.pageIndex + 1}
+                                    size={"small"}
+                                    min={1}
+                                    disabled={!table.getCanNextPage() && !table.getCanPreviousPage()}
+                                    onChange={(newValue) => {
+                                        const page = newValue ? Number(newValue) - 1 : 0
+                                        table.setPageIndex(page)
+                                    }} />
+                    </div>
+                </span>
+
+                <div className={"melody-max-w-[150px]"}>
+                    <Dropdown onChange={(selection) => table.setPageSize(Number((selection as DropdownOption).value)) }
+                              size={"small"}
+                              defaultValue={{ label: `Show ${pageSize}`, value: pageSize }}
+                              options={[10, 20, 30, 40, 50].map(pageSizeListVal => ({ label: `Show ${pageSizeListVal}`, value: pageSizeListVal }))} />
+                </div>
+
+                {dataQuery.isFetching ? 'Loading...' : null}
+
+            </div>
+        )
+    }
+
     return (
         <div className="melody-p-1 melody-w-full melody-block">
-            {data && data.length > 0 &&
+            {dataQuery.data && dataQuery.data?.rows.length > 0 &&
               <table className={"melody-rounded-lg melody-border-separate melody-border-spacing-0 melody-w-full"}>
                 <thead>
                 {table.getHeaderGroups().map((headerGroup, index) => (
@@ -402,21 +508,29 @@ export function MelodyTable(
               </table>
             }
 
-            {data && data.length == 0 &&
+            {dataQuery.data?.rows && dataQuery.data?.rows.length == 0 &&
               <div className={"melody-text-center"}>
                 <Label label={`No ${tableName} Found`} bold={true} size={'medium'} />
               </div>
             }
 
-            {!data &&
+            {!dataQuery.data &&
               <div className={"melody-text-center"}>
                 <h4>{tableName} Loading...</h4>
                 <Spinner />
               </div>
             }
 
-            {data && data.length > 0 && showRowCount &&
-              <div className={"melody-py-1 melody-text-left melody-font-bold melody-text-sm"}>{table.getRowModel().rows.length} Rows</div>
+            {dataQuery.data?.rows && dataQuery.data?.rows.length > 0 && (showRowCount || showPagination) &&
+              <div className={"melody-py-1 melody-flex melody-items-center melody-justify-end"}>
+                  {/*TODO moving items to end until we set up right styling for actions dropdown here*/}
+                  {showPagination && getPaginationComponentSection()}
+                  {showRowCount &&
+                    <p className={"melody-text-left melody-font-bold melody-text-sm melody-pl-2"}>
+                        {table.getRowModel().rows.length} Rows
+                    </p>
+                  }
+              </div>
             }
         </div>
     )
