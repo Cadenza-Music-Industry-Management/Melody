@@ -10,6 +10,7 @@ export const Image = (props: {
     height?: number,
     width?: number,
     fill?: boolean,
+    onClick?: (image: any) => void
 }) => {
     const {
         src,
@@ -17,13 +18,15 @@ export const Image = (props: {
         additionalStyles,
         additionalClasses,
         height = undefined,
-        width = undefined
+        width = undefined,
+        onClick
     } = props
 
     return (
         <NextImage className={additionalClasses}
                    style={additionalStyles}
                    src={src}
+                   onClick={() => { if (onClick) onClick(src) }}
                    width={width}
                    height={height}
                    aria-label="Icon"

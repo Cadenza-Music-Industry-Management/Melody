@@ -33,6 +33,7 @@ import { ButtonMenu } from "@/components/Melody/src/components/Inputs/ButtonMenu
 import { useQuery } from "react-query";
 import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
 import { useMelodySearch } from "@/components/Melody/src/components/Sections/MelodySearch";
+import {motion} from "framer-motion";
 
 type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter
 
@@ -52,6 +53,8 @@ export function MelodyTable(
     //NOTE use this for items such as siteEnabled and userPermissions, but if used outside of dashboard, will show up as null hopefully
     //TODO issue with this probably as zustand is local to iQ, not to melody library
     const currentOrg = useDashboardState((state) => state.group)
+    const slideOverOpenName = useDashboardState((state) => state.slideOverOpenName)
+    const setLargeImageModalDetails = useDashboardState((state) => state.setLargeImageModalDetails)
 
     const [processingRequest, setProcessingRequest] = useState(false)
     const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>(
@@ -62,7 +65,6 @@ export function MelodyTable(
     function getQueryIsEnabled() {
         return currentOrg !== null
     }
-
 
     const {
         filters,
@@ -89,7 +91,7 @@ export function MelodyTable(
 
     useEffect(() => {
         dataQuery.refetch()
-    }, [filters])
+    }, [filters, slideOverOpenName, currentOrg])
 
     useEffect(() => {
         setProcessingRequest(dataQuery.isLoading)
@@ -266,15 +268,15 @@ export function MelodyTable(
                     </div>
                     break
                 case "image":
-                    //TODO need large image modal
-                    valueToDisplay = <div className={"melody-flex melody-justify-center"}>
-                        <Image additionalClasses="melody-rounded"
-                                            src={getValue<string>()}
-                                            width={30} //TODO why is width/height required here but no where else on the site???
-                                            height={30}
-                                            //TODO how to generate alt for image
-                                            alt="" />
-                    </div>
+                    valueToDisplay = <motion.div whileHover={{scale: 0.97}} className={"melody-flex melody-justify-center"}>
+                        <Image additionalClasses="melody-rounded melody-cursor-pointer"
+                               onClick={(image) => setLargeImageModalDetails({ open: true, contentName: image })}
+                               src={getValue<string>()}
+                               width={30} //TODO why is width/height required here but no where else on the site???
+                               height={30}
+                                //TODO generate alt text for image
+                               alt="" />
+                    </motion.div>
                     break
                 case "social_media":
                     if (row.original) {
