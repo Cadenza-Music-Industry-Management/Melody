@@ -301,7 +301,7 @@ export function MelodyTable(
                                 //TODO generate alt text for image
                                    alt="" />
                             :
-                            <div className={"melody-h-[30px] melody-w-[30px] melody-rounded-lg melody-bg-gray-200 melody-flex melody-justify-center melody-items-center"}>
+                            <div className={"melody-h-[30px] melody-w-[30px] melody-rounded melody-bg-gray-200 melody-flex melody-justify-center melody-items-center"}>
                                 <Icon icon={getTempIconIfNotFound()} />
                             </div>
                         }
@@ -358,6 +358,7 @@ export function MelodyTable(
         }
 
         if (column.linkOnClickSettings) {
+            //TODO currently not using this anywhere after wanting to rethink artist_list functionality w/ profile
             if (column.linkOnClickSettings.onClick) {
                 return <div onClick={() => {
                     if (column.linkOnClickSettings?.onClick) {
@@ -384,7 +385,8 @@ export function MelodyTable(
                     linkProperty = (row.original as any).artists.map((artist: LinkDto) => (artist as any)[column.linkOnClickSettings?.linkProperty ?? ""])
                 }
 
-                return <Link href={(column.linkOnClickSettings.linkProperty ? column.linkOnClickSettings.linkURL?.replace("LINK_PROPERTY", linkProperty) : column.linkOnClickSettings?.linkURL) ?? ""}>
+                return <Link href={(column.linkOnClickSettings.linkProperty ? column.linkOnClickSettings.linkURL?.replace("LINK_PROPERTY", linkProperty) : column.linkOnClickSettings?.linkURL) ?? ""}
+                             className={"melody-font-bold melody-underline"}>
                     {valueToDisplay}
                 </Link>
             }

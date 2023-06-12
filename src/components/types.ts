@@ -280,7 +280,7 @@ export interface MelodyTableFetchDataOptions {
 export interface MelodyTableColumn<TData> {
     accessorKey: string,
     linkOnClickSettings?: MelodyTableColumnLinkOnClickSettings,
-    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "checkbox" | "artist_list",
+    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "checkbox" | "artist_list" | "badge",
     header: MelodyTableHeader<TData>,
     dropdownOptions?: MelodyTableColumnDropdownOptions[],
     disabled?: boolean,

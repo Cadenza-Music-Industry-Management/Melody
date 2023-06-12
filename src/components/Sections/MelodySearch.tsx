@@ -98,8 +98,9 @@ export function useMelodySearch(
         }
 
         if (item.type === "dropdown") {
+            //TODO need to override onchange i think and send back just value and not entire item
             componentToDisplay = getFormDropdown(item.filterProperty, errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message?.toString(),{
-                label: { label: `Search By ${item.title}`, bold: true, required: true },
+                label: { label: `Search By ${item.title}`, bold: true },
                 options: item.dropdownOptions ?? [],
                 isMulti: true,
                 isClearable: true
