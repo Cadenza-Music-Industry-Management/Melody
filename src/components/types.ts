@@ -279,7 +279,8 @@ export interface MelodyTableFetchDataOptions {
 
 export interface MelodyTableColumn<TData> {
     accessorKey: string,
-    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "checkbox",
+    linkOnClickSettings?: MelodyTableColumnLinkOnClickSettings,
+    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "checkbox" | "artist_list",
     header: MelodyTableHeader<TData>,
     dropdownOptions?: MelodyTableColumnDropdownOptions[],
     disabled?: boolean,
@@ -298,6 +299,13 @@ export interface MelodyTableHeader<TData> {
     tooltipMessage?: string
 }
 
+export interface MelodyTableColumnLinkOnClickSettings {
+    linkURL?: string,
+    linkProperty?: string,
+    onClick?: any,
+    onClickParams?: MelodyTableColumnFunctionParamSettings[],
+}
+
 export interface MelodyTableColumnFunction<TData> {
     linkedFunctions?: any[],
     linkedFunctionIdParam?: boolean,
@@ -306,13 +314,13 @@ export interface MelodyTableColumnFunction<TData> {
 export interface MelodyTableColumnDropdownOptions {
     title: string,
     dropdownFunction: any,
-    dropdownParams: MelodyTableColumnDropdownParamSettings[],
+    dropdownParams: MelodyTableColumnFunctionParamSettings[],
     icon?: string,
     disabled?: boolean,
     disabledSettings?: MelodyTableColumnDisabledSettings[]
 }
 
-export interface MelodyTableColumnDropdownParamSettings {
+export interface MelodyTableColumnFunctionParamSettings {
     propertyValue: boolean,
     stringValue: string
 }
@@ -356,12 +364,13 @@ export interface MelodySearchParams {
 
 export interface MelodySearchParamListEntry {
     filterProperty?: string, //What property from the search modal should we use
-    type: "text" | "releases" | "date" | "submit" | "refresh",
+    type: "text" | "releases" | "artists" | "date" | "submit" | "refresh" | "submit_refresh" | "dropdown",
     validation?: 'text' | 'number' | 'password' | 'email';
     colSize: string,
     title?: string,
     primaryColor?: string,
     secondaryColor?: string,
     textColor?: string,
-    publicSiteSelection?: boolean
+    publicSiteSelection?: boolean,
+    dropdownOptions?: DropdownOption[]
 }

@@ -3,11 +3,12 @@ import {
     MelodySearchParams,
     MelodySearchProps
 } from "@/components/Melody/src/components/types";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import useGenerateForm from "@/components/hooks/useGenerateForm";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import { Label } from "@/components/Melody/src/components/Layouts/Label";
+import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
 
 type FieldsToFilter = "title" | "artists" | "genres" | "releases" | "tags" | "apparel" | "sources" | "startDate"
     | "endDate" | "email" | "username" | "writer" | "contentId" | "contentIdType" | "actions" | "fileType"
@@ -83,9 +84,32 @@ export function useMelodySearch(
             </div>
         }
 
+        if (item.type === "artists") {
+            componentToDisplay = <div className={"melody-w-full"}>
+                <Label label={"Search By Artists"} bold={true} />
+                <Button label={"Select Artists"}
+                        icon={{ icon: "melody-artist", rightAligned: true }}
+                        color={'secondary'}
+                        variant={'outlined'}
+                        size={"small"}
+                        additionalClasses={"melody-w-full"}
+                        onClick={() => setSelectArtistModalOpen(!selectArtistModalOpen)} />
+            </div>
+        }
+
+        if (item.type === "dropdown") {
+            componentToDisplay = getFormDropdown(item.filterProperty, errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message?.toString(),{
+                label: { label: `Search By ${item.title}`, bold: true, required: true },
+                options: item.dropdownOptions ?? [],
+                isMulti: true,
+                isClearable: true
+            })
+        }
+
         //TODO dirty disabled check below turned off for now as text inputs not being marked as dirty in form
-        if (item.type === "submit") {
-            componentToDisplay = <div className={"melody-w-full melody-h-[35px]"}>
+        let searchButton
+        if (item.type === "submit" || item.type === "submit_refresh") {
+            searchButton = <div className={"melody-w-full melody-h-[35px]"}>
                 <Button icon={{ icon: "search" }}
                         type={"submit"}
                         color={'secondary'}
@@ -95,10 +119,13 @@ export function useMelodySearch(
                         // disabled={!isDirty}
                         additionalClasses={"melody-w-full"} />
             </div>
+
+            if (item.type === "submit") componentToDisplay = searchButton
         }
 
-        if (item.type === "refresh") {
-            componentToDisplay = <div className={"melody-w-full melody-h-[35px]"}>
+        let refreshButton
+        if (item.type === "refresh" || item.type === "submit_refresh") {
+            refreshButton = <div className={"melody-w-full melody-h-[35px]"}>
                 <Button icon={{ icon: "refresh" }}
                         color={'secondary'}
                         variant={'solid'}
@@ -107,6 +134,15 @@ export function useMelodySearch(
                         // disabled={!isDirty}
                         additionalClasses={"melody-w-full"}
                         onClick={onRefresh} />
+            </div>
+
+            if (item.type === "refresh") componentToDisplay = refreshButton
+        }
+
+        if (item.type === "submit_refresh") {
+            componentToDisplay = <div className={"melody-w-full melody-h-[35px] melody-flex melody-gap-x-1"}>
+                {searchButton}
+                {refreshButton}
             </div>
         }
 

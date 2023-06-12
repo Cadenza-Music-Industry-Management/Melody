@@ -55,10 +55,11 @@ export const Dropdown = (props: DropdownProps) => {
         }),
         multiValueLabel: (provided: any) => ({
             ...provided,
-            color: '#4A5568',
+            color: '#FFFFFF',
         }),
         multiValueRemove: (provided: any) => ({
             ...provided,
+            color: "#FFFFFF",
             ':hover': {
                 backgroundColor: '#CBD5E0',
                 color: '#4A5568',

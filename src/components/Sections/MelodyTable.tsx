@@ -17,7 +17,16 @@ import {
     Row,
     useReactTable
 } from "@tanstack/react-table";
-import { IApparel, IApparelOrder, IArtist, IBlogPost, IEventHistory, IPromoter, IRelease } from "@/constants/types";
+import {
+    IApparel,
+    IApparelOrder,
+    IArtist,
+    IBlogPost,
+    IEventHistory,
+    IPromoter,
+    IRelease,
+    LinkDto
+} from "@/constants/types";
 import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { convertUTCDateToLocalDate } from "@/utils/functions";
 import { Label } from "../Layouts/Label";
@@ -34,6 +43,7 @@ import { useQuery } from "react-query";
 import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
 import { useMelodySearch } from "@/components/Melody/src/components/Sections/MelodySearch";
 import {motion} from "framer-motion";
+import Link from "next/link";
 
 type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter
 
@@ -249,6 +259,18 @@ export function MelodyTable(
 
     function getCellValueFormatting(column: MelodyTableColumn<AcceptableCastTypes>, row: Row<AcceptableCastTypes>, getValue: Getter<any>) {
 
+        function getTempIconIfNotFound() {
+            switch (tableName) {
+                case "Artists":
+                case "Supporting Artists":
+                    return "melody-artist"
+                case "Releases":
+                    return "melody-releases"
+                default:
+                    return "melody-org"
+            }
+        }
+
         let valueToDisplay;
         if (column.formatType) {
             switch (column.formatType) {
@@ -268,14 +290,21 @@ export function MelodyTable(
                     </div>
                     break
                 case "image":
+                    const value = getValue<string>()
                     valueToDisplay = <motion.div whileHover={{scale: 0.97}} className={"melody-flex melody-justify-center"}>
-                        <Image additionalClasses="melody-rounded melody-cursor-pointer"
-                               onClick={(image) => setLargeImageModalDetails({ open: true, contentName: image })}
-                               src={getValue<string>()}
-                               width={30} //TODO why is width/height required here but no where else on the site???
-                               height={30}
+                        {value ?
+                            <Image additionalClasses="melody-rounded melody-cursor-pointer"
+                                   onClick={(image) => setLargeImageModalDetails({ open: true, contentName: image })}
+                                   src={value}
+                                   width={30} //TODO why is width/height required here but no where else on the site???
+                                   height={30}
                                 //TODO generate alt text for image
-                               alt="" />
+                                   alt="" />
+                            :
+                            <div className={"melody-h-[30px] melody-w-[30px] melody-rounded-lg melody-bg-gray-200 melody-flex melody-justify-center melody-items-center"}>
+                                <Icon icon={getTempIconIfNotFound()} />
+                            </div>
+                        }
                     </motion.div>
                     break
                 case "social_media":
@@ -315,6 +344,11 @@ export function MelodyTable(
                                     items={getTableDropdownValues(column, row) ?? []} />
                     </div>
                     break
+                case "artist_list":
+                    valueToDisplay = <p className={`melody-break-words ${column.disabled ? "melody-cursor-not-allowed" : column.linkOnClickSettings ? "melody-cursor-pointer" : "melody-cursor-auto"}`}>
+                        {(row.original as any).artists && (row.original as any).artists.map((artist: LinkDto) => (artist as any)[column.accessorKey]).join(" | ")}
+                    </p>
+                    break
             }
 
         } else { //"Text" default
@@ -323,8 +357,40 @@ export function MelodyTable(
             </div>
         }
 
+        if (column.linkOnClickSettings) {
+            if (column.linkOnClickSettings.onClick) {
+                return <div onClick={() => {
+                    if (column.linkOnClickSettings?.onClick) {
+                        //TODO combine this with identical code for creating onClick function with code around line 200~ for dropdowns
+                        const functionArguments: any[] = []
+                        column.linkOnClickSettings.onClickParams?.forEach(param => {
+                            if (param.stringValue === "ALL_ROW") {
+                                functionArguments.push(row.original)
+                            } else {
+                                functionArguments.push(param.propertyValue ? (row.original as any)[param.stringValue] : param.stringValue)
+                            }
+                        })
 
-        return valueToDisplay
+                        return column.linkOnClickSettings?.onClick.apply(null, functionArguments)
+                    }
+                }}>
+                    {valueToDisplay}
+                </div>
+            } else { //Link
+
+                let linkProperty = (row.original as any)[column.linkOnClickSettings.linkProperty ?? ""]
+                if (column.formatType === "artist_list" && (row.original as any).artists) {
+                    //TODO fix any casting bug with artist (NOTE leftover comment from Cadenza v1, still valid?)
+                    linkProperty = (row.original as any).artists.map((artist: LinkDto) => (artist as any)[column.linkOnClickSettings?.linkProperty ?? ""])
+                }
+
+                return <Link href={(column.linkOnClickSettings.linkProperty ? column.linkOnClickSettings.linkURL?.replace("LINK_PROPERTY", linkProperty) : column.linkOnClickSettings?.linkURL) ?? ""}>
+                    {valueToDisplay}
+                </Link>
+            }
+        } else {
+            return valueToDisplay
+        }
     }
 
     function getColumnsToDisplay(): ColumnDef<AcceptableCastTypes>[] {
