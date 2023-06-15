@@ -192,7 +192,7 @@ export interface UserProps {
 
 //Badge
 export interface BadgeProps {
-    variant?: string,
+    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light',
     size?: string,
     text: string,
     indicator?: IndicatorProps
@@ -364,7 +364,7 @@ export interface MelodySearchParams {
 
 export interface MelodySearchParamListEntry {
     filterProperty?: string, //What property from the search modal should we use
-    type: "text" | "releases" | "artists" | "date" | "submit" | "refresh" | "submit_refresh" | "dropdown",
+    type: "text" | "releases" | "artists" | "apparel_items" | "blog_posts" | "date" | "date_range" | "submit" | "refresh" | "submit_refresh" | "dropdown",
     validation?: 'text' | 'number' | 'password' | 'email';
     colSize: string,
     title?: string,

@@ -97,6 +97,19 @@ export function useMelodySearch(
             </div>
         }
 
+        if (item.type === "apparel_items") {
+            componentToDisplay = <div className={"melody-w-full"}>
+                <Label label={"Search By Apparel Items"} bold={true} />
+                <Button label={"Select Apparel Items"}
+                        icon={{ icon: "melody-apparel-items", rightAligned: true }}
+                        color={'secondary'}
+                        variant={'outlined'}
+                        size={"small"}
+                        additionalClasses={"melody-w-full"}
+                        onClick={() => setSelectApparelModalOpen(!selectApparelModalOpen)} />
+            </div>
+        }
+
         if (item.type === "dropdown") {
             //TODO need to override onchange i think and send back just value and not entire item
             componentToDisplay = getFormDropdown(item.filterProperty, errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message?.toString(),{
@@ -104,6 +117,16 @@ export function useMelodySearch(
                 options: item.dropdownOptions ?? [],
                 isMulti: true,
                 isClearable: true
+            })
+        }
+
+        if (item.type === "date_range") {
+            //TODO need to override onchange i think and send back update for start date and end date
+            componentToDisplay = getFormDatePicker(item.filterProperty, errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message?.toString(),{
+                label: { label: `Search By Date`, bold: true },
+                selectRange: true, //TODO this crashes app
+                startDate: getValues("startDate"),
+                endDate: getValues("endDate"),
             })
         }
 

@@ -51,7 +51,7 @@ export const DatePicker = (props: DatePickerProps) => {
     ButtonInput.displayName = 'ButtonInput'
 
     return (
-        <div>
+        <div className={"melody-w-full"}>
             {label && <Label {...{...label, htmlFor: 'datePicker'}} />}
             <ReactDatePicker id={'datePicker'}
                              selected={value}

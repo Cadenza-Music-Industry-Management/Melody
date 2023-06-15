@@ -28,7 +28,7 @@ import {
     LinkDto
 } from "@/constants/types";
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { convertUTCDateToLocalDate } from "@/utils/functions";
+import { convertUTCDateToLocalDate, getBadgeStatusColor } from "@/utils/functions";
 import { Label } from "../Layouts/Label";
 import { Spinner } from "@/components/Melody/src/components/Layouts/Spinner";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
@@ -44,6 +44,7 @@ import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
 import { useMelodySearch } from "@/components/Melody/src/components/Sections/MelodySearch";
 import {motion} from "framer-motion";
 import Link from "next/link";
+import { Badge } from "@/components/Melody/src/components/Layouts/Badge";
 
 type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter
 
@@ -348,6 +349,11 @@ export function MelodyTable(
                     valueToDisplay = <p className={`melody-break-words ${column.disabled ? "melody-cursor-not-allowed" : column.linkOnClickSettings ? "melody-cursor-pointer" : "melody-cursor-auto"}`}>
                         {(row.original as any).artists && (row.original as any).artists.map((artist: LinkDto) => (artist as any)[column.accessorKey]).join(" | ")}
                     </p>
+                    break
+                case "badge":
+                    valueToDisplay = <div className={"melody-flex melody-justify-center"}>
+                        <Badge variant={(getBadgeStatusColor((row.original as any)[column.accessorKey]) as any)} text={(row.original as any)[column.accessorKey]} />
+                    </div>
                     break
             }
 
