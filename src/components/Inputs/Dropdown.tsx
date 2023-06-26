@@ -1,4 +1,4 @@
-import Select from 'react-select';
+import Select, { MultiValue, OnChangeValue, SingleValue } from "react-select";
 import './Dropdown.css'
 import {DropdownProps} from "../types";
 import {Label} from "../Layouts/Label";
@@ -17,7 +17,8 @@ export const Dropdown = (props: DropdownProps) => {
         isDisabled = false,
         isLoading = false,
         options,
-        onChange
+        onChange,
+        passValueToOnChange = false
     } = props
 
     const customStyles = {
@@ -65,7 +66,17 @@ export const Dropdown = (props: DropdownProps) => {
                 color: '#4A5568',
             },
         })
-    };
+    }
+
+    function getCorrectValue(selection: OnChangeValue<any, boolean>) {
+        if (onChange) {
+            if (isMulti) {
+                onChange(passValueToOnChange ? (selection as MultiValue<any>).map(item => item.value) : selection)
+            } else {
+                onChange(passValueToOnChange ? (selection as SingleValue<any>).value : selection)
+            }
+        }
+    }
 
     return (
        <div className={"melody-w-full"}>
@@ -79,7 +90,7 @@ export const Dropdown = (props: DropdownProps) => {
                    styles={customStyles}
                    value={value}
                    defaultValue={defaultValue}
-                   onChange={(tag) => { if (onChange) onChange((tag as any)) }} //TODO needs casting
+                   onChange={getCorrectValue}
                    options={options}
                    isMulti={isMulti}
                    isClearable={isClearable}

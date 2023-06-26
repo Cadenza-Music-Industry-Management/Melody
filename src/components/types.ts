@@ -45,6 +45,7 @@ export interface DropdownProps {
     isLoading?: boolean;
     size?: 'small' | 'medium' | 'large';
     color?: 'primary' | 'secondary' | 'tertiary';
+    passValueToOnChange?: boolean
 }
 
 //Rich Text Editor
@@ -161,7 +162,8 @@ export interface ModalProps {
 export interface NavigationBarProps {
     user?: any, //TODO need to use User props from other types file
     navigation: NavBarItemProps[],
-    userNavigation: NavBarItemProps[]
+    userNavigation: NavBarItemProps[],
+    transparentBG?: boolean
 }
 export interface NavBarItemProps {
     name: string,
@@ -280,7 +282,7 @@ export interface MelodyTableFetchDataOptions {
 export interface MelodyTableColumn<TData> {
     accessorKey: string,
     linkOnClickSettings?: MelodyTableColumnLinkOnClickSettings,
-    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "checkbox" | "artist_list" | "badge",
+    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "selection_checkbox" | "checkbox" | "artist_list" | "badge" | "content_id",
     header: MelodyTableHeader<TData>,
     dropdownOptions?: MelodyTableColumnDropdownOptions[],
     disabled?: boolean,
@@ -292,7 +294,7 @@ export interface MelodyTableColumn<TData> {
 }
 
 export interface MelodyTableHeader<TData> {
-    formatType?: "text" | "image",
+    formatType?: "text" | "image" | "checkbox",
     title?: string,
     image?: string,
     additionalCSS?: CSSProperties,
@@ -343,11 +345,11 @@ export interface MelodySearchProps {
 export interface MelodySearchParams {
     title?: string | null,
     artists?: string[] | null,
-    genres?: string[] | null,
+    genres?: DropdownOption[] | null,
     releases?: string[] | null,
-    tags?: string[] | null,
+    tags?: DropdownOption[] | null,
     apparel?: string[] | null,
-    sources?: string[] | null,
+    sources?: DropdownOption[] | null,
     startDate?: any | null,
     endDate?: any | null,
     email?: string | null,
@@ -355,8 +357,8 @@ export interface MelodySearchParams {
     writer?: string | null,
     contentId?: string | null,
     contentIdType?: any | null,
-    actions?: string[] | null,
-    fileType?: string[] | null,
+    actions?: DropdownOption[] | null, //TODO need to change dropdown options to label, value object as we pass entire object
+    fileType?: DropdownOption[] | null,
     emailType?: string | null,
     emailFilter?: string | null,
     activeStatus?: string | null

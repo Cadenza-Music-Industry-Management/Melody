@@ -19,17 +19,20 @@ export const Image = (props: {
         additionalClasses,
         height = undefined,
         width = undefined,
-        onClick
+        onClick,
+        fill = false
     } = props
 
     return (
         <NextImage className={additionalClasses}
                    style={additionalStyles}
                    src={src}
+                   placeholder={"blur"}
                    onClick={() => { if (onClick) onClick(src) }}
                    width={width}
                    height={height}
                    aria-label="Icon"
+                   fill={fill}
                    alt={alt ?? ""} />
     )
 };

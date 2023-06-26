@@ -1,8 +1,8 @@
 import React from 'react';
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure } from '@headlessui/react'
 import './NavigationBar.css';
-import cadenzaMIMLogo from '../../assets/black_logo_mim.png'
+import cadenzaMIMBlackLogo from '../../assets/black_logo_mim.png'
+import cadenzaMIMWhiteLogo from '../../assets/white_logo_mim.png'
 import {Icon} from "../Layouts/Icon";
 import {NavigationBarProps} from "../types";
 import {Label} from "../Layouts/Label";
@@ -18,7 +18,8 @@ export const NavigationBar = (props: NavigationBarProps) => {
     const {
         navigation,
         userNavigation,
-        user
+        user,
+        transparentBG
     } = props
 
     const pathname = usePathname()
@@ -34,7 +35,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
     }
 
     return (
-        <Disclosure as="nav" className="melody-bg-gray-50 melody-border-b melody-border-primary-100 melody-p-1 melody-font-sans">
+        <Disclosure as="nav" className={`${transparentBG ? "" : "melody-bg-gray-50 melody-border-b melody-border-primary-100"} melody-relative melody-p-1 melody-z-10`}>
             {({ open }: { open: boolean }) => (
                 <>
                     <div className="melody-mx-auto melody-px-2 sm:melody-px-4 lg:melody-px-8">
@@ -54,7 +55,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                 <div className="melody-flex melody-flex-shrink-0 melody-items-center">
                                    <Link href={"/"}>
                                        <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-melody-hidden"
-                                              src={cadenzaMIMLogo}
+                                              src={transparentBG ? cadenzaMIMWhiteLogo : cadenzaMIMBlackLogo}
                                               alt="Cadenza MIM" />
                                    </Link>
                                 </div>
@@ -69,7 +70,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                             <a key={item.name}
                                                href={item.href}
                                                className={classNames(
-                                                   checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
+                                                   checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${transparentBG ? "melody-text-white hover:melody-text-gray-600" : "melody-text-gray-600"} hover:melody-bg-gray-200`,
                                                    'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium'
                                                )}
                                                aria-current={checkURL(item.href ?? "no-href") ? 'page' : undefined}>
@@ -100,21 +101,23 @@ export const NavigationBar = (props: NavigationBarProps) => {
                     </div>
 
                     <Disclosure.Panel className="sm:melody-hidden">
-                        <div className="melody-space-y-1 melody-px-2 melody-pt-2 melody-pb-3">
-                            {/*TODO implement onClick/<a logic between */}
-                            {navigation.map((item) => (
-                                <Disclosure.Button
-                                    key={item.name}
-                                    as="a"
-                                    href={item.href}
-                                    className={classNames(
-                                        pathname === item.href ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
-                                        'melody-block melody-px-3 melody-py-2 melody-rounded-lg melody-text-base melody-font-medium'
-                                    )}
-                                    aria-current={pathname === item.href ? 'page' : undefined}>
-                                    {item.name}
-                                </Disclosure.Button>
-                            ))}
+                        <div className="melody-space-y-1 melody-px-2 melody-pt-2 melody-pb-3 melody-bg-gray-50 melody-absolute melody-left-1 melody-right-1 melody-rounded">
+                           <div>
+                               {/*TODO implement onClick/<a logic between */}
+                               {navigation.map((item) => (
+                                   <Disclosure.Button
+                                       key={item.name}
+                                       as="a"
+                                       href={item.href}
+                                       className={classNames(
+                                           pathname === item.href ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
+                                           'melody-block melody-px-3 melody-py-2 melody-rounded-lg melody-text-base melody-font-medium'
+                                       )}
+                                       aria-current={pathname === item.href ? 'page' : undefined}>
+                                       {item.name}
+                                   </Disclosure.Button>
+                               ))}
+                           </div>
                         </div>
                     </Disclosure.Panel>
                 </>

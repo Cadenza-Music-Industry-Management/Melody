@@ -71,6 +71,7 @@ export function MelodyTable(
     const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>(
         { pageIndex: 0, pageSize: defaultPageSize }
     )
+    const [selectedColumnIDs, setSelectedColumnIDs] = useState<string[]>([])
 
     //TODO need to check for url for dashboard so not to check this if outside of org
     function getQueryIsEnabled() {
@@ -244,6 +245,13 @@ export function MelodyTable(
                         valueToDisplay = <Icon icon={header.image} />
                     }
                     break
+                case "checkbox":
+                    valueToDisplay = <div className={"melody-flex melody-justify-center"}>
+                        <Checkbox value={selectedColumnIDs?.length === dataQuery.data?.rows?.length}
+                                  onChange={(checked: boolean) => {
+                                      setSelectedColumnIDs(checked ? dataQuery.data?.rows.map(row => row.id) ?? [] : [])
+                                  }} />
+                    </div>
             }
         } else {
             valueToDisplay = header.title
@@ -267,6 +275,7 @@ export function MelodyTable(
                     return "melody-artist"
                 case "Releases":
                     return "melody-releases"
+                //TODO add rest of defaults for other content types
                 default:
                     return "melody-org"
             }
@@ -297,7 +306,7 @@ export function MelodyTable(
                             <Image additionalClasses="melody-rounded melody-cursor-pointer"
                                    onClick={(image) => setLargeImageModalDetails({ open: true, contentName: image })}
                                    src={value}
-                                   width={30} //TODO why is width/height required here but no where else on the site???
+                                   width={30}
                                    height={30}
                                 //TODO generate alt text for image
                                    alt="" />
@@ -324,14 +333,28 @@ export function MelodyTable(
                         }
                     }
                     break
+                case "selection_checkbox":
+                    valueToDisplay = <div className={"melody-flex melody-justify-center"}>
+                        <Checkbox value={selectedColumnIDs.includes(row.original.id)}
+                                  onChange={_ => {
+                                      if (selectedColumnIDs.includes(row.original.id)) {
+                                          setSelectedColumnIDs(selectedColumnIDs.filter(id => id !== row.original.id))
+                                      } else {
+                                          setSelectedColumnIDs([...selectedColumnIDs, row.original.id])
+                                      }
+                                  }}
+                                  disabled={column.disabled} />
+                    </div>
+                    break
                 case "checkbox":
                     if (row.original) {
                         valueToDisplay = <div className={"melody-flex melody-justify-center"}>
                             <Checkbox value={(row.original as any)[column.accessorKey]}
-                                      additionalParentStyles={{justifyContent: "start"}}
                                       onChange={(checked: boolean) => {
-                                          if (column.function?.linkedFunctions && column.function?.linkedFunctions.length > 0 && !column.disabled) {
-                                              column.function?.linkedFunctions[0](column.function?.linkedFunctionIdParam === true ? row.original.id : row.original, checked)
+                                          if (!column.disabled) {
+                                              if (column.function?.linkedFunctions && column.function?.linkedFunctions.length > 0) {
+                                                  column.function?.linkedFunctions[0](column.function?.linkedFunctionIdParam === true ? row.original.id : row.original, checked)
+                                              }
                                           }
                                       }}
                                       disabled={column.disabled} />

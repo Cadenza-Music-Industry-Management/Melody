@@ -8,7 +8,6 @@ import { FieldValues, useForm } from "react-hook-form";
 import useGenerateForm from "@/components/hooks/useGenerateForm";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import { Label } from "@/components/Melody/src/components/Layouts/Label";
-import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
 
 type FieldsToFilter = "title" | "artists" | "genres" | "releases" | "tags" | "apparel" | "sources" | "startDate"
     | "endDate" | "email" | "username" | "writer" | "contentId" | "contentIdType" | "actions" | "fileType"
@@ -111,7 +110,6 @@ export function useMelodySearch(
         }
 
         if (item.type === "dropdown") {
-            //TODO need to override onchange i think and send back just value and not entire item
             componentToDisplay = getFormDropdown(item.filterProperty, errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message?.toString(),{
                 label: { label: `Search By ${item.title}`, bold: true },
                 options: item.dropdownOptions ?? [],
