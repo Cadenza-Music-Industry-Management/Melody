@@ -2,7 +2,7 @@ import "./MelodyTable.css"
 import {
     DropdownOption,
     MelodyTableColumn,
-    MelodyTableColumnDisabledSettings,
+    MelodyTableColumnDisabledSettings, MelodyTableColumnDropdownOptions,
     MelodyTableHeader,
     NavBarItemProps,
     TableProps
@@ -58,7 +58,8 @@ export function MelodyTable(
         columnResizing = false,
         fetchData,
         defaultPageSize = 10,
-        filterItems
+        filterItems,
+        dropdown
     }: TableProps<AcceptableCastTypes>) {
 
     //NOTE use this for items such as siteEnabled and userPermissions, but if used outside of dashboard, will show up as null hopefully
@@ -201,15 +202,15 @@ export function MelodyTable(
         }
     }
 
-    function getTableDropdownValues(column: MelodyTableColumn<AcceptableCastTypes>, row: Row<AcceptableCastTypes>): NavBarItemProps[] | undefined {
+    function getColumnTableDropdownValues(column: MelodyTableColumn<AcceptableCastTypes>, row: Row<AcceptableCastTypes>): NavBarItemProps[] | undefined {
 
         return column.dropdownOptions?.map(option => {
             const functionArguments: any[] = [];
-            option.dropdownParams.forEach(param => {
+            option.dropdownParams?.forEach(param => {
                 if (param.stringValue === "ALL_ROW") {
                     functionArguments.push(row.original)
                 } else {
-                    functionArguments.push(param.propertyValue ? (row.original as any)[param.stringValue] : param.stringValue)
+                    functionArguments.push(param.propertyValue ? (row.original as any)[param.stringValue ?? ""] : param.stringValue)
                 }
             })
 
@@ -223,6 +224,63 @@ export function MelodyTable(
             return {
                 name: option.title,
                 onClick: () => option.dropdownFunction.apply(null, functionArguments),
+                disabled: disabledResultFound,
+                //TODO need disabled hover message
+                icon: option.icon
+            }
+        })
+    }
+
+    function getTableDropdownValues(): NavBarItemProps[] | undefined {
+
+        //TODO get correct params to pass in
+        return dropdown?.options?.filter(option => {
+            if (option.visibleCondition) {
+                switch (option.visibleCondition) {
+                    case "length_check":
+                        return selectedColumnIDs.length > 0
+                }
+            } else return true
+        }).map(option => {
+            const functionArguments: any[] = [];
+            option.dropdownParams?.forEach(param => {
+                if (param.stringValue) {
+                    let paramValue;
+                    if (param.stringValue === "selected_ids") {
+                        paramValue = selectedColumnIDs
+                    } else {
+                        paramValue = param.stringValue
+                    }
+                    functionArguments.push(paramValue)
+                } else if (param.booleanValue) {
+                    functionArguments.push(param.booleanValue)
+                }
+            })
+
+            //TODO
+            // const { disabledResultFound, errorMessage } = calculateDisabledAndMessageFromSettings(
+            //     row,
+            //     column,
+            //     option.disabledSettings,
+            //     option.disabled
+            // )
+
+            const disabledResultFound = false
+
+            function getOnClickEvent() {
+                if (option.dropdownFunction) {
+                    return option.dropdownFunction.apply(null, functionArguments)
+                } else if (option.internalDropdownFunctionCall) {
+                    switch (option.internalDropdownFunctionCall) {
+                        case "clear_list":
+                            return setSelectedColumnIDs([])
+                    }
+                }
+            }
+
+            return {
+                name: option.title,
+                onClick: getOnClickEvent,
                 disabled: disabledResultFound,
                 //TODO need disabled hover message
                 icon: option.icon
@@ -365,7 +423,7 @@ export function MelodyTable(
                     valueToDisplay = <div className={"melody-flex melody-justify-center"}>
                         <ButtonMenu label={'Actions'}
                                     size={"small"}
-                                    items={getTableDropdownValues(column, row) ?? []} />
+                                    items={getColumnTableDropdownValues(column, row) ?? []} />
                     </div>
                     break
                 case "artist_list":
@@ -397,7 +455,7 @@ export function MelodyTable(
                             if (param.stringValue === "ALL_ROW") {
                                 functionArguments.push(row.original)
                             } else {
-                                functionArguments.push(param.propertyValue ? (row.original as any)[param.stringValue] : param.stringValue)
+                                functionArguments.push(param.propertyValue ? (row.original as any)[param.stringValue ?? ""] : param.stringValue)
                             }
                         })
 
@@ -518,6 +576,21 @@ export function MelodyTable(
             </div>
         )
     }
+
+    function getDropdown() {
+
+        if (!dropdown) return;
+
+        return <div className={"melody-flex melody-justify-center"}>
+            <ButtonMenu label={dropdown.title}
+                        size={"small"}
+                        items={getTableDropdownValues() ?? []} />
+        </div>
+    }
+
+    const generatedDropdown = useMemo(() => {
+        return getDropdown()
+    }, [selectedColumnIDs])
 
     return (
         <div className="melody-p-1 melody-w-full melody-block">
@@ -645,11 +718,15 @@ export function MelodyTable(
             {dataQuery.data?.rows && dataQuery.data?.rows.length > 0 && (showRowCount || showPagination) &&
               <div className={"melody-py-1 melody-flex melody-items-center"}>
 
-                  {showRowCount &&
-                    <p className={"melody-text-left melody-font-bold melody-text-sm melody-pl-2"}>
-                        {table.getRowModel().rows.length} Rows
-                    </p>
-                  }
+                  <div className={"melody-flex melody-items-center"}>
+                      {generatedDropdown}
+
+                      {showRowCount &&
+                        <p className={"melody-text-left melody-font-bold melody-text-sm melody-pl-2"}>
+                            {table.getRowModel().rows.length} Rows
+                        </p>
+                      }
+                  </div>
 
                   {showPagination && getPaginationComponentSection()}
               </div>

@@ -270,7 +270,8 @@ export interface TableProps<TData> {
     columnResizing?: boolean,
     fetchData: (options: MelodyTableFetchDataOptions) => Promise<{ rows: TData[], pageCount: number }>,
     defaultPageSize?: number,
-    filterItems?: MelodySearchParamListEntry[]
+    filterItems?: MelodySearchParamListEntry[],
+    dropdown?: MelodyTableDropdown,
 }
 
 export interface MelodyTableFetchDataOptions {
@@ -315,16 +316,19 @@ export interface MelodyTableColumnFunction<TData> {
 
 export interface MelodyTableColumnDropdownOptions {
     title: string,
-    dropdownFunction: any,
-    dropdownParams: MelodyTableColumnFunctionParamSettings[],
+    internalDropdownFunctionCall?: "clear_list",
+    dropdownFunction?: any,
+    dropdownParams?: MelodyTableColumnFunctionParamSettings[],
     icon?: string,
     disabled?: boolean,
+    visibleCondition?: "length_check", //TODO string instead of boolean since we don't have access to data, so can't do like length check but can pass in "length_check" for MelodyTable to do it for us
     disabledSettings?: MelodyTableColumnDisabledSettings[]
 }
 
 export interface MelodyTableColumnFunctionParamSettings {
     propertyValue: boolean,
-    stringValue: string
+    stringValue?: string,
+    booleanValue?: boolean
 }
 
 export interface MelodyTableColumnDisabledSettings {
@@ -332,6 +336,11 @@ export interface MelodyTableColumnDisabledSettings {
     userPermission?: boolean,
     nullCheck?: boolean,
     disabledMessage: string
+}
+
+export interface MelodyTableDropdown {
+    title: string,
+    options?: MelodyTableColumnDropdownOptions[],
 }
 
 //Search
