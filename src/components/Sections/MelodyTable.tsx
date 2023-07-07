@@ -342,7 +342,7 @@ export function MelodyTable(
         }
 
         let objectToUse = row.original
-        if (column.innerObject) objectToUse = objectToUse[column.innerObject]
+        if (column.innerObject) objectToUse = (objectToUse as any)[column.innerObject]
 
         const disabled = column.disabled ?? false
         let valueToDisplay;
