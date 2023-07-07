@@ -177,6 +177,8 @@ export interface NavBarItemProps {
 //Button Menu
 export interface ButtonMenuProps {
     size?: 'small' | 'medium' | 'large',
+    color?: 'gray' | 'white' | 'secondary' | 'primary',
+    variant?: 'solid' | 'outlined',
     buttonContents?: ReactNode,
     dropdownHeaderItem?: ReactNode,
     additionalClasses?: string,
@@ -282,8 +284,9 @@ export interface MelodyTableFetchDataOptions {
 
 export interface MelodyTableColumn<TData> {
     accessorKey: string,
+    customTextFields?: string[],
     linkOnClickSettings?: MelodyTableColumnLinkOnClickSettings,
-    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "selection_checkbox" | "checkbox" | "artist_list" | "badge" | "content_id",
+    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "selection_checkbox" | "checkbox" | "artist_list" | "badge" | "content_id" | "custom_text" | "url",
     header: MelodyTableHeader<TData>,
     dropdownOptions?: MelodyTableColumnDropdownOptions[],
     disabled?: boolean,

@@ -18,21 +18,22 @@ import {
     useReactTable
 } from "@tanstack/react-table";
 import {
+    AccountingSource, Expense,
     IApparel,
     IApparelOrder,
     IArtist,
     IBlogPost,
-    IEventHistory,
+    IEventHistory, Income,
     IPromoter,
     IRelease,
-    LinkDto
+    LinkDto, StorageFile
 } from "@/constants/types";
 import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { convertUTCDateToLocalDate, getBadgeStatusColor } from "@/utils/functions";
 import { Label } from "../Layouts/Label";
 import { Spinner } from "@/components/Melody/src/components/Layouts/Spinner";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
-import { Image } from "@/components/Melody/src/components/Layouts/Image";
+import Image from "next/image";
 import SocialMediaComponent from "@/components/SocialMediaComponent";
 import ArtistTableFooter from "@/components/hooks/usePageableTable/footers/ArtistTableFooter";
 import { Checkbox } from "@/components/Melody/src/components/Inputs/Checkbox";
@@ -45,8 +46,9 @@ import { useMelodySearch } from "@/components/Melody/src/components/Sections/Mel
 import {motion} from "framer-motion";
 import Link from "next/link";
 import { Badge } from "@/components/Melody/src/components/Layouts/Badge";
+import { getBlurDataURLForNextImage } from "@/components/Melody/src/utils/functions";
 
-type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter
+type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter | AccountingSource | Income | Expense | StorageFile
 
 export function MelodyTable(
     {
@@ -339,6 +341,7 @@ export function MelodyTable(
             }
         }
 
+        const disabled = column.disabled ?? false
         let valueToDisplay;
         if (column.formatType) {
             switch (column.formatType) {
@@ -357,15 +360,29 @@ export function MelodyTable(
                         {getValue<string>()}
                     </div>
                     break
+                case "custom_text":
+                    valueToDisplay = <div className={"melody-pl-1"}>
+                        {column.customTextFields?.map(customField => `${(row.original as any)[customField]} `)}
+                    </div>
+                    break
+                case "url":
+                    valueToDisplay = <div className={"melody-pl-1"}>
+                        <Link href={(row.original as any)[column.accessorKey]}>
+                            <Label label={"Link"} bold={true} additionalClasses={"melody-underline melody-cursor-pointer"} />
+                        </Link>
+                    </div>
+                    break
                 case "image":
                     const value = getValue<string>()
                     valueToDisplay = <motion.div whileHover={{scale: 0.97}} className={"melody-flex melody-justify-center"}>
                         {value ?
-                            <Image additionalClasses="melody-rounded melody-cursor-pointer"
-                                   onClick={(image) => setLargeImageModalDetails({ open: true, contentName: image })}
+                            <Image className="melody-rounded melody-cursor-pointer"
+                                   onClick={() => setLargeImageModalDetails({ open: true, contentName: value })}
                                    src={value}
                                    width={30}
                                    height={30}
+                                   placeholder={"blur"}
+                                   blurDataURL={getBlurDataURLForNextImage(30, 30)}
                                 //TODO generate alt text for image
                                    alt="" />
                             :
@@ -401,7 +418,7 @@ export function MelodyTable(
                                           setSelectedColumnIDs([...selectedColumnIDs, row.original.id])
                                       }
                                   }}
-                                  disabled={column.disabled} />
+                                  disabled={disabled} />
                     </div>
                     break
                 case "checkbox":
@@ -409,13 +426,13 @@ export function MelodyTable(
                         valueToDisplay = <div className={"melody-flex melody-justify-center"}>
                             <Checkbox value={(row.original as any)[column.accessorKey]}
                                       onChange={(checked: boolean) => {
-                                          if (!column.disabled) {
+                                          if (!disabled) {
                                               if (column.function?.linkedFunctions && column.function?.linkedFunctions.length > 0) {
                                                   column.function?.linkedFunctions[0](column.function?.linkedFunctionIdParam === true ? row.original.id : row.original, checked)
                                               }
                                           }
                                       }}
-                                      disabled={column.disabled} />
+                                      disabled={disabled} />
                         </div>
                     }
                     break
@@ -427,13 +444,35 @@ export function MelodyTable(
                     </div>
                     break
                 case "artist_list":
-                    valueToDisplay = <p className={`melody-break-words ${column.disabled ? "melody-cursor-not-allowed" : column.linkOnClickSettings ? "melody-cursor-pointer" : "melody-cursor-auto"}`}>
+                    valueToDisplay = <p className={`melody-break-words ${disabled ? "melody-cursor-not-allowed" : column.linkOnClickSettings ? "melody-cursor-pointer" : "melody-cursor-auto"}`}>
                         {(row.original as any).artists && (row.original as any).artists.map((artist: LinkDto) => (artist as any)[column.accessorKey]).join(" | ")}
                     </p>
                     break
                 case "badge":
                     valueToDisplay = <div className={"melody-flex melody-justify-center"}>
                         <Badge variant={(getBadgeStatusColor((row.original as any)[column.accessorKey]) as any)} text={(row.original as any)[column.accessorKey]} />
+                    </div>
+                    break
+                case "content_id":
+                    let objectToDisplay;
+                    if ((row.original as any).release) { objectToDisplay = (row.original as any).release.name }
+                    if ((row.original as any).artist) { objectToDisplay = (row.original as any).artist.name }
+                    if ((row.original as any).blogPost) { objectToDisplay = (row.original as any).blogPost.name }
+                    if ((row.original as any).apparel) { objectToDisplay = (row.original as any).apparel.name }
+                    if ((row.original as any).calendarEvent) { objectToDisplay = (row.original as any).calendarEvent.name }
+                    if ((row.original as any).task) { objectToDisplay = (row.original as any).task.name }
+                    if ((row.original as any).apparelOrder) { objectToDisplay = (row.original as any).apparelOrder.name }
+                    if ((row.original as any).promotion) { objectToDisplay = (row.original as any).promotion.name }
+                    if ((row.original as any).promoter) { objectToDisplay = (row.original as any).promoter.name }
+                    if ((row.original as any).promotionPage) { objectToDisplay = (row.original as any).promotionPage }
+                    if ((row.original as any).file) { objectToDisplay = (row.original as any).file.name }
+                    if ((row.original as any).staff) { objectToDisplay = (row.original as any).staff.name }
+                    if ((row.original as any).income) { objectToDisplay = (row.original as any).income.name }
+                    if ((row.original as any).expense) { objectToDisplay = (row.original as any).expense.name }
+                    if ((row.original as any).source) { objectToDisplay = (row.original as any).source.name }
+
+                    valueToDisplay = <div className={"melody-pl-1"}>
+                        {objectToDisplay}
                     </div>
                     break
             }
@@ -504,6 +543,8 @@ export function MelodyTable(
                 maxSize: 40
             })
         }
+
+        //TODO need to import getContentIdDetailsByType from usePageableTable on old Cadenza to get correct functionality here to replace column values below
 
         columns.push.apply(columns, columnsToDisplay.map(column => ({
             accessorKey: column.accessorKey ?? "",

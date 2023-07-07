@@ -7,6 +7,10 @@
     @apply melody-font-bold;
 }
 
+.react-datepicker-wrapper {
+    @apply melody-w-full;
+}
+
 .react-datepicker__input-time-container .react-datepicker-time__input-container .react-datepicker-time__input input {
     @apply melody-w-[150px] melody-p-1 melody-border melody-border-l-gray-300 melody-rounded-lg !important;
 }

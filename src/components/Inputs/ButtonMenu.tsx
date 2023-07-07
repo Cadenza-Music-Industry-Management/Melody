@@ -10,6 +10,8 @@ import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 export const ButtonMenu = (props: ButtonMenuProps) => {
     const {
         size = 'medium',
+        color = 'primary',
+        variant = 'solid',
         buttonContents,
         dropdownHeaderItem,
         items,
@@ -31,7 +33,11 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
                 <>
                     <div>
                         <Menu.Button className={"melody-bg-transparent"}>
-                            {buttonContents ?? <Button size={size} label={label} icon={{ icon: open ? 'caretUp' : 'caretDown', rightAligned: true }} />}
+                            {buttonContents ?? <Button color={color}
+                                                       variant={variant}
+                                                       size={size}
+                                                       label={label}
+                                                       icon={{ icon: open ? 'caretUp' : 'caretDown', rightAligned: true }} />}
                         </Menu.Button>
                     </div>
 
