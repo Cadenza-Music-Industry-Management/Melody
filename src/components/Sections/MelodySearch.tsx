@@ -121,7 +121,7 @@ export function useMelodySearch(
         if (item.type === "date_range") {
             //TODO need to override onchange i think and send back update for start date and end date
             componentToDisplay = getFormDatePicker(item.filterProperty, errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message?.toString(),{
-                label: { label: `Search By Date`, bold: true },
+                label: { label: `Search By ${item.title}`, bold: true },
                 selectRange: true, //TODO this crashes app
                 startDate: getValues("startDate"),
                 endDate: getValues("endDate"),

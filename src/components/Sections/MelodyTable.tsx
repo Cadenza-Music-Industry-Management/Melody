@@ -341,6 +341,9 @@ export function MelodyTable(
             }
         }
 
+        let objectToUse = row.original
+        if (column.innerObject) objectToUse = objectToUse[column.innerObject]
+
         const disabled = column.disabled ?? false
         let valueToDisplay;
         if (column.formatType) {
@@ -362,14 +365,19 @@ export function MelodyTable(
                     break
                 case "custom_text":
                     valueToDisplay = <div className={"melody-pl-1"}>
-                        {column.customTextFields?.map(customField => `${(row.original as any)[customField]} `)}
+                        {column.customTextFields?.map(customField => `${objectToUse[customField]} `)}
                     </div>
                     break
                 case "url":
                     valueToDisplay = <div className={"melody-pl-1"}>
-                        <Link href={(row.original as any)[column.accessorKey]}>
+                        <Link href={objectToUse[column.accessorKey]} rel="noopener noreferrer" target="_blank">
                             <Label label={"Link"} bold={true} additionalClasses={"melody-underline melody-cursor-pointer"} />
                         </Link>
+                    </div>
+                    break
+                case "currency":
+                    valueToDisplay = <div className={"melody-pl-1"}>
+                        {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(objectToUse[column.accessorKey])}
                     </div>
                     break
                 case "image":
@@ -424,7 +432,7 @@ export function MelodyTable(
                 case "checkbox":
                     if (row.original) {
                         valueToDisplay = <div className={"melody-flex melody-justify-center"}>
-                            <Checkbox value={(row.original as any)[column.accessorKey]}
+                            <Checkbox value={objectToUse[column.accessorKey]}
                                       onChange={(checked: boolean) => {
                                           if (!disabled) {
                                               if (column.function?.linkedFunctions && column.function?.linkedFunctions.length > 0) {
@@ -445,12 +453,12 @@ export function MelodyTable(
                     break
                 case "artist_list":
                     valueToDisplay = <p className={`melody-break-words ${disabled ? "melody-cursor-not-allowed" : column.linkOnClickSettings ? "melody-cursor-pointer" : "melody-cursor-auto"}`}>
-                        {(row.original as any).artists && (row.original as any).artists.map((artist: LinkDto) => (artist as any)[column.accessorKey]).join(" | ")}
+                        {(objectToUse as any).artists && (objectToUse as any).artists.map((artist: LinkDto) => (artist as any)[column.accessorKey]).join(" | ")}
                     </p>
                     break
                 case "badge":
                     valueToDisplay = <div className={"melody-flex melody-justify-center"}>
-                        <Badge variant={(getBadgeStatusColor((row.original as any)[column.accessorKey]) as any)} text={(row.original as any)[column.accessorKey]} />
+                        <Badge variant={(getBadgeStatusColor(objectToUse[column.accessorKey]) as any)} text={objectToUse[column.accessorKey]} />
                     </div>
                     break
                 case "content_id":
