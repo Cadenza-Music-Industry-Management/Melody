@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 import "./Image.css"
 import NextImage from "next/image"
+import { getBlurDataURLForNextImage } from "@/components/Melody/src/utils/functions";
 
 export const Image = (props: {
     src: any,
@@ -27,7 +28,8 @@ export const Image = (props: {
         <NextImage className={additionalClasses}
                    style={additionalStyles}
                    src={src}
-                   placeholder={"blur"}
+                   // placeholder={"blur"}
+                   // blurDataURL={getBlurDataURLForNextImage(width, height)}
                    onClick={() => { if (onClick) onClick(src) }}
                    width={width}
                    height={height}

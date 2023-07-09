@@ -118,11 +118,17 @@ export const Sidebar = (props: SidebarProps) => {
                     return <MenuItem disabled={link.disabled?.value} icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : checkPathnameForSidebar(pathname, organization?.groupUniqueId, link.href ?? "")} className={rootLevel ? "" : ""}>
                         {/*TODO disabled correctly but cursor not passed through so tooltip doesn't work yet*/}
                         {!link.disabled || !link.disabled?.value ?
-                            link.title
+                            <div className={"melody-flex melody-items-center"}>
+                                {link.title}
+                                {link.trailerComponent}
+                            </div>
                             :
                             <Tooltip message={link.disabled?.message ?? 'You don\'t have the needed permission'}>
                                 {/*TODO this has weird overlap z-index issue*/}
-                                {link.title}
+                                <div className={"melody-flex melody-items-center"}>
+                                    {link.title}
+                                    {link.trailerComponent}
+                                </div>
                             </Tooltip>
                             }
                     </MenuItem>

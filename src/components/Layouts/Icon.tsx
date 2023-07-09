@@ -4,6 +4,7 @@ import {
     faPlus,
     faXmark,
     faCheck,
+    faCopy,
     faBars,
     faWindowMaximize,
     faMagnifyingGlass,
@@ -85,6 +86,7 @@ export const Icon = (props: IconProps) => {
         solidX: faXmark, //TODO need solid naming?
         solidCheck: faCheck,
         solidBars: faBars,
+        copy: faCopy,
         website: faWindowMaximize,
         magnifyingGlass: faMagnifyingGlass,
         rotate: faRotate,
