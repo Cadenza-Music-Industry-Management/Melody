@@ -1,4 +1,3 @@
-import React from 'react';
 import "./Rating.css"
 
 export const Rating = (props: {

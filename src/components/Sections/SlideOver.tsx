@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode } from "react";
+import { Fragment, ReactNode } from "react";
 import "./SlideOver.css"
 import { Dialog, Transition } from '@headlessui/react'
 import { Button } from "@/components/Melody/src/components/Inputs/Button";

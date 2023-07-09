@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import { CSSProperties } from "react";
 import "./Image.css"
 import NextImage from "next/image"
 

@@ -3,7 +3,7 @@ import {
     MelodySearchParams,
     MelodySearchProps
 } from "@/components/Melody/src/components/types";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import useGenerateForm from "@/components/hooks/useGenerateForm";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./TextInput.css"
 import {TextInputProps} from "../types";
 import {Label} from "../Layouts/Label";

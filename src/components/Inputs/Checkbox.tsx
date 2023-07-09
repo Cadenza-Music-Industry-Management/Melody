@@ -1,7 +1,7 @@
 import './RadioCheckbox.css'
 import {Label} from "../Layouts/Label";
 import { CheckboxRadioButtonProps } from "@/components/Melody/src/components/types";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Checkbox = (props: CheckboxRadioButtonProps) => {
 
@@ -19,7 +19,7 @@ export const Checkbox = (props: CheckboxRadioButtonProps) => {
     const [stateValue, setStateValue] = useState(value)
 
     useEffect(() => {
-        if (value && value !== stateValue) setStateValue(value)
+        if (value !== undefined && value !== stateValue) setStateValue(value)
     }, [value])
 
     return (

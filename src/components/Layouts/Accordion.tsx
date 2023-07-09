@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import {ReactNode} from 'react';
 import "./Accordion.css"
 import {Disclosure, Transition} from '@headlessui/react'
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";

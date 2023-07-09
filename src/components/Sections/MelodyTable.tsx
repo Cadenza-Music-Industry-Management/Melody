@@ -28,7 +28,7 @@ import {
     IRelease,
     LinkDto, StorageFile
 } from "@/constants/types";
-import React, { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { convertUTCDateToLocalDate, getBadgeStatusColor } from "@/utils/functions";
 import { Label } from "../Layouts/Label";
 import { Spinner } from "@/components/Melody/src/components/Layouts/Spinner";
@@ -621,7 +621,6 @@ export function MelodyTable(
                         size={"small"}
                         disabled={!table.getCanNextPage()}
                         onClick={() => table.setPageIndex(table.getPageCount() - 1)} />
-
             </div>
         )
     }

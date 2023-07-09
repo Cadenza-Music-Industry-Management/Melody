@@ -1,4 +1,4 @@
-import React, {Fragment, useRef} from 'react';
+import {Fragment, useRef} from 'react';
 import "./ModalTemplate.css"
 import { Dialog, Transition } from '@headlessui/react'
 import {Button} from "../Inputs/Button";

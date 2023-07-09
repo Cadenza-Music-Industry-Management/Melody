@@ -1,4 +1,3 @@
-import React from 'react';
 import "./TextInput.css"
 import {TextInputProps} from "../types";
 import {Label} from "../Layouts/Label";

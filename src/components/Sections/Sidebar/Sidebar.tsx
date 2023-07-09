@@ -11,7 +11,7 @@ import {
     MenuItemStyles,
 } from "react-pro-sidebar";
 import {Icon} from "../../Layouts/Icon"
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Group, SidebarLinkProps } from "@/constants/types";

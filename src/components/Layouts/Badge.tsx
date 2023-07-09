@@ -1,4 +1,3 @@
-import React from 'react';
 import "./Badge.css"
 import { BadgeProps } from "../types";
 import {Indicator} from "./Indicator";

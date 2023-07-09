@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import "./TabbedLayout.css"
 import {Tab} from '@headlessui/react'
 import { classNames } from "../../utils/functions";

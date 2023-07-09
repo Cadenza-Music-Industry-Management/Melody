@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { Avatar } from "@/components/Melody/src/components/Layouts/Avatar";
 import Link from "next/link";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
@@ -52,9 +52,9 @@ export const OrganizationSelector = (props: {
                         {orgComponent}
                     </Link>
                     :
-                    <React.Fragment key={listItemIndex}>
+                    <Fragment key={listItemIndex}>
                         {orgComponent}
-                    </React.Fragment>
+                    </Fragment>
                 }
             </>
         )

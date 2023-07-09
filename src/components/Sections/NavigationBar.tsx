@@ -1,4 +1,3 @@
-import React from 'react';
 import { Disclosure } from '@headlessui/react'
 import './NavigationBar.css';
 import cadenzaMIMBlackLogo from '../../assets/black_logo_mim.png'

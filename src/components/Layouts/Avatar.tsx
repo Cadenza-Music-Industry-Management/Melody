@@ -1,4 +1,3 @@
-import React from 'react';
 import "./Avatar.css"
 import Image from "next/image";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";

@@ -1,4 +1,3 @@
-import React from 'react';
 import "./Icon.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -21,6 +20,7 @@ import {
     faLeftLong,
     faRotateRight,
     faRotateLeft,
+    faArchive,
     faComment,
     faComments,
     faShare,
@@ -54,6 +54,9 @@ import {
     faEllipsisVertical //Settings
 } from "@fortawesome/free-solid-svg-icons";
 import {
+    faStar as faStarOutline
+} from "@fortawesome/free-regular-svg-icons"
+import {
     faTiktok,
     faTwitter,
     faInstagram,
@@ -73,7 +76,8 @@ export const Icon = (props: IconProps) => {
         size = 'medium',
         icon,
         additionalStyles,
-        additionalClasses
+        additionalClasses,
+        onClick
     } = props
 
     const faIconMap: any = {
@@ -89,6 +93,8 @@ export const Icon = (props: IconProps) => {
         caretDown: faCaretDown,
         caretUp: faCaretUp,
         star: faStar,
+        starOutline: faStarOutline,
+        archive: faArchive,
         heart: faHeart,
         circleQuestion: faCircleQuestion,
         question: faQuestion,
@@ -145,7 +151,7 @@ export const Icon = (props: IconProps) => {
     const isStorybook = typeof document !== 'undefined' && document.querySelector("html")?.dataset.isStorybook
 
     return (
-        <div className={'melody-flex melody-justify-center'}>
+        <div className={`melody-flex melody-justify-center ${onClick ? 'melody-cursor-pointer' : ''}`} onClick={() => { if (onClick) onClick() }}>
             {icon.includes('melody-') ?
                 <i style={{...additionalStyles}} className={`melody-icon ${isStorybook ? 'melody-custom-font-storybook-hack' : 'melody-custom-font'} ${icon} ${additionalClasses ? additionalClasses : ''}`} />
                 :

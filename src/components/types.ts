@@ -106,7 +106,8 @@ export interface TooltipProps {
     delay?: number,
     children?: ReactNode,
     additionalClasses?: string,
-    widthClass?: string
+    widthClass?: string,
+    disabled?: boolean
 }
 
 //Icon
@@ -115,6 +116,7 @@ export interface IconProps {
     icon: string,
     additionalStyles?: any,
     additionalClasses?: string,
+    onClick?: () => void,
 }
 
 export interface AddIconProps {
@@ -243,8 +245,8 @@ export interface FormListLayoutProps {
 //Checkbox & Radio Button
 export interface CheckboxRadioButtonProps {
     onChange?: (checked: boolean) => void,
-    variant?: string,
-    size?: string,
+    variant?: 'primary' | 'secondary',
+    size?: 'small' | 'medium' | 'large';
     label?: LabelProps,
     subLabel?: string,
     disabled?: boolean,
@@ -279,6 +281,7 @@ export interface TableProps<TData> {
 export interface MelodyTableFetchDataOptions {
     pageIndex: number,
     pageSize: number,
+    pageCount?: number,
     filters: MelodySearchParams
 }
 

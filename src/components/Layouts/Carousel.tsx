@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import "./Carousel.css"
 import Image from "next/image";
 import {Button} from "../Inputs/Button";

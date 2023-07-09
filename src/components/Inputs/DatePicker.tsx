@@ -1,7 +1,7 @@
 import "./DatePicker.css"
 import {DatePickerProps} from "../types";
 import {Label} from "../Layouts/Label";
-import React, {forwardRef} from "react";
+import {forwardRef} from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";

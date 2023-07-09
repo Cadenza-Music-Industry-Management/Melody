@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import "./CadenzaPricingLayout.css"
 import adagio from "../../assets/adagio_logo.png"
 import moderato from "../../assets/moderato_logo.png"

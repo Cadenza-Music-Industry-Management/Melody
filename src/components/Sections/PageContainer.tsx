@@ -1,4 +1,3 @@
-import React from 'react';
 import "./PageContainer.css"
 import { PageContainerProps } from "components/Melody/src/components/types";
 import { Label } from "components/Melody/src/components/Layouts/Label";

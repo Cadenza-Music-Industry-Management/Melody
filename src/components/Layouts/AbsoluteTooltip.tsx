@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState} from 'react';
+import {useState} from 'react';
 import "./Tooltip.css"
 import {TooltipProps} from "../types";
 
@@ -12,7 +12,8 @@ export const AbsoluteTooltip = (props: TooltipProps) => {
         delay = 200,
         children,
         additionalClasses,
-        widthClass = 'melody-w-56'
+        widthClass = 'melody-w-56',
+        disabled = false
     } = props
 
     const [showTooltip, setShowTooltip] = useState(false)
@@ -39,7 +40,7 @@ export const AbsoluteTooltip = (props: TooltipProps) => {
                 {children}
             </div>
 
-            {showTooltip && message !== "" &&
+            {!disabled && showTooltip && message !== "" &&
               <div className={tooltipClasses}>
                   {message}
               </div>
