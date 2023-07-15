@@ -66,7 +66,7 @@ export const Tooltip = (props: TooltipProps) => {
         setShowTooltip(false)
     }
 
-    const tooltipClasses = `melody-tooltip melody-fixed ${showTooltip ? "melody-opacity-100" : "melody-opacity-0"}  ${widthClass ?? ''}`
+    const tooltipClasses = `melody-tooltip melody-fixed ${showTooltip ? "melody-opacity-100" : "melody-opacity-0 melody-hidden"}  ${widthClass ?? ''}`
 
     return (
         <div className={`melody-inline-block melody-relative ${additionalClasses ?? ''}`}>

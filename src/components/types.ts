@@ -1,4 +1,4 @@
-import { CSSProperties, ForwardedRef, ReactNode } from "react";
+import { ChangeEvent, CSSProperties, ForwardedRef, ReactNode } from "react";
 
 //Indicator
 export interface IndicatorProps {
@@ -78,13 +78,14 @@ export interface TextInputProps {
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
-    onChange?: (value: string) => void;
-    onBlur?: (value: string) => void;
+    onChange?: (value: string | ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (value: string | ChangeEvent<HTMLInputElement>) => void;
     headerComponent?: ReactNode;
     trailerComponent?: ReactNode;
     maxLength?: number,
     max?: number,
-    min?: number
+    min?: number,
+    returnEvent?: boolean
 }
 
 //Label
