@@ -78,14 +78,13 @@ export interface TextInputProps {
     placeholder?: string;
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
-    onChange?: (value: string | ChangeEvent<HTMLInputElement>) => void;
-    onBlur?: (value: string | ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (value: string) => void;
+    onBlur?: (value: string) => void;
     headerComponent?: ReactNode;
     trailerComponent?: ReactNode;
     maxLength?: number,
     max?: number,
-    min?: number,
-    returnEvent?: boolean
+    min?: number
 }
 
 //Label
