@@ -74,7 +74,6 @@ import {IconProps} from "../types";
 
 export const Icon = (props: IconProps) => {
     const {
-        size = 'medium',
         icon,
         additionalStyles,
         additionalClasses,

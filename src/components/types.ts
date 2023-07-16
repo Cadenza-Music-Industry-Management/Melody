@@ -112,7 +112,6 @@ export interface TooltipProps {
 
 //Icon
 export interface IconProps {
-    size?: string,
     icon: string,
     additionalStyles?: any,
     additionalClasses?: string,
@@ -185,6 +184,8 @@ export interface ButtonMenuProps {
     dropdownHeaderItem?: ReactNode,
     additionalClasses?: string,
     label?: string,
+    icon?: AddIconProps,
+    disabled?: boolean,
     items: NavBarItemProps[] //TODO Own type or rename?
 }
 

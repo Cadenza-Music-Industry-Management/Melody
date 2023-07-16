@@ -16,7 +16,9 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
         dropdownHeaderItem,
         items,
         additionalClasses,
-        label
+        label,
+        icon,
+        disabled
     } = props
 
     function getItemDetails(item: NavBarItemProps) {
@@ -37,7 +39,8 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
                                                        variant={variant}
                                                        size={size}
                                                        label={label}
-                                                       icon={{ icon: open ? 'caretUp' : 'caretDown', rightAligned: true }} />}
+                                                       disabled={disabled}
+                                                       icon={icon ?? { icon: open ? 'caretUp' : 'caretDown', rightAligned: true }} />}
                         </Menu.Button>
                     </div>
 
