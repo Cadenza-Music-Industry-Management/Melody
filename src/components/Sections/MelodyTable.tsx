@@ -18,15 +18,22 @@ import {
     useReactTable
 } from "@tanstack/react-table";
 import {
-    AccountingSource, Expense,
+    AccountingSource,
+    ApparelSearch,
+    ArtistSearch,
+    BlogSearch,
+    Expense,
     IApparel,
     IApparelOrder,
     IArtist,
     IBlogPost,
-    IEventHistory, Income,
+    IEventHistory,
+    Income,
     IPromoter,
     IRelease,
-    LinkDto, StorageFile
+    LinkDto,
+    ReleaseSearch,
+    StorageFile
 } from "@/constants/types";
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { convertUTCDateToLocalDate, getBadgeStatusColor } from "@/utils/functions";
@@ -48,7 +55,7 @@ import Link from "next/link";
 import { Badge } from "@/components/Melody/src/components/Layouts/Badge";
 import { getBlurDataURLForNextImage } from "@/components/Melody/src/utils/functions";
 
-type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter | AccountingSource | Income | Expense | StorageFile
+type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter | AccountingSource | Income | Expense | StorageFile | ArtistSearch | BlogSearch | ReleaseSearch | ApparelSearch
 
 export function MelodyTable(
     {
@@ -105,7 +112,7 @@ export function MelodyTable(
     )
 
     useEffect(() => {
-        dataQuery.refetch()
+        if (currentOrg) dataQuery.refetch()
     }, [filters, slideOverOpenName, currentOrg])
 
     useEffect(() => {
@@ -448,7 +455,21 @@ export function MelodyTable(
                     valueToDisplay = <div className={"melody-flex melody-justify-center"}>
                         <ButtonMenu label={'Actions'}
                                     size={"small"}
+                                    disabled={disabled}
                                     items={getColumnTableDropdownValues(column, row) ?? []} />
+                    </div>
+                    break
+                case "button":
+                    valueToDisplay = <div className={"melody-flex melody-justify-center"}>
+                        <Button icon={{ icon: "plus", additionalClasses: "melody-text-black-0" }} //TODO currently just a plus but add an icon param later on once more uses
+                                size={"small"}
+                                color={"white"}
+                                disabled={disabled}
+                                onClick={() => {
+                                    if (column.function?.linkedFunctions && column.function?.linkedFunctions.length > 0) {
+                                        column.function?.linkedFunctions[0](column.function?.linkedFunctionIdParam === true ? row.original.id : row.original)
+                                    }
+                                }} />
                     </div>
                     break
                 case "artist_list":

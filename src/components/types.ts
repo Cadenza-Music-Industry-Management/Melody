@@ -290,7 +290,7 @@ export interface MelodyTableColumn<TData> {
     accessorKey: string,
     customTextFields?: string[],
     linkOnClickSettings?: MelodyTableColumnLinkOnClickSettings,
-    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "selection_checkbox" | "checkbox" | "artist_list" | "badge" | "content_id" | "custom_text" | "url" | "currency",
+    formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "button" | "selection_checkbox" | "checkbox" | "artist_list" | "badge" | "content_id" | "custom_text" | "url" | "currency",
     innerObject?: string,
     header: MelodyTableHeader<TData>,
     dropdownOptions?: MelodyTableColumnDropdownOptions[],

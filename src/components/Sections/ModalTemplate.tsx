@@ -48,11 +48,9 @@ export const ModalTemplate = (props: ModalProps) => {
                                     <h2 className={`melody-text-lg melody-font-medium melody-mb-4 sm:melody-mb-0`}>{title}</h2>
                                     {/*TODO better variant for close button?*/}
                                     {setOpen &&
-                                      <Button onClick={() => setOpen(false)}
-                                              icon={{
-                                                  icon: 'solidX',
-                                                  additionalStyles: { fontSize: 14 }
-                                              }} />
+                                      <Button onClick={() => {
+                                          if (setOpen) setOpen(false)
+                                      }} icon={{ icon: 'solidX', additionalStyles: { fontSize: 14 } }} />
                                     }
                                 </div>
 
