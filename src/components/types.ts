@@ -393,3 +393,28 @@ export interface MelodySearchParamListEntry {
     publicSiteSelection?: boolean,
     dropdownOptions?: DropdownOption[]
 }
+
+//Generic Modal
+//TODO can be used to return an object where we use just key for ids, or both key/value to return object from modal (like for artists in add release page)
+export interface KeyValuePair {
+    key: string,
+    value?: string
+}
+
+export interface GenericContentPageableModalProps {
+    type: "artist" | "artist_release" | "release" | "apparel" | "blog" | "promoter",
+    open: boolean,
+    title: string,
+    setOpen: () => void,
+    selectedIds: string[],
+    onSuccess: (newIds: KeyValuePair[] | string[]) => void,
+    singleSelection?: boolean,
+    nonViewableSelectable?: boolean,
+    returnKeyValuePair?: boolean,
+    primaryColor?: string,
+    secondaryColor?: string,
+    textColor?: string,
+    publicSiteSelection?: boolean,
+    disableDelete?: boolean,
+    createNewTab?: boolean
+}
