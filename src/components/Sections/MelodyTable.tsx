@@ -389,7 +389,7 @@ export function MelodyTable(
                     break
                 case "image":
                     const value = getValue<string>()
-                    valueToDisplay = <motion.div whileHover={{scale: 0.97}} className={"melody-flex melody-justify-center"}>
+                    valueToDisplay = <motion.div whileHover={{scale: 0.98}} className={"melody-flex melody-justify-center"}>
                         {value ?
                             <Image className="melody-rounded melody-cursor-pointer"
                                    onClick={() => setLargeImageModalDetails({ open: true, contentName: value })}
