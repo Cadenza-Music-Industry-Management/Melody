@@ -370,9 +370,14 @@ export function MelodyTable(
                         {getValue<string>()}
                     </div>
                     break
-                case "custom_text":
+                case "object_text":
                     valueToDisplay = <div className={"melody-pl-1"}>
-                        {column.customTextFields?.map(customField => `${(objectToUse as any)[customField]} `)}
+                        {objectToUse && (objectToUse as any)[column.accessorKey]}
+                    </div>
+                    break
+                case "custom_text": //TODO rename to text_list
+                    valueToDisplay = <div className={"melody-pl-1"}>
+                        {column.customTextFields?.map(customField => `${(objectToUse as any)[customField]}`)}
                     </div>
                     break
                 case "url":
@@ -392,7 +397,7 @@ export function MelodyTable(
                     </div>
                     break
                 case "image":
-                    const value = getValue<string>()
+                    const value = objectToUse && (objectToUse as any)[column.accessorKey]
                     valueToDisplay = <motion.div whileHover={{scale: 0.98}} className={"melody-flex melody-justify-center"}>
                         {value ?
                             <Image className="melody-rounded melody-cursor-pointer"
@@ -536,8 +541,8 @@ export function MelodyTable(
     }
 
     function getEventHistoryContentColumn(contentRow: AcceptableCastTypes): ReactNode {
-        let objectToDisplay;
-        let label;
+        let objectToDisplay = "";
+        let label = "";
         //TODO reintroduce logic from getContentIdDetailsByType in old UI to be able to click individual content ids and go to correct page
         const eventHistoryRow = contentRow as IEventHistory
 
@@ -734,7 +739,7 @@ export function MelodyTable(
     }, [selectedColumnIDs])
 
     return (
-        <div className="melody-p-1 melody-w-full melody-block">
+        <div className={`melody-p-1 melody-w-full melody-flex melody-flex-col ${dataQuery.data && dataQuery.data?.rows.length > 0 ? "" : "melody-justify-center"} melody-items-center`}>
 
             {searchUI}
 

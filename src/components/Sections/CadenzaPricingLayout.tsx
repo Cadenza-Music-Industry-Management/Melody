@@ -124,7 +124,7 @@ export const CadenzaPricingLayout = (props: {
                                     <Label label={tier.yearlyPrice} size={'medium'} />
 
                                     {organizationDashboard &&
-                                        <div className={"melody-flex melody-gap-x-2 melody-h-6 melody-my-2"}>
+                                        <div className={"melody-flex melody-gap-x-2 melody-h-12 melody-my-2"}>
                                             {tier.title !== "Adagio" && currentOrgTier === "Adagio" &&
                                               <>
                                                 <Button label={"Checkout Monthly"}
