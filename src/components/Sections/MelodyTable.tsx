@@ -35,7 +35,7 @@ import {
     ReleaseSearch,
     StorageFile
 } from "@/constants/types";
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, ReactNode, useEffect, useMemo, useState } from "react";
 import { convertUTCDateToLocalDate, getBadgeStatusColor } from "@/utils/functions";
 import { Label } from "../Layouts/Label";
 import { Spinner } from "@/components/Melody/src/components/Layouts/Spinner";
@@ -377,9 +377,13 @@ export function MelodyTable(
                     break
                 case "url":
                     valueToDisplay = <div className={"melody-pl-1"}>
-                        <Link href={(objectToUse as any)[column.accessorKey]} rel="noopener noreferrer" target="_blank">
-                            <Label label={"Link"} bold={true} additionalClasses={"melody-underline melody-cursor-pointer"} />
-                        </Link>
+                        {(objectToUse as any)[column.accessorKey] &&
+                          <Link href={(objectToUse as any)[column.accessorKey]} rel="noopener noreferrer"
+                                target="_blank">
+                            <Label label={"Link"} bold={true}
+                                   additionalClasses={"melody-underline melody-cursor-pointer"} />
+                          </Link>
+                        }
                     </div>
                     break
                 case "currency":
@@ -483,26 +487,7 @@ export function MelodyTable(
                     </div>
                     break
                 case "content_id":
-                    let objectToDisplay;
-                    if ((row.original as any).release) { objectToDisplay = (row.original as any).release.name }
-                    if ((row.original as any).artist) { objectToDisplay = (row.original as any).artist.name }
-                    if ((row.original as any).blogPost) { objectToDisplay = (row.original as any).blogPost.name }
-                    if ((row.original as any).apparel) { objectToDisplay = (row.original as any).apparel.name }
-                    if ((row.original as any).calendarEvent) { objectToDisplay = (row.original as any).calendarEvent.name }
-                    if ((row.original as any).task) { objectToDisplay = (row.original as any).task.name }
-                    if ((row.original as any).apparelOrder) { objectToDisplay = (row.original as any).apparelOrder.name }
-                    if ((row.original as any).promotion) { objectToDisplay = (row.original as any).promotion.name }
-                    if ((row.original as any).promoter) { objectToDisplay = (row.original as any).promoter.name }
-                    if ((row.original as any).promotionPage) { objectToDisplay = (row.original as any).promotionPage }
-                    if ((row.original as any).file) { objectToDisplay = (row.original as any).file.name }
-                    if ((row.original as any).staff) { objectToDisplay = (row.original as any).staff.name }
-                    if ((row.original as any).income) { objectToDisplay = (row.original as any).income.name }
-                    if ((row.original as any).expense) { objectToDisplay = (row.original as any).expense.name }
-                    if ((row.original as any).source) { objectToDisplay = (row.original as any).source.name }
-
-                    valueToDisplay = <div className={"melody-pl-1"}>
-                        {objectToDisplay}
-                    </div>
+                    valueToDisplay = getEventHistoryContentColumn(row.original)
                     break
             }
 
@@ -548,6 +533,93 @@ export function MelodyTable(
         } else {
             return valueToDisplay
         }
+    }
+
+    function getEventHistoryContentColumn(contentRow: AcceptableCastTypes): ReactNode {
+        let objectToDisplay;
+        let label;
+        //TODO reintroduce logic from getContentIdDetailsByType in old UI to be able to click individual content ids and go to correct page
+        const eventHistoryRow = contentRow as IEventHistory
+
+        if (eventHistoryRow.release) {
+            label = "Music Release:"
+            objectToDisplay = eventHistoryRow.release.name
+        }
+
+        if (eventHistoryRow.artist) {
+            label = "Artist:"
+            objectToDisplay = eventHistoryRow.artist.name
+        }
+
+        if (eventHistoryRow.apparel) {
+            label = "Apparel Item:"
+            objectToDisplay = eventHistoryRow.apparel.name
+        }
+
+        if (eventHistoryRow.apparelOrder) {
+            label = "Apparel Order:"
+            objectToDisplay = eventHistoryRow.apparelOrder.name
+        }
+
+        if (eventHistoryRow.blogPost) {
+            label = "Blog Post:"
+            objectToDisplay = eventHistoryRow.blogPost.name
+        }
+
+        if (eventHistoryRow.calendarEvent) {
+            label = "Calendar Event:"
+            objectToDisplay = eventHistoryRow.calendarEvent.name
+        }
+
+        if (eventHistoryRow.task) {
+            label = "Planning Board Task:"
+            objectToDisplay = eventHistoryRow.task.name
+        }
+
+        if (eventHistoryRow.promotion) {
+            label = "Promotion:"
+            objectToDisplay = eventHistoryRow.promotion.name
+        }
+
+        if (eventHistoryRow.promoter) {
+            label = "Promoter:"
+            objectToDisplay = eventHistoryRow.promoter.name
+        }
+
+        if (eventHistoryRow.promotionPage) {
+            label = "Promotion Page:"
+            objectToDisplay = eventHistoryRow.promotionPage.name
+        }
+
+        if (eventHistoryRow.file) {
+            label = "Storage File:"
+            objectToDisplay = eventHistoryRow.file.name
+        }
+
+        if (eventHistoryRow.staff) {
+            label = "Staff Member:"
+            objectToDisplay = eventHistoryRow.staff.name
+        }
+
+        if (eventHistoryRow.income) {
+            label = "Accounting Income:"
+            objectToDisplay = eventHistoryRow.income.name
+        }
+
+        if (eventHistoryRow.expense) {
+            label = "Accounting Expense:"
+            objectToDisplay = eventHistoryRow.expense.name
+        }
+
+        if (eventHistoryRow.source) {
+            label = "Accounting Source:"
+            objectToDisplay = eventHistoryRow.source.name
+        }
+
+        return <div className={"melody-pl-1"}>
+            <Label label={label} bold={true} size={'small'} />
+            <Label label={objectToDisplay} size={'small'} />
+        </div>
     }
 
     function getColumnsToDisplay(): ColumnDef<AcceptableCastTypes>[] {

@@ -141,7 +141,7 @@ export const Sidebar = (props: SidebarProps) => {
                 </div>
             case 'text':
                 return <div className={"melody-bg-primary-100 melody-rounded-[15px] melody-m-1"}>
-                    <p className={"melody-text-sm melody-p-1"}>
+                    <p className={"melody-text-xs melody-p-1"}>
                         {link.title}
                     </p>
                 </div>

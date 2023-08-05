@@ -24,7 +24,7 @@ export const Button = (props: ButtonProps) => {
     } = props
 
     return (
-        <button className={`melody-button melody-button-${size} melody-button-${color}-${variant} ${additionalClasses ?? ''}`}
+        <button className={`${additionalClasses ?? ''} melody-button melody-button-${size} melody-button-${color}-${variant} `}
                 ref={ref}
                 type={type}
                 disabled={disabled || loading}
