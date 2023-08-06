@@ -74,7 +74,7 @@ export const TabbedLayout = (props: {
                             key={idx}
                             className={classNames(
                                 'melody-rounded-xl melody-bg-white melody-p-3',
-                                'melody-ring-white melody-melody-ring-opacity-60 melody-melody-ring-offset-2 melody-melody-ring-offset-blue-400 focus:melody-melody-outline-none focus:melody-melody-ring-2'
+                                'melody-ring-white melody-ring-opacity-60 melody-ring-offset-2 melody-ring-offset-blue-400 focus:melody-outline-none focus:melody-ring-2'
                             )}
                         >
                             <ul>

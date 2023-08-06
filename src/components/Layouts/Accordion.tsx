@@ -42,7 +42,7 @@ export const Accordion = (props: {
 
     function getAccordionContents() {
         return (
-            <Transition enter="melody-transition melody-duration-100 melody-melody-ease-out"
+            <Transition enter="melody-transition melody-duration-100 melody-ease-out"
                         enterFrom="melody-transform melody-scale-95 melody-opacity-0"
                         enterTo="melody-transform melody-scale-100 melody-opacity-100"
                         leave="melody-transition melody-duration-75 melody-ease-out"
