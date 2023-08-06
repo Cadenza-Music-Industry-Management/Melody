@@ -41,7 +41,7 @@ export const PageContainer = (props: PageContainerProps) => {
             }
 
             {children &&
-              <div className="melody-p-6">
+              <div className="melody-p-4">
                   {children}
               </div>
             }
