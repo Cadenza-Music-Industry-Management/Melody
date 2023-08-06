@@ -17,7 +17,7 @@ import { usePathname } from "next/navigation";
 import { Group, SidebarLinkProps } from "@/constants/types";
 import { checkPathnameForSidebar } from "@/components/Melody/src/utils/functions";
 import { Tooltip } from "@/components/Melody/src/components/Layouts/Tooltip";
-import { Image } from "@/components/Melody/src/components/Layouts/Image";
+import Image from "next/image";
 import cadenzaMIMLogo from "@/components/Melody/src/assets/white_logo_mim.png";
 import cadenzaMIMIcon from "@/components/Melody/src/assets/white_icon.png";
 import "./Sidebar.css"
@@ -179,9 +179,10 @@ export const Sidebar = (props: SidebarProps) => {
                <div className={"melody-flex melody-flex-col melody-h-full"}>
 
                    {/*HEADER*/}
-                   <div className={"melody-p-2 melody-relative melody-flex melody-items-center "}>
+                   <div className={"melody-p-2 melody-relative melody-flex melody-items-center"}>
                        <Link href={"/"}>
-                           <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-hidden"
+                           <Image width={150}
+                                  height={150}
                                   src={collapsed ? cadenzaMIMIcon : cadenzaMIMLogo}
                                   alt="Cadenza MIM" />
                        </Link>

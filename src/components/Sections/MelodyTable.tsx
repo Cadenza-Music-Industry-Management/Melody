@@ -64,6 +64,7 @@ export function MelodyTable(
         columnsToDisplay,
         showRowCount = true,
         showPagination = true,
+        showPaginationDropdown = true,
         columnResizing = false,
         fetchData,
         defaultPageSize = 10,
@@ -690,12 +691,17 @@ export function MelodyTable(
                 {/*    </div>*/}
                 {/*</span>*/}
 
-                <div className={"melody-max-w-[150px]"}>
-                    <Dropdown onChange={(selection) => table.setPageSize(Number((selection as DropdownOption).value)) }
+                {showPaginationDropdown &&
+                  <div className={"melody-max-w-[150px]"}>
+                    <Dropdown onChange={(selection) => table.setPageSize(Number((selection as DropdownOption).value))}
                               size={"small"}
                               defaultValue={{ label: `Show ${pageSize}`, value: pageSize }}
-                              options={[10, 20, 30, 40, 50].map(pageSizeListVal => ({ label: `Show ${pageSizeListVal}`, value: pageSizeListVal }))} />
-                </div>
+                              options={[10, 20, 30, 40, 50].map(pageSizeListVal => ({
+                                  label: `Show ${pageSizeListVal}`,
+                                  value: pageSizeListVal
+                              }))} />
+                  </div>
+                }
 
                 <Button icon={{ icon: "paginationLeft" }}
                         color={'white'}

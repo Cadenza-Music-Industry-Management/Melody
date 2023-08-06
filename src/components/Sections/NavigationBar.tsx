@@ -6,7 +6,7 @@ import {Icon} from "../Layouts/Icon";
 import {NavigationBarProps} from "../types";
 import {Label} from "../Layouts/Label";
 import {Avatar} from "../Layouts/Avatar";
-import {Image} from '../Layouts/Image';
+import Image from 'next/image';
 import { classNames } from "../../utils/functions";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -53,7 +53,8 @@ export const NavigationBar = (props: NavigationBarProps) => {
                             <div className="melody-flex melody-flex-1 melody-items-center melody-justify-center sm:melody-items-stretch sm:melody-justify-start">
                                 <div className="melody-flex melody-flex-shrink-0 melody-items-center">
                                    <Link href={"/"}>
-                                       <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-hidden"
+                                       <Image width={150}
+                                              height={150}
                                               src={transparentBG ? cadenzaMIMWhiteLogo : cadenzaMIMBlackLogo}
                                               alt="Cadenza MIM" />
                                    </Link>

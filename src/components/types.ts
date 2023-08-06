@@ -90,7 +90,7 @@ export interface TextInputProps {
 //Label
 export interface LabelProps {
     size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-    label: string,
+    label: string | number,
     htmlFor?: string,
     required?: boolean,
     bold?: boolean,
@@ -272,6 +272,7 @@ export interface TableProps<TData> {
     columnsToDisplay: MelodyTableColumn<TData>[],
     showRowCount?: boolean,
     showPagination?: boolean,
+    showPaginationDropdown?: boolean,
     columnResizing?: boolean,
     fetchData: (options: MelodyTableFetchDataOptions) => Promise<{ rows: TData[], pageCount: number }>,
     defaultPageSize?: number,
@@ -352,7 +353,7 @@ export interface MelodyTableDropdown {
     options?: MelodyTableColumnDropdownOptions[],
 }
 
-//Search
+//--Search Interfaces--
 
 export interface MelodySearchProps {
     onSearch: () => void,
