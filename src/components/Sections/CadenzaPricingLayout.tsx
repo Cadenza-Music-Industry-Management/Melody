@@ -61,7 +61,7 @@ export const CadenzaPricingLayout = (props: {
                 { text: `Apparel Order limit raised to ${ContentCreationLimits.APPAREL_ORDER_MODERATO}`, subText: "" },
                 { text: `Blog Post limit raised to ${ContentCreationLimits.BLOG_MODERATO}`, subText: "" },
                 { text: `File Storage limit raised to: ${formatBytes(ContentCreationLimits.FILE_STORAGE_MODERATO)}`, subText: "" },
-                { text: `Email Hub limit raised to: ${ContentCreationLimits.EMAIL_ADAGIO}`, subText: "" },
+                { text: `Email Hub limit raised to: ${ContentCreationLimits.EMAIL_MODERATO}`, subText: "" },
                 { text: "Everything from the Adagio tier", subText: "" }
             ]
         },

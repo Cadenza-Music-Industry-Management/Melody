@@ -68,7 +68,8 @@ export function MelodyTable(
         fetchData,
         defaultPageSize = 10,
         filterItems,
-        dropdown
+        dropdown,
+        queryId
     }: TableProps<AcceptableCastTypes>) {
 
     //NOTE use this for items such as siteEnabled and userPermissions, but if used outside of dashboard, will show up as null hopefully
@@ -106,7 +107,7 @@ export function MelodyTable(
     }, [pageIndex, pageSize, filters]);
 
     const dataQuery = useQuery(
-        ["data", fetchDataOptions],
+        [queryId, fetchDataOptions],
         () => fetchData(fetchDataOptions),
         { keepPreviousData: true, enabled: getQueryIsEnabled() }
     )
@@ -739,7 +740,7 @@ export function MelodyTable(
     }, [selectedColumnIDs])
 
     return (
-        <div className={`melody-p-1 melody-w-full melody-flex melody-flex-col ${dataQuery.data && dataQuery.data?.rows.length > 0 ? "" : "melody-justify-center"} melody-items-center`}>
+        <div className={`melody-p-1 melody-w-full ${dataQuery.data && dataQuery.data?.rows.length > 0 ? "" : "melody-flex melody-flex-col melody-justify-center"}`}>
 
             {searchUI}
 

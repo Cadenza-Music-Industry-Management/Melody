@@ -277,6 +277,7 @@ export interface TableProps<TData> {
     defaultPageSize?: number,
     filterItems?: MelodySearchParamListEntry[],
     dropdown?: MelodyTableDropdown,
+    queryId: string
 }
 
 export interface MelodyTableFetchDataOptions {
