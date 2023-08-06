@@ -53,7 +53,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                             <div className="melody-flex melody-flex-1 melody-items-center melody-justify-center sm:melody-items-stretch sm:melody-justify-start">
                                 <div className="melody-flex melody-flex-shrink-0 melody-items-center">
                                    <Link href={"/"}>
-                                       <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-melody-hidden"
+                                       <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-hidden"
                                               src={transparentBG ? cadenzaMIMWhiteLogo : cadenzaMIMBlackLogo}
                                               alt="Cadenza MIM" />
                                    </Link>

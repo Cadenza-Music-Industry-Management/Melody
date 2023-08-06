@@ -180,7 +180,7 @@ export const Sidebar = (props: SidebarProps) => {
                    {/*HEADER*/}
                    <div className={"melody-p-2 melody-relative melody-flex melody-items-center "}>
                        <Link href={"/"}>
-                           <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-melody-hidden"
+                           <Image additionalClasses="melody-block melody-h-14 melody-w-auto lg:melody-hidden"
                                   src={collapsed ? cadenzaMIMIcon : cadenzaMIMLogo}
                                   alt="Cadenza MIM" />
                        </Link>
