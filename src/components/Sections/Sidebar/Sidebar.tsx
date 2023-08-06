@@ -20,6 +20,7 @@ import { Tooltip } from "@/components/Melody/src/components/Layouts/Tooltip";
 import { Image } from "@/components/Melody/src/components/Layouts/Image";
 import cadenzaMIMLogo from "@/components/Melody/src/assets/white_logo_mim.png";
 import cadenzaMIMIcon from "@/components/Melody/src/assets/white_icon.png";
+import "./Sidebar.css"
 
 type SidebarProps = {
     links: SidebarLinkProps[],
@@ -173,7 +174,7 @@ export const Sidebar = (props: SidebarProps) => {
                breakPoint="md"
                backgroundColor={"#0C192C"}
                width={"300px"}
-               // collapsedWidth={"100px"}
+               collapsedWidth={"125px"}
                rootStyles={{ color: "white", borderRight: "1px solid white", zIndex: 11 }}>
                <div className={"melody-flex melody-flex-col melody-h-full"}>
 
