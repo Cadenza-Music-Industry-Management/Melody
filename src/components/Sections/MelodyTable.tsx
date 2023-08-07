@@ -244,7 +244,7 @@ export function MelodyTable(
     function getTableDropdownValues(): NavBarItemProps[] | undefined {
 
         //TODO get correct params to pass in
-        return dropdown?.options?.filter(option => {
+        const newOptions = dropdown?.options?.filter(option => {
             if (option.visibleCondition) {
                 switch (option.visibleCondition) {
                     case "length_check":
@@ -296,6 +296,14 @@ export function MelodyTable(
                 icon: option.icon
             }
         })
+
+        if (!newOptions || newOptions?.length === 0) {
+            return [
+                { name: "No Actions Available" }
+            ]
+        }
+
+        return newOptions
     }
 
     function getCellHeaderFormatting(header: MelodyTableHeader<AcceptableCastTypes>) {
