@@ -23,7 +23,7 @@ export const Checkbox = (props: CheckboxRadioButtonProps) => {
     }, [value])
 
     return (
-        <div className="melody-radio-checkbox-container" style={additionalParentStyles}>
+        <div className={`melody-radio-checkbox-container ${!subLabel ? "melody-items-center" : ""}`} style={additionalParentStyles}>
             <input aria-describedby="checkbox-sub-label"
                    type="checkbox"
                    disabled={disabled}

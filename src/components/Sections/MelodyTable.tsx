@@ -94,7 +94,6 @@ export function MelodyTable(
         filters,
         searchUI
     } = useMelodySearch({
-        onSearch: () => dataQuery.refetch(),
         items: filterItems ?? [],
         processingRequest
     });

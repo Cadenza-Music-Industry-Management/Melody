@@ -168,6 +168,7 @@ export interface NavigationBarProps {
 }
 export interface NavBarItemProps {
     name: string,
+    value?: string,
     onClick?: () => void,
     href?: string,
     trailerComponent?: ReactNode,
@@ -186,6 +187,7 @@ export interface ButtonMenuProps {
     label?: string,
     icon?: AddIconProps,
     disabled?: boolean,
+    activeItemLabel?: string,
     items: NavBarItemProps[] //TODO Own type or rename?
 }
 
@@ -356,7 +358,6 @@ export interface MelodyTableDropdown {
 //--Search Interfaces--
 
 export interface MelodySearchProps {
-    onSearch: () => void,
     items: MelodySearchParamListEntry[],
     processingRequest: boolean
 }

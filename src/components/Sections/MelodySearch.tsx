@@ -34,7 +34,6 @@ const defaultFormValues: MelodySearchParams = {
 //TODO move to separate file
 export function useMelodySearch(
     {
-        onSearch,
         items,
         processingRequest
     } : MelodySearchProps

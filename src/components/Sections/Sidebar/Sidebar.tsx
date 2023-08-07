@@ -179,10 +179,10 @@ export const Sidebar = (props: SidebarProps) => {
                <div className={"melody-flex melody-flex-col melody-h-full"}>
 
                    {/*HEADER*/}
-                   <div className={"melody-p-2 melody-relative melody-flex melody-items-center"}>
+                   <div className={"melody-p-2 melody-relative melody-flex melody-justify-center melody-items-center"}>
                        <Link href={"/"}>
-                           <Image width={150}
-                                  height={150}
+                           <Image width={collapsed ? 50 : 150}
+                                  height={collapsed ? 50 : 150}
                                   src={collapsed ? cadenzaMIMIcon : cadenzaMIMLogo}
                                   alt="Cadenza MIM" />
                        </Link>

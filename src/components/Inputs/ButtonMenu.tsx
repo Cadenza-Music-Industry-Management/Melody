@@ -18,7 +18,8 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
         additionalClasses,
         label,
         icon,
-        disabled
+        disabled,
+        activeItemLabel
     } = props
 
     function getItemDetails(item: NavBarItemProps) {
@@ -66,12 +67,12 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
                                                 </div>
                                                 : item.onClick ?
                                                     <div onClick={item.onClick}
-                                                          className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
+                                                          className={classNames((active || activeItemLabel && activeItemLabel === item.value) ? 'melody-bg-gray-200 hover:melody-bg-gray-400' : '', 'melody-cursor-pointer melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-300')}>
                                                         {getItemDetails(item)}
                                                     </div>
                                                     :
                                                     <Link href={item.href ?? ""}
-                                                          className={classNames(active ? 'melody-bg-gray-100 hover:melody-bg-gray-200' : '', 'melody-cursor-pointer melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-200')}>
+                                                          className={classNames((active || activeItemLabel && activeItemLabel === item.value) ? 'melody-bg-gray-200 hover:melody-bg-gray-400' : '', 'melody-cursor-pointer melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-700 hover:melody-bg-gray-300')}>
                                                         {getItemDetails(item)}
                                                     </Link>
                                             }
