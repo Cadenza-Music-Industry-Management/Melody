@@ -19,7 +19,8 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
         label,
         icon,
         disabled,
-        activeItemLabel
+        activeItemLabel,
+        menuDirection = "right"
     } = props
 
     function getItemDetails(item: NavBarItemProps) {
@@ -53,7 +54,7 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
                         leave="melody-transition melody-ease-in melody-duration-75"
                         leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
                         leaveTo="melody-transform melody-opacity-0 melody-scale-95">
-                        <Menu.Items className="melody-absolute melody-right-0 melody-z-10 melody-mt-2 melody-w-48 melody-origin-top-right melody-rounded-lg melody-bg-white melody-py-1 melody-shadow-lg melody-ring-1 melody-ring-black-0 melody-ring-opacity-5 focus:melody-outline-none">
+                        <Menu.Items className={`melody-absolute ${menuDirection === "right" ? "melody-right-0" : "melody-left-0"} melody-z-10 melody-mt-2 melody-w-48 melody-origin-top-right melody-rounded-lg melody-bg-white melody-py-1 melody-shadow-lg melody-ring-1 melody-ring-black-0 melody-ring-opacity-5 focus:melody-outline-none`}>
 
                             {dropdownHeaderItem}
 
@@ -62,7 +63,7 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
                                     {({ active }: { active: boolean }) => (
                                         <>
                                             {item.disabled ?
-                                                <div className={'melody-cursor-pointer melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-800 melody-cursor-not-allowed'}>
+                                                <div className={'melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-800 melody-cursor-not-allowed melody-bg-gray-100'}>
                                                     {getItemDetails(item)}
                                                 </div>
                                                 : item.onClick ?

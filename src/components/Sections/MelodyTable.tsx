@@ -258,6 +258,10 @@ export function MelodyTable(
                     let paramValue;
                     if (param.stringValue === "selected_ids") {
                         paramValue = selectedColumnIDs
+                    } else if (param.stringValue === "page_index") {
+                        paramValue = pageIndex
+                    } else if (param.stringValue === "page_count") {
+                        paramValue = pageSize
                     } else {
                         paramValue = param.stringValue
                     }
@@ -743,6 +747,7 @@ export function MelodyTable(
 
         return <div className={"melody-flex melody-justify-center"}>
             <ButtonMenu label={dropdown.title}
+                        menuDirection={"left"}
                         size={"small"}
                         items={getTableDropdownValues() ?? []} />
         </div>

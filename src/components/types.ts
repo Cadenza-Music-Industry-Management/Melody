@@ -156,7 +156,7 @@ export interface ModalProps {
     open: boolean,
     setOpen?: (open: boolean) => void,
     children?: ReactNode,
-    size?: 'xsmall' | 'small' | 'medium' | 'large'
+    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge'
 }
 
 //Navigation Bar
@@ -188,6 +188,7 @@ export interface ButtonMenuProps {
     icon?: AddIconProps,
     disabled?: boolean,
     activeItemLabel?: string,
+    menuDirection?: "left" | "right",
     items: NavBarItemProps[] //TODO Own type or rename?
 }
 

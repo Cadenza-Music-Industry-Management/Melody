@@ -36,3 +36,6 @@
 .melody-modal-panel.large {
     @apply md:melody-max-w-2xl;
 }
+.melody-modal-panel.xlarge {
+    @apply md:melody-max-w-3xl;
+}
