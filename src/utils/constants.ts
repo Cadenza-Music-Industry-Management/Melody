@@ -25,7 +25,7 @@ export enum ContentCreationLimits {
     EMAIL_VIVACE = 1500
 }
 
-export const GetCustomDropdownStyle = (size: string, showingIcon?: boolean) => {
+export const GetCustomDropdownStyle = (size: string, showIcon?: boolean) => {
    return {
        control: (provided: any, state: { isFocused: any; }) => ({
            ...provided,
@@ -37,7 +37,8 @@ export const GetCustomDropdownStyle = (size: string, showingIcon?: boolean) => {
            '&:hover': {
                borderColor: '#0C192C',
            },
-           paddingRight: showingIcon ? 15 : "auto"
+           paddingRight: showIcon ? 15 : "auto",
+           cursor: "pointer"
        }),
        menu: (styles: any) => ({
            ...styles,

@@ -74,18 +74,18 @@ export function MelodyTable(
     }: TableProps<AcceptableCastTypes>) {
 
     //NOTE use this for items such as siteEnabled and userPermissions, but if used outside of dashboard, will show up as null hopefully
-    //TODO issue with this probably as zustand is local to iQ, not to melody library
+    //TODO issue with this is zustand is local to Cadenza, not to melody library so will need to install to storybook, hopefully not store though?
     const currentOrg = useDashboardState((state) => state.group)
     const slideOverOpenName = useDashboardState((state) => state.slideOverOpenName)
     const setLargeImageModalDetails = useDashboardState((state) => state.setLargeImageModalDetails)
 
     const [processingRequest, setProcessingRequest] = useState(false)
     const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>(
-        { pageIndex: 0, pageSize: defaultPageSize }
+        { pageIndex: 0, pageSize: defaultPageSize ?? 10 }
     )
     const [selectedColumnIDs, setSelectedColumnIDs] = useState<string[]>([])
 
-    //TODO need to check for url for dashboard so not to check this if outside of org
+    //TODO need to check for url for dashboard so not to check this if outside of org when using table outside of dashboard
     function getQueryIsEnabled() {
         return currentOrg !== null
     }
@@ -260,7 +260,8 @@ export function MelodyTable(
                         paramValue = selectedColumnIDs
                     } else if (param.stringValue === "page_index") {
                         paramValue = pageIndex
-                    } else if (param.stringValue === "page_count") {
+                    } else if (param.stringValue === "page_size") {
+                        console.log(pageSize)
                         paramValue = pageSize
                     } else {
                         paramValue = param.stringValue
@@ -753,9 +754,10 @@ export function MelodyTable(
         </div>
     }
 
+    //TODO maybe boolean to check if pageSize and pageIndex changed only if there is a dropdown and it requires listening to these page changes
     const generatedDropdown = useMemo(() => {
         return getDropdown()
-    }, [selectedColumnIDs])
+    }, [selectedColumnIDs, pageSize, pageIndex])
 
     return (
         <div className={`melody-p-1 melody-w-full ${dataQuery.data && dataQuery.data?.rows.length > 0 ? "" : "melody-flex melody-flex-col melody-justify-center"}`}>
