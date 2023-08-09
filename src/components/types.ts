@@ -21,6 +21,7 @@ export interface ButtonProps {
     indicator?: IndicatorProps,
     trailerComponent?: ReactNode,
     additionalClasses?: string,
+    additionalStyles?: any,
     loading?: boolean,
     ref?: ForwardedRef<any>
 }
@@ -129,7 +130,7 @@ export interface AddIconProps {
 export interface ProgressBarProps {
     size?: 'small' | 'medium' | 'large',
     progress: number,
-    title: string,
+    title?: string,
     label: string,
     subTitle?: string,
     variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light';

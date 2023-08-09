@@ -20,13 +20,15 @@ export const Button = (props: ButtonProps) => {
         trailerComponent,
         additionalClasses,
         loading = false,
-        ref
+        ref,
+        additionalStyles
     } = props
 
     return (
         <button className={`${additionalClasses ?? ''} melody-button melody-button-${size} melody-button-${color}-${variant} `}
                 ref={ref}
                 type={type}
+                style={additionalStyles}
                 disabled={disabled || loading}
                 onClick={onClick}>
             {icon && !icon.rightAligned && <div className={"melody-mr-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} additionalClasses={icon.additionalClasses} /></div>}

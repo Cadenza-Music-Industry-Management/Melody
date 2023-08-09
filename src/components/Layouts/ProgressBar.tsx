@@ -14,9 +14,11 @@ export const ProgressBar = (props: ProgressBarProps) => {
     return (
         <div>
             <div className="melody-progressbar-header">
-                <span className={`title ${size} ${variant}`}>
+                {title &&
+                  <span className={`title ${size} ${variant}`}>
                     {title}
                 </span>
+                }
 
                 <span className={`sub-title ${size} ${variant}`}>
                     {subTitle ? <>{subTitle} ({progress}%)</> : <>{progress}%</>}

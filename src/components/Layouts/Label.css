@@ -7,17 +7,17 @@
 }
 
 .melody-text-label.small {
-    @apply melody-text-sm;
+    @apply melody-text-sm melody-leading-6;
 }
 
 .melody-text-label.medium {
-    @apply melody-text-base;
+    @apply melody-text-base melody-leading-6;
 }
 
 .melody-text-label.large {
-    @apply melody-text-lg;
+    @apply melody-text-lg melody-leading-6;
 }
 
 .melody-text-label.xlarge {
-    @apply melody-text-[25px];
+    @apply melody-text-[25px] melody-leading-6;
 }
