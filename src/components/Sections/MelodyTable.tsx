@@ -42,7 +42,6 @@ import { Spinner } from "@/components/Melody/src/components/Layouts/Spinner";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import Image from "next/image";
 import SocialMediaComponent from "@/components/SocialMediaComponent";
-import ArtistTableFooter from "@/components/hooks/usePageableTable/footers/ArtistTableFooter";
 import { Checkbox } from "@/components/Melody/src/components/Inputs/Checkbox";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 import { useDashboardState } from "@/zustand/stores";
@@ -148,9 +147,9 @@ export function MelodyTable(
     const renderSubComponent = ({ row }: { row: Row<AcceptableCastTypes> }) => {
         return (
             <div>
-                {tableName === "Artists" &&
-                    <ArtistTableFooter object={(row.original as IArtist)} />
-                }
+                {/*{tableName === "Artists" &&*/}
+                {/*    <ArtistTableFooter object={(row.original as IArtist)} />*/}
+                {/*}*/}
             </div>
         )
     }
