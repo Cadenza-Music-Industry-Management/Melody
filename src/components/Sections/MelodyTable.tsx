@@ -260,7 +260,6 @@ export function MelodyTable(
                     } else if (param.stringValue === "page_index") {
                         paramValue = pageIndex
                     } else if (param.stringValue === "page_size") {
-                        console.log(pageSize)
                         paramValue = pageSize
                     } else {
                         paramValue = param.stringValue

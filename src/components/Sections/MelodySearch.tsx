@@ -180,8 +180,8 @@ export function useMelodySearch(
 
         return <form onSubmit={handleSubmit(handleSubmitFromForm)}>
             <div className={"melody-flex melody-flex-wrap melody-py-1 melody-py-4 melody-gap-x-5 melody-gap-y-1 melody-justify-center"}>
-            {items.map(item => getSearchComponent(item))}
-        </div>
+                {items.map(item => getSearchComponent(item))}
+            </div>
         </form>
     }
 

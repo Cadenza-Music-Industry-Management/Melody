@@ -33,7 +33,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [selectedColorState, setSelectedColorState] = useState("#FFFFF")
-    const colorPickerContainerRef = useCloseOnClickAway(toggleOpen)
+    //const colorPickerContainerRef = useCloseOnClickAway(toggleOpen)
 
     useMemo(() => {
         setSelectedColorState(value)
@@ -50,8 +50,10 @@ export const ColorPicker = (props: ColorPickerProps) => {
 
     //TODO move css to class
 
+    //TODO close on click away hook doesnt work and causes issues making it open when clicking anywhere else
+    // ref={colorPickerContainerRef}
     return (
-        <div className={"melody-relative"} ref={colorPickerContainerRef}>
+        <div className={"melody-relative"}>
 
             <div className={"melody-text-center melody-h-full"}>
                 {/*TODO custom size for button from prop*/}
