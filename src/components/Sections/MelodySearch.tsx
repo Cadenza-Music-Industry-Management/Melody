@@ -111,6 +111,19 @@ export function useMelodySearch(
             </div>
         }
 
+        if (item.type === "accounting_sources") {
+            componentToDisplay = <div className={"melody-w-full"}>
+                <Label label={"Search By Accounting Sources"} bold={true} />
+                <Button label={"Select Accounting Sources"}
+                        icon={{ icon: "melody-sources", rightAligned: true }}
+                        color={'secondary'}
+                        variant={'outlined'}
+                        size={"small"}
+                        additionalClasses={"melody-w-full"}
+                        onClick={() => setSelectSourceModalOpen(!selectSourceModalOpen)} />
+            </div>
+        }
+
         if (item.type === "dropdown") {
             componentToDisplay = getFormDropdown(item.filterProperty, errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message?.toString(),{
                 label: { label: `Search By ${item.title}`, bold: true },

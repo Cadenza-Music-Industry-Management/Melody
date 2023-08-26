@@ -7,18 +7,18 @@ export const Footer = () => {
     return (
         <footer aria-label="Site Footer" className="melody-bg-primary-100 melody-border-primary-100 melody-border-t melody-border-primary-100 melody-relative melody-overflow-hidden">
 
-            <div className={"melody-absolute melody-left-0 melody-right-0 melody-top-0 melody-z-[2]"}>
-                {/*Note: Generated from https://getwaves.io/ and expanded with https://www.photopea.com/*/}
-                <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4000 1500" width="4000"
-                     height="1500">
-                    <defs>
-                        <image width="4320" height="960" id="img1"
-                               href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTQ0MCAzMjAiPjxwYXRoIGZpbGw9IiM5Zjg1NjAiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTTAsMEwzMCwyNi43QzYwLDUzLDEyMCwxMDcsMTgwLDEyMi43QzI0MCwxMzksMzAwLDExNywzNjAsOTAuN0M0MjAsNjQsNDgwLDMyLDU0MCwzMkM2MDAsMzIsNjYwLDY0LDcyMCw3NC43Qzc4MCw4NSw4NDAsNzUsOTAwLDc0LjdDOTYwLDc1LDEwMjAsODUsMTA4MCw4NS4zQzExNDAsODUsMTIwMCw3NSwxMjYwLDg1LjNDMTMyMCw5NiwxMzgwLDEyOCwxNDEwLDE0NEwxNDQwLDE2MEwxNDQwLDMyMEwxNDEwLDMyMEMxMzgwLDMyMCwxMzIwLDMyMCwxMjYwLDMyMEMxMjAwLDMyMCwxMTQwLDMyMCwxMDgwLDMyMEMxMDIwLDMyMCw5NjAsMzIwLDkwMCwzMjBDODQwLDMyMCw3ODAsMzIwLDcyMCwzMjBDNjYwLDMyMCw2MDAsMzIwLDU0MCwzMjBDNDgwLDMyMCw0MjAsMzIwLDM2MCwzMjBDMzAwLDMyMCwyNDAsMzIwLDE4MCwzMjBDMTIwLDMyMCw2MCwzMjAsMzAsMzIwTDAsMzIwWiI+PC9wYXRoPjwvc3ZnPg==" />
-                    </defs>
-                    <path id="Shape 1" fill="#9f8560" d="m0 705.7h4000v1036.3h-4000z" />
-                    <use id="wave (4)" href="#img1" transform="matrix(.928,0,0,.928,0,0)" />
-                </svg>
-            </div>
+            {/*<div className={"melody-absolute melody-left-0 melody-right-0 melody-top-0 melody-z-[2]"}>*/}
+            {/*    /!*Note: Generated from https://getwaves.io/ and expanded with https://www.photopea.com/*!/*/}
+            {/*    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4000 1500" width="4000"*/}
+            {/*         height="1500">*/}
+            {/*        <defs>*/}
+            {/*            <image width="4320" height="960" id="img1"*/}
+            {/*                   href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTQ0MCAzMjAiPjxwYXRoIGZpbGw9IiM5Zjg1NjAiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTTAsMEwzMCwyNi43QzYwLDUzLDEyMCwxMDcsMTgwLDEyMi43QzI0MCwxMzksMzAwLDExNywzNjAsOTAuN0M0MjAsNjQsNDgwLDMyLDU0MCwzMkM2MDAsMzIsNjYwLDY0LDcyMCw3NC43Qzc4MCw4NSw4NDAsNzUsOTAwLDc0LjdDOTYwLDc1LDEwMjAsODUsMTA4MCw4NS4zQzExNDAsODUsMTIwMCw3NSwxMjYwLDg1LjNDMTMyMCw5NiwxMzgwLDEyOCwxNDEwLDE0NEwxNDQwLDE2MEwxNDQwLDMyMEwxNDEwLDMyMEMxMzgwLDMyMCwxMzIwLDMyMCwxMjYwLDMyMEMxMjAwLDMyMCwxMTQwLDMyMCwxMDgwLDMyMEMxMDIwLDMyMCw5NjAsMzIwLDkwMCwzMjBDODQwLDMyMCw3ODAsMzIwLDcyMCwzMjBDNjYwLDMyMCw2MDAsMzIwLDU0MCwzMjBDNDgwLDMyMCw0MjAsMzIwLDM2MCwzMjBDMzAwLDMyMCwyNDAsMzIwLDE4MCwzMjBDMTIwLDMyMCw2MCwzMjAsMzAsMzIwTDAsMzIwWiI+PC9wYXRoPjwvc3ZnPg==" />*/}
+            {/*        </defs>*/}
+            {/*        <path id="Shape 1" fill="#9f8560" d="m0 705.7h4000v1036.3h-4000z" />*/}
+            {/*        <use id="wave (4)" href="#img1" transform="matrix(.928,0,0,.928,0,0)" />*/}
+            {/*    </svg>*/}
+            {/*</div>*/}
 
             <div className="melody-mx-auto melody-z-[3] melody-relative melody-text-white">
                 <div className="lg:melody-flex lg:melody-gap-8 melody-justify-center melody-px-2 melody-py-16 sm:melody-px-6 lg:melody-px-8">
