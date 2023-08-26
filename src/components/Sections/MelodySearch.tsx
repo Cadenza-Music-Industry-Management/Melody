@@ -4,10 +4,11 @@ import {
     MelodySearchProps
 } from "@/components/Melody/src/components/types";
 import { useMemo, useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import { Controller, FieldValues, useForm } from "react-hook-form";
 import useGenerateForm from "@/components/hooks/useGenerateForm";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import { Label } from "@/components/Melody/src/components/Layouts/Label";
+import { DatePicker } from "@/components/Melody/src/components/Inputs/DatePicker";
 
 type FieldsToFilter = "title" | "artists" | "genres" | "releases" | "tags" | "apparel" | "sources" | "startDate"
     | "endDate" | "email" | "username" | "writer" | "contentId" | "contentIdType" | "actions" | "fileType"
@@ -35,7 +36,8 @@ const defaultFormValues: MelodySearchParams = {
 export function useMelodySearch(
     {
         items,
-        processingRequest
+        processingRequest,
+        onRefreshClicked
     } : MelodySearchProps
 ) {
 
@@ -45,7 +47,7 @@ export function useMelodySearch(
     const [selectApparelModalOpen, setSelectApparelModalOpen] = useState(false)
     const [selectSourceModalOpen, setSelectSourceModalOpen] = useState(false)
 
-    const { handleSubmit, reset, control, setValue, getValues, formState: { errors, isDirty } } = useForm({
+    const { handleSubmit, reset, control, watch, setValue, getValues, formState: { errors, isDirty } } = useForm({
         defaultValues: defaultFormValues
     })
     const { getFormTextAreaInput, getFormCheckboxRadioButton, getFormDropdown, getFormDatePicker, } = useGenerateForm(processingRequest, setValue, control)
@@ -53,6 +55,7 @@ export function useMelodySearch(
     function onRefresh() {
         reset()
         handleSubmitFromForm(defaultFormValues)
+        if (onRefreshClicked) onRefreshClicked()
     }
 
     function handleSubmitFromForm(values: FieldValues) {
@@ -117,14 +120,22 @@ export function useMelodySearch(
             })
         }
 
+        //TODO cant use getFormDatePicker, doesnt work with range selection
         if (item.type === "date_range") {
-            //TODO need to override onchange i think and send back update for start date and end date
-            componentToDisplay = getFormDatePicker(item.filterProperty, errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message?.toString(),{
-                label: { label: `Search By ${item.title}`, bold: true },
-                selectRange: true, //TODO this crashes app
-                startDate: getValues("startDate"),
-                endDate: getValues("endDate"),
-            })
+            componentToDisplay = <Controller
+                name={item.filterProperty}
+                control={control}
+                render={({ field }) => <DatePicker label={{ label: `Search By ${item.title}`, bold: true }}
+                                                   selectRange={true}
+                                                   onChange={(dates: Date[]) => {
+                                                       setValue("startDate", dates[0])
+                                                       setValue("endDate", dates[1])
+                                                       console.log(dates)
+                                                   }}
+                                                   startDate={watch("startDate")}
+                                                   endDate={watch("endDate")}
+                                                   disabled={processingRequest} />} />
+            {errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message && <p className={"melody-text-sm melody-text-red-600 melody-p-0.5"}>{errors[(item.filterProperty as FieldsToFilter) ?? ""]?.message?.toString()}</p>}
         }
 
         //TODO dirty disabled check below turned off for now as text inputs not being marked as dirty in form

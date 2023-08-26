@@ -94,8 +94,9 @@ export function MelodyTable(
         searchUI
     } = useMelodySearch({
         items: filterItems ?? [],
+        onRefreshClicked: () => setSelectedColumnIDs([]),
         processingRequest
-    });
+    })
 
     const fetchDataOptions = useMemo(() => {
         return {

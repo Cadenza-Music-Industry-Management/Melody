@@ -23,13 +23,13 @@
 }
 
 .melody-radio-checkbox.small {
-    @apply melody-w-4 melody-h-4;
+    @apply melody-w-4 melody-h-4 melody-min-h-[1rem] melody-min-w-[1rem];
 }
 
 .melody-radio-checkbox.medium {
-    @apply melody-w-5 melody-h-5;
+    @apply melody-w-5 melody-h-5 melody-min-h-[1.25rem] melody-min-w-[1.25rem];
 }
 
 .melody-radio-checkbox.large {
-    @apply melody-w-6 melody-h-6;
+    @apply melody-w-6 melody-h-6 melody-min-h-[1.5rem] melody-min-w-[1.5rem];
 }

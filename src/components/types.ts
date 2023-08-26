@@ -361,7 +361,8 @@ export interface MelodyTableDropdown {
 
 export interface MelodySearchProps {
     items: MelodySearchParamListEntry[],
-    processingRequest: boolean
+    processingRequest: boolean,
+    onRefreshClicked?: () => void
 }
 
 export interface MelodySearchParams {

@@ -36,11 +36,10 @@ export const Sidebar = (props: SidebarProps) => {
 
     const pathname = usePathname()
     const { collapseSidebar, collapsed, toggleSidebar, toggled, broken } = useProSidebar()
-    const [showOrgSelector, setShowOrgSelector] = useState(false)
 
-    useEffect(() => {
-        if (collapsed && showOrgSelector) setShowOrgSelector(false)
-    }, [collapsed])
+    // useEffect(() => {
+    //     if (collapsed && showOrgSelector) setShowOrgSelector(false)
+    // }, [collapsed])
 
     const menuItemStyles: MenuItemStyles = {
         root: {

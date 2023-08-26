@@ -23,7 +23,6 @@ export const DatePicker = (props: DatePickerProps) => {
     } = props
 
     const ButtonInput = forwardRef<any>(({ onClick }: any, ref) => {
-
         const getButtonText = () => {
             if (startDate) {
                 if (endDate) {
@@ -64,9 +63,9 @@ export const DatePicker = (props: DatePickerProps) => {
                              withPortal={withPortal}
                              selectsRange={selectRange}
                              startDate={startDate}
+                             endDate={endDate}
                              dateFormat={dateFormat}
-                             showTimeInput={showTimeInput}
-                             endDate={endDate} />
+                             showTimeInput={showTimeInput} />
         </div>
     )
 }
