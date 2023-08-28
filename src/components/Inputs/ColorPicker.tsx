@@ -28,7 +28,8 @@ export const ColorPicker = (props: ColorPickerProps) => {
         buttonColor = 'primary',
         title,
         value,
-        onChange
+        onChange,
+        textAlignClass = "center"
     } = props
 
     const [isOpen, setIsOpen] = useState(false)
@@ -55,7 +56,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
     return (
         <div className={"melody-relative"}>
 
-            <div className={"melody-text-center melody-h-full"}>
+            <div className={`${textAlignClass ?? "melody-text-center"} melody-h-full`}>
                 {/*TODO custom size for button from prop*/}
                 <Button customLabel={title}
                         size={"small"}

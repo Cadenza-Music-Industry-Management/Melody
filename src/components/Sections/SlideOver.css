@@ -1,5 +1,5 @@
 .melody-slide-over-dialog {
-    @apply melody-relative melody-z-10;
+    @apply melody-relative melody-z-[1000];
 }
 
 .melody-slide-over-parent {

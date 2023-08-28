@@ -67,7 +67,8 @@ export interface ColorPickerProps {
     title?: LabelProps,
     buttonColor?: 'gray' | 'white' | 'secondary' | 'primary',
     value: string,
-    onChange: (color: string) => void
+    onChange: (color: string) => void,
+    textAlignClass?: string
 }
 
 //Text Input/Area

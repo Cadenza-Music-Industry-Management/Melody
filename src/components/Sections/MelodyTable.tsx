@@ -32,6 +32,8 @@ import {
     IPromoter,
     IRelease,
     LinkDto,
+    PromotionPageDto,
+    ReleasePromotion,
     ReleaseSearch,
     StorageFile
 } from "@/constants/types";
@@ -54,7 +56,7 @@ import Link from "next/link";
 import { Badge } from "@/components/Melody/src/components/Layouts/Badge";
 import { getBlurDataURLForNextImage } from "@/components/Melody/src/utils/functions";
 
-type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter | AccountingSource | Income | Expense | StorageFile | ArtistSearch | BlogSearch | ReleaseSearch | ApparelSearch
+type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter | AccountingSource | Income | Expense | StorageFile | ArtistSearch | BlogSearch | ReleaseSearch | ApparelSearch | ReleasePromotion | PromotionPageDto
 
 export function MelodyTable(
     {
