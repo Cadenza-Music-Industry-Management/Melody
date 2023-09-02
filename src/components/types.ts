@@ -68,7 +68,8 @@ export interface ColorPickerProps {
     buttonColor?: 'gray' | 'white' | 'secondary' | 'primary',
     value: string,
     onChange: (color: string) => void,
-    textAlignClass?: string
+    textAlignClass?: string,
+    disabled?: boolean
 }
 
 //Text Input/Area
@@ -158,7 +159,8 @@ export interface ModalProps {
     open: boolean,
     setOpen?: (open: boolean) => void,
     children?: ReactNode,
-    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge'
+    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge',
+    customZIndexClass?: string
 }
 
 //Navigation Bar

@@ -10,14 +10,15 @@ export const ModalTemplate = (props: ModalProps) => {
         open,
         setOpen,
         children,
-        size = 'medium'
+        size = 'medium',
+        customZIndexClass
     } = props
 
     const cancelButtonRef = useRef(null)
 
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="melody-relative melody-z-10" initialFocus={cancelButtonRef} onClose={(value) => {
+            <Dialog as="div" className={`melody-relative ${customZIndexClass ?? "melody-z-10"}`} initialFocus={cancelButtonRef} onClose={(value) => {
                 if (setOpen) setOpen(value)
             }}>
                 {/*Dark background of model*/}
@@ -32,7 +33,7 @@ export const ModalTemplate = (props: ModalProps) => {
                     <div className="melody-modal-bg-overlay" />
                 </Transition.Child>
 
-                <div className="melody-modal-fixed-container">
+                <div className={`melody-modal-fixed-container ${customZIndexClass ?? "melody-z-10"}`}>
                     <div className="melody-modal-container">
                         <Transition.Child
                             as={Fragment}

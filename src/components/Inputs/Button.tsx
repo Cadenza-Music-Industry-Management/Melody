@@ -33,7 +33,7 @@ export const Button = (props: ButtonProps) => {
                 onClick={onClick}>
             {icon && !icon.rightAligned && <div className={"melody-mr-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} additionalClasses={icon.additionalClasses} /></div>}
             {label}
-            {customLabel && <Label {...customLabel} additionalStyles={{cursor: "pointer"}} />}
+            {customLabel && <Label {...customLabel} additionalStyles={{cursor: disabled ? "not-allowed" : "pointer"}} />}
             {icon && icon.rightAligned && <div className={"melody-ml-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} additionalClasses={icon.additionalClasses} /></div>}
             {indicator &&
               <div className={"melody-mr-0.5"}>

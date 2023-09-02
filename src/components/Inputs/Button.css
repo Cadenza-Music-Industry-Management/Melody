@@ -57,3 +57,7 @@
 .melody-button-primary-outlined {
     @apply melody-bg-transparent melody-border-2 melody-border-primary-100 hover:melody-bg-primary-200 hover:melody-text-white;
 }
+
+.melody-button-white-solid:disabled {
+    @apply melody-bg-gray-100 melody-text-gray-400;
+}

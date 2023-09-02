@@ -2,7 +2,8 @@ import "./MelodyTable.css"
 import {
     DropdownOption,
     MelodyTableColumn,
-    MelodyTableColumnDisabledSettings, MelodyTableColumnDropdownOptions,
+    MelodyTableColumnDisabledSettings,
+    MelodyTableColumnDropdownOptions,
     MelodyTableHeader,
     NavBarItemProps,
     TableProps
@@ -119,14 +120,19 @@ export function MelodyTable(
     }, [filters, slideOverOpenName, currentOrg])
 
     useEffect(() => {
+        const dataIds = dataQuery.data?.rows.map(row => row.id)
+        if (dataIds) {
+            setSelectedColumnIDs(selectedColumnIDs.filter((id) => dataIds.includes(id)))
+        }
+    }, [dataQuery.data])
+
+    useEffect(() => {
         setProcessingRequest(dataQuery.isLoading)
     }, [dataQuery.isLoading])
 
-    const pagination = useMemo(
-        () => ({
+    const pagination = useMemo(() => ({
             pageIndex,
             pageSize,
-
         }),
         [pageIndex, pageSize]
     )

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Icon } from "../Layouts/Icon";
 import { motion } from "framer-motion";
 
-export const Footer = () => {
+export function Footer() {
     return (
         <footer aria-label="Site Footer" className="melody-bg-primary-100 melody-border-primary-100 melody-border-t melody-border-primary-100 melody-relative melody-overflow-hidden">
 

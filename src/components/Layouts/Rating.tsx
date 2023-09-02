@@ -1,7 +1,8 @@
 import "./Rating.css"
 
+//TODO move to css class
 export const Rating = (props: {
-    size?: string,
+    size?: 'small' | 'medium' | 'large',
     rating: number,
     starCount: number,
     setRating?: (rating: number) => void

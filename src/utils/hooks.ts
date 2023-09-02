@@ -4,9 +4,7 @@ export function useCloseOnClickAway(
     onClickAway: () => void
 ) {
 
-    //TODO doesnt seem to work at all right now
-
-    const ref = useRef<HTMLInputElement | null>(null)
+    const ref = useRef<any>(null)
 
     useEffect(() => {
         document.addEventListener('click', clickOutsideRef, false)

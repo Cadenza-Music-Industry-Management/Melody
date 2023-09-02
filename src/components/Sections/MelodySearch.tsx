@@ -136,14 +136,15 @@ export function useMelodySearch(
         //TODO cant use getFormDatePicker, doesnt work with range selection
         if (item.type === "date_range") {
             componentToDisplay = <Controller
-                name={item.filterProperty}
+                name={(item.filterProperty) as any}
                 control={control}
                 render={({ field }) => <DatePicker label={{ label: `Search By ${item.title}`, bold: true }}
                                                    selectRange={true}
-                                                   onChange={(dates: Date[]) => {
-                                                       setValue("startDate", dates[0])
-                                                       setValue("endDate", dates[1])
-                                                       console.log(dates)
+                                                   onChange={dates => {
+                                                       if (dates) {
+                                                           setValue("startDate", (dates as Date[])[0])
+                                                           setValue("endDate", (dates as Date[])[1])
+                                                       }
                                                    }}
                                                    startDate={watch("startDate")}
                                                    endDate={watch("endDate")}

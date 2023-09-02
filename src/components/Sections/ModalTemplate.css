@@ -3,7 +3,7 @@
 }
 
 .melody-modal-fixed-container {
-    @apply melody-fixed melody-inset-0 melody-z-10 melody-overflow-y-auto;
+    @apply melody-fixed melody-inset-0 melody-z-[1000] melody-overflow-y-auto;
 }
 
 .melody-modal-container {

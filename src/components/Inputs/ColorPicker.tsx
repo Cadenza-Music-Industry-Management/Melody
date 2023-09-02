@@ -29,12 +29,13 @@ export const ColorPicker = (props: ColorPickerProps) => {
         title,
         value,
         onChange,
-        textAlignClass = "center"
+        textAlignClass = "center",
+        disabled = false
     } = props
 
     const [isOpen, setIsOpen] = useState(false)
     const [selectedColorState, setSelectedColorState] = useState("#FFFFF")
-    //const colorPickerContainerRef = useCloseOnClickAway(toggleOpen)
+    //const colorPickerContainerRef = useCloseOnClickAway(() => setIsOpen(false))
 
     useMemo(() => {
         setSelectedColorState(value)
@@ -52,7 +53,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
     //TODO move css to class
 
     //TODO close on click away hook doesnt work and causes issues making it open when clicking anywhere else
-    // ref={colorPickerContainerRef}
+    //ref={colorPickerContainerRef}
     return (
         <div className={"melody-relative"}>
 
@@ -60,13 +61,14 @@ export const ColorPicker = (props: ColorPickerProps) => {
                 {/*TODO custom size for button from prop*/}
                 <Button customLabel={title}
                         size={"small"}
+                        disabled={disabled}
                         onClick={toggleOpen}
                         additionalClasses={"melody-h-full"}
                         color={buttonColor}
                         trailerComponent={
                     <div className={title ? "melody-ml-2" : ""}>
                         <div style={{ backgroundColor: selectedColorState }}
-                             className={"melody-h-6 melody-w-6 melody-border melody-border-white melody-rounded-md"} />
+                             className={"melody-h-6 melody-w-6 melody-border melody-border-gray-300 melody-rounded-md"} />
                     </div>
                 } />
             </div>
