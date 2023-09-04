@@ -9,6 +9,8 @@ import useGenerateForm from "@/components/hooks/useGenerateForm";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import { Label } from "@/components/Melody/src/components/Layouts/Label";
 import { DatePicker } from "@/components/Melody/src/components/Inputs/DatePicker";
+import { GenericContentModalTypes } from "@/constants/types";
+import { GenericContentPageableModal } from "@/components/GenericContentPageableModal/GenericContentPageableModal";
 
 type FieldsToFilter = "title" | "artists" | "genres" | "releases" | "tags" | "apparel" | "sources" | "startDate"
     | "endDate" | "email" | "username" | "writer" | "contentId" | "contentIdType" | "actions" | "fileType"
@@ -42,10 +44,12 @@ export function useMelodySearch(
 ) {
 
     const [formValues, setFormValues] = useState<MelodySearchParams>(defaultFormValues)
-    const [selectArtistModalOpen, setSelectArtistModalOpen] = useState(false)
-    const [selectReleaseModalOpen, setSelectReleaseModalOpen] = useState(false)
-    const [selectApparelModalOpen, setSelectApparelModalOpen] = useState(false)
-    const [selectSourceModalOpen, setSelectSourceModalOpen] = useState(false)
+    const [selectContentModalDetails, setSelectContentModalDetails] = useState<{
+        open: boolean,
+        title: string,
+        filterProperty: FieldsToFilter,
+        type: GenericContentModalTypes
+    }>({ open: false, title: "Select Artists", type: "artist", filterProperty: "artists" })
 
     const { handleSubmit, reset, control, watch, setValue, getValues, formState: { errors, isDirty } } = useForm({
         defaultValues: defaultFormValues
@@ -75,52 +79,72 @@ export function useMelodySearch(
         if (item.type === "releases") {
             componentToDisplay = <div className={"melody-w-full"}>
                 <Label label={"Search By Releases"} bold={true} />
-                <Button label={"Select Releases"}
+                <Button label={watch(item.filterProperty) ? "Edit Selection" : "Select Releases"}
                         icon={{ icon: "melody-releases", rightAligned: true }}
                         color={'secondary'}
                         variant={'outlined'}
                         size={"small"}
                         additionalClasses={"melody-w-full"}
-                        onClick={() => setSelectReleaseModalOpen(!selectReleaseModalOpen)} />
+                        onClick={() => setSelectContentModalDetails({
+                            open: true,
+                            title: "Select Releases",
+                            type: "release",
+                            filterProperty: item.filterProperty as any
+                        })} />
             </div>
         }
 
         if (item.type === "artists") {
             componentToDisplay = <div className={"melody-w-full"}>
                 <Label label={"Search By Artists"} bold={true} />
-                <Button label={"Select Artists"}
+                <Button label={watch(item.filterProperty) ? "Edit Selection" : "Select Artists"}
                         icon={{ icon: "melody-artist", rightAligned: true }}
                         color={'secondary'}
                         variant={'outlined'}
                         size={"small"}
                         additionalClasses={"melody-w-full"}
-                        onClick={() => setSelectArtistModalOpen(!selectArtistModalOpen)} />
+                        onClick={() => setSelectContentModalDetails({
+                            open: true,
+                            title: "Select Artists",
+                            type: "artist",
+                            filterProperty: item.filterProperty as any
+                        })} />
             </div>
         }
 
         if (item.type === "apparel_items") {
             componentToDisplay = <div className={"melody-w-full"}>
                 <Label label={"Search By Apparel Items"} bold={true} />
-                <Button label={"Select Apparel Items"}
+                <Button label={watch(item.filterProperty) ? "Edit Selection" : "Select Apparel Items"}
                         icon={{ icon: "melody-apparel-items", rightAligned: true }}
                         color={'secondary'}
                         variant={'outlined'}
                         size={"small"}
                         additionalClasses={"melody-w-full"}
-                        onClick={() => setSelectApparelModalOpen(!selectApparelModalOpen)} />
+                        onClick={() => setSelectContentModalDetails({
+                            open: true,
+                            title: "Select Apparel Items",
+                            type: "apparel",
+                            filterProperty: item.filterProperty as any
+                        })} />
             </div>
         }
 
         if (item.type === "accounting_sources") {
             componentToDisplay = <div className={"melody-w-full"}>
                 <Label label={"Search By Accounting Sources"} bold={true} />
-                <Button label={"Select Accounting Sources"}
+                <Button label={watch(item.filterProperty) ? "Edit Selection" : "Select Accounting Sources"}
                         icon={{ icon: "melody-sources", rightAligned: true }}
                         color={'secondary'}
                         variant={'outlined'}
                         size={"small"}
                         additionalClasses={"melody-w-full"}
-                        onClick={() => setSelectSourceModalOpen(!selectSourceModalOpen)} />
+                        onClick={() => setSelectContentModalDetails({
+                            open: true,
+                            title: "Select Accounting Sources",
+                            type: "accounting_source",
+                            filterProperty: item.filterProperty as any
+                        })} />
             </div>
         }
 
@@ -204,15 +228,28 @@ export function useMelodySearch(
         if (items.length == 0) return null
 
         return <form onSubmit={handleSubmit(handleSubmitFromForm)}>
+
+            {/*TODO do we need one global instance that we can set for dashboard state including the return function when opened?*/}
+            {/* so that we don't re-render all search stuff everytime modal is opened and closed*/}
+            <GenericContentPageableModal type={selectContentModalDetails.type}
+                                         title={selectContentModalDetails.title}
+                                         open={selectContentModalDetails.open}
+                                         setOpen={() => setSelectContentModalDetails({ open: false, type: "artist", filterProperty: "artists" })}
+                                         selectedIds={watch(selectContentModalDetails.filterProperty) ? watch(selectContentModalDetails.filterProperty) : []}
+                                         onSuccess={(newValues) => {
+                                             setValue(selectContentModalDetails.filterProperty, newValues)
+                                         }} />
+
             <div className={"melody-flex melody-flex-wrap melody-py-1 melody-py-4 melody-gap-x-5 melody-gap-y-1 melody-justify-center"}>
                 {items.map(item => getSearchComponent(item))}
             </div>
         </form>
     }
 
+    const contentModalOpen = selectContentModalDetails.open
     const searchUI = useMemo(() => {
         return getSearchUI()
-    }, [formValues])
+    }, [onRefresh, contentModalOpen, formValues])
 
     return {
         filters: formValues,
