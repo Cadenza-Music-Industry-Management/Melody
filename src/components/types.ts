@@ -87,7 +87,9 @@ export interface TextInputProps {
     trailerComponent?: ReactNode;
     maxLength?: number,
     max?: number,
-    min?: number
+    min?: number,
+    resize?: boolean //For text area only,
+    rows?: number //For text area only
 }
 
 //Label

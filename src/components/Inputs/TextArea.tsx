@@ -9,7 +9,9 @@ export const TextArea = (props: TextInputProps) => {
         placeholder,
         size = "medium",
         disabled = false,
-        onChange
+        onChange,
+        resize = true,
+        rows = 4
     } = props
 
     return (
@@ -17,13 +19,13 @@ export const TextArea = (props: TextInputProps) => {
             {label && <Label {...{...label, htmlFor: "textArea"}} />}
             <textarea placeholder={placeholder}
                       value={value}
-                      rows={4}
+                      rows={rows}
                       disabled={disabled}
                       onChange={(event => {
                           if (onChange) onChange(event.target.value)
                       })}
                       //id={`textArea`} //TODO need unique id
-                      className={`melody-text-input ${size}`} />
+                      className={`melody-text-input ${size} ${!resize ? "melody-resize-none" : ""}`} />
         </div>
     );
 };

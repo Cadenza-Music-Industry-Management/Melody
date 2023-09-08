@@ -14,8 +14,6 @@ export const RadioButton = (props: CheckboxRadioButtonProps) => {
         additionalParentStyles
     } = props
 
-    //TODO advanced layout for hidden radio button with div design https://flowbite.com/docs/forms/radio/#advanced-layout
-
     return (
         <div className={`melody-radio-checkbox-container ${!subLabel ? "melody-items-center" : ""}`} style={additionalParentStyles}>
 

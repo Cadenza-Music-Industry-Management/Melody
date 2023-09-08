@@ -79,7 +79,7 @@ export function useMelodySearch(
         if (item.type === "releases") {
             componentToDisplay = <div className={"melody-w-full"}>
                 <Label label={"Search By Releases"} bold={true} />
-                <Button label={watch(item.filterProperty) ? "Edit Selection" : "Select Releases"}
+                <Button label={watch(item.filterProperty as any) ? "Edit Selection" : "Select Releases"}
                         icon={{ icon: "melody-releases", rightAligned: true }}
                         color={'secondary'}
                         variant={'outlined'}
@@ -97,7 +97,7 @@ export function useMelodySearch(
         if (item.type === "artists") {
             componentToDisplay = <div className={"melody-w-full"}>
                 <Label label={"Search By Artists"} bold={true} />
-                <Button label={watch(item.filterProperty) ? "Edit Selection" : "Select Artists"}
+                <Button label={watch(item.filterProperty as any) ? "Edit Selection" : "Select Artists"}
                         icon={{ icon: "melody-artist", rightAligned: true }}
                         color={'secondary'}
                         variant={'outlined'}
@@ -115,7 +115,7 @@ export function useMelodySearch(
         if (item.type === "apparel_items") {
             componentToDisplay = <div className={"melody-w-full"}>
                 <Label label={"Search By Apparel Items"} bold={true} />
-                <Button label={watch(item.filterProperty) ? "Edit Selection" : "Select Apparel Items"}
+                <Button label={watch(item.filterProperty as any) ? "Edit Selection" : "Select Apparel Items"}
                         icon={{ icon: "melody-apparel-items", rightAligned: true }}
                         color={'secondary'}
                         variant={'outlined'}
@@ -133,7 +133,7 @@ export function useMelodySearch(
         if (item.type === "accounting_sources") {
             componentToDisplay = <div className={"melody-w-full"}>
                 <Label label={"Search By Accounting Sources"} bold={true} />
-                <Button label={watch(item.filterProperty) ? "Edit Selection" : "Select Accounting Sources"}
+                <Button label={watch(item.filterProperty as any) ? "Edit Selection" : "Select Accounting Sources"}
                         icon={{ icon: "melody-sources", rightAligned: true }}
                         color={'secondary'}
                         variant={'outlined'}
@@ -234,10 +234,10 @@ export function useMelodySearch(
             <GenericContentPageableModal type={selectContentModalDetails.type}
                                          title={selectContentModalDetails.title}
                                          open={selectContentModalDetails.open}
-                                         setOpen={() => setSelectContentModalDetails({ open: false, type: "artist", filterProperty: "artists" })}
-                                         selectedIds={watch(selectContentModalDetails.filterProperty) ? watch(selectContentModalDetails.filterProperty) : []}
+                                         setOpen={() => setSelectContentModalDetails({ open: false, title: "Select Artists", type: "artist", filterProperty: "artists" })}
+                                         selectedIds={watch(selectContentModalDetails.filterProperty as any) ? watch(selectContentModalDetails.filterProperty as any) : []}
                                          onSuccess={(newValues) => {
-                                             setValue(selectContentModalDetails.filterProperty, newValues)
+                                             setValue(selectContentModalDetails.filterProperty as any, newValues)
                                          }} />
 
             <div className={"melody-flex melody-flex-wrap melody-py-1 melody-py-4 melody-gap-x-5 melody-gap-y-1 melody-justify-center"}>
