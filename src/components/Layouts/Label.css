@@ -21,3 +21,7 @@
 .melody-text-label.xlarge {
     @apply melody-text-[25px] melody-leading-6;
 }
+
+.melody-text-label.xxlarge {
+    @apply melody-text-[35px] melody-leading-6;
+}

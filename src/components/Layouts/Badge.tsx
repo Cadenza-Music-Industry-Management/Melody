@@ -1,13 +1,15 @@
 import "./Badge.css"
 import { BadgeProps } from "../types";
 import {Indicator} from "./Indicator";
+import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 
 export const Badge = (props: BadgeProps) => {
     const {
         variant = 'info',
         size = 'small',
         text,
-        indicator
+        indicator,
+        icon
     } = props
 
     return (
@@ -19,6 +21,7 @@ export const Badge = (props: BadgeProps) => {
             }
 
             {text}
+            {icon && <Icon {...icon} />}
         </span>
     );
 };

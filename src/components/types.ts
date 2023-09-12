@@ -94,11 +94,12 @@ export interface TextInputProps {
 
 //Label
 export interface LabelProps {
-    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
     label: string | number,
     htmlFor?: string,
     required?: boolean,
     bold?: boolean,
+    mediumBold?: boolean,
     additionalStyles?: any,
     additionalClasses?: string,
     color?: string
@@ -170,7 +171,8 @@ export interface NavigationBarProps {
     user?: any, //TODO need to use User props from other types file
     navigation: NavBarItemProps[],
     userNavigation: NavBarItemProps[],
-    transparentBG?: boolean
+    transparentBG?: boolean,
+    fixed?: boolean
 }
 export interface NavBarItemProps {
     name: string,
@@ -208,10 +210,11 @@ export interface UserProps {
 
 //Badge
 export interface BadgeProps {
-    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light',
-    size?: string,
-    text: string,
-    indicator?: IndicatorProps
+    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light' | 'maroon',
+    size?: 'xsmall' | 'small' | 'medium' | 'large',
+    text?: string,
+    indicator?: IndicatorProps,
+    icon?: IconProps
 }
 
 //Breadcrumb

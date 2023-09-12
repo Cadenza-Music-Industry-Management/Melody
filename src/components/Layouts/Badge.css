@@ -22,8 +22,18 @@
     @apply melody-bg-black-0 melody-text-gray-200 dark:melody-bg-gray-900 dark:melody-text-gray-300 melody-border-gray-400;
 }
 
+.melody-badge.maroon {
+    @apply melody-text-white;
+    background: #A6588A;
+    border: 1px solid #803966FF;
+}
+
 .melody-badge.light {
     @apply melody-bg-white melody-text-black-0 melody-border-gray-700;
+}
+
+.melody-badge.xsmall {
+    @apply melody-px-1.5 melody-py-[1px] melody-text-[0.6rem];
 }
 
 .melody-badge.small {

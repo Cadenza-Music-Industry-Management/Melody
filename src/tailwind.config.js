@@ -22,21 +22,24 @@ module.exports = {
         sans: ['var(--inter-font)', ...fontFamily.sans],
       },
       colors: {
-        'primary': {
+        primary: {
           '100': '#0C192C',
           '200': '#1B3B6B',
           '300': '#2A63B6',
           '400': '#607a9f'
         },
-        'secondary': {
+        secondary: {
           '100': '#9F8560',
           '200': '#DBAB67',
           '300': '#F3CA91'
         },
-        'accent': {
+        accent: {
           '100': '#ABDDE5',
           '200': '#73ECFF',
           '300': '#00DCFF'
+        },
+        maroon: {
+          100: "#A5588A"
         },
         black: {
           0: '#000000',

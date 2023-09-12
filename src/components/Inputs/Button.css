@@ -1,6 +1,7 @@
 .melody-button {
-    @apply melody-inline-flex melody-h-full melody-items-center melody-justify-center melody-font-bold melody-rounded-md melody-shadow-md melody-transition-colors melody-duration-200 melody-ease-in-out;
+    @apply melody-inline-flex melody-items-center melody-justify-center melody-font-bold melody-rounded-md melody-shadow-md melody-transition-colors melody-duration-200 melody-ease-in-out;
 }
+/*TODO removed melody-h-full as causing many issues, what styling did I just break everywhere?*/
 
 .melody-button:disabled {
     @apply melody-cursor-not-allowed;
@@ -35,11 +36,11 @@
 }
 
 .melody-button-secondary-solid {
-    @apply melody-bg-secondary-100 hover:melody-bg-secondary-200 melody-text-white;
+    @apply melody-bg-secondary-100 hover:melody-bg-secondary-200 melody-text-white melody-border-2 melody-border-secondary-100;
 }
 
 .melody-button-secondary-solid:disabled {
-    @apply melody-bg-secondary-200 melody-text-gray-200;
+    @apply melody-bg-secondary-200 melody-text-gray-200 melody-border-secondary-200;
 }
 
 .melody-button-secondary-outlined {
@@ -47,11 +48,11 @@
 }
 
 .melody-button-primary-solid {
-    @apply melody-bg-primary-100 hover:melody-bg-primary-200 melody-text-white;
+    @apply melody-bg-primary-100 hover:melody-bg-primary-200 melody-text-white melody-border-2 melody-border-primary-100;
 }
 
 .melody-button-primary-solid:disabled {
-    @apply melody-bg-primary-200 melody-text-gray-400;
+    @apply melody-bg-primary-200 melody-text-gray-400 melody-border-primary-200;
 }
 
 .melody-button-primary-outlined {

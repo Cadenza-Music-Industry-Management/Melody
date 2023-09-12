@@ -36,7 +36,7 @@ import {
     PromotionPageDto,
     ReleasePromotion,
     ReleaseSearch,
-    StorageFile
+    StorageFile, TaskOnBoard
 } from "@/constants/types";
 import { Fragment, ReactNode, useEffect, useMemo, useState } from "react";
 import { convertUTCDateToLocalDate, getBadgeStatusColor } from "@/utils/functions";
@@ -57,7 +57,7 @@ import Link from "next/link";
 import { Badge } from "@/components/Melody/src/components/Layouts/Badge";
 import { getBlurDataURLForNextImage } from "@/components/Melody/src/utils/functions";
 
-type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter | AccountingSource | Income | Expense | StorageFile | ArtistSearch | BlogSearch | ReleaseSearch | ApparelSearch | ReleasePromotion | PromotionPageDto
+type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter | AccountingSource | Income | Expense | StorageFile | ArtistSearch | BlogSearch | ReleaseSearch | ApparelSearch | ReleasePromotion | PromotionPageDto | TaskOnBoard
 
 export function MelodyTable(
     {
@@ -363,7 +363,31 @@ export function MelodyTable(
                     return "melody-artist"
                 case "Releases":
                     return "melody-releases"
-                //TODO add rest of defaults for other content types
+                case "Promotion Pages":
+                    return "melody-promotion-pages"
+                case "Promoters":
+                    return "melody-promoters"
+                case "Staff Members":
+                    return "melody-staff-management"
+                case "Archived Tasks":
+                    return "melody-kanban"
+                case "Event History":
+                case "Actions": //TODO more specific name for this if anything else ever uses actions?
+                    return "melody-history"
+                case "Storage Files":
+                    return "melody-file-storage"
+                case "Accounting Sources":
+                    return "melody-source"
+                case "Accounting Income":
+                    return "melody-income"
+                case "Accounting Expenses":
+                    return "melody-expenses"
+                case "Apparel Items":
+                    return "melody-apparel-items"
+                case "Apparel Orders":
+                    return "melody-apparel-order"
+                case "Blog Posts":
+                    return "melody-blog-post"
                 default:
                     return "melody-org"
             }
