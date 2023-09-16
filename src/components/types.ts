@@ -138,6 +138,8 @@ export interface ProgressBarProps {
     title?: string,
     label: string,
     subTitle?: string,
+    showSubTitle?: boolean,
+    fullWidth?: boolean,
     variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light';
 }
 

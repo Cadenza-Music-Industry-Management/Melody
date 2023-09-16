@@ -8,11 +8,13 @@ export const ProgressBar = (props: ProgressBarProps) => {
         title,
         subTitle,
         label,
-        variant = 'info'
+        variant = 'info',
+        showSubTitle = true,
+        fullWidth = false
     } = props
 
     return (
-        <div>
+        <div className={`${fullWidth ? "melody-w-full" : ""}`}>
             <div className="melody-progressbar-header">
                 {title &&
                   <span className={`title ${size} ${variant}`}>
@@ -20,9 +22,11 @@ export const ProgressBar = (props: ProgressBarProps) => {
                 </span>
                 }
 
-                <span className={`sub-title ${size} ${variant}`}>
+                {showSubTitle &&
+                  <span className={`sub-title ${size} ${variant}`}>
                     {subTitle ? <>{subTitle} ({progress}%)</> : <>{progress}%</>}
                 </span>
+                }
             </div>
 
             <div className="melody-progressbar-container">

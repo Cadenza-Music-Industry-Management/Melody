@@ -112,7 +112,7 @@ export function MelodyTable(
     const dataQuery = useQuery(
         [queryId, fetchDataOptions],
         () => fetchData(fetchDataOptions),
-        { keepPreviousData: true, enabled: getQueryIsEnabled() }
+        { enabled: getQueryIsEnabled() }
     )
 
     useEffect(() => {

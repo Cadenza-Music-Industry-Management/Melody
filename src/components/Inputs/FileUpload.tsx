@@ -1,6 +1,6 @@
 import './FileUpload.css'
-import { ChangeEvent } from "react";
 import Image from "next/image";
+import { ChangeEvent } from "react";
 
 //TODO move to melody interface types file
 export const FileUpload = (props: {

@@ -2,6 +2,7 @@ import "./Footer.css"
 import Link from "next/link";
 import { Icon } from "../Layouts/Icon";
 import { motion } from "framer-motion";
+import { Label } from "@/components/Melody/src/components/Layouts/Label";
 
 export function Footer() {
     return (
@@ -22,9 +23,9 @@ export function Footer() {
 
             <div className="melody-mx-auto melody-z-[3] melody-relative melody-text-white">
                 <div className="lg:melody-flex lg:melody-gap-8 melody-justify-center melody-px-2 melody-py-16 sm:melody-px-6 lg:melody-px-8">
-                    <div className="melody-mt-8 melody-grid melody-grid-cols-3 melody-gap-16 lg:melody-mt-0 lg:melody-grid-cols-3 lg:melody-gap-y-16">
+                    <div className="melody-mt-8 melody-grid melody-grid-cols-3 melody-gap-36 lg:melody-mt-0 lg:melody-grid-cols-3 lg:melody-gap-y-16">
                         <div className="melody-col-span-2 sm:melody-col-span-1">
-                            <p className="melody-font-medium melody-underline">Overview</p>
+                            <Label label={"Overview"} bold={true} size={"large"} color={"white"} />
 
                             <nav aria-label="Footer Navigation - Services" className="melody-mt-6">
                                 <ul className="melody-space-y-4 melody-text-sm melody-list-none">
@@ -59,7 +60,7 @@ export function Footer() {
                         </div>
 
                         <div className="melody-col-span-2 sm:melody-col-span-1">
-                            <p className="melody-font-medium melody-underline">Pricing</p>
+                            <Label label={"Pricing"} bold={true} size={"large"} color={"white"} />
 
                             <nav aria-label="Footer Navigation - Company" className="melody-mt-6">
                                 <ul className="melody-space-y-4 melody-text-sm melody-list-none">
@@ -79,7 +80,7 @@ export function Footer() {
                         </div>
 
                         <div className="melody-col-span-2 sm:melody-col-span-1">
-                            <p className="melody-font-medium melody-underline">Help</p>
+                            <Label label={"Help"} bold={true} size={"large"} color={"white"} />
 
                             <nav aria-label="Footer Navigation - Company" className="melody-mt-6">
                                 <ul className="melody-space-y-4 melody-text-sm melody-list-none">

@@ -179,12 +179,12 @@ export function useMelodySearch(
         //TODO dirty disabled check below turned off for now as text inputs not being marked as dirty in form
         let searchButton
         if (item.type === "submit" || item.type === "submit_refresh") {
-            searchButton = <div className={"melody-w-full melody-h-[35px]"}>
+            searchButton = <div className={"melody-w-full"}>
                 <Button icon={{ icon: "search" }}
                         type={"submit"}
                         color={'secondary'}
                         variant={'solid'}
-                        size={"small"}
+                        size={"medium"}
                         loading={processingRequest}
                         // disabled={!isDirty}
                         additionalClasses={"melody-w-full"} />
@@ -195,11 +195,11 @@ export function useMelodySearch(
 
         let refreshButton
         if (item.type === "refresh" || item.type === "submit_refresh") {
-            refreshButton = <div className={"melody-w-full melody-h-[35px]"}>
+            refreshButton = <div className={"melody-w-full"}>
                 <Button icon={{ icon: "refresh" }}
                         color={'secondary'}
                         variant={'solid'}
-                        size={"small"}
+                        size={"medium"}
                         loading={processingRequest}
                         // disabled={!isDirty}
                         additionalClasses={"melody-w-full"}
@@ -210,7 +210,7 @@ export function useMelodySearch(
         }
 
         if (item.type === "submit_refresh") {
-            componentToDisplay = <div className={"melody-w-full melody-h-[35px] melody-flex melody-gap-x-1"}>
+            componentToDisplay = <div className={"melody-w-full melody-flex melody-gap-x-1"}>
                 {searchButton}
                 {refreshButton}
             </div>
