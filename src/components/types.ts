@@ -303,11 +303,13 @@ export interface MelodyTableFetchDataOptions {
 }
 
 export interface MelodyTableColumn<TData> {
+    [key: string]: any,
     accessorKey: string,
     customTextFields?: string[],
     linkOnClickSettings?: MelodyTableColumnLinkOnClickSettings,
     formatType?: "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "button" | "selection_checkbox" | "checkbox" | "artist_list" | "badge" | "content_id" | "custom_text" | "url" | "currency" | "object_text",
     innerObject?: string,
+    innerObjectAccessor?: string,
     header: MelodyTableHeader<TData>,
     dropdownOptions?: MelodyTableColumnDropdownOptions[],
     disabled?: boolean,
@@ -315,7 +317,9 @@ export interface MelodyTableColumn<TData> {
     function?: MelodyTableColumnFunction<TData>,
     size?: number,
     minSize?: number,
-    maxSize?: number
+    maxSize?: number,
+    hideOnSmallWidth?: boolean,
+    hideOnPhoneWidth?: boolean
 }
 
 export interface MelodyTableHeader<TData> {
@@ -323,7 +327,8 @@ export interface MelodyTableHeader<TData> {
     title?: string,
     image?: string,
     additionalCSS?: CSSProperties,
-    tooltipMessage?: string
+    tooltipMessage?: string,
+    sorting?: boolean
 }
 
 export interface MelodyTableColumnLinkOnClickSettings {

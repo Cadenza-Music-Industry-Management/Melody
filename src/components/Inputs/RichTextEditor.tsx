@@ -8,7 +8,7 @@ import Link from '@tiptap/extension-link';
 import ListItem from '@tiptap/extension-list-item';
 import CharacterCount from '@tiptap/extension-character-count'
 import { Badge } from "@/components/Melody/src/components/Layouts/Badge";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
 import { DropdownOption, RichTextEditorProps } from "@/components/Melody/src/components/types";
@@ -56,6 +56,10 @@ const RichTextEditor = (props: RichTextEditorProps) => {
         ],
         editable: !readOnly && !disabled
     });
+
+    useEffect(() => {
+        editor?.commands.setContent(value ?? "")
+    }, [value])
 
     function sendEditorContents() {
         if (onBlur) {

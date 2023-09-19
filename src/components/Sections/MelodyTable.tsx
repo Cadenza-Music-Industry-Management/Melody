@@ -3,7 +3,6 @@ import {
     DropdownOption,
     MelodyTableColumn,
     MelodyTableColumnDisabledSettings,
-    MelodyTableColumnDropdownOptions,
     MelodyTableHeader,
     NavBarItemProps,
     TableProps
@@ -13,10 +12,13 @@ import {
     flexRender,
     getCoreRowModel,
     getExpandedRowModel,
+    getSortedRowModel,
     Getter,
     PaginationState,
     Row,
-    useReactTable
+    SortingState,
+    useReactTable,
+    Header
 } from "@tanstack/react-table";
 import {
     AccountingSource,
@@ -56,6 +58,7 @@ import {motion} from "framer-motion";
 import Link from "next/link";
 import { Badge } from "@/components/Melody/src/components/Layouts/Badge";
 import { getBlurDataURLForNextImage } from "@/components/Melody/src/utils/functions";
+import { useMediaQuery } from "react-responsive";
 
 type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter | AccountingSource | Income | Expense | StorageFile | ArtistSearch | BlogSearch | ReleaseSearch | ApparelSearch | ReleasePromotion | PromotionPageDto | TaskOnBoard
 
@@ -81,6 +84,7 @@ export function MelodyTable(
     const slideOverOpenName = useDashboardState((state) => state.slideOverOpenName)
     const setLargeImageModalDetails = useDashboardState((state) => state.setLargeImageModalDetails)
 
+    const [sorting, setSorting] = useState<SortingState>([])
     const [processingRequest, setProcessingRequest] = useState(false)
     const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>(
         { pageIndex: 0, pageSize: defaultPageSize ?? 10 }
@@ -137,20 +141,53 @@ export function MelodyTable(
         [pageIndex, pageSize]
     )
 
+    const isLargeScreenWidth = useMediaQuery({
+        query: '(min-width: 1250px)'
+    })
+    const isSmallScreenWidth = useMediaQuery({
+        query: '(min-width: 850px)'
+    })
+
+    //TODO potential issues if two columns have same accessor key like link and image on file storage tool
+    useEffect(() => {
+        toggleColumnVisibility("hideOnSmallWidth", isLargeScreenWidth)
+    }, [isLargeScreenWidth])
+
+    useEffect(() => {
+        toggleColumnVisibility("hideOnPhoneWidth", isSmallScreenWidth)
+    }, [isSmallScreenWidth])
+
+    function toggleColumnVisibility(fieldToCheck: string, screenSizeValue: boolean) {
+        table.getAllColumns().forEach(column => {
+            const columnToRender = columnsToDisplay.find(colToDisplay => colToDisplay.accessorKey === column.id && colToDisplay[fieldToCheck] === true)
+            if (columnToRender) {
+                column.toggleVisibility(screenSizeValue)
+            }
+        })
+    }
+
+    const renderedColumns = useMemo(() => {
+        return getColumnsToDisplay()
+    }, [columnsToDisplay])
+    // console.log(renderedColumns)
+
     const table = useReactTable<AcceptableCastTypes>({
         data: dataQuery.data?.rows ?? [],
-        columns: getColumnsToDisplay(),
+        columns: renderedColumns,
         getRowCanExpand: () => rowsCanExpand,
         getCoreRowModel: getCoreRowModel(),
         getExpandedRowModel: getExpandedRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        onSortingChange: setSorting,
         columnResizeMode: columnResizing ? "onChange" : undefined,
         //Pagination
-        pageCount: dataQuery.data?.pageCount ?? -1,
         state: {
             pagination,
+            sorting
         },
+        pageCount: dataQuery.data?.pageCount ?? -1,
         onPaginationChange: setPagination,
-        manualPagination: true
+        manualPagination: true,
     })
 
     const renderSubComponent = ({ row }: { row: Row<AcceptableCastTypes> }) => {
@@ -318,38 +355,53 @@ export function MelodyTable(
         return newOptions
     }
 
-    function getCellHeaderFormatting(header: MelodyTableHeader<AcceptableCastTypes>) {
+    //TODO need type for header parameters coming from React-Table
+    function getCellHeaderFormatting(headerToRender: MelodyTableHeader<AcceptableCastTypes>, header: Header<any, any>) {
 
         //TODO rest of implementation from interface
 
+        let sortingComponent
+        if (headerToRender.sorting && header.column.getIsSorted()) {
+            const sortedVal = header.column.getIsSorted() !== false ? header.column.getIsSorted() : "asc"
+            sortingComponent = <div className={"melody-px-1 melody-flex melody-items-center"}>
+                {{
+                    asc: <Icon icon={"caretUp"} additionalStyles={{fontSize: 16}} additionalClasses={"melody-text-white melody-cursor-pointer"} />,
+                    desc: <Icon icon={"caretDown"} additionalStyles={{fontSize: 16}} additionalClasses={"melody-text-white melody-cursor-pointer"} />
+                }[sortedVal as string]}
+            </div>
+        }
+
+        let formatType = headerToRender.formatType
+        if (!formatType) {
+            formatType = "text"
+        }
+
         let valueToDisplay;
-        if (header.formatType) {
-            switch (header.formatType) {
-                case "text":
-                    valueToDisplay = header.title
-                    break
-                case "image":
-                    if (header.image) {
-                        valueToDisplay = <Icon icon={header.image} />
-                    }
-                    break
-                case "checkbox":
-                    valueToDisplay = <div className={"melody-flex melody-justify-center"}>
-                        <Checkbox value={selectedColumnIDs?.length === dataQuery.data?.rows?.length}
-                                  onChange={(checked: boolean) => {
-                                      setSelectedColumnIDs(checked ? dataQuery.data?.rows.map(row => row.id) ?? [] : [])
-                                  }} />
-                    </div>
-            }
-        } else {
-            valueToDisplay = header.title
+        switch (formatType) {
+            case "text":
+                valueToDisplay = <Label label={headerToRender.title ?? ""}
+                                        additionalStyles={{cursor: headerToRender.sorting ? "pointer" : null}}
+                                        color={"white"} />
+                break
+            case "image":
+                if (headerToRender.image) {
+                    valueToDisplay = <Icon icon={headerToRender.image} />
+                }
+                break
+            case "checkbox":
+                valueToDisplay = <div className={"melody-flex melody-justify-center"}>
+                    <Checkbox value={selectedColumnIDs?.length === dataQuery.data?.rows?.length}
+                              onChange={(checked: boolean) => {
+                                  setSelectedColumnIDs(checked ? dataQuery.data?.rows.map(row => row.id) ?? [] : [])
+                              }} />
+                </div>
         }
 
         return (
-            <div style={{
-
-            }}>
+            <div onClick={headerToRender.sorting ? header.column.getToggleSortingHandler() : undefined}
+                className={"melody-flex melody-justify-center"}>
                 {valueToDisplay}
+                {sortingComponent}
             </div>
         )
     }
@@ -417,7 +469,7 @@ export function MelodyTable(
                     break
                 case "object_text":
                     valueToDisplay = <div className={"melody-pl-1"}>
-                        {objectToUse && (objectToUse as any)[column.accessorKey]}
+                        {objectToUse && (objectToUse as any)[column.innerObjectAccessor as any]}
                     </div>
                     break
                 case "custom_text": //TODO rename to text_list
@@ -699,7 +751,7 @@ export function MelodyTable(
 
         columns.push.apply(columns, columnsToDisplay.map(column => ({
             accessorKey: column.accessorKey ?? "",
-            header: () => getCellHeaderFormatting(column.header),
+            header: ({ header }) => getCellHeaderFormatting(column.header, header),
             cell: ({ row, getValue }) => getCellValueFormatting(column, row, getValue),
             size: column.size,
             minSize: column.minSize,
@@ -798,7 +850,7 @@ export function MelodyTable(
             {dataQuery.data && dataQuery.data?.rows.length > 0 &&
               <table className={"melody-rounded-lg melody-border-separate melody-border-spacing-0 melody-w-full"}>
                 <thead>
-                {table.getHeaderGroups().map((headerGroup, index) => (
+                {table.getHeaderGroups().slice(0,1).map((headerGroup, index) => (
                     <tr key={headerGroup.id}
                         className={`melody-bg-primary-100 melody-border melody-border-gray-300 ${index === 0 ? 'melody-rounded-t-lg' : ''}`}>
 
