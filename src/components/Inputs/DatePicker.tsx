@@ -49,23 +49,26 @@ export const DatePicker = (props: DatePickerProps) => {
     })
     ButtonInput.displayName = 'ButtonInput'
 
+    //TODO nextjs error? Type error: 'ReactDatePicker' cannot be used as a JSX component.
+    const DatePickerComponent = ReactDatePicker as any
+
     return (
         <div className={"melody-w-full"}>
             {label && <Label {...{...label, htmlFor: 'datePicker'}} />}
-            <ReactDatePicker id={'datePicker'}
-                             selected={value}
-                             className={className}
-                             disabled={disabled}
-                             customInput={<ButtonInput />}
-                             onChange={(dates: any) => {
-                                 if (onChange) onChange(dates)
-                             }}
-                             withPortal={withPortal}
-                             selectsRange={selectRange}
-                             startDate={startDate}
-                             endDate={endDate}
-                             dateFormat={dateFormat}
-                             showTimeInput={showTimeInput} />
+            <DatePickerComponent id={'datePicker'}
+                                 selected={value}
+                                 className={className}
+                                 disabled={disabled}
+                                 customInput={<ButtonInput />}
+                                 onChange={(dates: any) => {
+                                     if (onChange) onChange(dates)
+                                 }}
+                                 withPortal={withPortal}
+                                 selectsRange={selectRange}
+                                 startDate={startDate}
+                                 endDate={endDate}
+                                 dateFormat={dateFormat}
+                                 showTimeInput={showTimeInput} />
         </div>
     )
 }
