@@ -17,7 +17,9 @@ export const IconTooltip = (props: IconTooltipProps) => {
     //TODO motion.div was causing tooltip to not work correctly (vanishing)
     return (
        <Tooltip message={message} direction={direction}>
-           <Icon icon={icon} additionalStyles={{color: fontColor, fontSize: fontSize, cursor: "pointer"}} />
+           <div className={"melody-flex melody-items-center melody-h-full"}>
+               <Icon icon={icon} additionalStyles={{color: fontColor, fontSize: fontSize, cursor: "pointer"}} />
+           </div>
        </Tooltip>
     );
 };

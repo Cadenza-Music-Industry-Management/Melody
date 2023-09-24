@@ -38,7 +38,8 @@ import {
     PromotionPageDto,
     ReleasePromotion,
     ReleaseSearch,
-    StorageFile, TaskOnBoard
+    StorageFile,
+    TaskOnBoard
 } from "@/constants/types";
 import { Fragment, ReactNode, useEffect, useMemo, useState } from "react";
 import { convertUTCDateToLocalDate, getBadgeStatusColor } from "@/utils/functions";
@@ -59,6 +60,7 @@ import Link from "next/link";
 import { Badge } from "@/components/Melody/src/components/Layouts/Badge";
 import { getBlurDataURLForNextImage } from "@/components/Melody/src/utils/functions";
 import { useMediaQuery } from "react-responsive";
+import { TextInput } from "@/components/Melody/src/components/Inputs/TextInput";
 
 type AcceptableCastTypes = IEventHistory | IRelease | IArtist | IApparel | IApparelOrder | IBlogPost | IPromoter | AccountingSource | Income | Expense | StorageFile | ArtistSearch | BlogSearch | ReleaseSearch | ApparelSearch | ReleasePromotion | PromotionPageDto | TaskOnBoard
 
@@ -76,7 +78,7 @@ export function MelodyTable(
         filterItems,
         dropdown,
         queryId
-    }: TableProps<AcceptableCastTypes>) {
+    }: TableProps<any>) { //TODO AcceptableCastTypes not working with next build anymore?
 
     //NOTE use this for items such as siteEnabled and userPermissions, but if used outside of dashboard, will show up as null hopefully
     //TODO issue with this is zustand is local to Cadenza, not to melody library so will need to install to storybook, hopefully not store though?
@@ -429,7 +431,7 @@ export function MelodyTable(
                 case "Storage Files":
                     return "melody-file-storage"
                 case "Accounting Sources":
-                    return "melody-source"
+                    return "melody-sources"
                 case "Accounting Income":
                     return "melody-income"
                 case "Accounting Expenses":
@@ -493,10 +495,20 @@ export function MelodyTable(
                         {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format((objectToUse as any)[column.accessorKey])}
                     </div>
                     break
+                case "text_input":
+                    valueToDisplay = <TextInput defaultValue={(objectToUse as any)[column.accessorKey]}
+                                                onBlur={value => {
+                                                  if (column.function?.linkedFunctions && column.function?.linkedFunctions?.length > 0) {
+                                                      column.function?.linkedFunctions?.[0](value, row.original.id)
+                                                  }
+                                                }}
+                                                size={"small"} />
+                    break
                 case "image":
                     const value = objectToUse && (objectToUse as any)[column.accessorKey]
+                    const visible = column.visibilityFunction ? column.visibilityFunction(row.original) : true
                     valueToDisplay = <motion.div whileHover={{scale: 0.98}} className={"melody-flex melody-justify-center"}>
-                        {value ?
+                        {value && visible ?
                             <Image className="melody-rounded melody-cursor-pointer"
                                    onClick={() => setLargeImageModalDetails({ open: true, contentName: value })}
                                    src={value}
@@ -504,7 +516,7 @@ export function MelodyTable(
                                    height={30}
                                    placeholder={"blur"}
                                    blurDataURL={getBlurDataURLForNextImage(30, 30)}
-                                //TODO generate alt text for image
+                                    //TODO generate alt text for image
                                    alt="" />
                             :
                             <div className={"melody-h-[30px] melody-w-[30px] melody-rounded melody-bg-gray-200 melody-flex melody-justify-center melody-items-center"}>
@@ -848,7 +860,7 @@ export function MelodyTable(
             {searchUI}
 
             {dataQuery.data && dataQuery.data?.rows.length > 0 &&
-              <table className={"melody-rounded-lg melody-border-separate melody-border-spacing-0 melody-w-full"}>
+              <table className={"melody-rounded-lg melody-border-separate melody-border-spacing-0 melody-w-full melody-shadow-main"}>
                 <thead>
                 {table.getHeaderGroups().slice(0,1).map((headerGroup, index) => (
                     <tr key={headerGroup.id}
@@ -954,7 +966,7 @@ export function MelodyTable(
 
             {dataQuery.data?.rows && dataQuery.data?.rows.length == 0 &&
               <div className={"melody-text-center"}>
-                <Label label={`No ${tableName} Found`} bold={true} size={'medium'} />
+                <Label label={`No ${tableName} Found`} bold={true} />
               </div>
             }
 

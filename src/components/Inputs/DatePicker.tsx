@@ -49,7 +49,7 @@ export const DatePicker = (props: DatePickerProps) => {
     })
     ButtonInput.displayName = 'ButtonInput'
 
-    //TODO nextjs error? Type error: 'ReactDatePicker' cannot be used as a JSX component.
+    //TODO nextjs vercel build error randomly? Type error: 'ReactDatePicker' cannot be used as a JSX component.
     const DatePickerComponent = ReactDatePicker as any
 
     return (

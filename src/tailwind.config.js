@@ -15,6 +15,9 @@ module.exports = {
   darkMode: ['class', '[data-mode="dark"]'],
   theme: {
     extend: {
+      boxShadow: {
+        'main': "rgba(12, 25, 44, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px",
+      },
       fontFamily: {
         // atami: ['Atami Regular', 'sans-serif'],
         // atamiBold: ['Atami Bold', 'sans-serif'],
