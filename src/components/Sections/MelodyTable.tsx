@@ -170,8 +170,7 @@ export function MelodyTable(
 
     const renderedColumns = useMemo(() => {
         return getColumnsToDisplay()
-    }, [columnsToDisplay])
-    // console.log(renderedColumns)
+    }, [columnsToDisplay, selectedColumnIDs])
 
     const table = useReactTable<AcceptableCastTypes>({
         data: dataQuery.data?.rows ?? [],
@@ -507,10 +506,11 @@ export function MelodyTable(
                 case "image":
                     const value = objectToUse && (objectToUse as any)[column.accessorKey]
                     const visible = column.visibilityFunction ? column.visibilityFunction(row.original) : true
+                    console.log(value)
                     valueToDisplay = <motion.div whileHover={{scale: 0.98}} className={"melody-flex melody-justify-center"}>
                         {value && visible ?
-                            <Image className="melody-rounded melody-cursor-pointer"
-                                   onClick={() => setLargeImageModalDetails({ open: true, contentName: value })}
+                            <Image className={`melody-rounded ${!disabled ? "melody-cursor-pointer" : ""}`}
+                                   onClick={() => !disabled ? setLargeImageModalDetails({ open: true, contentName: value }) : null}
                                    src={value}
                                    width={30}
                                    height={30}
@@ -812,25 +812,21 @@ export function MelodyTable(
 
                 <Button icon={{ icon: "paginationLeft" }}
                         color={'white'}
-                        size={"small"}
                         disabled={!table.getCanPreviousPage()}
                         onClick={() => table.setPageIndex(0)} />
 
                 <Button icon={{ icon: "caretLeft" }}
                         color={'white'}
-                        size={"small"}
                         disabled={!table.getCanPreviousPage()}
                         onClick={() => table.previousPage()} />
 
                 <Button icon={{ icon: "caretRight" }}
                         color={'white'}
-                        size={"small"}
                         disabled={!table.getCanNextPage()}
                         onClick={() => table.nextPage()} />
 
                 <Button icon={{ icon: "paginationRight" }}
                         color={'white'}
-                        size={"small"}
                         disabled={!table.getCanNextPage()}
                         onClick={() => table.setPageIndex(table.getPageCount() - 1)} />
             </div>

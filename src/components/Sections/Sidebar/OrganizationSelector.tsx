@@ -1,10 +1,10 @@
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Avatar } from "@/components/Melody/src/components/Layouts/Avatar";
 import Link from "next/link";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 import { Transition } from "@headlessui/react";
-import { useCloseOnClickAway } from "@/components/Melody/src/utils/hooks";
 import { Group, GroupList } from "@/constants/types";
+import { useClickOutside } from "@/components/Melody/src/utils/hooks";
 
 export const OrganizationSelector = (props: {
     organization: Group | null,
@@ -15,13 +15,13 @@ export const OrganizationSelector = (props: {
         organization,
         organizations
     } = props
-    
-    const [showOrgSelector, setShowOrgSelector] = useState(false)
-    const organizationSelectorRef = useCloseOnClickAway(toggleOpen)
 
-    //TODO this is not working with useCloseOnClickAway hook, if I add a log it sometimes works??????
-    function toggleOpen() {
-        if (showOrgSelector) setShowOrgSelector(!showOrgSelector)
+    const organizationSelectorRef = useRef<any>(null)
+    const [showOrgSelector, setShowOrgSelector] = useState(false)
+    useClickOutside(organizationSelectorRef, () => toggleOpen(showOrgSelector))
+
+    function toggleOpen(selectorOpen: boolean) {
+        if (selectorOpen) setShowOrgSelector(false)
     }
 
     function getGroupLayout(groupToDisplay: any, listItemIndex: number) {

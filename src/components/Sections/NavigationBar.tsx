@@ -35,7 +35,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
     }
 
     return (
-        <Disclosure as="nav" className={`${transparentBG ? "" : "melody-bg-gray-50 melody-border-b melody-border-primary-100"} ${fixed ? "melody-fixed melody-w-full" : "melody-relative"} melody-p-1 melody-z-10`}>
+        <Disclosure as="nav" className={`${transparentBG ? "" : "melody-bg-white melody-border-b melody-border-primary-100"} ${fixed ? "melody-fixed melody-w-full" : "melody-relative"} melody-p-1 melody-z-10`}>
             {({ open }: { open: boolean }) => (
                 <>
                     <div className="melody-mx-auto melody-px-2 sm:melody-px-4 lg:melody-px-8">

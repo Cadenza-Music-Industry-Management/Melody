@@ -164,6 +164,7 @@ export function useMelodySearch(
                 control={control}
                 render={({ field }) => <DatePicker label={{ label: `Search By ${item.title}`, bold: true }}
                                                    selectRange={true}
+                                                   buttonSize={"medium"}
                                                    onChange={dates => {
                                                        if (dates) {
                                                            setValue("startDate", (dates as Date[])[0])

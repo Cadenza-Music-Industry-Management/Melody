@@ -3,6 +3,7 @@ import "./ModalTemplate.css"
 import { Dialog, Transition } from '@headlessui/react'
 import {Button} from "../Inputs/Button";
 import {ModalProps} from "../types";
+import { Label } from "@/components/Melody/src/components/Layouts/Label";
 
 export const ModalTemplate = (props: ModalProps) => {
     const {
@@ -46,7 +47,10 @@ export const ModalTemplate = (props: ModalProps) => {
                             <Dialog.Panel className={`melody-modal-panel ${size}`}>
                                 {/*Header*/}
                                 <div className={'melody-modal-header'}>
-                                    <h2 className={`melody-text-lg melody-font-medium melody-mb-4 sm:melody-mb-0`}>{title}</h2>
+                                    <div className={"melody-mb-4 sm:melody-mb-0"}>
+                                        <Label label={title} mediumBold={true} size={"large"} />
+                                    </div>
+
                                     {/*TODO better variant for close button?*/}
                                     {setOpen &&
                                       <Button onClick={() => {

@@ -12,7 +12,7 @@ export interface ButtonProps {
     type?: 'button' | 'submit',
     color?: 'gray' | 'white' | 'secondary' | 'primary';
     variant?: 'solid' | 'outlined';
-    size?: 'small' | 'medium' | 'large';
+    size?: 'xsmall' | 'small' | 'medium' | 'large';
     label?: string,
     customLabel?: LabelProps, //TODO combine label and customLabel? (will need to refactor all current buttons)
     icon?: AddIconProps,
@@ -155,7 +155,8 @@ export interface DatePickerProps {
     startDate?: Date,
     endDate?: Date,
     dateFormat?: string,
-    disabled?: boolean
+    disabled?: boolean,
+    buttonSize?: 'xsmall' | 'small' | 'medium' | 'large';
 }
 
 //Modal
@@ -216,7 +217,8 @@ export interface BadgeProps {
     size?: 'xsmall' | 'small' | 'medium' | 'large',
     text?: string,
     indicator?: IndicatorProps,
-    icon?: IconProps
+    icon?: IconProps,
+    fullWidth?: boolean
 }
 
 //Breadcrumb

@@ -9,11 +9,12 @@ export const Badge = (props: BadgeProps) => {
         size = 'small',
         text,
         indicator,
-        icon
+        icon,
+        fullWidth = false
     } = props
 
     return (
-        <span className={`melody-badge ${variant} ${size}`}>
+        <span className={`melody-badge ${variant} ${size} ${fullWidth ? "fullWidth" : ""}`}>
             {indicator &&
                 <div className={"melody-mr-0.5"}>
                   <Indicator {...indicator} />
@@ -21,7 +22,9 @@ export const Badge = (props: BadgeProps) => {
             }
 
             {text}
-            {icon && <Icon {...icon} />}
+            {icon && <div className={"melody-pl-0.5"}>
+              <Icon {...icon} />
+            </div>}
         </span>
     );
 };

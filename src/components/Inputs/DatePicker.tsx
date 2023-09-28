@@ -19,7 +19,8 @@ export const DatePicker = (props: DatePickerProps) => {
         startDate, //TODO default?
         endDate, //TODO default?
         dateFormat,
-        disabled = false
+        disabled = false,
+        buttonSize = "large"
     } = props
 
     const ButtonInput = forwardRef<any>(({ onClick }: any, ref) => {
@@ -43,6 +44,7 @@ export const DatePicker = (props: DatePickerProps) => {
             <Button label={getButtonText()}
                     additionalClasses={"melody-w-full"}
                     color={"white"}
+                    size={buttonSize}
                     onClick={onClick}
                     ref={ref} />
         )

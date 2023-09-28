@@ -107,7 +107,7 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="melody-mt-8 melody-border-t melody-border-gray-300 melody-pt-8 melody-bg-white melody-px-2 melody-py-16 sm:melody-px-6 lg:melody-px-8">
+                <div className="melody-border-t melody-border-gray-300 melody-bg-white melody-px-2 melody-py-8 sm:melody-px-6 lg:melody-px-8">
                     <div className="sm:melody-flex sm:melody-justify-between">
                         <p className="melody-text-xs melody-text-gray-700">
                             &copy; 2023. Cadenza Music Industry Management LLC. All rights reserved.

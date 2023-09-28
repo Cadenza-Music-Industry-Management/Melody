@@ -1,6 +1,6 @@
 
 .melody-datepicker-button {
-    @apply melody-rounded melody-w-full melody-inline-flex melody-justify-start melody-px-3 melody-py-2 melody-text-sm melody-font-medium melody-text-gray-700 melody-bg-white melody-border melody-border-gray-300 melody-rounded melody-shadow-sm hover:melody-bg-gray-50 focus:melody-outline-none focus:melody-ring-2 focus:melody-ring-offset-0 focus:melody-ring-offset-secondary-100;
+    @apply melody-w-full melody-inline-flex melody-justify-start melody-px-3 melody-py-2 melody-text-sm melody-font-medium melody-text-gray-700 melody-bg-white melody-border melody-border-gray-300 melody-rounded melody-shadow-sm hover:melody-bg-gray-50 focus:melody-outline-none focus:melody-ring-2 focus:melody-ring-offset-0 focus:melody-ring-offset-secondary-100;
 }
 
 .react-datepicker-time__caption {

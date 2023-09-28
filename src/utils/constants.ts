@@ -32,7 +32,7 @@ export const GetCustomDropdownStyle = (size: string, showIcon?: boolean) => {
            borderRadius: '0.5rem',
            minHeight: size === 'small' ? '1.5rem' : size === 'large' ? '2.5rem' : '2rem',
            fontSize: size === 'small' ? '0.75rem' : size === 'large' ? '1.125rem' : '0.875rem',
-           borderColor: state.isFocused ? "#0C192C" : "rgba(12, 25, 44, 0.5)",
+           borderColor: state.isFocused ? "#0C192C" : "rgba(209 213 219, 1.0)",
            boxShadow: state.isFocused ? '0 0 0 2px rgba(51, 153, 255, 0.2)' : provided.boxShadow,
            '&:hover': {
                borderColor: '#0C192C',

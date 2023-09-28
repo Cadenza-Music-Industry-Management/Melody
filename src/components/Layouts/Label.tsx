@@ -16,7 +16,7 @@ export const Label = (props: LabelProps) => {
 
     return (
         <label htmlFor={htmlFor}
-               className={`melody-text-label ${bold ? 'melody-font-bold' : ''} ${mediumBold ? 'melody-font-medium' : ''} ${size} ${additionalClasses}`}
+               className={`melody-text-label ${bold ? 'melody-font-bold' : ''} ${mediumBold ? 'melody-font-medium' : ''} ${size} ${additionalClasses ? additionalClasses : ""}`}
                style={{
                    ...additionalStyles,
                    color: color

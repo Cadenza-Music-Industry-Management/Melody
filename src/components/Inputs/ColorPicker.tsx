@@ -1,9 +1,9 @@
 import "./ColorPicker.css"
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
 import { TextInput } from "@/components/Melody/src/components/Inputs/TextInput";
-import { useCloseOnClickAway } from "@/components/Melody/src/utils/hooks";
 import { ColorPickerProps } from "@/components/Melody/src/components/types";
+import { useClickOutside } from "@/components/Melody/src/utils/hooks";
 
 //TODO come up with better color selection
 const COLORS = [
@@ -35,7 +35,8 @@ export const ColorPicker = (props: ColorPickerProps) => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [selectedColorState, setSelectedColorState] = useState("#FFFFF")
-    //const colorPickerContainerRef = useCloseOnClickAway(() => setIsOpen(false))
+    const colorPickerContainerRef = useRef<any>(null)
+    useClickOutside(colorPickerContainerRef, () => setIsOpen(false))
 
     useMemo(() => {
         setSelectedColorState(value)
@@ -52,10 +53,8 @@ export const ColorPicker = (props: ColorPickerProps) => {
 
     //TODO move css to class
 
-    //TODO close on click away hook doesnt work and causes issues making it open when clicking anywhere else
-    //ref={colorPickerContainerRef}
     return (
-        <div className={"melody-relative"}>
+        <div className={"melody-relative"} ref={colorPickerContainerRef}>
 
             <div className={`${textAlignClass ?? "melody-text-center"} melody-h-full`}>
                 {/*TODO custom size for button from prop*/}

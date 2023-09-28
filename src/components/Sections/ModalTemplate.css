@@ -16,7 +16,7 @@
 }
 
 .melody-modal-header {
-    @apply melody-bg-gray-50 melody-border-b-2 melody-border-gray-600 melody-p-3 melody-rounded-t-lg melody-flex melody-flex-col sm:melody-flex-row melody-justify-between melody-items-center;
+    @apply melody-bg-white melody-border-b-2 melody-border-gray-600 melody-p-3 melody-rounded-t-lg melody-flex melody-flex-col sm:melody-flex-row melody-justify-between melody-items-center;
 }
 
 .melody-modal-contents {

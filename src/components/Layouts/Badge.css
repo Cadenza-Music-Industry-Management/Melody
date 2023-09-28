@@ -2,6 +2,10 @@
     @apply melody-font-medium melody-rounded melody-border melody-inline-flex melody-items-center melody-min-w-[5rem] melody-whitespace-nowrap melody-justify-center;
 }
 
+.melody-badge.fullWidth {
+    @apply melody-w-full;
+}
+
 .melody-badge.info {
     @apply melody-bg-blue-100 melody-text-blue-800 dark:melody-bg-blue-900 dark:melody-text-blue-300 melody-border-blue-400;
 }

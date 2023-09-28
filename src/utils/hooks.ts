@@ -1,24 +1,17 @@
-import { useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef } from "react";
 
-export function useCloseOnClickAway(
-    onClickAway: () => void
-) {
-
-    const ref = useRef<any>(null)
-
+export function useClickOutside(ref: any, onClickOutside: () => void) {
     useEffect(() => {
-        document.addEventListener('click', clickOutsideRef, false)
-        return () => document.removeEventListener('click', clickOutsideRef, false)
-    }, [])
 
-    //TODO this is being fired for every click, need to fix that
-    function clickOutsideRef(event: Event) {
-        if (ref.current && !ref.current.contains((event.target as Node))) {
-            onClickAway()
+        function handleClickOutside(event: { target: any; }) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                onClickOutside()
+            }
         }
-    }
 
-    return ref
+        document.addEventListener("mousedown", handleClickOutside)
+        return () => document.removeEventListener("mousedown", handleClickOutside)
+    }, [ref, onClickOutside])
 }
 
 //TODO not used right now

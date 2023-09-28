@@ -154,6 +154,7 @@ export const Sidebar = (props: SidebarProps) => {
                             icon={link.icon}
                             onClick={link.onClick ?? undefined}
                             size={'small'}
+                            disabled={link.disabled?.value ?? false}
                             variant={'outlined'}
                             color={'white'} />
                 </div>
