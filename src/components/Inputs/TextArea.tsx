@@ -11,7 +11,8 @@ export const TextArea = (props: TextInputProps) => {
         disabled = false,
         onChange,
         resize = true,
-        rows = 4
+        rows = 4,
+        error = false
     } = props
 
     return (
@@ -25,7 +26,7 @@ export const TextArea = (props: TextInputProps) => {
                           if (onChange) onChange(event.target.value)
                       })}
                       //id={`textArea`} //TODO need unique id
-                      className={`melody-text-input ${size} ${!resize ? "melody-resize-none" : ""}`} />
+                      className={`melody-text-input ${error ? "error" : ""} ${size} ${!resize ? "melody-resize-none" : ""}`} />
         </div>
     );
 };

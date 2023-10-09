@@ -52,7 +52,7 @@ import { Checkbox } from "@/components/Melody/src/components/Inputs/Checkbox";
 import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
 import { useDashboardState } from "@/zustand/stores";
 import { ButtonMenu } from "@/components/Melody/src/components/Inputs/ButtonMenu";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
 import { useMelodySearch } from "@/components/Melody/src/components/Sections/MelodySearch";
 import {motion} from "framer-motion";
@@ -120,10 +120,16 @@ export function MelodyTable(
         () => fetchData(fetchDataOptions),
         { enabled: getQueryIsEnabled() }
     )
+    const queryClient = useQueryClient()
 
     useEffect(() => {
         if (currentOrg) dataQuery.refetch()
     }, [filters, slideOverOpenName, currentOrg])
+
+    // const currentOrgId = currentOrg?.id
+    // useEffect(() => {
+    //     queryClient.invalidateQueries(queryId)
+    // }, [currentOrgId]);
 
     useEffect(() => {
         const dataIds = dataQuery.data?.rows.map(row => row.id)
@@ -506,7 +512,6 @@ export function MelodyTable(
                 case "image":
                     const value = objectToUse && (objectToUse as any)[column.accessorKey]
                     const visible = column.visibilityFunction ? column.visibilityFunction(row.original) : true
-                    console.log(value)
                     valueToDisplay = <motion.div whileHover={{scale: 0.98}} className={"melody-flex melody-justify-center"}>
                         {value && visible ?
                             <Image className={`melody-rounded ${!disabled ? "melody-cursor-pointer" : ""}`}

@@ -18,7 +18,8 @@ export const TextInput = (props: TextInputProps) => {
         trailerComponent,
         maxLength,
         max,
-        min
+        min,
+        error = false
     } = props
 
     const [stateValue, setStateValue] = useState<string | number>(value)
@@ -52,7 +53,7 @@ export const TextInput = (props: TextInputProps) => {
                        onBlur={(event => {
                            if (onBlur) onBlur(event.target.value)
                        })}
-                       className={`melody-text-input ${headerComponent ? (trailerComponent ? 'hasHeaderTrailer' : 'hasHeader') : (trailerComponent ? 'hasTrailer' : '')} ${size}`} />
+                       className={`melody-text-input ${error ? "error" : ""} ${headerComponent ? (trailerComponent ? 'hasHeaderTrailer' : 'hasHeader') : (trailerComponent ? 'hasTrailer' : '')} ${size}`} />
 
                 {trailerComponent &&
                     <span className="melody-inline-flex melody-items-center melody-rounded-r-lg melody-border melody-border-l-0 melody-border-gray-300 melody-bg-gray-50 melody-px-3 melody-text-sm melody-text-gray-500">

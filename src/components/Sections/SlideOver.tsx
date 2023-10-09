@@ -21,9 +21,9 @@ export const SlideOver = (props: {
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="melody-slide-over-dialog" onClose={(value) => {
+                //console.log("why")
                 //TODO this is being fired with modal template on close is being triggered?
                 setOpen(value)
-                console.log(value)
             }}>
                 <Transition.Child
                     as={Fragment}

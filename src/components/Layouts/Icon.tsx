@@ -6,6 +6,7 @@ import {
     faCheck,
     faCopy,
     faBars,
+    faLocationDot,
     faWindowMaximize,
     faMagnifyingGlass,
     faRotate,
@@ -138,6 +139,7 @@ export const Icon = (props: IconProps) => {
         code: faCode,
         blockCode: faFileCode,
         quoteLeft: faQuoteLeft,
+        locationDot: faLocationDot,
         //Social media
         tiktok: faTiktok,
         twitter: faTwitter,

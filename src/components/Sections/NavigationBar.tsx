@@ -18,7 +18,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
         navigation,
         userNavigation,
         user,
-        transparentBG,
+        homepage = false,
         fixed = false
     } = props
 
@@ -35,7 +35,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
     }
 
     return (
-        <Disclosure as="nav" className={`${transparentBG ? "" : "melody-bg-white melody-border-b melody-border-primary-100"} ${fixed ? "melody-fixed melody-w-full" : "melody-relative"} melody-p-1 melody-z-10`}>
+        <Disclosure as="nav" className={`${homepage ? "" : "melody-bg-white melody-shadow-main"} ${fixed ? "melody-fixed melody-w-full" : "melody-relative"} melody-p-1 melody-z-10`}>
             {({ open }: { open: boolean }) => (
                 <>
                     <div className="melody-mx-auto melody-px-2 sm:melody-px-4 lg:melody-px-8">
@@ -51,18 +51,20 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                 </Disclosure.Button>
                             </div>
 
+                            {!homepage &&
                             <div className="melody-flex melody-flex-1 melody-items-center melody-justify-center sm:melody-items-stretch sm:melody-justify-start">
                                 <div className="melody-flex melody-flex-shrink-0 melody-items-center">
                                    <Link href={"/"}>
                                        <Image width={150}
                                               height={150}
-                                              src={transparentBG ? cadenzaMIMWhiteLogo : cadenzaMIMBlackLogo}
+                                              src={cadenzaMIMBlackLogo}
                                               alt="Cadenza MIM" />
                                    </Link>
                                 </div>
                             </div>
+                            }
 
-                            <div className="melody-absolute melody-inset-y-0 melody-right-0 melody-flex melody-items-center melody-pr-2 sm:melody-static sm:melody-inset-auto sm:melody-ml-6 sm:melody-pr-0">
+                            <div className="melody-absolute melody-inset-y-0 melody-right-0 melody-flex melody-items-center melody-pr-2 sm:melody-static sm:melody-inset-auto sm:melody-pr-0 sm:melody-ml-auto">
 
                                 <div className="melody-hidden sm:melody-mr-6 sm:melody-block md:melody-flex md:melody-items-center">
                                     <div className="melody-flex melody-space-x-4">
@@ -71,7 +73,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                             <a key={item.name}
                                                href={item.href}
                                                className={classNames(
-                                                   checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${transparentBG ? "melody-text-white hover:melody-text-gray-600" : "melody-text-gray-600"} hover:melody-bg-gray-200`,
+                                                   checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${homepage ? "melody-text-white hover:melody-text-gray-600" : "melody-text-gray-600"} hover:melody-bg-gray-200`,
                                                    'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium'
                                                )}
                                                aria-current={checkURL(item.href ?? "no-href") ? 'page' : undefined}>

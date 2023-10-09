@@ -21,13 +21,13 @@ export const FormListLayout = (props: FormListLayoutProps) => {
                     {tooltip && <div className={"melody-pl-1"}><IconTooltip {...tooltip} /></div>}
                 </h3>
 
-                <p className="melody-mt-1 melody-max-w-2xl melody-text-sm melody-text-gray-500">
+                <p className="melody-max-w-2xl melody-text-sm">
                     {subLabel}
                 </p>
             </div>
 
             <div>
-                {items.map((item, index) => (
+                {items.filter(item => item.visible === undefined || item.visible).map((item, index) => (
                     <div key={index} className={`${index % 2 === 0 ? 'melody-bg-white' : 'melody-bg-gray-50'} melody-px-3 melody-py-4 sm:melody-grid sm:melody-grid-cols-3 sm:melody-gap-4 sm:melody-px-6`}>
                         <div className={"melody-items-center melody-flex"}>
                             {item.key}

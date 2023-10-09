@@ -86,9 +86,10 @@ export interface TextInputProps {
     headerComponent?: ReactNode;
     trailerComponent?: ReactNode;
     maxLength?: number,
-    max?: number,
-    min?: number,
-    resize?: boolean //For text area only,
+    error?: boolean,
+    max?: number, //For text input only
+    min?: number, //For text input only
+    resize?: boolean //For text area only
     rows?: number //For text area only
 }
 
@@ -174,7 +175,7 @@ export interface NavigationBarProps {
     user?: any, //TODO need to use User props from other types file
     navigation: NavBarItemProps[],
     userNavigation: NavBarItemProps[],
-    transparentBG?: boolean,
+    homepage?: boolean,
     fixed?: boolean
 }
 export interface NavBarItemProps {
@@ -254,7 +255,8 @@ export interface FormListLayoutProps {
     footerComponent?: ReactNode,
     items: {
         key: ReactNode,
-        value: ReactNode
+        value: ReactNode,
+        visible?: boolean
     }[],
     tooltip?: IconTooltipProps
 }

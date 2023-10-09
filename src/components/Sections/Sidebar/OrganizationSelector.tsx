@@ -31,7 +31,7 @@ export const OrganizationSelector = (props: {
             <div className={`melody-flex melody-items-center melody-p-1 ${listItemIndex !== -1 ? 'hover:melody-bg-gray-200 melody-cursor-pointer' : ''} ${(listItemIndex !== -1 && listItemIndex !== orgLength) ? 'melody-border-b melody-border-b-gray-400' : ''}`}>
                 <Avatar image={groupToDisplay?.icon} />
 
-                  <div className={"melody-p-1 melody-text-left"}>
+                  <div className={"melody-p-1 melody-pl-2 melody-text-left"}>
                     <p className={"melody-text-sm melody-font-bold"}>
                         {groupToDisplay?.name}
                     </p>

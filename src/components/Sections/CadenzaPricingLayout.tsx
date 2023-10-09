@@ -51,7 +51,7 @@ export const CadenzaPricingLayout = (props: {
             price: "$5/month",
             yearlyPrice: "$50/year (save $10)",
             items: [
-                { text: "Access to Accounting tool", subText: "(Available for free on Adagio tier until Dec. 31st)" },
+                { text: "Access to Accounting tool", subText: "(Available for free on Adagio tier until Dec. 31st, 2024)" },
                 { text: "Access to Event History tool", subText: "" },
                 { text: "Additional customization in Public Site Builder", subText: "(About Us & Contact Us pages)" },
                 { text: `Staff account limit raised to ${ContentCreationLimits.STAFF_MODERATO}`, subText: "" },
@@ -71,9 +71,9 @@ export const CadenzaPricingLayout = (props: {
             price: "$15/month",
             yearlyPrice: "$150/year (save $30)",
             items: [
-                { text: "Access to Music Promotion tool ", subText: "(Available for free on Adagio tier until Dec. 31st)" },
+                { text: "Access to Music Promotion tool ", subText: "(Available for free on Adagio tier until Dec. 31st, 2024)" },
                 { text: "Ability to export all data from each content type to excel document", subText: "" },
-                { text: "Ability to create data through CSV importing", subText: "(Available for free on Adagio tier until Dec. 31st)" },
+                { text: "Ability to create data through CSV importing", subText: "(Available for free on Adagio tier until Dec. 31st, 2024)" },
                 { text: "Additional customization in Public Site Builder", subText: "(Music Player page, Custom Footers, & Vivace-exclusive layouts)" },
                 { text: `Staff account limit raised to ${ContentCreationLimits.STAFF_VIVACE}`, subText: "" },
                 { text: `Release limit raised to ${ContentCreationLimits.RELEASE_VIVACE}`, subText: "" },
@@ -174,7 +174,7 @@ export const CadenzaPricingLayout = (props: {
                         *50% off for the entire year or 12 months of 50% off for a monthly subscription.
                     </p>
                     <p className={"melody-text-xs melody-font-medium"}>
-                        Valid until December 31st.
+                        Valid until December 31st, 2024.
                     </p>
                 </div>
             </div>

@@ -26,7 +26,7 @@ export const Avatar = (props: {
                        alt="Bordered avatar" />
                 :
                 <div className={`melody-avatar-preview ${rounded && 'melody-rounded-full'} ${ring && 'ring'}`}>
-                    <Icon icon={'melody-org'} />
+                    <Icon icon={'melody-org'} additionalClasses={"melody-text-black-0"} />
                 </div>
             }
         </div>
