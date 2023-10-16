@@ -1,8 +1,8 @@
 import "./Spinner.css"
 
 export const Spinner = (props: {
-    size?: string,
-    variant?: string
+    size?: 'small' | 'medium' | 'large' | 'xlarge',
+    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light'
 }) => {
     const {
         size = 'medium',
@@ -13,7 +13,6 @@ export const Spinner = (props: {
 
     //TODO <div role="status" class="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2">
     // use this for template to displaying {children} in center of parent div
-
 
     return (
         <div role="status" className={"melody-flex melody-justify-center"}>

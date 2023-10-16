@@ -2,17 +2,17 @@ import { ChangeEvent, CSSProperties, ForwardedRef, ReactNode } from "react";
 
 //Indicator
 export interface IndicatorProps {
-    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light';
-    size?: 'small' | 'medium' | 'large';
+    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light',
+    size?: 'small' | 'medium' | 'large',
     animated?: boolean
 }
 
 //Button
 export interface ButtonProps {
     type?: 'button' | 'submit',
-    color?: 'gray' | 'white' | 'secondary' | 'primary';
+    color?: 'gray' | 'white' | 'secondary' | 'primary',
     variant?: 'solid' | 'outlined';
-    size?: 'xsmall' | 'small' | 'medium' | 'large';
+    size?: 'xsmall' | 'small' | 'medium' | 'large',
     label?: string,
     customLabel?: LabelProps, //TODO combine label and customLabel? (will need to refactor all current buttons)
     icon?: AddIconProps,
@@ -95,7 +95,7 @@ export interface TextInputProps {
 
 //Label
 export interface LabelProps {
-    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
+    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge',
     label: string | number,
     htmlFor?: string,
     required?: boolean,
@@ -141,7 +141,7 @@ export interface ProgressBarProps {
     subTitle?: string,
     showSubTitle?: boolean,
     fullWidth?: boolean,
-    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light';
+    variant?: 'info' | 'alert' | 'success' | 'caution' | 'dark' | 'light'
 }
 
 //Date Picker

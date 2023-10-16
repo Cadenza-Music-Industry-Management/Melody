@@ -80,8 +80,10 @@ const RichTextEditor = (props: RichTextEditorProps) => {
                </div>
 
                <div className={"melody-p-1"}>
-                   <Badge text={`${editor?.storage.characterCount.characters()} / ${characterLimit}`}
-                          variant={editor?.storage.characterCount.characters() === characterLimit ? "alert" : editor?.storage.characterCount.characters() > (characterLimit * 0.75) ? "caution" : "success"} />
+                  <AbsoluteTooltip message={"This character total is calculated by the rendered HTML."}>
+                      <Badge text={`${editor?.storage.characterCount.characters()} / ${characterLimit}`}
+                             variant={editor?.storage.characterCount.characters() === characterLimit ? "alert" : editor?.storage.characterCount.characters() > (characterLimit * 0.75) ? "caution" : "success"} />
+                  </AbsoluteTooltip>
                </div>
            </div>
        </div>

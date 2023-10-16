@@ -254,6 +254,7 @@ export function useMelodySearch(
 
     return {
         filters: formValues,
-        searchUI: searchUI
+        searchUI: searchUI,
+        resetFilters: onRefresh
     }
 }

@@ -114,7 +114,7 @@ export const Sidebar = (props: SidebarProps) => {
                         {childrenComponents}
                     </SubMenu>
                 } else {
-                    return <MenuItem disabled={link.disabled?.value} icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : checkPathnameForSidebar(pathname, organization?.groupUniqueId, link.href ?? "")} className={rootLevel ? "" : ""}>
+                    return <MenuItem key={index} disabled={link.disabled?.value} icon={icon} component={component} active={(link.selected !== undefined || link.onClick) ? (link.selected ?? false) : checkPathnameForSidebar(pathname, organization?.groupUniqueId, link.href ?? "")} className={rootLevel ? "" : ""}>
                         {/*TODO disabled correctly but cursor not passed through so tooltip doesn't work yet*/}
                         {!link.disabled || !link.disabled?.value ?
                             <div className={"melody-flex melody-items-center"}>

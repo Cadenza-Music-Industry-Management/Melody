@@ -6,7 +6,7 @@ import { Label } from "@/components/Melody/src/components/Layouts/Label";
 
 export function Footer() {
     return (
-        <footer aria-label="Site Footer" className="melody-bg-primary-100 melody-border-primary-100 melody-border-t melody-border-primary-100 melody-relative melody-overflow-hidden">
+        <footer aria-label="Site Footer" className="melody-bg-primary-100 melody-border-primary-100 melody-border-t melody-relative melody-overflow-hidden">
 
             {/*<div className={"melody-absolute melody-left-0 melody-right-0 melody-top-0 melody-z-[2]"}>*/}
             {/*    /!*Note: Generated from https://getwaves.io/ and expanded with https://www.photopea.com/*!/*/}
@@ -23,7 +23,7 @@ export function Footer() {
 
             <div className="melody-mx-auto melody-z-[3] melody-relative melody-text-white">
                 <div className="lg:melody-flex lg:melody-gap-8 melody-justify-center melody-px-2 melody-py-16 sm:melody-px-6 lg:melody-px-8">
-                    <div className="melody-mt-8 melody-grid melody-grid-cols-3 melody-gap-36 lg:melody-mt-0 lg:melody-grid-cols-3 lg:melody-gap-y-16">
+                    <div className="melody-mt-8 melody-grid melody-grid-cols-3 melody-gap-x-36 melody-gap-y-12 lg:melody-mt-0 lg:melody-grid-cols-3 lg:melody-gap-y-16">
                         <div className="melody-col-span-2 sm:melody-col-span-1">
                             <Label label={"Overview"} bold={true} size={"large"} color={"white"} />
 

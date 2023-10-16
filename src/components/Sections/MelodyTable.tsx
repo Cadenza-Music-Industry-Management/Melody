@@ -100,7 +100,8 @@ export function MelodyTable(
 
     const {
         filters,
-        searchUI
+        searchUI,
+        resetFilters
     } = useMelodySearch({
         items: filterItems ?? [],
         onRefreshClicked: () => setSelectedColumnIDs([]),
@@ -126,10 +127,11 @@ export function MelodyTable(
         if (currentOrg) dataQuery.refetch()
     }, [filters, slideOverOpenName, currentOrg])
 
-    // const currentOrgId = currentOrg?.id
-    // useEffect(() => {
-    //     queryClient.invalidateQueries(queryId)
-    // }, [currentOrgId]);
+    //If query data is changed (like staff "type" for which table we are looking at), reset our filters
+    const queryData = queryClient.getQueryData(queryId)
+    useEffect(() => {
+        resetFilters()
+    }, [queryData]);
 
     useEffect(() => {
         const dataIds = dataQuery.data?.rows.map(row => row.id)
