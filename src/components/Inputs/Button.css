@@ -32,12 +32,17 @@
 }
 
 .melody-button-white-outlined:disabled {
-    @apply melody-bg-gray-50/25 melody-border-2 melody-border-white hover:melody-text-white;
+    @apply melody-bg-gray-50/25 melody-border-2 melody-border-white;
 }
 
 .melody-button-gray-solid {
     @apply melody-bg-gray-500 hover:melody-bg-gray-600 melody-text-white;
 }
+
+.melody-button-gray-solid:disabled {
+    @apply melody-bg-gray-700 melody-border-2 melody-border-gray-700 melody-text-gray-400;
+}
+
 
 .melody-button-gray-outlined {
     @apply melody-bg-gray-50 melody-border-2 melody-border-gray-500 hover:melody-bg-gray-500 hover:melody-text-white;

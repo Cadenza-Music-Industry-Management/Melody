@@ -72,7 +72,7 @@ const RichTextEditor = (props: RichTextEditorProps) => {
            {label && <Label {...label} />}
 
            <div className={`melody-border melody-border-gray-200 melody-rounded ${className ?? ''}`}>
-               <MenuBar editor={editor} toolbar={toolbar} />
+               <MenuBar editor={editor} toolbar={toolbar} disabled={disabled} />
 
                <div className={`${readOnly ? 'melody-bg-gray-100' : 'melody-bg-white'} melody-border-b melody-border-b-gray-200 melody-p-4 ${disabled ? 'melody-opacity-50 melody-pointer-events-none' : ''}`}
                     onBlur={sendEditorContents}>
@@ -94,10 +94,11 @@ export default RichTextEditor;
 
 function MenuBar(props: {
     editor: Editor | null,
-    toolbar: boolean
+    toolbar: boolean,
+    disabled: boolean
 })  {
 
-    const { editor, toolbar } = props
+    const { editor, toolbar, disabled } = props
 
     if (!editor || !toolbar) {
         return null
@@ -133,6 +134,7 @@ function MenuBar(props: {
             <div className="melody-flex melody-space-x-2 melody-space-y-2 melody-flex-wrap">
                 <div className={"melody-flex melody-items-end"}>
                     {wrapTooltipComponent("Text Sizing", <Dropdown size={"small"}
+                                                                   isDisabled={disabled}
                                                                    onChange={value => changeTextSizing(Number((value as DropdownOption).value))}
                                                                    options={[
                                                                        { label: "Paragraph", value: "0" },
@@ -149,39 +151,42 @@ function MenuBar(props: {
                                                       size={"small"}
                                                       color={editor.isActive('bold') ? "primary": "white"}
                                                       onClick={() => editor.chain().focus().toggleBold().run()}
-                                                      disabled={!editor.can().chain().focus().toggleBold().run()} />)}
+                                                      disabled={!editor.can().chain().focus().toggleBold().run() || disabled} />)}
 
                 {wrapTooltipComponent("Italic", <Button customLabel={{ label: "I", bold: true, additionalClasses: "melody-italic", color: editor.isActive('italic') ? "white" : "black" }}
                                                         size={"small"}
                                                          color={editor.isActive('italic') ? "primary": "white"}
                                                          onClick={() => editor.chain().focus().toggleItalic().run()}
-                                                         disabled={!editor.can().chain().focus().toggleItalic().run()} />)}
+                                                         disabled={!editor.can().chain().focus().toggleItalic().run() || disabled} />)}
 
                 {wrapTooltipComponent("Strikethrough", <Button customLabel={{ label: "S", additionalClasses: "melody-line-through", bold: true, color: editor.isActive('strike') ? "white" : "black" }}
                                                                size={"small"}
                                                                color={editor.isActive('strike') ? "primary": "white"}
                                                                onClick={() => editor.chain().focus().toggleStrike().run()}
-                                                               disabled={!editor.can().chain().focus().toggleStrike().run()} />)}
+                                                               disabled={!editor.can().chain().focus().toggleStrike().run() || disabled} />)}
 
                 {wrapTooltipComponent("Underline", <Button customLabel={{ label: "U", bold: true, additionalClasses: "melody-underline melody-underline-offset-2", color: editor.isActive('underline') ? "white" : "black" }}
                                                            size={"small"}
                                                            color={editor.isActive('underline') ? "primary": "white"}
                                                            onClick={() => editor.chain().focus().toggleUnderline().run()}
-                                                           disabled={!editor.can().chain().focus().toggleUnderline().run()} />)}
+                                                           disabled={!editor.can().chain().focus().toggleUnderline().run() || disabled} />)}
 
                 {/*TODO these next two indent correctly but don't display list styling like bullet or number*/}
                 {wrapTooltipComponent("Bullet List", <Button icon={{ icon: "bulletList", additionalClasses: editor.isActive('bulletList') ? "melody-text-white" : "melody-text-black-0" }}
                                                              size={"small"}
+                                                             disabled={disabled}
                                                              color={editor.isActive('bulletList') ? "primary": "white"}
                                                              onClick={() => editor.chain().focus().toggleBulletList().run()} />)}
 
                 {wrapTooltipComponent("Number List", <Button icon={{ icon: "numberList", additionalClasses: editor.isActive('orderedList') ? "melody-text-white" : "melody-text-black-0" }}
                                                              size={"small"}
+                                                             disabled={disabled}
                                                              color={editor.isActive('orderedList') ? "primary": "white"}
                                                              onClick={() => editor.chain().focus().toggleOrderedList().run()} />)}
 
                 {wrapTooltipComponent("Blockquote", <Button icon={{ icon: "quoteLeft", additionalClasses: editor.isActive('blockquote') ? "melody-text-white" : "melody-text-black-0" }}
                                                             size={"small"}
+                                                            disabled={disabled}
                                                             color={editor.isActive('blockquote') ? "primary": "white"}
                                                             onClick={() => editor.chain().focus().toggleBlockquote().run()} />)}
 
@@ -189,34 +194,36 @@ function MenuBar(props: {
                                                       size={"small"}
                                                       color={editor.isActive('code') ? "primary": "white"}
                                                       onClick={() => editor.chain().focus().toggleCode().run()}
-                                                      disabled={!editor.can().chain().focus().toggleCode().run()} />)}
+                                                      disabled={!editor.can().chain().focus().toggleCode().run() || disabled} />)}
 
                 {wrapTooltipComponent("Block Code", <Button icon={{ icon: "blockCode", additionalClasses: editor.isActive('codeBlock') ? "melody-text-white" : "melody-text-black-0" }}
                                                             size={"small"}
                                                             color={editor.isActive('codeBlock') ? "primary": "white"}
                                                             onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-                                                            disabled={!editor.can().chain().focus().toggleCodeBlock().run()} />)}
+                                                            disabled={!editor.can().chain().focus().toggleCodeBlock().run() || disabled} />)}
 
                 {wrapTooltipComponent("Line", <Button customLabel={{ label: "━", bold: true, color: "black" }}
-                                                                 size={"small"}
-                                                                 color={"white"}
-                                                                 onClick={() => editor.chain().focus().setHorizontalRule().run()} />)}
+                                                      size={"small"}
+                                                      color={"white"}
+                                                      disabled={disabled}
+                                                      onClick={() => editor.chain().focus().setHorizontalRule().run()} />)}
 
                 {wrapTooltipComponent("Text Color", <ColorPicker value={editor.getAttributes('textStyle').color ?? "#000000"}
                                                                  buttonColor={"white"}
+                                                                 disabled={disabled}
                                                                  onChange={color => editor.chain().focus().setColor(color).run()} />)}
 
                 {wrapTooltipComponent("Undo", <Button icon={{ icon: "rotateArrowLeft" }}
                                                       size={"small"}
                                                       color={"white"}
                                                       onClick={() => editor.chain().focus().undo().run()}
-                                                      disabled={!editor.can().chain().focus().undo().run()} />)}
+                                                      disabled={!editor.can().chain().focus().undo().run()|| disabled} />)}
 
                 {wrapTooltipComponent("Redo", <Button icon={{ icon: "rotateArrowRight" }}
                                                       size={"small"}
                                                       color={"white"}
                                                       onClick={() => editor.chain().focus().redo().run()}
-                                                      disabled={!editor.can().chain().focus().redo().run()} />)}
+                                                      disabled={!editor.can().chain().focus().redo().run()|| disabled} />)}
             </div>
 
         </div>

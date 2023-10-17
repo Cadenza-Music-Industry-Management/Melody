@@ -1,3 +1,8 @@
+.melody-file-upload.disabled,
+.melody-file-upload.disabled {
+    @apply melody-cursor-not-allowed melody-text-gray-400 melody-bg-gray-200;
+}
+
 .melody-file-upload::-webkit-file-upload-button,
 .melody-file-upload::file-selector-button {
     /*@apply melody-text-white melody-bg-gray-700 hover:melody-bg-gray-600 melody-font-medium melody-text-sm melody-cursor-pointer melody-border-0 melody-py-2.5 melody-pl-8 melody-pr-4;*/

@@ -44,6 +44,7 @@ export const DatePicker = (props: DatePickerProps) => {
             <Button label={getButtonText()}
                     additionalClasses={"melody-w-full"}
                     color={"white"}
+                    disabled={disabled}
                     size={buttonSize}
                     onClick={onClick}
                     ref={ref} />
