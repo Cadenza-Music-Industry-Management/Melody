@@ -14,7 +14,7 @@ export const FormListLayout = (props: FormListLayoutProps) => {
     } = props
 
     return (
-        <div className="melody-overflow-hidden melody-bg-white melody-shadow melody-rounded-lg">
+        <div className="melody-overflow-hidden melody-bg-white melody-shadow-main melody-rounded-lg">
             <div className="melody-px-4 melody-py-5 sm:melody-px-6 melody-border-b melody-border-gray-300">
                 <h3 className="melody-flex melody-gap-x-0.5 melody-text-lg melody-font-medium melody-leading-6 melody-text-gray-900">
                     {label}

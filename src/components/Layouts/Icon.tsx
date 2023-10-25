@@ -85,7 +85,7 @@ export const Icon = (props: IconProps) => {
 
     const faIconMap: any = {
         plus: faPlus,
-        solidX: faXmark, //TODO need solid naming?
+        solidX: faXmark,
         solidCheck: faCheck,
         solidBars: faBars,
         copy: faCopy,
