@@ -483,7 +483,8 @@ export function MelodyTable(
                     break
                 case "custom_text": //TODO rename to text_list
                     valueToDisplay = <div className={"melody-pl-1"}>
-                        {column.customTextFields?.map(customField => `${(objectToUse as any)[customField]}`)}
+                        {/*Note: Purposely adding a space after field*/}
+                        {column.customTextFields?.map(customField => `${(objectToUse as any)[customField]} `)}
                     </div>
                     break
                 case "url":

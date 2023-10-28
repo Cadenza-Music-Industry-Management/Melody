@@ -63,7 +63,7 @@ export const OrganizationSelector = (props: {
     return (
         <>
             <div ref={organizationSelectorRef}
-                 className={`melody-flex melody-bg-secondary-100 melody-text-white melody-rounded-lg melody-shadow melody-items-center melody-cursor-pointer`}
+                 className={`melody-flex melody-bg-secondary-100 melody-text-white melody-rounded-lg melody-shadow-main melody-items-center melody-cursor-pointer`}
                  onClick={() => setShowOrgSelector(!showOrgSelector)}>
                 {getGroupLayout(organization, -1)}
 
@@ -84,7 +84,7 @@ export const OrganizationSelector = (props: {
                 leave="melody-transition melody-ease-in melody-duration-75"
                 leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
                 leaveTo="melody-transform melody-opacity-0 melody-scale-95">
-                <div className={"melody-absolute melody-z-10 melody-bg-white melody-border melody-border-gray-300 melody-w-[275px] melody-rounded-lg melody-shadow melody-mt-1 melody-ml-1"}>
+                <div className={"melody-absolute melody-z-10 melody-bg-white melody-border melody-border-gray-300 melody-w-[275px] melody-rounded-lg melody-shadow-main melody-mt-1 melody-ml-1"}>
                     {organizations?.map((groupToSelect, index) => getGroupLayout(groupToSelect, index))}
 
                     {organizations?.length === 0 &&

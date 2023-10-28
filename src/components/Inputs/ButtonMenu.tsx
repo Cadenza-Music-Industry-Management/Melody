@@ -54,7 +54,7 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
                         leave="melody-transition melody-ease-in melody-duration-75"
                         leaveFrom="melody-transform melody-opacity-100 melody-scale-100"
                         leaveTo="melody-transform melody-opacity-0 melody-scale-95">
-                        <Menu.Items className={`melody-absolute ${menuDirection === "right" ? "melody-right-0" : "melody-left-0"} melody-z-10 melody-mt-2 melody-w-48 melody-origin-top-right melody-rounded-lg melody-bg-white melody-py-1 melody-shadow-lg melody-ring-1 melody-ring-black-0 melody-ring-opacity-5 focus:melody-outline-none`}>
+                        <Menu.Items className={`melody-absolute ${menuDirection === "right" ? "melody-right-0" : "melody-left-0"} melody-z-10 melody-mt-2 melody-w-48 melody-origin-top-right melody-rounded-lg melody-bg-white melody-py-1 melody-shadow-main melody-ring-1 melody-ring-black-0 melody-ring-opacity-5 focus:melody-outline-none`}>
 
                             {dropdownHeaderItem}
 

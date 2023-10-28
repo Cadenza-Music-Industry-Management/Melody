@@ -74,7 +74,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
 
             <div className={`${
                 isOpen ? "melody-block" : "melody-hidden"
-            } melody-absolute melody-z-10 melody-mt-2 melody-w-[300px] melody-justify-center melody-rounded-md melody-shadow-lg melody-border-2 melody-border-primary-100 melody-bg-white`}>
+            } melody-absolute melody-z-10 melody-mt-2 melody-w-[300px] melody-justify-center melody-rounded-md melody-shadow-main melody-border-2 melody-border-primary-100 melody-bg-white`}>
                 <div className="melody-flex melody-flex-wrap melody-p-1">
                     {COLORS.map((color) => (
                         <div key={color}

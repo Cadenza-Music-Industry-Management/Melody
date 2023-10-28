@@ -1,5 +1,5 @@
 .melody-text-input {
-    @apply melody-flex melody-w-full melody-text-sm melody-text-gray-900 melody-bg-gray-50 melody-rounded-lg melody-border melody-border-gray-300 melody-shadow focus:melody-ring-blue-500 focus:melody-border-blue-500 dark:melody-bg-gray-700 dark:melody-border-gray-600 dark:melody-placeholder-gray-400 dark:melody-text-white dark:focus:melody-ring-blue-500 dark:focus:melody-border-blue-500;
+    @apply melody-flex melody-w-full melody-text-sm melody-text-gray-900 melody-bg-gray-50 melody-rounded-lg melody-border melody-border-gray-300 melody-shadow-main focus:melody-ring-blue-500 focus:melody-border-blue-500 dark:melody-bg-gray-700 dark:melody-border-gray-600 dark:melody-placeholder-gray-400 dark:melody-text-white dark:focus:melody-ring-blue-500 dark:focus:melody-border-blue-500;
 }
 
 .melody-text-input.error {

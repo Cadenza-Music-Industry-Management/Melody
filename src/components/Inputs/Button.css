@@ -1,5 +1,5 @@
 .melody-button {
-    @apply melody-inline-flex melody-items-center melody-justify-center melody-font-bold melody-rounded-md melody-shadow melody-transition-colors melody-duration-200 melody-ease-in-out;
+    @apply melody-inline-flex melody-items-center melody-justify-center melody-font-bold melody-rounded-md melody-shadow-main melody-transition-colors melody-duration-200 melody-ease-in-out;
 }
 /*TODO removed melody-h-full as causing many issues, what styling did I just break everywhere?*/
 
@@ -32,7 +32,7 @@
 }
 
 .melody-button-white-outlined:disabled {
-    @apply melody-bg-gray-50/25 melody-border-2 melody-border-white;
+    @apply melody-bg-gray-50/25 melody-border-2 melody-border-white hover:melody-text-gray-200 hover:melody-bg-gray-50/10;
 }
 
 .melody-button-gray-solid {

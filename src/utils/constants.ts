@@ -33,7 +33,8 @@ export const GetCustomDropdownStyle = (size: string, showIcon?: boolean) => {
            minHeight: size === 'small' ? '1.5rem' : size === 'large' ? '2.5rem' : '2rem',
            fontSize: size === 'small' ? '0.75rem' : size === 'large' ? '1.125rem' : '0.875rem',
            borderColor: state.isFocused ? "#0C192C" : "rgb(209 213 219)",
-           boxShadow: state.isFocused ? '0 0 0 2px rgba(51, 153, 255, 0.2)' : provided.boxShadow,
+           borderWidth: state.isFocused ?  2 : 1,
+           boxShadow: "rgba(12, 25, 44, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px",
            '&:hover': {
                borderColor: '#0C192C',
            },
@@ -47,6 +48,7 @@ export const GetCustomDropdownStyle = (size: string, showIcon?: boolean) => {
        }),
        option: (provided: any, state: { isFocused: boolean, isSelected: boolean }) => ({
            ...provided,
+           cursor: "pointer",
            color: state.isFocused || state.isSelected ? "white" : "black",
            background: state.isFocused ? 'rgba(12, 25, 44, 0.7)' : state.isSelected ? 'rgba(12, 25, 44, 1)' : undefined,
            '&:hover': {

@@ -31,7 +31,7 @@ export const Switch = (props: {
                 <span className="melody-sr-only" />
 
                 <span aria-hidden="true"
-                      className={`${value ? 'melody-translate-x-9' : 'melody-translate-x-0'} melody-pointer-events-none melody-inline-block melody-h-[34px] melody-w-[34px] melody-transform melody-rounded-full melody-bg-white melody-shadow-lg melody-ring-0 melody-transition melody-duration-200 melody-ease-in-out`} />
+                      className={`${value ? 'melody-translate-x-9' : 'melody-translate-x-0'} melody-pointer-events-none melody-inline-block melody-h-[34px] melody-w-[34px] melody-transform melody-rounded-full melody-bg-white melody-shadow-main melody-ring-0 melody-transition melody-duration-200 melody-ease-in-out`} />
 
             </HeadlessSwitch>
         </div>

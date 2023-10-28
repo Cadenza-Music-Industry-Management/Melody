@@ -149,24 +149,28 @@ function MenuBar(props: {
 
                 {wrapTooltipComponent("Bold", <Button customLabel={{ label: "B", bold: true, color: editor.isActive('bold') ? "white" : "black" }}
                                                       size={"small"}
+                                                      additionalClasses={"melody-h-full"}
                                                       color={editor.isActive('bold') ? "primary": "white"}
                                                       onClick={() => editor.chain().focus().toggleBold().run()}
                                                       disabled={!editor.can().chain().focus().toggleBold().run() || disabled} />)}
 
                 {wrapTooltipComponent("Italic", <Button customLabel={{ label: "I", bold: true, additionalClasses: "melody-italic", color: editor.isActive('italic') ? "white" : "black" }}
                                                         size={"small"}
-                                                         color={editor.isActive('italic') ? "primary": "white"}
-                                                         onClick={() => editor.chain().focus().toggleItalic().run()}
-                                                         disabled={!editor.can().chain().focus().toggleItalic().run() || disabled} />)}
+                                                        additionalClasses={"melody-h-full"}
+                                                        color={editor.isActive('italic') ? "primary": "white"}
+                                                        onClick={() => editor.chain().focus().toggleItalic().run()}
+                                                        disabled={!editor.can().chain().focus().toggleItalic().run() || disabled} />)}
 
                 {wrapTooltipComponent("Strikethrough", <Button customLabel={{ label: "S", additionalClasses: "melody-line-through", bold: true, color: editor.isActive('strike') ? "white" : "black" }}
                                                                size={"small"}
+                                                               additionalClasses={"melody-h-full"}
                                                                color={editor.isActive('strike') ? "primary": "white"}
                                                                onClick={() => editor.chain().focus().toggleStrike().run()}
                                                                disabled={!editor.can().chain().focus().toggleStrike().run() || disabled} />)}
 
                 {wrapTooltipComponent("Underline", <Button customLabel={{ label: "U", bold: true, additionalClasses: "melody-underline melody-underline-offset-2", color: editor.isActive('underline') ? "white" : "black" }}
                                                            size={"small"}
+                                                           additionalClasses={"melody-h-full"}
                                                            color={editor.isActive('underline') ? "primary": "white"}
                                                            onClick={() => editor.chain().focus().toggleUnderline().run()}
                                                            disabled={!editor.can().chain().focus().toggleUnderline().run() || disabled} />)}
@@ -174,36 +178,42 @@ function MenuBar(props: {
                 {/*TODO these next two indent correctly but don't display list styling like bullet or number*/}
                 {wrapTooltipComponent("Bullet List", <Button icon={{ icon: "bulletList", additionalClasses: editor.isActive('bulletList') ? "melody-text-white" : "melody-text-black-0" }}
                                                              size={"small"}
+                                                             additionalClasses={"melody-h-full"}
                                                              disabled={disabled}
                                                              color={editor.isActive('bulletList') ? "primary": "white"}
                                                              onClick={() => editor.chain().focus().toggleBulletList().run()} />)}
 
                 {wrapTooltipComponent("Number List", <Button icon={{ icon: "numberList", additionalClasses: editor.isActive('orderedList') ? "melody-text-white" : "melody-text-black-0" }}
                                                              size={"small"}
+                                                             additionalClasses={"melody-h-full"}
                                                              disabled={disabled}
                                                              color={editor.isActive('orderedList') ? "primary": "white"}
                                                              onClick={() => editor.chain().focus().toggleOrderedList().run()} />)}
 
                 {wrapTooltipComponent("Blockquote", <Button icon={{ icon: "quoteLeft", additionalClasses: editor.isActive('blockquote') ? "melody-text-white" : "melody-text-black-0" }}
                                                             size={"small"}
+                                                            additionalClasses={"melody-h-full"}
                                                             disabled={disabled}
                                                             color={editor.isActive('blockquote') ? "primary": "white"}
                                                             onClick={() => editor.chain().focus().toggleBlockquote().run()} />)}
 
                 {wrapTooltipComponent("Code", <Button icon={{ icon: "code", additionalClasses: editor.isActive('code') ? "melody-text-white" : "melody-text-black-0" }}
                                                       size={"small"}
+                                                      additionalClasses={"melody-h-full"}
                                                       color={editor.isActive('code') ? "primary": "white"}
                                                       onClick={() => editor.chain().focus().toggleCode().run()}
                                                       disabled={!editor.can().chain().focus().toggleCode().run() || disabled} />)}
 
                 {wrapTooltipComponent("Block Code", <Button icon={{ icon: "blockCode", additionalClasses: editor.isActive('codeBlock') ? "melody-text-white" : "melody-text-black-0" }}
                                                             size={"small"}
+                                                            additionalClasses={"melody-h-full"}
                                                             color={editor.isActive('codeBlock') ? "primary": "white"}
                                                             onClick={() => editor.chain().focus().toggleCodeBlock().run()}
                                                             disabled={!editor.can().chain().focus().toggleCodeBlock().run() || disabled} />)}
 
                 {wrapTooltipComponent("Line", <Button customLabel={{ label: "━", bold: true, color: "black" }}
                                                       size={"small"}
+                                                      additionalClasses={"melody-h-full"}
                                                       color={"white"}
                                                       disabled={disabled}
                                                       onClick={() => editor.chain().focus().setHorizontalRule().run()} />)}
@@ -215,12 +225,14 @@ function MenuBar(props: {
 
                 {wrapTooltipComponent("Undo", <Button icon={{ icon: "rotateArrowLeft" }}
                                                       size={"small"}
+                                                      additionalClasses={"melody-h-full"}
                                                       color={"white"}
                                                       onClick={() => editor.chain().focus().undo().run()}
                                                       disabled={!editor.can().chain().focus().undo().run()|| disabled} />)}
 
                 {wrapTooltipComponent("Redo", <Button icon={{ icon: "rotateArrowRight" }}
                                                       size={"small"}
+                                                      additionalClasses={"melody-h-full"}
                                                       color={"white"}
                                                       onClick={() => editor.chain().focus().redo().run()}
                                                       disabled={!editor.can().chain().focus().redo().run()|| disabled} />)}
