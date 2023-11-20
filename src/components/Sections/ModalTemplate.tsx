@@ -4,7 +4,6 @@ import { Dialog, Transition } from '@headlessui/react'
 import {Button} from "../Inputs/Button";
 import {ModalProps} from "../types";
 import { Label } from "@/components/Melody/src/components/Layouts/Label";
-
 export const ModalTemplate = (props: ModalProps) => {
     const {
         title,

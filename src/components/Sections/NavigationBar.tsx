@@ -1,7 +1,5 @@
 import { Disclosure } from '@headlessui/react'
 import './NavigationBar.css';
-import cadenzaMIMBlackLogo from '../../assets/black_logo_mim.png'
-import cadenzaMIMWhiteLogo from '../../assets/white_logo_mim.png'
 import {Icon} from "../Layouts/Icon";
 import {NavigationBarProps} from "../types";
 import {Label} from "../Layouts/Label";
@@ -19,7 +17,8 @@ export const NavigationBar = (props: NavigationBarProps) => {
         userNavigation,
         user,
         homepage = false,
-        fixed = false
+        fixed = false,
+        icon
     } = props
 
     const pathname = usePathname()
@@ -51,14 +50,14 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                 </Disclosure.Button>
                             </div>
 
-                            {!homepage &&
+                            {!homepage && icon &&
                             <div className="melody-flex melody-flex-1 melody-items-center melody-justify-center sm:melody-items-stretch sm:melody-justify-start">
                                 <div className="melody-flex melody-flex-shrink-0 melody-items-center">
                                    <Link href={"/"}>
                                        <Image width={150}
                                               height={150}
-                                              src={cadenzaMIMBlackLogo}
-                                              alt="Cadenza MIM" />
+                                              src={icon}
+                                              alt="Navigation Bar Logo" />
                                    </Link>
                                 </div>
                             </div>

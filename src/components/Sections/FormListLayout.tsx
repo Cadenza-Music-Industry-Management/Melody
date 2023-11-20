@@ -1,6 +1,5 @@
 import "./FormListLayout.css"
 import { FormListLayoutProps } from "@/components/Melody/src/components/types";
-import { Label } from "@/components/Melody/src/components/Layouts/Label";
 import { IconTooltip } from "@/components/Melody/src/components/Layouts/IconTooltip";
 
 export const FormListLayout = (props: FormListLayoutProps) => {

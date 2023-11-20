@@ -17,8 +17,8 @@ import { Group, SidebarLinkProps } from "@/constants/types";
 import { checkPathnameForSidebar } from "@/components/Melody/src/utils/functions";
 import { Tooltip } from "@/components/Melody/src/components/Layouts/Tooltip";
 import Image from "next/image";
-import cadenzaMIMLogo from "@/components/Melody/src/assets/white_logo_mim.png";
-import cadenzaMIMIcon from "@/components/Melody/src/assets/white_icon.png";
+import cadenzaMIMLogo from "@/assets/logos/white_logo_mim.png";
+import cadenzaMIMIcon from "@/assets/logos/white_icon.png";
 import "./Sidebar.css"
 
 type SidebarProps = {

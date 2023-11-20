@@ -1,4 +1,4 @@
-import { ChangeEvent, CSSProperties, ForwardedRef, ReactNode } from "react";
+import { CSSProperties, ForwardedRef, ReactNode } from "react";
 
 //Indicator
 export interface IndicatorProps {
@@ -176,7 +176,8 @@ export interface NavigationBarProps {
     navigation: NavBarItemProps[],
     userNavigation: NavBarItemProps[],
     homepage?: boolean,
-    fixed?: boolean
+    fixed?: boolean,
+    icon?: any
 }
 export interface NavBarItemProps {
     name: string,
@@ -186,6 +187,23 @@ export interface NavBarItemProps {
     trailerComponent?: ReactNode,
     icon?: string,
     disabled?: boolean
+}
+
+//Footer
+export interface FooterProps {
+    companyName?: string,
+    mainContentNavigation?: {
+        title: string,
+        items: FooterLinkItem[]
+    }[],
+    socialMedia?: FooterLinkItem[],
+    legalLinks?: FooterLinkItem[]
+}
+
+export interface FooterLinkItem {
+    href: string,
+    title: string,
+    icon?: string
 }
 
 //Button Menu
@@ -202,6 +220,27 @@ export interface ButtonMenuProps {
     activeItemLabel?: string,
     menuDirection?: "left" | "right",
     items: NavBarItemProps[] //TODO Own type or rename?
+}
+
+//Pricing
+export interface PricingComponentProps {
+    tierDetails: TierDetails[],
+    tierSelection?: string | null,
+    onTierSelection?: (tierSelected: string) => void
+}
+
+export interface TierDetails {
+    title: string,
+    logo?: any,
+    price?: string,
+    yearlyPrice?: string,
+    showPricingButtons: boolean,
+    items?: TierDetailsLineItem[]
+}
+
+export interface TierDetailsLineItem {
+    text: string,
+    subText?: string
 }
 
 //User

@@ -69,7 +69,7 @@ export const Tooltip = (props: TooltipProps) => {
     const tooltipClasses = `melody-tooltip melody-fixed ${showTooltip ? "melody-opacity-100" : "melody-opacity-0 melody-hidden"}  ${widthClass ?? ''}`
 
     return (
-        <div className={`melody-inline-block melody-relative ${additionalClasses ?? ''}`}>
+        <div className={`melody-flex melody-relative ${additionalClasses ?? ''}`}>
             <div className="melody-inline-block melody-h-full"
                  ref={parentRef}
                  onPointerEnter={handleMouseEnter}

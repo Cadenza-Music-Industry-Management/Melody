@@ -1,4 +1,4 @@
-import { Fragment, ReactNode, useRef } from "react";
+import { Fragment, ReactNode } from "react";
 import "./SlideOver.css"
 import { Dialog, Transition } from '@headlessui/react'
 import { Button } from "@/components/Melody/src/components/Inputs/Button";
@@ -21,7 +21,6 @@ export const SlideOver = (props: {
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="melody-slide-over-dialog" onClose={(value) => {
-                //console.log("why")
                 //TODO this is being fired with modal template on close is being triggered?
                 setOpen(value)
             }}>
@@ -69,7 +68,6 @@ export const SlideOver = (props: {
                                         </div>
                                     </div>
                                 </Dialog.Panel>
-
                             </Transition.Child>
                         </div>
                     </div>
