@@ -1,6 +1,8 @@
+'use client'
+
 import './RadioCheckbox.css'
 import {Label} from "../Layouts/Label";
-import { CheckboxRadioButtonProps } from "@/components/Melody/src/components/types";
+import { CheckboxRadioButtonProps } from "../../components/types";
 import { useEffect, useState } from "react";
 
 export const Checkbox = (props: CheckboxRadioButtonProps) => {

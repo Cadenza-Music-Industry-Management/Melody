@@ -1,7 +1,9 @@
+'use client'
+
 import "./Breadcrumb.css"
-import { BreadcrumbItemProps, BreadcrumbProps } from "@/components/Melody/src/components/types";
+import { BreadcrumbItemProps, BreadcrumbProps } from "../../components/types";
 import Link from "next/link";
-import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
+import { Icon } from "./Icon";
 
 export const Breadcrumb = (props: BreadcrumbProps) => {
     const {

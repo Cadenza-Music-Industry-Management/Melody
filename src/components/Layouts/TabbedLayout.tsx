@@ -1,3 +1,5 @@
+'use client'
+
 import {useState} from 'react';
 import "./TabbedLayout.css"
 import {Tab} from '@headlessui/react'

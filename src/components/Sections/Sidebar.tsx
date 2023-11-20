@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { Button } from "../../Inputs/Button";
+import { Button } from "../Inputs/Button";
 import {
     Sidebar as ProSidebar,
     Menu,
@@ -8,37 +8,28 @@ import {
     SubMenu,
     useProSidebar,
     menuClasses,
-    MenuItemStyles,
+    MenuItemStyles
 } from "react-pro-sidebar";
-import {Icon} from "../../Layouts/Icon"
+import {Icon} from "../Layouts/Icon"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Group, SidebarLinkProps } from "@/constants/types";
-import { checkPathnameForSidebar } from "@/components/Melody/src/utils/functions";
-import { Tooltip } from "@/components/Melody/src/components/Layouts/Tooltip";
+import { checkPathnameForSidebar } from "../../utils/functions";
+import { Tooltip } from "../Layouts/Tooltip";
 import Image from "next/image";
-import cadenzaMIMLogo from "@/assets/logos/white_logo_mim.png";
-import cadenzaMIMIcon from "@/assets/logos/white_icon.png";
-import "./Sidebar.css"
-
-type SidebarProps = {
-    links: SidebarLinkProps[],
-    organization: Group | null
-}
+import { SidebarProps } from "../types";
 
 export const Sidebar = (props: SidebarProps) => {
 
     const {
         links,
-        organization
+        organization,
+        logo,
+        collapsedLogo,
+        logoAltText
     } = props
 
     const pathname = usePathname()
     const { collapseSidebar, collapsed, toggleSidebar, toggled, broken } = useProSidebar()
-
-    // useEffect(() => {
-    //     if (collapsed && showOrgSelector) setShowOrgSelector(false)
-    // }, [collapsed])
 
     const menuItemStyles: MenuItemStyles = {
         root: {
@@ -52,17 +43,17 @@ export const Sidebar = (props: SidebarProps) => {
             color: (active || open) ? '#0C192C' : '#FFFFFF'
         }),
         subMenuContent: ({ level, active }) => ({
-            overflow: "hidden",
+            overflow: 'hidden',
             borderRadius: 10,
-            backgroundColor: '#0C192C',
-            border: level === 0 ? "2px solid white" : 0
+            backgroundColor: '#0C192C'
         }),
         button: ({  active , open, isSubmenu }) => ({
             [`&.${menuClasses.disabled}`]: {
                 color: '#9fb6cf',
             },
             '&:hover': {
-                backgroundColor: '#cdcdcd',
+                color: 'white',
+                backgroundColor: '#1B3B6B',
                 borderRadius: 10
             },
             margin: 2,
@@ -177,24 +168,24 @@ export const Sidebar = (props: SidebarProps) => {
                rootStyles={{ color: "white", borderRight: "1px solid white", zIndex: 11 }}>
                <div className={"melody-flex melody-flex-col melody-h-full"}>
 
-                   {/*HEADER*/}
+                   {/*Header*/}
                    <div className={"melody-p-2 melody-relative melody-flex melody-justify-center melody-items-center"}>
                        <Link href={"/"}>
                            <Image width={collapsed ? 50 : 150}
                                   height={collapsed ? 50 : 150}
-                                  src={collapsed ? cadenzaMIMIcon : cadenzaMIMLogo}
-                                  alt="Cadenza MIM" />
+                                  src={collapsed ? collapsedLogo : logo}
+                                  alt={logoAltText ?? ""} />
                        </Link>
                    </div>
 
-                   {/*CONTENT*/}
+                   {/*Content*/}
                    <div className={"melody-flex-1 melody-mb-6 melody-px-6 melody-pt-12"}>
                        <Menu menuItemStyles={menuItemStyles}>
                            {links.map((link, index) => generateMenuItem(link, true, `index-${index}`))}
                        </Menu>
                    </div>
 
-                   {/*FOOTER*/}
+                   {/*Footer*/}
                    <div className={`melody-p-2 melody-flex melody-gap-x-1 melody-gap-y-1 melody-justify-end melody-border-t melody-border-gray-300 ${collapsed ? 'melody-text-center melody-flex-col' : 'melody-text-right melody-flex-row'}`}>
                        <Button variant={'solid'}
                                icon={{
@@ -202,14 +193,6 @@ export const Sidebar = (props: SidebarProps) => {
                                }}
                                color={'white'}
                                onClick={() => collapseSidebar(!collapsed)} />
-
-                       {/*TODO fix later with weird width*/}
-                       {/*{broken &&*/}
-                       {/*  <Button variant={'outlined'}*/}
-                       {/*          icon={{ icon: 'solidX' }}*/}
-                       {/*          color={'primary'}*/}
-                       {/*          onClick={() => toggleSidebar(false)} />*/}
-                       {/*}*/}
                    </div>
 
                </div>

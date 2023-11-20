@@ -1,6 +1,8 @@
+'use client'
+
 import "./FormListLayout.css"
-import { FormListLayoutProps } from "@/components/Melody/src/components/types";
-import { IconTooltip } from "@/components/Melody/src/components/Layouts/IconTooltip";
+import { FormListLayoutProps } from "../../components/types";
+import { IconTooltip } from "../Layouts/IconTooltip";
 
 export const FormListLayout = (props: FormListLayoutProps) => {
 

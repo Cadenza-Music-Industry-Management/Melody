@@ -1,10 +1,12 @@
+'use client'
+
 import "./DatePicker.css"
 import {DatePickerProps} from "../types";
 import {Label} from "../Layouts/Label";
 import {forwardRef} from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Button } from "@/components/Melody/src/components/Inputs/Button";
+import { Button } from "./Button";
 import dayjs from "dayjs";
 
 export const DatePicker = (props: DatePickerProps) => {

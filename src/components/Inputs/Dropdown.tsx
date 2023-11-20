@@ -1,8 +1,10 @@
+'use client'
+
 import Select, { MultiValue, OnChangeValue, SingleValue } from "react-select";
 import './Dropdown.css'
 import {DropdownProps} from "../types";
 import {Label} from "../Layouts/Label";
-import { GetCustomDropdownStyle } from "@/components/Melody/src/utils/constants";
+import { GetCustomDropdownStyle } from "../../utils/constants";
 
 export const Dropdown = (props: DropdownProps) => {
     const {

@@ -2,49 +2,88 @@
 
 This library is in development for the 2023 NextJS redesign of [Cadenza Music Industry Management](https://cadenzamim.com).
 
-## Components In Library
+**Storybook Link:** TODO
+
+**Storybook Repository:** https://github.com/Cadenza-Music-Industry-Management/MelodyStorybook
+
+---
+
+## Library Details
 
 ### Inputs
+
 * Button
 * Button Menu
 * Checkbox
-* Color Picker - not developed
-* Date Picker - not in use yet
-* Dropdown (React-Select implementation)
-* File Upload
-* Pagination Buttons - not developed, will be split into mutliple components
-* Radio Button - not developed
-* Radio Group - not developed
+* Color Picker
+* Date Picker
+* Dropdown
+* File Upload (1 of 2 variants implemented)
+* Radio Button
 * Switch
 * Text Area
 * Text Input
+* Rich Text Editor
+* Radio Group - **not developed**
 
 ### Layouts
+
 * Accordion
-* Alert
 * Avatar
 * Badge
-* Banner - not designed yet 
-* Breadcrumb - not designed yet 
-* Carousel - not designed yet 
+* Breadcrumb
+* Image Carousel
 * Icon
-* Image - may be combined with ImagePlaceholder below (or deleted)
-* Image Placeholder
+* Icon Tooltip
 * Indicator
 * Label
 * Progress Bar
 * Rating
 * Spinner
-* Stacked Avatars - not developed
-* Tabbed Layout - not developed
+* Overlay
+* Chart
 * Tooltip
+  * Two components details as:
+    * "Tooltip" is fixed positioned
+    * "AbsoluteTooltip" is absolute positioned
+* Alert - **not developed**
+* Image Placeholder - **not developed**
+* Text Placeholder - **not developed**
+* Stacked Avatars - **not developed**
+* Tabbed Layout - **not developed**
 
 ### Sections
-* Pricing Layout
+
+* Pricing Component
 * Footer
+* Footer Notification
 * Modal Template
 * Navigation Bar
 * Page Container
 * Sidebar
 * Slide Over
 * Striped List Layout
+
+### Utility Functions
+
+TODO notes on constants, functions, and hooks available
+
+### Custom Icons
+
+TODO list out custom icons developed for use in Cadenza and are available for use in the icon component
+
+### Tailwind Config Details
+
+TODO colors, shadows, any other custom themes available with this library
+
+---
+
+## Instructions
+
+### Libraries Required To Install
+
+TODO what libraries should be installed such as React-Select, HeadlessUI for components to work
+
+### Setup Instructions
+
+TODO - how to use

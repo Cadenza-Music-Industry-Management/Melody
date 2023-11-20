@@ -1,4 +1,5 @@
 import { CSSProperties, ForwardedRef, ReactNode } from "react";
+import { Group } from "@/constants/types";
 
 //Indicator
 export interface IndicatorProps {
@@ -319,6 +320,30 @@ export interface IconTooltipProps {
     fontColor?: string,
     message: string,
     direction?: 'top' | 'bottom' | 'left' | 'right'
+}
+
+//Sidebar
+export interface SidebarProps {
+    logo?: any,
+    collapsedLogo?: any,
+    links: SidebarLinkProps[],
+    organization: Group | null,
+    logoAltText?: string
+}
+
+export interface SidebarLinkProps {
+    type: string,
+    title?: string,
+    trailerComponent?: ReactNode,
+    href?: string,
+    onClick?: () => void, //open slideover for example
+    icon?: AddIconProps,
+    selected?: boolean,
+    children?: SidebarLinkProps[],
+    disabled?: {
+        value: boolean,
+        message?: string //Default is: 'You don't have the needed permission'
+    }
 }
 
 //Melody Table

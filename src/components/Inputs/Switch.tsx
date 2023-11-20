@@ -1,3 +1,5 @@
+'use client'
+
 import { Switch as HeadlessSwitch } from '@headlessui/react'
 import './Switch.css'
 import {Label} from "../Layouts/Label";

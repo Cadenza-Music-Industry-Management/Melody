@@ -1,3 +1,5 @@
+'use client'
+
 import "./ImagePlaceholder.css"
 
 export const ImagePlaceholder = (props: {

@@ -1,7 +1,9 @@
+'use client'
+
 import {ReactNode} from 'react';
 import "./Accordion.css"
 import {Disclosure, Transition} from '@headlessui/react'
-import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
+import { Icon } from "../Layouts/Icon";
 
 interface AccordionButtonProps {
     title?: string,

@@ -1,9 +1,11 @@
+'use client'
+
 import "./Footer.css"
 import Link from "next/link";
 import { Icon } from "../Layouts/Icon";
 import { motion } from "framer-motion";
-import { Label } from "@/components/Melody/src/components/Layouts/Label";
-import { FooterProps } from "@/components/Melody/src/components/types";
+import { Label } from "../Layouts/Label";
+import { FooterProps } from "../../components/types";
 
 export function Footer(props: FooterProps) {
 

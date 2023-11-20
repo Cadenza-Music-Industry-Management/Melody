@@ -1,11 +1,13 @@
+'use client'
+
 import { Fragment } from "react";
 import { Menu, Transition } from '@headlessui/react'
 import "./ButtonMenu.css"
 import { classNames } from "../../utils/functions";
-import { ButtonMenuProps, NavBarItemProps } from "@/components/Melody/src/components/types";
-import { Button } from "@/components/Melody/src/components/Inputs/Button";
+import { ButtonMenuProps, NavBarItemProps } from "../../components/types";
+import { Button } from "./Button";
 import Link from "next/link";
-import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
+import { Icon } from "../Layouts/Icon";
 
 export const ButtonMenu = (props: ButtonMenuProps) => {
     const {

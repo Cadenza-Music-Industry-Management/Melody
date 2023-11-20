@@ -1,3 +1,5 @@
+'use client'
+
 import "./Indicator.css"
 import {IndicatorProps} from "../types";
 

@@ -1,30 +1,3 @@
-export enum ContentCreationLimits {
-    FILE_STORAGE_ADAGIO = 10737418240, //10 GB in bytes
-    FILE_STORAGE_MODERATO = 80530636800, //75 GB in bytes
-    FILE_STORAGE_VIVACE = 161061273600, //150 GB in bytes
-    RELEASE_ADAGIO = 50,
-    RELEASE_MODERATO = 500,
-    RELEASE_VIVACE = 5000,
-    ARTIST_ADAGIO = 50,
-    ARTIST_MODERATO = 500,
-    ARTIST_VIVACE = 5000,
-    BLOG_ADAGIO = 50,
-    BLOG_MODERATO = 500,
-    BLOG_VIVACE = 5000,
-    APPAREL_ADAGIO = 50,
-    APPAREL_MODERATO = 500,
-    APPAREL_VIVACE = 5000,
-    APPAREL_ORDER_ADAGIO = 50,
-    APPAREL_ORDER_MODERATO = 500,
-    APPAREL_ORDER_VIVACE = 5000,
-    STAFF_ADAGIO = 5,
-    STAFF_MODERATO = 25,
-    STAFF_VIVACE = 100,
-    EMAIL_ADAGIO = 100,
-    EMAIL_MODERATO = 500,
-    EMAIL_VIVACE = 1500
-}
-
 export const GetCustomDropdownStyle = (size: string, showIcon?: boolean) => {
    return {
        control: (provided: any, state: { isFocused: any; }) => ({

@@ -1,3 +1,5 @@
+'use client'
+
 import { Disclosure } from '@headlessui/react'
 import './NavigationBar.css';
 import {Icon} from "../Layouts/Icon";
@@ -8,7 +10,7 @@ import Image from 'next/image';
 import { classNames } from "../../utils/functions";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ButtonMenu } from "@/components/Melody/src/components/Inputs/ButtonMenu";
+import { ButtonMenu } from "../Inputs/ButtonMenu";
 
 export const NavigationBar = (props: NavigationBarProps) => {
 

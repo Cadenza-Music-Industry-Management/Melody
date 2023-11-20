@@ -1,9 +1,11 @@
+'use client'
+
 import "./ColorPicker.css"
 import { useMemo, useRef, useState } from "react";
-import { Button } from "@/components/Melody/src/components/Inputs/Button";
-import { TextInput } from "@/components/Melody/src/components/Inputs/TextInput";
-import { ColorPickerProps } from "@/components/Melody/src/components/types";
-import { useClickOutside } from "@/components/Melody/src/utils/hooks";
+import { Button } from "./Button";
+import { TextInput } from "./TextInput";
+import { ColorPickerProps } from "../../components/types";
+import { useClickOutside } from "../../utils/hooks";
 
 //TODO come up with better color selection
 const COLORS = [

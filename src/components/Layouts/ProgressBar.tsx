@@ -1,3 +1,5 @@
+'use client'
+
 import "./ProgressBar.css"
 import {ProgressBarProps} from "../types";
 

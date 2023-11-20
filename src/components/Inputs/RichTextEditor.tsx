@@ -1,3 +1,5 @@
+'use client'
+
 import "./RichTextEditor.scss"
 import { EditorContent, useEditor, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -7,15 +9,15 @@ import { Color } from '@tiptap/extension-color'
 import Link from '@tiptap/extension-link';
 import ListItem from '@tiptap/extension-list-item';
 import CharacterCount from '@tiptap/extension-character-count'
-import { Badge } from "@/components/Melody/src/components/Layouts/Badge";
+import { Badge } from "../Layouts/Badge";
 import { ReactNode, useEffect } from "react";
-import { Button } from "@/components/Melody/src/components/Inputs/Button";
-import { Dropdown } from "@/components/Melody/src/components/Inputs/Dropdown";
-import { DropdownOption, RichTextEditorProps } from "@/components/Melody/src/components/types";
+import { Button } from "./Button";
+import { Dropdown } from "./Dropdown";
+import { DropdownOption, RichTextEditorProps } from "../../components/types";
 import { Level } from "@tiptap/extension-heading";
-import { ColorPicker } from "@/components/Melody/src/components/Inputs/ColorPicker";
+import { ColorPicker } from "./ColorPicker";
 import { Label } from "../Layouts/Label";
-import { AbsoluteTooltip } from "@/components/Melody/src/components/Layouts/AbsoluteTooltip";
+import { AbsoluteTooltip } from "../Layouts/AbsoluteTooltip";
 
 const RichTextEditor = (props: RichTextEditorProps) => {
 

@@ -1,6 +1,8 @@
+'use client'
+
 import "./Avatar.css"
 import Image from "next/image";
-import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
+import { Icon } from "./Icon";
 
 export const Avatar = (props: {
     size?: string,

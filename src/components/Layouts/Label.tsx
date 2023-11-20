@@ -1,3 +1,5 @@
+'use client'
+
 import "./Label.css"
 import {LabelProps} from "../types";
 

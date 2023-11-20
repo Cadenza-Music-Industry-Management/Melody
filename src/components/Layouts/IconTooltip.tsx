@@ -1,9 +1,8 @@
-"use client"
+'use client'
 
-import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
-import { Tooltip } from "@/components/Melody/src/components/Layouts/Tooltip";
-import { IconTooltipProps } from "@/components/Melody/src/components/types";
-import { motion } from "framer-motion";
+import { Icon } from "./Icon";
+import { Tooltip } from "./Tooltip";
+import { IconTooltipProps } from "../../components/types";
 
 export const IconTooltip = (props: IconTooltipProps) => {
     const {
@@ -14,7 +13,6 @@ export const IconTooltip = (props: IconTooltipProps) => {
         direction = 'right'
     } = props
 
-    //TODO motion.div was causing tooltip to not work correctly (vanishing)
     return (
        <Tooltip message={message} direction={direction}>
            <div className={"melody-flex melody-items-center melody-h-full"}>

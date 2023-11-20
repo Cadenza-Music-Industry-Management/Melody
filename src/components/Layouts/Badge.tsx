@@ -1,7 +1,9 @@
+'use client'
+
 import "./Badge.css"
 import { BadgeProps } from "../types";
 import {Indicator} from "./Indicator";
-import { Icon } from "@/components/Melody/src/components/Layouts/Icon";
+import { Icon } from "./Icon";
 
 export const Badge = (props: BadgeProps) => {
     const {

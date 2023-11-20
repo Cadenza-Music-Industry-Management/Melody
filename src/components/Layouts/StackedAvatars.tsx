@@ -1,3 +1,5 @@
+'use client'
+
 import "./StackedAvatars.css"
 
 export const StackedAvatars = (props: {

@@ -1,3 +1,5 @@
+'use client'
+
 import "./Rating.css"
 
 //TODO move to css class
@@ -16,6 +18,7 @@ export const Rating = (props: {
 
     return (
         <div className={"melody-rating"}>
+            {/*TODO convert to icon component not random svg*/}
             {Array.from(Array(starCount).keys()).map((index) => (
                 <svg aria-hidden="true"
                      key={index}

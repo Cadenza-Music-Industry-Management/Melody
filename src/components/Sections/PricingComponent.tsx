@@ -1,11 +1,11 @@
-"use client"
+'use client'
 
 import Image from "next/image";
 import { Icon } from "../Layouts/Icon";
-import { Label } from "@/components/Melody/src/components/Layouts/Label";
+import { Label } from "../Layouts/Label";
 import { motion } from "framer-motion";
-import { Button } from "@/components/Melody/src/components/Inputs/Button";
-import { PricingComponentProps } from "@/components/Melody/src/components/types";
+import { Button } from "../Inputs/Button";
+import { PricingComponentProps } from "../../components/types";
 
 export const PricingComponent = (props: PricingComponentProps) => {
 

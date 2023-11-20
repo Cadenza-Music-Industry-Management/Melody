@@ -1,6 +1,6 @@
 import './RadioCheckbox.css'
 import {Label} from "../Layouts/Label";
-import { CheckboxRadioButtonProps } from "@/components/Melody/src/components/types";
+import { CheckboxRadioButtonProps } from "../../components/types";
 
 export const RadioButton = (props: CheckboxRadioButtonProps) => {
     const {

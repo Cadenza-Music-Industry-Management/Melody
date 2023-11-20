@@ -1,7 +1,7 @@
 import "./PageContainer.css"
-import { PageContainerProps } from "components/Melody/src/components/types";
-import { Label } from "components/Melody/src/components/Layouts/Label";
-import { IconTooltip } from "@/components/Melody/src/components/Layouts/IconTooltip";
+import { PageContainerProps } from "../../components/types";
+import { Label } from "../Layouts/Label";
+import { IconTooltip } from "../Layouts/IconTooltip";
 export const PageContainer = (props: PageContainerProps) => {
 
     const {
