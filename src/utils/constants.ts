@@ -3,7 +3,7 @@ export const GetCustomDropdownStyle = (size: string, showIcon?: boolean) => {
        control: (provided: any, state: { isFocused: any; }) => ({
            ...provided,
            borderRadius: '0.5rem',
-           minHeight: size === 'small' ? '1.5rem' : size === 'large' ? '2.5rem' : '2rem',
+           minHeight: size === 'small' ? '1.5rem' : size === 'large' ? '2.9rem' : '2rem',
            fontSize: size === 'small' ? '0.75rem' : size === 'large' ? '1.125rem' : '0.875rem',
            borderColor: state.isFocused ? "#0C192C" : "rgb(209 213 219)",
            borderWidth: state.isFocused ?  2 : 1,

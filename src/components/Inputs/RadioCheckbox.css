@@ -3,7 +3,7 @@
 }
 
 .melody-radio-checkbox {
-    @apply melody-w-5 melody-h-5 melody-bg-gray-100 melody-text-primary-100 melody-border-gray-300 melody-rounded focus:melody-ring-2;
+    @apply melody-w-5 melody-h-5 melody-bg-gray-100 melody-text-primary-100 melody-border-gray-300 melody-rounded focus:melody-ring-2 melody-cursor-pointer;
 }
 
 .melody-radio-checkbox.primary {

@@ -12,11 +12,13 @@ export const Badge = (props: BadgeProps) => {
         text,
         indicator,
         icon,
-        fullWidth = false
+        fullWidth = false,
+        fullHeight = false,
+        textAlignClass = "melody-text-center"
     } = props
 
     return (
-        <span className={`melody-badge ${variant} ${size} ${fullWidth ? "fullWidth" : ""}`}>
+        <span className={`melody-badge ${variant} ${size} ${fullWidth ? "fullWidth" : ""} ${fullHeight ? "fullHeight" : ""} ${textAlignClass}`}>
             {indicator &&
                 <div className={"melody-mr-0.5"}>
                   <Indicator {...indicator} />
@@ -24,8 +26,11 @@ export const Badge = (props: BadgeProps) => {
             }
 
             {text}
-            {icon && <div className={"melody-pl-0.5"}>
-              <Icon {...icon} />
+
+            {icon && <div className={"melody-pl-0.5 melody-inline-block"}>
+              <div className={"melody-flex melody-items-center"}>
+                <Icon {...icon} />
+              </div>
             </div>}
         </span>
     );

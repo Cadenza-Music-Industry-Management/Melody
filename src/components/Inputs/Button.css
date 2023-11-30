@@ -24,11 +24,11 @@
 }
 
 .melody-button-white-solid {
-    @apply melody-bg-white hover:melody-bg-gray-100 melody-text-black-0 melody-border melody-border-gray-300;
+    @apply melody-bg-white hover:melody-bg-gray-100 melody-text-black-500 melody-border melody-border-gray-300;
 }
 
 .melody-button-white-outlined {
-    @apply melody-bg-transparent melody-border-2 melody-border-white hover:melody-bg-white hover:melody-text-black-0;
+    @apply melody-bg-transparent melody-border-2 melody-border-white hover:melody-bg-white hover:melody-text-black-500;
 }
 
 .melody-button-white-outlined:disabled {

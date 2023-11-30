@@ -258,8 +258,10 @@ export interface BadgeProps {
     size?: 'xsmall' | 'small' | 'medium' | 'large',
     text?: string,
     indicator?: IndicatorProps,
-    icon?: IconProps,
-    fullWidth?: boolean
+    icon?: IconProps | null,
+    fullWidth?: boolean,
+    fullHeight?: boolean,
+    textAlignClass?: "melody-text-left" | "melody-text-center" | "melody-text-right"
 }
 
 //Breadcrumb

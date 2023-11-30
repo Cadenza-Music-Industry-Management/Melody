@@ -32,6 +32,7 @@ export const Button = (props: ButtonProps) => {
                 type={type}
                 style={additionalStyles}
                 disabled={disabled || loading}
+                //onMouseDown={onClick}
                 onClick={onClick}>
             {icon && !icon.rightAligned && <div className={"melody-mr-0.5"}><Icon icon={icon.icon} additionalStyles={icon.additionalStyles} additionalClasses={icon.additionalClasses} /></div>}
             {label}

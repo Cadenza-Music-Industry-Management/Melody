@@ -1,9 +1,13 @@
 .melody-badge {
-    @apply melody-font-medium melody-rounded melody-border melody-inline-flex melody-items-center melody-min-w-[5rem] melody-whitespace-nowrap melody-justify-center;
+    @apply melody-font-medium melody-rounded melody-border melody-min-w-[5rem] melody-truncate melody-block;
 }
 
 .melody-badge.fullWidth {
     @apply melody-w-full;
+}
+
+.melody-badge.fullHeight {
+    @apply melody-h-full;
 }
 
 .melody-badge.info {
@@ -49,6 +53,6 @@
 }
 
 .melody-badge.large {
-    @apply melody-px-4 melody-py-1.5 melody-text-lg melody-text-base melody-font-bold;
+    @apply melody-px-4 melody-py-1.5 melody-text-base melody-font-bold;
 }
 

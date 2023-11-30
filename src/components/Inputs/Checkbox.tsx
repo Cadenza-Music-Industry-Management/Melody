@@ -37,11 +37,15 @@ export const Checkbox = (props: CheckboxRadioButtonProps) => {
                    className={`melody-radio-checkbox ${variant} ${size}`} />
 
             {(label || subLabel) &&
-              <div className="melody-ml-2 melody-text-sm">
-                  {label && <Label {...label} />}
+              <div className="melody-ml-2 melody-text-sm"
+                   onClick={() => {
+                       setStateValue(!stateValue)
+                       if (onChange) onChange(!value)
+                   }}>
+                  {label && <Label {...label} additionalClasses={"melody-cursor-pointer"} />}
 
                   {subLabel &&
-                    <p className="melody-text-xs melody-font-normal melody-text-gray-500">
+                    <p className="melody-text-xs melody-font-normal melody-text-gray-500 melody-cursor-pointer">
                         {subLabel}
                     </p>
                   }
