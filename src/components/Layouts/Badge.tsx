@@ -27,8 +27,8 @@ export const Badge = (props: BadgeProps) => {
 
             {text}
 
-            {icon && <div className={"melody-pl-0.5 melody-inline-block"}>
-              <div className={"melody-flex melody-items-center"}>
+            {icon && <div className={"melody-pl-0.5 melody-inline-block melody-h-full"}>
+              <div className={"melody-flex melody-items-center melody-h-full"}>
                 <Icon {...icon} />
               </div>
             </div>}

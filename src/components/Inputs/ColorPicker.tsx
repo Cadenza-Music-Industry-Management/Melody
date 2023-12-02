@@ -31,7 +31,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
         title,
         value,
         onChange,
-        textAlignClass = "center",
+        textAlignClass = "melody-text-center",
         disabled = false
     } = props
 

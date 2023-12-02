@@ -52,8 +52,8 @@ export const Sidebar = (props: SidebarProps) => {
                 color: '#9fb6cf',
             },
             '&:hover': {
-                color: 'white',
-                backgroundColor: '#1B3B6B',
+                color: '#0C192C',
+                backgroundColor: 'rgb(213,221,236)', //TODO should use better tailwind color for this instead of a random one we selected
                 borderRadius: 10
             },
             margin: 2,
