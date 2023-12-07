@@ -167,7 +167,7 @@ export interface ModalProps {
     open: boolean,
     setOpen?: (open: boolean) => void,
     children?: ReactNode,
-    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge',
+    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge',
     customZIndexClass?: string
 }
 
