@@ -179,3 +179,7 @@ In use with our parent application, [Cadenza MIM](https://cadenzamim.com), we ha
 * melody-merchandise
 * melody-apparel-order
 * melody-apparel-items
+
+## License
+
+This project is licensed under the terms of the [MIT license](https://github.com/Cadenza-Music-Industry-Management/Melody/blob/main/LICENSE).
