@@ -1,4 +1,10 @@
-![Melody Design Library](https://github.com/Cadenza-Music-Industry-Management/Melody/blob/main/src/assets/MelodyLogoWhite.png)
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Cadenza-Music-Industry-Management/Melody/blob/main/src/assets/MelodyLogoWhite.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Cadenza-Music-Industry-Management/Melody/main/src/assets/MelodyLogoBlack.png">
+      <img alt="Melody Design Library" src="https://raw.githubusercontent.com/Cadenza-Music-Industry-Management/Melody/main/src/assets/MelodyLogoBlack.png">
+    </picture>
+</p>
 
 # Melody Design Library
 
