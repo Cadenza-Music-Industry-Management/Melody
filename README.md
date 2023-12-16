@@ -10,9 +10,9 @@
 
 This library is in development for the 2023 NextJS redesign of [Cadenza Music Industry Management](https://cadenzamim.com).
 
-**Storybook Link:** https://github.com/Cadenza-Music-Industry-Management/MelodyStorybook
+**Storybook Link:** [https://github.com/Cadenza-Music-Industry-Management/MelodyStorybook](https://cadenza-music-industry-management.github.io/MelodyStorybook/)
 
-**Storybook Repository:** https://github.com/Cadenza-Music-Industry-Mnagement/MelodyStorybook
+**Storybook Repository:** [https://github.com/Cadenza-Music-Industry-Mnagement/MelodyStorybook](https://github.com/Cadenza-Music-Industry-Management/MelodyStorybook) [OUTDATED as of 12/15/2023]
 
 ---
 
