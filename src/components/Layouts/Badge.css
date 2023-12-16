@@ -1,5 +1,5 @@
 .melody-badge {
-    @apply melody-font-medium melody-rounded melody-border melody-min-w-[5rem] melody-truncate melody-block;
+    @apply melody-font-medium melody-rounded melody-border melody-min-w-[5rem] melody-truncate melody-inline-block;
 }
 
 .melody-badge.fullWidth {
