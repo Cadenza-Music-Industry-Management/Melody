@@ -1,3 +1,5 @@
+![Melody Design Library](https://github.com/Cadenza-Music-Industry-Management/Melody/blob/main/src/assets/MelodyLogoWhite.png)
+
 # Melody Design Library
 
 This library is in development for the 2023 NextJS redesign of [Cadenza Music Industry Management](https://cadenzamim.com).
