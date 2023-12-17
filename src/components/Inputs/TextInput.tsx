@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./TextInput.css"
 import {TextInputProps} from "../types";
 import {Label} from "../Layouts/Label";
@@ -25,10 +25,16 @@ export const TextInput = (props: TextInputProps) => {
     } = props
 
     const [stateValue, setStateValue] = useState<string | number>(value)
+    const [cursorPosition, setCursorPosition] = useState<number | null>(null)
+    const ref = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
         if (value !== stateValue) setStateValue(value === null ? "" : value)
     }, [value])
+
+    useEffect(() => {
+        ref.current?.setSelectionRange(cursorPosition, cursorPosition)
+    }, [ref, cursorPosition, stateValue])
 
     return (
         <div className={"melody-w-full"}>
@@ -41,7 +47,8 @@ export const TextInput = (props: TextInputProps) => {
                     </span>
                 }
 
-                <input type={type}
+                <input ref={ref}
+                       type={type}
                        max={max}
                        min={min}
                        maxLength={maxLength}
@@ -51,6 +58,7 @@ export const TextInput = (props: TextInputProps) => {
                        disabled={disabled}
                        onChange={(event => {
                            if (onChange) onChange(event.target.value)
+                           setCursorPosition(event.target.selectionStart)
                        })}
                        onBlur={(event => {
                            if (onBlur) onBlur(event.target.value)
