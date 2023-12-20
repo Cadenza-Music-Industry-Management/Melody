@@ -33,7 +33,7 @@ export const TextInput = (props: TextInputProps) => {
     }, [value])
 
     useEffect(() => {
-        ref.current?.setSelectionRange(cursorPosition, cursorPosition)
+        if (type === 'text') ref.current?.setSelectionRange(cursorPosition, cursorPosition)
     }, [ref, cursorPosition, stateValue])
 
     return (
