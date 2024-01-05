@@ -33,6 +33,8 @@ export const TextInput = (props: TextInputProps) => {
     }, [value])
 
     useEffect(() => {
+        //NOTE: This only works for text type, not email, number, tel, etc... :/
+        // Tried method to convert ref.current to type of text before converting back but still acting weird
         if (type === 'text') ref.current?.setSelectionRange(cursorPosition, cursorPosition)
     }, [ref, cursorPosition, stateValue])
 

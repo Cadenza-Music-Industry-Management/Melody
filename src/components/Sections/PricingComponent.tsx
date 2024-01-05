@@ -18,9 +18,9 @@ export const PricingComponent = (props: PricingComponentProps) => {
     //tier.title !== "Adagio" && currentOrgTier === "Adagio"
 
     return (
-        <div className="melody-max-w-6xl melody-flex melody-flex-col md:melody-flex-row melody-gap-16 melody-mx-auto">
+        <div className="melody-max-w-6xl melody-flex melody-flex-col md:melody-flex-row melody-gap-10 melody-mx-auto melody-flex-wrap melody-justify-center">
              {tierDetails.map((tier, index) => (
-                <motion.div whileHover={{scale: 0.98}} key={index} className={`melody-w-full md:melody-w-1/3 md:melody-max-w-none melody-bg-white melody-flex melody-flex-col melody-p-8 melody-shadow-main melody-rounded`}>
+                <motion.div whileHover={{scale: 0.98}} key={index} className={`melody-w-full md:melody-w-1/3 melody-min-w-[250px] melody-max-w-none md:melody-max-w-[325px] melody-bg-white melody-flex melody-flex-col melody-p-8 melody-shadow-main melody-rounded`}>
                     <div className="melody-w-full melody-flex-grow">
                         <div className={"melody-text-center melody-border-b melody-border-b-gray-200 melody-py-2"}>
                             {tier.logo && <Image src={tier.logo} alt={tier.title} style={{width: "100%", minWidth: 150, maxWidth: 250}} />}
