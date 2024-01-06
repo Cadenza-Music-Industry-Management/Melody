@@ -71,15 +71,26 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                     <div className="melody-flex melody-space-x-4">
                                         {/*TODO implement onClick/<a logic between */}
                                         {navigation.map((item) => (
-                                            <a key={item.name}
-                                               href={item.href}
-                                               className={classNames(
-                                                   checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${homepage ? "melody-text-white hover:melody-text-gray-600" : "melody-text-gray-600"} hover:melody-bg-gray-200`,
-                                                   'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium'
-                                               )}
-                                               aria-current={checkURL(item.href ?? "no-href") ? 'page' : undefined}>
-                                                {item.name}
-                                            </a>
+                                            <>
+                                                {item.disabled ?
+                                                    <p className={classNames(
+                                                        `${homepage ? "melody-text-gray-300" : "melody-text-gray-600"}`,
+                                                        'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium'
+                                                    )}>
+                                                        {item.name}
+                                                    </p>
+                                                    :
+                                                    <a key={item.name}
+                                                       href={item.href}
+                                                       className={classNames(
+                                                           checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${homepage ? "melody-text-white hover:melody-text-gray-600" : "melody-text-gray-600"} hover:melody-bg-gray-200`,
+                                                           'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium'
+                                                       )}
+                                                       aria-current={checkURL(item.href ?? "no-href") ? 'page' : undefined}>
+                                                        {item.name}
+                                                    </a>
+                                                }
+                                            </>
                                         ))}
                                     </div>
                                 </div>
