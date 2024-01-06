@@ -8,7 +8,7 @@
 
 # Melody Design Library
 
-This library is in development for the 2023 NextJS redesign of [Cadenza Music Industry Management](https://cadenzamim.com).
+This library is in development for the 2024 NextJS redesign of [Cadenza Music Industry Management](https://cadenzamim.com).
 
 **Storybook Link:** https://cadenza-music-industry-management.github.io/MelodyStorybook/
 

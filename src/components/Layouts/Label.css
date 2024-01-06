@@ -15,13 +15,13 @@
 }
 
 .melody-text-label.large {
-    @apply melody-text-lg melody-leading-6;
+    @apply melody-text-lg melody-leading-7;
 }
 
 .melody-text-label.xlarge {
-    @apply melody-text-[25px] melody-leading-6;
+    @apply melody-text-[25px] melody-leading-8;
 }
 
 .melody-text-label.xxlarge {
-    @apply melody-text-[35px] melody-leading-6;
+    @apply melody-text-[35px] melody-leading-9;
 }
