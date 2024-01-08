@@ -46,6 +46,7 @@ import {
     faListOl,
     faCode,
     faFileCode,
+    faShoppingCart,
     faQuoteLeft,
     faCalculator,
     faGear,
@@ -142,6 +143,7 @@ export const Icon = (props: IconProps) => {
         blockCode: faFileCode,
         quoteLeft: faQuoteLeft,
         locationDot: faLocationDot,
+        shoppingCart: faShoppingCart,
         //Social media
         tiktok: faTiktok,
         twitter: faTwitter,
