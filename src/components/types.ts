@@ -187,7 +187,8 @@ export interface NavBarItemProps {
     href?: string,
     trailerComponent?: ReactNode,
     icon?: string,
-    disabled?: boolean
+    disabled?: boolean,
+    disabledErrorMessage?: string
 }
 
 //Footer
@@ -421,8 +422,13 @@ export interface MelodyTableColumnDropdownOptions {
     dropdownParams?: MelodyTableColumnFunctionParamSettings[],
     icon?: string,
     disabled?: boolean,
-    visibleCondition?: "length_check", //TODO string instead of boolean since we don't have access to data, so can't do like length check but can pass in "length_check" for MelodyTable to do it for us
+    visibilityCondition?: TABLE_VISIBILITY_CONDITIONS[],
     disabledSettings?: MelodyTableColumnDisabledSettings[]
+}
+
+export enum TABLE_VISIBILITY_CONDITIONS {
+    CURRENT_USER_MATCHES_ENTRY,
+    LENGTH_CHECK
 }
 
 export interface MelodyTableColumnFunctionParamSettings {

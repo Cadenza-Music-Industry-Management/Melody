@@ -8,6 +8,7 @@ import { ButtonMenuProps, NavBarItemProps } from "../../components/types";
 import { Button } from "./Button";
 import Link from "next/link";
 import { Icon } from "../Layouts/Icon";
+import { AbsoluteTooltip } from "@/components/Melody/src/components/Layouts/AbsoluteTooltip";
 
 export const ButtonMenu = (props: ButtonMenuProps) => {
     const {
@@ -66,7 +67,13 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
                                         <>
                                             {item.disabled ?
                                                 <div className={'melody-flex melody-items-center melody-px-4 melody-py-2 melody-text-sm melody-text-gray-800 melody-cursor-not-allowed melody-bg-gray-100'}>
-                                                    {getItemDetails(item)}
+                                                    {item.disabledErrorMessage ?
+                                                        <AbsoluteTooltip message={item.disabledErrorMessage} direction={"top"} delay={100}>
+                                                            {getItemDetails(item)}
+                                                        </AbsoluteTooltip>
+                                                        :
+                                                        getItemDetails(item)
+                                                    }
                                                 </div>
                                                 : item.onClick ?
                                                     <div onClick={item.onClick}
