@@ -156,7 +156,10 @@ export const Sidebar = (props: SidebarProps) => {
        <>
            {broken &&
                <div className={"melody-fixed melody-bottom-1 melody-left-1 melody-z-10"}>
-                 <Button label={'Sidebar'} icon={{ icon: 'plus', rightAligned: true }} onClick={() => toggleSidebar(!toggled)} />
+                 <Button label={'Sidebar'}
+                         icon={{ icon: 'plus', rightAligned: true }}
+                         additionalStyles={{ border: "2px solid white" }}
+                         onClick={() => toggleSidebar(!toggled)} />
                </div>
            }
 

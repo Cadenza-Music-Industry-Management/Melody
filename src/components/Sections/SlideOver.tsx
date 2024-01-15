@@ -10,21 +10,25 @@ export const SlideOver = (props: {
     open: boolean,
     setOpen: (open: boolean) => void,
     children: ReactNode,
-    widthClassName?: string
+    widthClassName?: string,
+    parentModalOpen?: boolean
 }) => {
     const {
         title,
         open,
         setOpen,
         children,
-        widthClassName
+        widthClassName,
+        parentModalOpen
     } = props
 
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="melody-slide-over-dialog" onClose={(value) => {
-                //TODO this is being fired with modal template on close is being triggered?
-                setOpen(value)
+                //NOTE: Fixed bug where large image parent modal would close any slide over that was open at same time
+                if (!parentModalOpen) {
+                    setOpen(value)
+                }
             }}>
                 <Transition.Child
                     as={Fragment}

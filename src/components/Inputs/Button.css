@@ -68,6 +68,14 @@
     @apply melody-bg-primary-200 melody-text-gray-400 melody-border-primary-200;
 }
 
+.melody-button-warning-solid {
+    @apply melody-bg-red-800 hover:melody-bg-red-700 melody-text-white melody-border-2 melody-border-red-900;
+}
+
+.melody-button-warning-solid:disabled {
+    @apply melody-bg-red-900 melody-text-gray-400 melody-border-red-900;
+}
+
 .melody-button-primary-outlined {
     @apply melody-bg-gray-50 melody-border-2 melody-border-primary-100 hover:melody-bg-primary-200 hover:melody-text-white;
 }

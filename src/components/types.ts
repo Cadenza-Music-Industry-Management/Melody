@@ -11,7 +11,7 @@ export interface IndicatorProps {
 //Button
 export interface ButtonProps {
     type?: 'button' | 'submit',
-    color?: 'gray' | 'white' | 'secondary' | 'primary',
+    color?: 'gray' | 'white' | 'secondary' | 'primary' | 'warning',
     variant?: 'solid' | 'outlined';
     size?: 'xsmall' | 'small' | 'medium' | 'large',
     label?: string,
