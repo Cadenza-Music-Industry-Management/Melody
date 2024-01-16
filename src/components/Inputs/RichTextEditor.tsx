@@ -10,7 +10,7 @@ import Link from '@tiptap/extension-link';
 import ListItem from '@tiptap/extension-list-item';
 import CharacterCount from '@tiptap/extension-character-count'
 import { Badge } from "../Layouts/Badge";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useCallback, useEffect } from "react";
 import { Button } from "./Button";
 import { Dropdown } from "./Dropdown";
 import { DropdownOption, RichTextEditorProps } from "../../components/types";
@@ -18,6 +18,8 @@ import { Level } from "@tiptap/extension-heading";
 import { ColorPicker } from "./ColorPicker";
 import { Label } from "../Layouts/Label";
 import { AbsoluteTooltip } from "../Layouts/AbsoluteTooltip";
+import { testLink, testMailTo } from "@/utils/functions";
+import { toast } from "react-toastify";
 
 const RichTextEditor = (props: RichTextEditorProps) => {
 
@@ -102,10 +104,6 @@ function MenuBar(props: {
 
     const { editor, toolbar, disabled } = props
 
-    if (!editor || !toolbar) {
-        return null
-    }
-
     function changeTextSizing(value: number) {
         if (value === 0) {
             editor?.chain().focus().setParagraph().run()
@@ -128,6 +126,39 @@ function MenuBar(props: {
         return <AbsoluteTooltip message={message} direction={"top"} widthClass={"melody-text-center melody-w-28"}>
             {component}
         </AbsoluteTooltip>
+    }
+
+    const setLink = useCallback(() => {
+        const previousUrl = editor?.getAttributes('link').href
+        const url = window.prompt('URL', previousUrl)
+
+        // cancelled
+        if (url === null) {
+            return
+        }
+
+        // empty
+        if (url === '') {
+            editor?.chain().focus().extendMarkRange('link').unsetLink()
+                .run()
+            return
+        }
+
+        if (!testLink(url) && !testMailTo(url)) {
+            toast.error("Invalid link format")
+            return
+        }
+
+        // update link
+        editor?.chain().focus().extendMarkRange('link').setLink({
+            href: url,
+            target: '_blank',
+            rel: 'noopener noreferrer'
+        }).run()
+    }, [editor])
+
+    if (!editor || !toolbar) {
+        return null
     }
 
     return (
@@ -176,6 +207,13 @@ function MenuBar(props: {
                                                            color={editor.isActive('underline') ? "primary": "white"}
                                                            onClick={() => editor.chain().focus().toggleUnderline().run()}
                                                            disabled={!editor.can().chain().focus().toggleUnderline().run() || disabled} />)}
+
+                {wrapTooltipComponent("Link", <Button customLabel={{ label: "L", bold: true, color: editor.isActive('link') ? "white" : "black" }}
+                                                      size={"small"}
+                                                      additionalClasses={"melody-h-full"}
+                                                      color={editor.isActive('link') ? "primary": "white"}
+                                                      onClick={setLink}
+                                                      disabled={disabled} />)}
 
                 {/*TODO these next two indent correctly but don't display list styling like bullet or number*/}
                 {wrapTooltipComponent("Bullet List", <Button icon={{ icon: "bulletList", additionalClasses: editor.isActive('bulletList') ? "melody-text-white" : "melody-text-black-0" }}
