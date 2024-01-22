@@ -7,7 +7,7 @@
 }
 
 .melody-slide-over-container {
-    @apply melody-pointer-events-none melody-fixed melody-inset-y-0 melody-right-0 melody-flex melody-max-w-full melody-pl-10;
+    @apply melody-pointer-events-none melody-fixed melody-inset-y-0 melody-right-0 melody-flex melody-max-w-full;
 }
 
 .melody-slide-over-dialog-panel {

@@ -215,7 +215,6 @@ function MenuBar(props: {
                                                       onClick={setLink}
                                                       disabled={disabled} />)}
 
-                {/*TODO these next two indent correctly but don't display list styling like bullet or number*/}
                 {wrapTooltipComponent("Bullet List", <Button icon={{ icon: "bulletList", additionalClasses: editor.isActive('bulletList') ? "melody-text-white" : "melody-text-black-0" }}
                                                              size={"small"}
                                                              additionalClasses={"melody-h-full"}
