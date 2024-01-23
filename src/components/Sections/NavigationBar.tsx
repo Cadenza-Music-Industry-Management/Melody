@@ -80,15 +80,18 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                                         {item.name}
                                                     </p>
                                                     :
-                                                    <a key={item.name}
-                                                       href={item.href}
-                                                       className={classNames(
-                                                           checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${homepage ? "melody-text-white hover:melody-text-gray-600" : "melody-text-gray-600"} hover:melody-bg-gray-200`,
-                                                           'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium'
-                                                       )}
-                                                       aria-current={checkURL(item.href ?? "no-href") ? 'page' : undefined}>
+                                                    <Link key={item.name}
+                                                          href={item.href ?? "no-href"}
+                                                          aria-disabled={checkURL(item.href ?? "no-href")}
+                                                          tabIndex={checkURL(item.href ?? "no-href")? -1 : undefined}
+                                                          className={classNames(
+                                                              checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${homepage ? "melody-text-white hover:melody-text-gray-600" : "melody-text-gray-600"} hover:melody-bg-gray-200`,
+                                                              'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium',
+                                                              checkURL(item.href ?? "no-href") ? 'melody-pointer-events-none' : ''
+                                                          )}
+                                                          aria-current={checkURL(item.href ?? "no-href") ? 'page' : undefined}>
                                                         {item.name}
-                                                    </a>
+                                                    </Link>
                                                 }
                                             </>
                                         ))}
@@ -124,11 +127,14 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                        key={item.name}
                                        as="a"
                                        href={item.href}
+                                       aria-disabled={checkURL(item.href ?? "no-href")}
+                                       tabIndex={checkURL(item.href ?? "no-href")? -1 : undefined}
                                        className={classNames(
-                                           pathname === item.href ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
-                                           'melody-block melody-px-3 melody-py-2 melody-rounded-lg melody-text-base melody-font-medium'
+                                           checkURL(item.href ?? "no-href") ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
+                                           'melody-block melody-px-3 melody-py-2 melody-rounded-lg melody-text-base melody-font-medium',
+                                           checkURL(item.href ?? "no-href") ? 'melody-pointer-events-none' : ''
                                        )}
-                                       aria-current={pathname === item.href ? 'page' : undefined}>
+                                       aria-current={checkURL(item.href ?? "no-href") ? 'page' : undefined}>
                                        {item.name}
                                    </Disclosure.Button>
                                ))}
