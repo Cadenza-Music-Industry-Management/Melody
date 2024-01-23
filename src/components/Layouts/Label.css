@@ -1,5 +1,5 @@
 .melody-text-label {
-    @apply melody-block melody-whitespace-pre-wrap melody-break-all;
+    @apply melody-block melody-whitespace-pre-wrap melody-break-words;
 }
 
 .melody-text-label.xsmall {
