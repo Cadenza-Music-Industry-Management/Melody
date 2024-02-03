@@ -52,6 +52,7 @@ import {
     faGear,
     faArrowTurnDown,
     faAlignLeft,
+    faExpand,
     faUserTie, //TODO username
     faMoneyBillTrendUp, //Income
     faMoneyBillTransfer, //Expense
@@ -144,6 +145,7 @@ export const Icon = (props: IconProps) => {
         quoteLeft: faQuoteLeft,
         locationDot: faLocationDot,
         shoppingCart: faShoppingCart,
+        expand: faExpand,
         //Social media
         tiktok: faTiktok,
         twitter: faTwitter,

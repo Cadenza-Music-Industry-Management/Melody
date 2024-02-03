@@ -67,10 +67,11 @@ export interface RichTextEditorProps {
 export interface ColorPickerProps {
     title?: LabelProps,
     buttonColor?: 'gray' | 'white' | 'secondary' | 'primary',
-    value: string,
+    value?: string,
     onChange: (color: string) => void,
     textAlignClass?: string,
-    disabled?: boolean
+    disabled?: boolean,
+    fullWidth?: boolean
 }
 
 //Text Input/Area

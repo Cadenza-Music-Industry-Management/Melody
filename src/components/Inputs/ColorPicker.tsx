@@ -29,10 +29,11 @@ export const ColorPicker = (props: ColorPickerProps) => {
     const {
         buttonColor = 'primary',
         title,
-        value,
+        value = "#FFFFF",
         onChange,
         textAlignClass = "melody-text-center",
-        disabled = false
+        disabled = false,
+        fullWidth = false
     } = props
 
     const [isOpen, setIsOpen] = useState(false)
@@ -56,15 +57,15 @@ export const ColorPicker = (props: ColorPickerProps) => {
     //TODO move css to class
 
     return (
-        <div className={"melody-relative"} ref={colorPickerContainerRef}>
+        <div className={`melody-relative ${fullWidth ? "melody-w-full" : ""}`} ref={colorPickerContainerRef}>
 
-            <div className={`${textAlignClass ?? "melody-text-center"} melody-h-full`}>
+            <div className={`${textAlignClass ?? "melody-text-center"} ${fullWidth ? "melody-w-full" : ""} melody-h-full`}>
                 {/*TODO custom size for button from prop*/}
                 <Button customLabel={title}
                         size={"small"}
                         disabled={disabled}
                         onClick={toggleOpen}
-                        additionalClasses={"melody-h-full"}
+                        additionalClasses={`melody-h-full ${fullWidth ? "melody-w-full" : ""}`}
                         color={buttonColor}
                         trailerComponent={
                     <div className={title ? "melody-ml-2" : ""}>

@@ -34,7 +34,7 @@ export const AbsoluteTooltip = (props: TooltipProps) => {
 
     return (
         <div className={`melody-inline-block melody-relative ${additionalClasses ?? ''}`}>
-            <div className="melody-inline-block melody-h-full"
+            <div className="melody-inline-block melody-h-full melody-w-full"
                  onPointerEnter={handleMouseEnter}
                  onPointerLeave={handleMouseLeave}>
                 {children}

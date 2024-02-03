@@ -83,7 +83,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                                     <Link key={item.name}
                                                           href={item.href ?? "no-href"}
                                                           aria-disabled={checkURL(item.href ?? "no-href")}
-                                                          tabIndex={checkURL(item.href ?? "no-href")? -1 : undefined}
+                                                          tabIndex={checkURL(item.href ?? "no-href") ? -1 : undefined}
                                                           className={classNames(
                                                               checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${homepage ? "melody-text-white hover:melody-text-gray-600" : "melody-text-gray-600"} hover:melody-bg-gray-200`,
                                                               'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium',
@@ -128,7 +128,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                        as="a"
                                        href={item.href}
                                        aria-disabled={checkURL(item.href ?? "no-href")}
-                                       tabIndex={checkURL(item.href ?? "no-href")? -1 : undefined}
+                                       tabIndex={checkURL(item.href ?? "no-href") ? -1 : undefined}
                                        className={classNames(
                                            checkURL(item.href ?? "no-href") ? 'melody-bg-primary-100 melody-text-white' : 'melody-text-gray-600 hover:melody-bg-gray-200',
                                            'melody-block melody-px-3 melody-py-2 melody-rounded-lg melody-text-base melody-font-medium',
