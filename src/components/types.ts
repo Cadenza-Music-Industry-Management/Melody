@@ -223,7 +223,7 @@ export interface ButtonMenuProps {
     disabled?: boolean,
     activeItemLabel?: string,
     menuDirection?: "left" | "right",
-    items: NavBarItemProps[] //TODO Own type or rename?
+    items?: NavBarItemProps[] //TODO Own type or rename?
 }
 
 //Pricing

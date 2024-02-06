@@ -38,6 +38,19 @@ export const TextInput = (props: TextInputProps) => {
         if (type === 'text') ref.current?.setSelectionRange(cursorPosition, cursorPosition)
     }, [ref, cursorPosition, stateValue])
 
+    function editTextInput(newValue: string, EditFunction: (newValue: string) => void | undefined) {
+        if (EditFunction) {
+            // Check if newValue is within the desired range
+            if (min && newValue < min) {
+                newValue = min;
+            } else if (max && newValue > max) {
+                newValue = max;
+            }
+
+            EditFunction(newValue)
+        }
+    }
+
     return (
         <div className={"melody-w-full"}>
             {label && <Label {...label} />}
@@ -59,11 +72,11 @@ export const TextInput = (props: TextInputProps) => {
                        defaultValue={defaultValue}
                        disabled={disabled}
                        onChange={(event => {
-                           if (onChange) onChange(event.target.value)
+                           editTextInput(event.target.value, onChange)
                            setCursorPosition(event.target.selectionStart)
                        })}
                        onBlur={(event => {
-                           if (onBlur) onBlur(event.target.value)
+                           editTextInput(event.target.value, onBlur)
                        })}
                        className={`melody-text-input ${error ? "error" : ""} ${headerComponent ? (trailerComponent ? 'hasHeaderTrailer' : 'hasHeader') : (trailerComponent ? 'hasTrailer' : '')} ${size}`} />
 

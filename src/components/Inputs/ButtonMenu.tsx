@@ -62,7 +62,7 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
 
                             {dropdownHeaderItem}
 
-                            {items.map((item) => (
+                            {items?.map((item) => (
                                 <Menu.Item key={item.name}>
                                     {({ active }: { active: boolean }) => (
                                         <>
