@@ -38,12 +38,13 @@ export const ButtonMenu = (props: ButtonMenuProps) => {
         <Menu as="div" className={`melody-relative ${additionalClasses ?? ''}`}>
             {({ open }) => (
                 <>
-                    <div>
-                        <Menu.Button className={"melody-bg-transparent"}>
+                    <div className={"melody-w-full"}>
+                        <Menu.Button className={"melody-bg-transparent melody-w-full melody-flex melody-justify-start"}>
                             {buttonContents ?? <Button color={color}
                                                        variant={variant}
                                                        size={size}
                                                        label={label}
+                                                       additionalClasses={additionalClasses}
                                                        disabled={disabled}
                                                        icon={icon ?? { icon: open ? 'caretUp' : 'caretDown', rightAligned: true }} />}
                         </Menu.Button>

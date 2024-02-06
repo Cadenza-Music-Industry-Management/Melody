@@ -189,7 +189,8 @@ export interface NavBarItemProps {
     trailerComponent?: ReactNode,
     icon?: string,
     disabled?: boolean,
-    disabledErrorMessage?: string
+    disabledErrorMessage?: string,
+    disabledPropertyToCheck?: "homeEnabled" | "releasesEnabled" | "artistsEnabled" | "apparelEnabled" | "blogEnabled" | "contactEnabled" | "aboutUsEnabled" | "playerEnabled" //Note: Used in public site navigation identifying which draggable item property we should check if its showing
 }
 
 //Footer
