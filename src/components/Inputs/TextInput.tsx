@@ -38,13 +38,17 @@ export const TextInput = (props: TextInputProps) => {
         if (type === 'text') ref.current?.setSelectionRange(cursorPosition, cursorPosition)
     }, [ref, cursorPosition, stateValue])
 
-    function editTextInput(newValue: string, EditFunction: (newValue: string) => void | undefined) {
+    function editTextInput(newValue: string, EditFunction?: (newValue: string) => void | undefined) {
         if (EditFunction) {
+            let valueToSend: any = newValue
             // Check if newValue is within the desired range
-            if (min && newValue < min) {
-                newValue = min;
-            } else if (max && newValue > max) {
-                newValue = max;
+            if (type === "number") {
+                valueToSend = Number(newValue)
+                if (min && valueToSend < min) {
+                    valueToSend = min;
+                } else if (max && valueToSend > max) {
+                    valueToSend = max;
+                }
             }
 
             EditFunction(newValue)
