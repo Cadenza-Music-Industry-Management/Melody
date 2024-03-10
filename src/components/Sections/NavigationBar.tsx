@@ -104,12 +104,12 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                         <span className="melody-sr-only">Open user menu</span>
                                         <Avatar image={user?.image} />
                                     </>} dropdownHeaderItem={
-                                        <div className={'melody-p-2 melody-border-b melody-border-gray-200'}>
-                                            <Label label={`${user.firstName} ${user.lastName}`} additionalStyles={{
-                                                fontWeight: 'bold',
-                                                lineHeight: 1
-                                            }} />
-                                            <Label label={user.username} size={'small'} />
+                                        <div className={'melody-p-2 melody-border-b melody-border-gray-200 melody-text-center'}>
+                                            {/*<Label label={`${user.firstName} ${user.lastName}`} additionalStyles={{*/}
+                                            {/*    fontWeight: 'bold',*/}
+                                            {/*    lineHeight: 1*/}
+                                            {/*}} />*/}
+                                            <Label label={user.username} size={'small'} bold={true} />
                                         </div>
                                     } items={userNavigation}
                                     additionalClasses={"melody-ml-3"} />
