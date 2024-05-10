@@ -1,5 +1,4 @@
 import { CSSProperties, ForwardedRef, ReactNode } from "react";
-import { Group } from "@/constants/types";
 
 //Indicator
 export interface IndicatorProps {
@@ -177,7 +176,8 @@ export interface NavigationBarProps {
     user?: any, //TODO need to use User props from other types file
     navigation: NavBarItemProps[],
     userNavigation: NavBarItemProps[],
-    homepage?: boolean,
+    bgColorClass?: string,
+    textColorClass?: string,
     fixed?: boolean,
     icon?: any
 }
@@ -286,6 +286,7 @@ export interface PageContainerProps {
     subTitle?: LabelProps,
     textAlignClass?: 'melody-text-left' | 'melody-text-center' | 'melody-text-right', //TODO only used when there is no button passed in
     headerBGColor?: string,
+    contentsBGColor?: string,
     headerTextColor?: string,
     children?: ReactNode,
     button?: ReactNode,
@@ -332,7 +333,7 @@ export interface SidebarProps {
     logo?: any,
     collapsedLogo?: any,
     links: SidebarLinkProps[],
-    organization: Group | null,
+    organization: any | null, //TODO needs Group interface from cadenza
     logoAltText?: string
 }
 

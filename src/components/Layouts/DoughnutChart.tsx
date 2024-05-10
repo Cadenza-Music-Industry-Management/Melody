@@ -3,7 +3,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { hexToRgbA } from "@/utils/functions";
+import { hexToRgbA } from "../../utils/functions";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

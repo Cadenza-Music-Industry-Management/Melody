@@ -18,7 +18,7 @@ import { Level } from "@tiptap/extension-heading";
 import { ColorPicker } from "./ColorPicker";
 import { Label } from "../Layouts/Label";
 import { AbsoluteTooltip } from "../Layouts/AbsoluteTooltip";
-import { testLink, testMailTo } from "@/utils/functions";
+import { testLink, testMailTo } from "../../utils/functions";
 import { toast } from "react-toastify";
 
 const RichTextEditor = (props: RichTextEditorProps) => {

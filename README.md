@@ -25,6 +25,20 @@ These libraries are the current dependencies for use on this library and will be
 * React-Select
 * HeadlessUI
 * Tailwind
+* chart.js
+* chartjs-plugin-datalabels
+* react-chartjs-2
+* react-datepicker
+* @types/react-datepicker
+* @tiptap/extension-character-count
+* tiptap/extension-color
+* tiptap/extension-link
+* tiptap/extension-text-style
+* tiptap/extension-underline
+* tiptap/pm
+* tiptap/react
+* tiptap/starter-kit
+* dayjs
 * **TODO**
 
 ### TODO List
@@ -83,8 +97,8 @@ These libraries are the current dependencies for use on this library and will be
 ### Sections
 
 * Pricing Component
-* Footer
-* Footer Notification
+* FooterContainer
+* FooterContainer Notification
 * Modal Template
 * Navigation Bar
 * Page Container

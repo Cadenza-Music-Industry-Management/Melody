@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Label } from "../Layouts/Label";
 import { FooterProps } from "../../components/types";
 
-export function Footer(props: FooterProps) {
+export function FooterContainer(props: FooterProps) {
 
     const {
         companyName,
@@ -17,7 +17,7 @@ export function Footer(props: FooterProps) {
     } = props
 
     return (
-        <footer aria-label="Site Footer" className="melody-bg-primary-100 melody-border-primary-100 melody-border-t melody-relative melody-overflow-hidden">
+        <footer aria-label="Site FooterContainer" className="melody-bg-primary-100 melody-border-primary-100 melody-border-t melody-relative melody-overflow-hidden">
             <div className="melody-mx-auto melody-z-[3] melody-relative melody-text-white">
                 {mainContentNavigation && mainContentNavigation.length > 0 &&
                   <div className="lg:melody-flex lg:melody-gap-8 melody-justify-center melody-px-2 melody-py-16 sm:melody-px-6 lg:melody-px-8">
