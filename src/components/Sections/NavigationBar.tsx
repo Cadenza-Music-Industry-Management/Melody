@@ -18,12 +18,14 @@ export const NavigationBar = (props: NavigationBarProps) => {
         navigation,
         userNavigation,
         user,
-        homepage = false,
         fixed = false,
-        icon
+        icon,
+        bgColorClass = "melody-bg-white",
+        textColorClass = "melody-text-gray-600"
     } = props
 
     const pathname = usePathname()
+    const isTransparent = bgColorClass == "melody-bg-transparent"
 
     function checkURL(url: string) {
         if (pathname) { //Note: usePathname() returns string, but fails with possibly null in build
@@ -36,7 +38,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
     }
 
     return (
-        <Disclosure as="nav" className={`${homepage ? "" : "melody-bg-white melody-shadow-main"} ${fixed ? "melody-fixed melody-w-full" : "melody-relative"} melody-p-1 melody-z-10`}>
+        <Disclosure as="nav" className={`${bgColorClass} ${isTransparent ? "" : "melody-shadow-main"} ${fixed ? "melody-fixed melody-w-full" : "melody-relative"} melody-p-1 melody-z-10`}>
             {({ open }: { open: boolean }) => (
                 <>
                     <div className="melody-mx-auto melody-px-2 sm:melody-px-4 lg:melody-px-8">
@@ -52,17 +54,17 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                 </Disclosure.Button>
                             </div>
 
-                            {!homepage && icon &&
-                            <div className="melody-flex melody-flex-1 melody-items-center melody-justify-center sm:melody-items-stretch sm:melody-justify-start">
-                                <div className="melody-flex melody-flex-shrink-0 melody-items-center">
-                                   <Link href={"/"}>
-                                       <Image width={150}
-                                              height={150}
-                                              src={icon}
-                                              alt="Navigation Bar Logo" />
-                                   </Link>
+                            {icon &&
+                                <div className="melody-flex melody-flex-1 melody-items-center melody-justify-center sm:melody-items-stretch sm:melody-justify-start">
+                                    <div className="melody-flex melody-flex-shrink-0 melody-items-center">
+                                       <Link href={"/"}>
+                                           <Image width={150}
+                                                  height={150}
+                                                  src={icon}
+                                                  alt="Navigation Bar Logo" />
+                                       </Link>
+                                    </div>
                                 </div>
-                            </div>
                             }
 
                             <div className="melody-absolute melody-inset-y-0 melody-right-0 melody-flex melody-items-center melody-pr-2 sm:melody-static sm:melody-inset-auto sm:melody-pr-0 sm:melody-ml-auto">
@@ -73,10 +75,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                         {navigation.map((item) => (
                                             <>
                                                 {item.disabled ?
-                                                    <p className={classNames(
-                                                        `${homepage ? "melody-text-gray-300" : "melody-text-gray-600"}`,
-                                                        'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium'
-                                                    )}>
+                                                    <p className={`${textColorClass} melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium`}>
                                                         {item.name}
                                                     </p>
                                                     :
@@ -85,7 +84,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
                                                           aria-disabled={checkURL(item.href ?? "no-href")}
                                                           tabIndex={checkURL(item.href ?? "no-href") ? -1 : undefined}
                                                           className={classNames(
-                                                              checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${homepage ? "melody-text-white hover:melody-text-gray-600" : "melody-text-gray-600"} hover:melody-bg-gray-200`,
+                                                              checkURL(item.href ?? "no-href")  ? 'melody-bg-primary-100 melody-text-white' : `${isTransparent ? "melody-text-white hover:melody-text-gray-600" : textColorClass} hover:melody-bg-gray-200`,
                                                               'melody-px-3 melody-py-2 melody-rounded-lg melody-text-sm melody-font-medium',
                                                               checkURL(item.href ?? "no-href") ? 'melody-pointer-events-none' : ''
                                                           )}
