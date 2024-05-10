@@ -54,3 +54,33 @@ function toBase64(str: string) {
 export function getBlurDataURLForNextImage(w: number, h: number) {
     return `data:image/svg+xml;base64,${toBase64(shimmer(w, h))}`
 }
+
+export function hexToRgbA(hex: string, opacity: number){
+    let c: any;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c = hex.substring(1).split('');
+        if(c.length === 3){
+            c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c = '0x'+c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+`,${opacity})`;
+    }
+    throw new Error('Bad Hex');
+}
+
+export function testLink(value: any) {
+    if(!value || value === "") {
+        return true
+    }
+
+    //TODO - need better regex for links
+    return new RegExp(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig).test(value)
+}
+
+export function testMailTo(value: any) {
+    if(!value || value === "") {
+        return true
+    }
+
+    return new RegExp(/^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/i).test(value)
+}

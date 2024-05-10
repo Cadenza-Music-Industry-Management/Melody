@@ -9,7 +9,8 @@ module.exports = {
   },
   prefix: "melody-",
   content: [
-    "./**/*.{html,js,jsx,ts,tsx}"
+    "./app/**/*.{html,js,jsx,ts,tsx}",
+    "./components/**/*.{html,js,jsx,ts,tsx}"
   ],
   // Toggle dark-mode based on data-mode="dark"
   darkMode: ['class', '[data-mode="dark"]'],
