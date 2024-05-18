@@ -494,3 +494,22 @@ export interface MelodySearchParamListEntry {
     publicSiteSelection?: boolean,
     dropdownOptions?: DropdownOption[]
 }
+
+export const defaultFormValues: MelodySearchParams = {
+    title: null,
+    artists: null,
+    genres: null,
+    releases: null,
+    tags: null,
+    apparel: null,
+    sources: null,
+    startDate: null,
+    endDate: null,
+    email: null,
+    username: null,
+    writer: null,
+    contentId: null,
+    contentIdType: { value: "RELEASE", label: "Release" },
+    actions: null,
+    fileType: null,
+}
