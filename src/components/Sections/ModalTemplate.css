@@ -16,11 +16,11 @@
 }
 
 .melody-modal-header {
-    @apply melody-bg-white melody-border-b-2 melody-border-gray-600 melody-p-3 melody-rounded-t-lg melody-flex melody-flex-col sm:melody-flex-row melody-justify-between melody-items-center;
+    @apply melody-border-b-2 melody-border-gray-600 melody-p-3 melody-rounded-t-lg melody-flex melody-flex-col sm:melody-flex-row melody-justify-between melody-items-center;
 }
 
 .melody-modal-contents {
-    @apply melody-bg-white melody-px-4 melody-pt-5 melody-pb-4 sm:melody-p-6 sm:melody-pb-4;
+    @apply melody-px-4 melody-pt-5 melody-pb-4 sm:melody-p-6 sm:melody-pb-4;
 }
 
 /*Sizes*/

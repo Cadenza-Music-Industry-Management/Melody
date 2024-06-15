@@ -168,7 +168,9 @@ export interface ModalProps {
     setOpen?: (open: boolean) => void,
     children?: ReactNode,
     size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge',
-    customZIndexClass?: string
+    customZIndexClass?: string,
+    customBGClass?: string,
+    customTitleColor?: string
 }
 
 //Navigation Bar
@@ -381,7 +383,7 @@ export interface MelodyTableColumn<TData> {
     accessorKey: string,
     customTextFields?: string[],
     linkOnClickSettings?: MelodyTableColumnLinkOnClickSettings,
-    formatType?: "text_input" | "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "button" | "selection_checkbox" | "checkbox" | "artist_list" | "badge" | "content_id" | "custom_text" | "url" | "currency" | "object_text",
+    formatType?: "text_input" | "date" | "datetime" | "text" | "image" | "social_media" | "dropdown" | "button" | "selection_checkbox" | "checkbox" | "artist_list" | "badge" | "content_id" | "custom_text" | "url" | "currency" | "object_text" | "playMusic",
     innerObject?: string,
     innerObjectAccessor?: string,
     header: MelodyTableHeader<TData>,

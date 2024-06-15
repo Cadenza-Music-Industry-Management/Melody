@@ -4,6 +4,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import {Button} from "../Inputs/Button";
 import {ModalProps} from "../types";
 import { Label } from "@/components/Melody/src/components/Layouts/Label";
+
 export const ModalTemplate = (props: ModalProps) => {
     const {
         title,
@@ -11,7 +12,9 @@ export const ModalTemplate = (props: ModalProps) => {
         setOpen,
         children,
         size = 'medium',
-        customZIndexClass
+        customZIndexClass,
+        customBGClass = "melody-bg-white",
+        customTitleColor = "black"
     } = props
 
     const cancelButtonRef = useRef(null)
@@ -45,9 +48,12 @@ export const ModalTemplate = (props: ModalProps) => {
                             leaveTo="melody-opacity-0 melody-translate-y-4 sm:melody-translate-y-0 sm:melody-scale-95">
                             <Dialog.Panel className={`melody-modal-panel ${size}`}>
                                 {/*Header*/}
-                                <div className={'melody-modal-header'}>
+                                <div className={`melody-modal-header ${customBGClass}`}>
                                     <div className={"melody-mb-4 sm:melody-mb-0"}>
-                                        <Label label={title} mediumBold={true} size={"large"} />
+                                        <Label label={title}
+                                               color={customTitleColor}
+                                               mediumBold={true}
+                                               size={"large"} />
                                     </div>
 
                                     {/*TODO better variant for close button?*/}
@@ -59,7 +65,7 @@ export const ModalTemplate = (props: ModalProps) => {
                                 </div>
 
                                 {/*Content*/}
-                                <div className="melody-modal-contents">
+                                <div className={`melody-modal-contents ${customBGClass}`}>
                                     {children}
                                 </div>
 

@@ -7,13 +7,14 @@ import {Button} from "../Inputs/Button";
 import { Label } from "./Label";
 
 export const Carousel = (props: {
-    width: any,
-    height: any,
-    images: string[],
+    width?: any,
+    height?: any,
+    images: any[],
     previewMessage?: string,
     onClick?: (image: string) => void,
     additionalImageClasses?: string,
-    additionalPreviewClasses?: string
+    additionalPreviewClasses?: string,
+    buttonColor?: 'gray' | 'white' | 'secondary' | 'primary' | 'warning',
 }) => {
     const {
         width,
@@ -22,7 +23,8 @@ export const Carousel = (props: {
         previewMessage,
         onClick,
         additionalImageClasses,
-        additionalPreviewClasses
+        additionalPreviewClasses,
+        buttonColor = "primary"
     } = props
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -73,11 +75,11 @@ export const Carousel = (props: {
             {images.length > 1 &&
                 <>
                   <div className={'melody-absolute melody-top-1/2 melody-left-2 melody-z-10 melody-transform -melody-translate-y-1/2'}>
-                    <Button onClick={goToPreviousImage} icon={{ icon: 'arrowLeft' }} />
+                    <Button color={buttonColor} onClick={goToPreviousImage} icon={{ icon: 'caretLeft' }} />
                   </div>
 
                   <div className={'melody-absolute melody-top-1/2 melody-right-2 melody-z-10 melody-transform -melody-translate-y-1/2'}>
-                    <Button onClick={goToNextImage} icon={{ icon: 'arrowRight', rightAligned: true }} />
+                    <Button color={buttonColor} onClick={goToNextImage} icon={{ icon: 'caretRight', rightAligned: true }} />
                   </div>
                 </>
             }

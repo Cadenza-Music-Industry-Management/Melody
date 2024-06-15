@@ -5,17 +5,19 @@ import { ReactNode } from "react";
 export function FooterNotification(props: {
     visible: boolean,
     title?: string,
+    backgroundClass?: string,
     subComponent: ReactNode
 }) {
 
     const {
         visible,
         title,
+        backgroundClass= "melody-bg-secondary-100",
         subComponent
     } = props
 
     return (
-        <div className={`melody-fixed melody-bottom-0 melody-left-0 melody-w-full melody-bg-secondary-100 melody-text-white melody-z-[1000] ${visible ? 'melody-block' : 'melody-hidden'}`}>
+        <div className={`melody-fixed melody-bottom-0 melody-left-0 melody-w-full ${backgroundClass} melody-text-white melody-z-[1000] ${visible ? 'melody-block' : 'melody-hidden'}`}>
             <div className="melody-container melody-mx-auto melody-p-2">
                 <div className="flex justify-between items-center">
                     <div>
