@@ -57,6 +57,7 @@ import {
     faArrowTurnDown,
     faAlignLeft,
     faExpand,
+    faVolumeUp,
     faUserTie, //TODO username
     faMoneyBillTrendUp, //Income
     faMoneyBillTransfer, //Expense
@@ -152,6 +153,7 @@ export const Icon = (props: IconProps) => {
         quoteLeft: faQuoteLeft,
         locationDot: faLocationDot,
         shoppingCart: faShoppingCart,
+        volumeUp: faVolumeUp,
         expand: faExpand,
         altCalendar: faCalendar,
         //Social media
